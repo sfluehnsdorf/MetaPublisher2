@@ -1,0 +1,18 @@
+<dtml-let
+  page_title="'!TXT! Page Title'"
+  page_info="'!TXT! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'"
+  management_view="'Designs'"
+  help_product="'MetaPublisher2'"
+  help_topic="'publisher_designs_setup.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-let
+  dialog_title="'Not Available'"
+  dialog_info="'This feature will be available in a future release.'"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

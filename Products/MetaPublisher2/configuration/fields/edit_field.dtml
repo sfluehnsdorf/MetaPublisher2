@@ -1,0 +1,135 @@
+<dtml-let
+  page_title="'Edit Field'"
+  page_info="'To change a Fields's configuration, change all the values you wish to change and then click the Save button.'"
+  management_view="'Fields'"
+  help_product="'MetaPublisher2'"
+  help_topic="'configuration_fields_edit.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+<dtml-if has_plugins>
+
+<dtml-if has_storageplugins>
+
+<dtml-if has_storages>
+
+<dtml-if "has_fieldplugins( storage_id = storage_id )">
+
+<dtml-if "has_fields( storage_id )">
+
+<dtml-let
+  form_continues="True"
+  form_id="'edit_storage_form'"
+  >
+<dtml-var storage_selection_formlet>
+</dtml-let>
+
+
+
+<!--
+!!! edit_field.dtml - reimplement
+!!! edit_field.dtml - update to use new ui
+!!! edit_field.dtml - integrate Field's formlet transparently (allow to override with a form)
+-->
+
+
+
+<input type="hidden" name="storage_id" value="&dtml-storage_id;">
+  <table cellspacing="0" cellpadding="2" border="0">
+    <tr>
+      <td align="left" valign="top"><div class="form-optional">Title</div></td>
+      <td align="left" valign="top" width="100%"><input type="text" name="title" size="60" class="fw" value="<dtml-var title>" /></td>
+    </tr>
+  </table>
+<div class="list-item">
+  <input type="submit" name="edit_field:method" value="Save Changes" /> 
+  <input type="submit" name="storages_form:method" value="Cancel" /> 
+</div>
+
+
+
+
+
+<dtml-else>
+
+<dtml-let
+  form_id="'fields_form'"
+  buttons="[
+    ( 'add_field_form', 'Add Field' ),
+    ]"
+  >
+<dtml-var storage_selection_formlet>
+</dtml-let>
+
+<dtml-let
+  dialog_title="'No Fields Added Yet!'"
+  dialog_info="'You must add at least one Field to this Storage.'"
+  dialog_butons="[
+    ( 'add_field_form', 'Add Field' ),
+    ]"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-let
+  form_id="'fields_form'"
+  buttons="[
+    ( 'add_field_form', 'Add Field' ),
+    ]"
+  >
+<dtml-var storage_selection_formlet>
+</dtml-let>
+
+<dtml-let
+  dialog_title="'No Field Plugins Available!'"
+  dialog_info="'You must install Field plugins to work with Fields.'"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-let
+  dialog_title="'No Storages Added Yet!'"
+  dialog_info="'You must add at least one Storage.'"
+  dialog_butons="[
+    ( 'add_storage_form', 'Add Storage' ),
+    ]"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-let
+  dialog_title="'No Storage Plugins Available!'"
+  dialog_info="'You must install Storage plugins to work with Storages.'"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-let
+  dialog_title="'No Plugins Available!'"
+  dialog_info="'You must install plugins to work with MetaPublisher2.'"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

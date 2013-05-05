@@ -1,0 +1,15 @@
+<dtml-let
+  page_title="'Widgets'"
+  page_info="'Widgets are elements of Frontends, that represent the Fields of an Entry.'"
+  management_view="'Widgets'"
+  help_product="'MetaPublisher2'"
+  help_topic="'publisher_widgets.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<!-- !!! widgets.dtml - implement widgets browser, requires add, edit, delete, rename, duplicate, preview and ordering -->
+
+<dtml-var not_available_dialog>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

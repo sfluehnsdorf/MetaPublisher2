@@ -1,0 +1,71 @@
+<dtml-let
+  page_title="'Feedback'"
+  page_info="'Contact form for bug reports, feature requests and business enquiries. After submitting this form you will be redirected to the <a target=\x22_blank\x22 href=\x22http://metapublisher.org\x22>MetaPublisher website</a>.'"
+  management_view="'Feedback'"
+  help_product="'MetaPublisher2'"
+  help_topic="'service_feedback.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<form action="<dtml-var get_feedback_url>" method="post" enctype="multipart/form-data" target="_blank">
+<input type="hidden" name="release" value="<dtml-var get_release_version>">
+  <div class="form">
+    <table>
+      <tr class="head">
+        <th>Field</th>
+        <th class="w100">Input</th>
+        <th>Required</th>
+      </tr>
+      <tr class="input">
+        <th>Name</th>
+        <td><input class="string" type="text" name="name" size="60" required="required" /></td>
+        <td>required</td>
+      </tr>
+      <tr class="input">
+        <th>Company</th>
+        <td><input class="string" type="text" name="company" size="60" /></td>
+        <td class="optional">optional</td>
+      </tr>
+      <tr class="input">
+        <th>Email</th>
+        <td><input class="string" type="text" name="email" size="60" required="required" /></td>
+        <td>required</td>
+      </tr>
+      <tr class="input">
+        <th>Subject</th>
+        <td>
+          <input type="radio" name="subject" id="subject1" value="MetaPublisher2 - General Enquiry" checked />
+          <label for="subject1">General Enquiry</label>
+          <input type="radio" name="subject" id="subject3" value="MetaPublisher2 - Business Enquiry" />
+          <label for="subject3">Business Enquiry</label>
+          <input type="radio" name="subject" id="subject2" value="MetaPublisher2 - Bug Report" />
+          <label for="subject2">Bug Report</label>
+          <input type="radio" name="subject" id="subject4" value="MetaPublisher2 - Feature Request" />
+          <label for="subject4">Feature Request</label>
+        </td>
+        <td>required</td>
+      </tr>
+      <tr class="input">
+        <th>Message</th>
+        <td>
+          <label for="message">Please describe your request in detail:</label><br />
+          <textarea class="w100" name="message" cols="60" rows="10" required="required"></textarea>
+        </td>
+        <td>required</td>
+      </tr>
+      <tr>
+        <th>Attachment</th>
+        <td><input type="file" name="attachment"></td>
+        <td class="optional">optional</td>
+      </tr>
+      <tr class="buttons">
+        <td colspan="3">
+          <input type="submit" value="Submit Feedback">
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

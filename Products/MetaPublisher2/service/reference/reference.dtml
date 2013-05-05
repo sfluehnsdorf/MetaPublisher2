@@ -1,0 +1,6 @@
+<html>
+  <frameset rows="160,*">
+    <frame name="head" marginwidth="2" marginheight="2" src="reference_top_form" scrolling="auto">
+    <frame name="main" marginwidth="2" marginheight="2" src="<dtml-var get_reference_url missing>" scrolling="yes">
+  </frameset>
+</html>

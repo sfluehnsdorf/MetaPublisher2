@@ -1,0 +1,17 @@
+<dtml-let
+  page_title="'Edit Frontend'"
+  page_info="'Change a Frontend\'s configuration.'"
+  management_view="'Frontends'"
+  help_product="'MetaPublisher2'"
+  help_topic="'publisher_frontends_edit.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="<dtml-var get_MetaPublisher2_url>" method="post">
+
+<!-- !!! edit_frontend.dtml - implement -->
+
+<dtml-var not_available_dialog>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

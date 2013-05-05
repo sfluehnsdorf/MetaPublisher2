@@ -1,0 +1,121 @@
+<dtml-let
+  page_title="'Frontends'"
+  page_info="'Frontends provide a public interface to the MetaPublisher 2 such as forms and scripts to manage the Entries.'"
+  management_view="'Frontends'"
+  help_product="'MetaPublisher2'"
+  help_topic="'publisher_frontends.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="<dtml-var get_MetaPublisher2_url>" method="post">
+
+<!-- !!! frontends.dtml - update to use new ui -->
+<!-- !!! frontends.dtml - implement frontend path formlet -->
+<!-- !!! frontends.dtml - implement handle paths/trees properly -->
+
+<dtml-if has_frontendplugins>
+
+<dtml-let frontends=frontend_items>
+<dtml-if frontends>
+
+  <table class="fw" cellspacing="0" cellpadding="0" border="0">
+
+    <tr>
+      <td class="al"><input type="submit" name="add_frontend_form:method" value="Add New Frontend"></td>
+      <td class="ar"><input type="submit" name="frontends/manage_main:method" value="Manage Frontends"></td>
+    </tr>
+
+  </table>
+
+  <table class="list" cellspacing="0" cellpadding="4" border="0">
+
+    <tr class="list-header">
+      <th width="1%"><div class="form-label">#</div></th>
+      <th width="1%"><div class="form-label">&nbsp;</div></th>
+      <th nowrap><div class="form-label">Path &amp; Id</div></th>
+      <th width="50%"><div class="form-label">Title</div></th>
+      <th><div class="form-label">Plugin</div></th>
+      <th><div class="form-label">Design</div></th>
+    </tr>
+
+<dtml-in frontends prefix=frontend>
+    <tr class="row-<dtml-if frontend_odd>normal<dtml-else>hilite</dtml-if>">
+      <td valign="top" rowspan="2"><div class="list-item"><dtml-var frontend_number></div></td>
+      <td valign="top" rowspan="2"><input type="checkbox" name="ids:list" value="<dtml-var frontend_key>"<dtml-if "REQUEST.get( 'frontends_form', '' ) == 'All' or ( REQUEST.get( 'frontends_form', '' ) == 'Invert' and not( entry_key in ids ) )"> checked</dtml-if>></td>
+      <td valign="top" nowrap><div class="list-item"><a href="<dtml-var get_MetaPublisher2_url>/frontends/<dtml-var frontend_key>/<dtml-if "getattr( frontend_item, 'edit_frontend_form', None )">edit_frontend_form<dtml-else>manage_main</dtml-if>"><dtml-var frontend_key></a></div></td>
+      <td valign="top"><div class="list-item"><dtml-var "frontend_item.title"></div></td>
+      <td valign="top" nowrap><div class="list-item"><dtml-if "getattr( frontend_item, plugin_name, None )"><dtml-var "frontend_item.plugin_name"><dtml-else><dtml-var "frontend_item.meta_type"></dtml-if></div></td>
+      <td valign="top" nowrap><div class="list-item"><em>TODO: Design info</em></div></td>
+    </tr>
+
+    <tr class="row-<dtml-if frontend_odd>normal<dtml-else>hilite</dtml-if>">
+      <td valign="top" colspan="4">
+        <div class="list-item small">
+          Rendering Ids:
+<dtml-if "hasattr( frontend_item, 'rendering_ids' )">
+<dtml-in "frontend_item.rendering_ids()" prefix=id>
+          <dtml-var id_item><dtml-unless id_end>, </dtml-unless>
+</dtml-in>
+<dtml-else>
+          <dtml-var frontend_key>
+</dtml-if>
+        </div>
+<dtml-if "hasattr( frontend_item, 'is_frontend_modified', None )">
+<dtml-if "frontend_item.is_frontend_modified() == None">
+        <div class="list-item small">
+          <img src="ui_info.png"> Frontend was never rendered.
+        </div>
+<dtml-elif "frontend_item.is_frontend_modified() == True">
+        <div class="list-item small">
+          <img src="ui_info.png"> Frontend was changed since last rendering.
+        </div>
+</dtml-if>
+</dtml-if>
+<dtml-if "hasattr( frontend_item, 'is_frontend_renderable', None )">
+<dtml-unless "frontend_item.is_frontend_renderable()">
+        <div class="list-item small">
+          <img src="error.png"> Frontend has errors: <dtml-var "', '.join( frontend.get_rendering_errors() )">
+        </div>
+</dtml-unless>
+</dtml-if>
+      </td>
+    </tr>
+
+</dtml-in>
+    </table>
+
+  <table class="fw" cellspacing="0" cellpadding="0" border="0">
+
+    <tr>
+      <td class="al">
+        <input type="submit" name="renderer_form:method" value="Render">
+        <input type="submit" name="duplicate_frontends_form:method" value="Duplicate">
+        <input type="submit" name="rename_frontends_form:method" value="Rename">
+        <input type="submit" name="move_frontends_form:method" value="Move">
+        <input type="submit" name="delete_frontends_form:method" value="Delete">
+      </td>
+      <td class="ar">
+        <div class="form-element">
+          Select
+          <input type="submit" name="frontends_form:method" value="All">
+          <input type="submit" name="frontends_form:method" value="None">
+          <input type="submit" name="frontends_form:method" value="Invert">
+        </div>
+      </td>
+    </tr>
+
+  </table>
+
+<dtml-else>
+  <p><input type="submit" name="add_frontend_form:method" value="Add New Frontend"></p>
+<dtml-var no_frontends_dialog>
+</dtml-if>
+
+</dtml-let>
+
+<dtml-else>
+<dtml-var no_frontendplugins_dialog>
+</dtml-if>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

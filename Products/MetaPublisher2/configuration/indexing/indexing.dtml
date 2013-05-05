@@ -1,0 +1,13 @@
+<dtml-let
+  page_title="'Indexing'"
+  page_info="'An index is used to improve the speed of data retrieval operations at the cost of slower writes and increased storage space.'"
+  management_view="'Indexing'"
+  help_product="'MetaPublisher2'"
+  help_topic="'configuration_indexing.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-var not_available_dialog>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

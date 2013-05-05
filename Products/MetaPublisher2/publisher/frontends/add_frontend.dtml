@@ -1,0 +1,67 @@
+<dtml-let
+  page_title="'Add New Frontend'"
+  page_info="'To create a new Frontend, please first select the type of Interface you wish to add.'"
+  management_view="'Frontends'"
+  help_product="'MetaPublisher2'"
+  help_topic="'publisher_frontends_add.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="<dtml-var get_MetaPublisher2_url>" method="post">
+
+<!-- !!! add_frontend_form.dtml - revise -->
+
+<dtml-let plugin_tuples=frontendplugin_items>
+
+  <div class="form-element">
+    Location:
+    <select name="path">
+      <option value="/">/ (Root Level)</option>
+<dtml-in get_sub_folders prefix=path>
+      <option value="/<dtml-var path_key>/">/<dtml-var path_key></option>
+</dtml-in>
+    </select>
+  </div>
+
+  <table class="form" cellspacing="0" cellpadding="4" border="0">
+
+<dtml-in plugin_tuples prefix=plugin>
+    <tr>
+      <th>
+        <div class="form-label">
+          <input type="radio" name="frontend_type" id="frontend_type_<dtml-var plugin_number>" value="<dtml-var plugin_key>"<dtml-if plugin_start><dtml-call "REQUEST.set( 'plugin_selected', 1 )"> checked</dtml-if>>
+          <label for="frontend_type_<dtml-var plugin_number>"><img src="<dtml-var "plugin_item[ 'instance' ].icon">" border="0" align="baseline"> <dtml-var "plugin_item[ 'instance' ].plugin_name"></label>
+        </div>
+      </th>
+      <td width="100%"><div class="form-element"><dtml-var "plugin_item[ 'instance' ].plugin_info"></div></td>
+    </tr>
+</dtml-in>
+
+    <tr>
+      <th>
+        <div class="form-label">
+          <input type="radio" name="frontend_type" id="frontend_type_ofs" value="ofs"<dtml-unless plugin_selected> checked</dtml-unless>></td>
+          <label for="frontend_type_ofs"><b>Zope Object</b></label>
+        </div>
+      </th>
+      <td width="100%">
+        <select name="ofs_frontend_type">
+<dtml-in filtered_meta_types mapping sort=name>
+          <option value="<dtml-var action url_quote>"><dtml-var name></option>
+</dtml-in>
+        </select>
+        <div class="form-element s">Please choose the type of OFS Object you want to add:</div>
+      </td>
+    </tr>
+
+  </table>
+
+  <p>
+    <input type="submit" name="add_frontend_type:method" value="Continue" class="default">
+    <input type="submit" name="frontends_form:method" value="Cancel">
+  </p>
+
+</dtml-let>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

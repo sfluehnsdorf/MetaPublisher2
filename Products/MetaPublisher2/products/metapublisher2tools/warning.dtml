@@ -1,0 +1,7 @@
+<dtml-var manage_page_header>
+<dtml-var manage_tabs>
+<link rel="stylesheet" type="text/css" href="<dtml-var get_MetaPublisher2_url>/manage_MetaPublisher2_css" />
+
+<dtml-var toolsfolder_warning_dialog>
+
+<dtml-var manage_page_footer>

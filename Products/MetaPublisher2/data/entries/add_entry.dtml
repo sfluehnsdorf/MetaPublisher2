@@ -1,0 +1,88 @@
+<dtml-let
+  page_title="'Add New Entry'"
+  page_info="'To create a new Entry, fill out the respective Fields and click the Add button.'"
+  management_view="'Entries'"
+  help_product="'MetaPublisher2'"
+  help_topic="'data_entries_add.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="&dtml-get_MetaPublisher2_url;" method="post" enctype="multipart/form-data">
+
+<dtml-if has_plugins>
+
+<dtml-if has_storageplugins>
+
+<dtml-if has_storages>
+<dtml-let
+  form_id="'edit_entry_form'"
+  buttons="[
+    ( 'add_entry_form', 'Add Entry' ),
+    ( 'add_entries_form', 'Add Entries' ),
+    ]"
+  >
+<dtml-var storage_selection_formlet>
+</dtml-let>
+
+<dtml-if "has_fieldplugins( storage_id = storage_id )">
+
+<dtml-if "has_fields( storage_id )">
+
+  <div class="form">
+    <table>
+      <tr class="head">
+        <th>Field Id</th>
+        <th>Title</th>
+        <th class="w100">Value</th>
+        <th>Required</th>
+      </tr>
+      <tr class="input">
+        <th>id</th>
+        <td class="nowrap">Entry Id</td>
+        <td><input class="token" type="text" name="entry_id" size="25" value="<dtml-var "new_entry_id( storage_id )">" /></td>
+        <td>required</td>
+      </tr>
+<dtml-in "field_items( storage_id )" prefix=field>
+      <tr class="input">
+        <th><dtml-var "field_key"></th>
+        <td class="nowrap"><dtml-var "field_item.title"></td>
+        <td><dtml-var "field_item.renderAdd()"></td>
+<dtml-if "field_item.is_field_requirable() and not( field_item.is_field_required() )">
+        <td class="optional">optional</td>
+<dtml-else>
+        <td>required</td>
+</dtml-if>
+      </tr>
+</dtml-in>
+      <tr class="buttons">
+        <td colspan="4">
+          <input type="submit" name="add_entry:method" value="Add Entry" />
+          <input type="submit" name="add_entry_continued:method" value="Add Entry & Continue" />
+          <input type="submit" name="entries_form:method" value="Cancel" formnovalidate="formnovalidate" />
+        </td>
+      </tr>
+    </table>
+  </div>
+
+<dtml-else>
+<dtml-var no_fields_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_fieldplugins_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_storages_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_storageplugins_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_plugins_dialog>
+</dtml-if>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

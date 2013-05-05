@@ -1,0 +1,82 @@
+<dtml-let
+  entryIdPattern="REQUEST.form.get( 'entryIdPattern', '%(storage_id)s_%(sequence)04d' )"
+  entryIdPatternType="entryIdPattern == '%(storage_id)s_%(sequence)04d' and 'sequence' or ( entryIdPattern == '%(storage_id)s_%(random)04d' and 'random' or ( entryIdPattern == '%(storage_id)s_%(uid)s' and 'uid' or 'custom' ) )"
+  >
+    <tr>
+      <th><div class="form-optional">Entry Id Pattern</div></th>
+      <td>
+        <div class="form-element">
+          Please specify how Ids for Entries of this Storage should be generated.
+<dtml-if "errors.has_key( 'entryIdPattern' )">
+          <div class="error"><dtml-var "errors[ 'entryIdPattern' ]"></div>
+</dtml-if>
+
+          <table class="form" cellspacing="0" cellpadding="4" border="0">
+
+            <tr>
+              <th>
+                <div class="form-element">
+                  <input type="radio" name="entryIdPatternType" value="sequence" id="entryIdPatternType_sequence"<dtml-if "entryIdPatternType == 'sequence'"> checked</dtml-if> />
+                  <label for="entryIdPatternType_sequence">Sequential:</label>
+                </div>
+              </th>
+              <td width="100%">
+                <div class="form-element">
+                  Increasing number sequence, prefixed with the Storage's Id.<br>
+                  <span class="small">Example: <em>storage_0001</em>, Pattern: <em>%(storage_id)s_%(sequence)04d</em>.</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                <div class="form-element">
+                  <input type="radio" name="entryIdPatternType" value="random" id="entryIdPatternType_random"<dtml-if "entryIdPatternType == 'random'"> checked</dtml-if> />
+                  <label for="entryIdPatternType_random">Random:</label>
+                </div>
+              </th>
+              <td>
+                <div class="form-element">
+                  Random 4 digits, prefixed with the Storage's Id.<br>
+                  <span class="small">Example: <em>storage_7391</em>, Pattern: <em>%(storage_id)s_%(random)04d</em>.</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                <div class="form-element">
+                  <input type="radio" name="entryIdPatternType" value="uid" id="entryIdPatternType_uid"<dtml-if "entryIdPatternType == 'uid'"> checked</dtml-if> />
+                  <label for="entryIdPatternType_uid">UID:</label>
+                </div>
+              </th>
+              <td>
+                <div class="form-element">
+                  Random UID consisting of 6 letters and digits, prefixed with the Storage's Id.<br>
+                  <span class="small">Example: <em>storage_a7ry9</em>, Pattern: <em>%(storage_id)s_%(uid)s</em>.</span>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+                <div class="form-element">
+                  <input type="radio" name="entryIdPatternType" value="custom" id="entryIdPatternType_custom"<dtml-if "entryIdPatternType == 'custom'"> checked</dtml-if> />
+                  <label for="entryIdPatternType_custom">Custom:</label>
+                </div>
+              </th>
+              <td>
+                <div class="form-element">
+                  <input type="text" name="entryIdPattern" size="60" class="fw" value="<dtml-var entryIdPattern>" /><br>
+                  <span class="small">Available identifiers are "storage_id", "sequence", "random" and "uid"</td></span>
+                </div>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+      </td>
+      <td><div class="form-element">required</div></td>
+    </tr>
+</dtml-let>

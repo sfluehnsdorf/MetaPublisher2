@@ -1,0 +1,7 @@
+<dtml-let
+  page_title="'Reference'"
+  page_info="'The reference section provides an introspective API documentation of the MetaPublisher2.'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

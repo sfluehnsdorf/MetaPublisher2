@@ -1,0 +1,80 @@
+<dtml-let
+  page_title="'Add New Field'"
+  page_info="'To create a new Field, please first select the Storage you wish to add the Field to and the type you wish to add.'"
+  management_view="'Fields'"
+  help_product="'MetaPublisher2'"
+  help_topic="'configuration_fields_add_type.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+<dtml-if has_storageplugins>
+
+<dtml-if has_fieldplugins>
+
+<dtml-if has_storages>
+
+<dtml-let
+  form_id="'manage_fieldsNewForm'"
+  >
+<dtml-var storage_selection_formlet>
+</dtml-let>
+
+  <div class="form">
+    <table>
+      <tr class="head">
+        <th>Attribute</th>
+        <th class="w100">Value</th>
+        <th>Required</th>
+      </tr>
+      <tr class="input">
+        <th>Id</th>
+        <td><input class="token" type="text" name="id" size="25" value="<dtml-var "REQUEST.form.get('id', '')">" required="required" /></td>
+        <td>required</td>
+      </tr>
+      <tr class="input">
+        <th>Title</th>
+        <td><input class="string" type="text" name="title" size="60" value="<dtml-var "REQUEST.form.get('title', '')">" /></td>
+        <td class="optional">optional</td>
+      </tr>
+    </table>
+  </div>
+
+<!--
+!!! add_field.dtml - integrate Fields' formlets transparently (allow to override with a form)
+-->
+
+<dtml-let
+  selections="map(
+    lambda item: {
+      'id': item[ 0 ],
+      'icon': item[ 1 ][ 'instance' ].icon,
+      'label': item[ 1 ][ 'instance' ].pluginName,
+      'description': item[ 1 ][ 'instance' ].pluginInfo,
+      },
+    fieldplugin_items( storage_id )
+    )"
+  selection_id="'fieldType'"
+  buttons="[
+    ( 'add_field_type', 'Continue' ),
+    ( 'fields_form', 'Cancel' ),
+    ]"
+  >
+<dtml-var metapublisher2_selection>
+</dtml-let>
+
+<dtml-else>
+<dtml-var no_storages_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_fieldplugins_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_storageplugins_dialog>
+</dtml-if>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

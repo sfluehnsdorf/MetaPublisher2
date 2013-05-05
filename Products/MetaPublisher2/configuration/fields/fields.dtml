@@ -1,0 +1,125 @@
+<dtml-let
+  page_title="'Fields'"
+  page_info="'Fields define what type of data a Storage stores per Entry, with each Field defining one element of an Entry.'"
+  management_view="'Fields'"
+  help_product="'MetaPublisher2'"
+  help_topic="'configuration_fields.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+<dtml-if has_plugins>
+
+<dtml-if has_storageplugins>
+
+<dtml-if has_storages>
+
+<dtml-let
+  form_continues="True"
+  form_id="'fields_form'"
+  buttons="[
+    ('add_field_form', 'Add Field'),
+    ]"
+  >
+<dtml-var storage_selection_formlet>
+</dtml-let>
+
+<dtml-if "has_fieldplugins(storage_id = storage_id)">
+
+<dtml-if "has_fields(storage_id)">
+
+<dtml-let
+  form_continued="true"
+  form_id="'fields_form'"
+  form_uid="'fields_form|%s' % storage_id"
+  columns="[
+    { 'label': 'Id', 'type': 'string', 'value': 'getId', 'template': '<a href=\x22edit_field_form?storage_id=%s\x22>%s</a>', 'values': ['getId', 'getId'], 'sortable': true, },
+    { 'label': 'Title', 'type': 'string', 'value': 'title', 'sortable': true, 'hidden': false, },
+    { 'label': 'Type', 'type': 'string', 'value': 'meta_type', 'template': '<img src=\x22%s\x22 width=\x2216\x22 height=\x2216\x22> %s', 'values': ['icon', 'meta_type',], 'sortable': true, 'hidden': false, },
+    { 'label': 'Position', 'type': 'position', 'value': 'position', 'method': '''move_field?storage_id=%s&field_id=%%(key)s&position=%%(position)s''' % storage_id, 'sortable': true, 'hidden': false, },
+    ]"
+  rows="field_items( storage_id )"
+  row_id="'getId'"
+  buttons="[
+    { 'name': 'duplicate_fields_form', 'label': 'Duplicate' },
+    { 'name': 'rename_fields_form', 'label': 'Rename' },
+    { 'name': 'delete_fields_form', 'label': 'Delete' },
+    ]"
+  >
+<dtml-var metapublisher2_table>
+</dtml-let>
+
+<dtml-else>
+</div>
+
+<dtml-var no_fields_dialog>
+<dtml-let
+  dialog_title="'No Fields Added Yet!'"
+  dialog_info="'You must add at least one Field to this Storage.'"
+  dialog_butons="[
+    ( 'add_field_form', 'Add Field' ),
+    ]"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+</div>
+
+<dtml-var no_fieldplugins_dialog>
+<dtml-let
+  dialog_title="'No Field Plugins Available!'"
+  dialog_info="'You must install Field plugins to work with Fields.'"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-var no_storages_dialog>
+<dtml-let
+  dialog_title="'No Storages Added Yet!'"
+  dialog_info="'You must add at least one Storage.'"
+  dialog_butons="[
+    ( 'add_storage_form', 'Add Storage' ),
+    ]"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-var no_storageplugins_dialog>
+<dtml-let
+  dialog_title="'No Storage Plugins Available!'"
+  dialog_info="'You must install Storage plugins to work with Storages.'"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-let
+  dialog_title="'No Plugins Available!'"
+  dialog_info="'You must install plugins to work with MetaPublisher2.'"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>
+
+<!--
+TODO: configuration/fields/fields.dtml - should list all field groups as items and all its fields as items beneath, no matter what the sorting - like Mac Finder list view
+-->

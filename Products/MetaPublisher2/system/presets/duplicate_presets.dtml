@@ -1,0 +1,13 @@
+<dtml-let
+  page_title="'Duplicate Presets'"
+  page_info="'Duplicate Presets, creating identical copies.'"
+  management_view="'Presets'"
+  help_product="'MetaPublisher2'"
+  help_topic="'system_presets_load_options.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-var not_available_dialog>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

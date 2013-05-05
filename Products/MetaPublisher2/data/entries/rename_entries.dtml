@@ -1,0 +1,17 @@
+<dtml-let
+  page_title="'Rename Entries'"
+  page_info="'Rename selected Entries by specifying a new Ids. If an Id is unchanged, no change will be made.'"
+  management_view="'Entries'"
+  help_product="'MetaPublisher2'"
+  help_topic="'data_entries_rename.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-var not_available_dialog>
+<!--
+!!! rename_entries.dtml - ask to enter new ids, or leave blank for auto-generated
+!!! rename_entries.dtml - if id is invalid, should return to form and display error message
+-->
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

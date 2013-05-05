@@ -1,0 +1,97 @@
+<dtml-if management_view><dtml-call "REQUEST.set( 'management_view', management_view )"></dtml-if>
+<dtml-if management_view_path><dtml-call "REQUEST.set( 'management_view_path', management_view_path )"></dtml-if>
+<dtml-let manage_options=filtered_manage_options activeOption=get_active_manage_option>
+
+
+<dtml-comment> ------------------------------------------------ </dtml-comment>
+
+<dtml-in manage_options prefix=row>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+
+<tr>
+<td bgcolor="#000000" rowspan="5" width="10%" valign="bottom" align="left">&nbsp;&nbsp;<img src="<dtml-var BASEPATH1>/p_/sp" width="2" height="1" alt="" /></td>
+<td bgcolor="#000000" colspan="<dtml-var "4 * ( _.len( row_item ) + 1 )">"><img src="<dtml-var BASEPATH1>/p_/sp" width="1" height="5" alt="" /></td>
+</tr>
+
+<tr>
+<dtml-in row_item mapping>
+<dtml-if active>
+<td bgcolor="#ffffff" rowspan="2" valign="top" align="left"><img src="<dtml-var BASEPATH1>/p_/ltab" width="5" height="5" alt="" /></td>
+<td bgcolor="#ffffff"><img src="<dtml-var BASEPATH1>/p_/sp" width="1" height="2" alt="" /></td>
+<td bgcolor="#ffffff" rowspan="2" valign="top" align="right"><img src="<dtml-var BASEPATH1>/p_/rtab" width="5" height="5" alt="" /></td>
+<td bgcolor="#000000" rowspan="4"><img src="<dtml-var BASEPATH1>/p_/sp" width="2" height="1" alt="" /></td>
+<dtml-else>
+<td bgcolor="#efefef" rowspan="2" valign="top" align="left"><img src="<dtml-var BASEPATH1>/p_/ltab" width="5" height="5" alt="" /></td>
+<td bgcolor="#efefef"><img src="<dtml-var BASEPATH1>/p_/sp" width="1" height="2" alt="" /></td>
+<td bgcolor="#efefef" rowspan="2" valign="top" align="right"><img src="<dtml-var BASEPATH1>/p_/rtab" width="5" height="5" alt="" /></td>
+<td bgcolor="#000000" rowspan="4"><img src="<dtml-var BASEPATH1>/p_/sp" width="2" height="1" alt="" /></td>
+</dtml-if>
+</dtml-in>
+</tr>
+
+<tr>
+<dtml-in row_item mapping prefix=option>
+<dtml-if active>
+<td bgcolor="#ffffff" valign="middle" class="tab-small" align="center"><font face="Verdana, Arial, Helvetica" size="1" color="#000000">&nbsp;<a <dtml-if "option_item.get( 'action' )">href="<dtml-var action>"<dtml-else>href="<dtml-var URL1>"</dtml-if><dtml-if target> target="<dtml-var target>"</dtml-if>><span style="color: #000000;"><strong><dtml-var label></strong></span></a>&nbsp;</font></td>
+<dtml-else>
+<td bgcolor="#efefef" valign="middle" class="tab-small" align="center"><font face="Verdana, Arial, Helvetica" size="1" color="#000000">&nbsp;<a <dtml-if "option_item.get( 'action' )">href="<dtml-var action>"<dtml-else>href="<dtml-var URL1>"</dtml-if><dtml-if target> target="<dtml-var target>"</dtml-if>><span style="color: #000000;"><strong><dtml-var label></strong></span></a>&nbsp;</font></td>
+</dtml-if>
+</dtml-in>
+</tr>
+
+<tr>
+<dtml-in row_item mapping>
+<dtml-if active>
+<td colspan="3" bgcolor="#ffffff"><img src="<dtml-var BASEPATH1>/p_/sp" width="2" height="1" alt="" /></td>
+<dtml-else>
+<td colspan="3" bgcolor="#efefef"><img src="<dtml-var BASEPATH1>/p_/sp" width="2" height="1" alt="" /></td>
+</dtml-if>
+</dtml-in>
+</tr>
+
+<tr>
+<dtml-in row_item mapping>
+<dtml-if active>
+<td colspan="3" bgcolor="#ffffff"><img src="<dtml-var BASEPATH1>/p_/sp" width="2" height="1" alt="" /></td>
+<dtml-else>
+<td colspan="3" bgcolor="#c0c0c0"><img src="<dtml-var BASEPATH1>/p_/sp" width="2" height="1" alt="" /></td>
+</dtml-if>
+</dtml-in>
+</tr>
+
+<tr>
+<td><img src="<dtml-var BASEPATH1>/p_/sp" width="1" height="4" alt="" /></td>
+</tr>
+
+</table>
+</dtml-in>
+
+
+<dtml-comment> ------------------------------------------------ </dtml-comment>
+
+<dtml-unless MANAGE_TABS_NO_BANNER>
+<br />
+<table width="100%" cellspacing="0" cellpadding="2" border="0">
+
+<tr class="location-bar">
+<td align="left" valign="top"><div class="std-text">
+  <dtml-if icon><img src="<dtml-var BASEPATH1>/<dtml-var icon>" alt="<dtml-var meta_type>" border="0" /></dtml-if>
+  <strong><dtml-if meta_type><dtml-if class_manage_path><a href="<dtml-var BASEPATH1><dtml-var class_manage_path>" title="Manage the ZClass of this object"><dtml-var meta_type></a><dtml-else><dtml-var meta_type></dtml-if><dtml-else>Object</dtml-if> at <dtml-var expr="tabs_path_default(REQUEST)"></strong>
+  <dtml-if locked_in_version><dtml-if modified_in_version><img src="<dtml-var BASEPATH1>/p_/locked" alt="This item has been modified in this version" /><dtml-else><img src="<dtml-var BASEPATH1>/p_/lockedo" alt="This item has been modified in another version" /> (<em><dtml-var locked_in_version></em>)</dtml-if></dtml-if>
+  <dtml-if wl_isLocked><img src="<dtml-var BASEPATH1>/p_/davlocked" alt="This item has been locked by WebDAV" title="This item has been locked by WebDAV" /></dtml-if wl_isLocked>
+</div></td>
+<dtml-if "_.has_key('help_topic') and _.has_key('help_product')">
+  <td align="right" valign="top"><div class="std-text"><dtml-var "HelpSys.helpLink(help_product, help_topic)"></div></td>
+<dtml-else>
+  <dtml-if "activeOption.has_key('help')"><td align="right" valign="top"><div class="std-text"><dtml-var "HelpSys.helpLink(activeOption['help'][0], activeOption['help'][1])"></div></td></dtml-if>
+</dtml-if>
+</tr>
+
+</table>
+
+<dtml-if Zope-Version><div class="system-msg"><em>You are currently working in version <a href="<dtml-var SERVER_URL><dtml-var Zope-Version>/manage_main"><dtml-var Zope-Version></a></em></div></dtml-if>
+</dtml-unless>
+
+<dtml-if manage_tabs_message><div class="system-msg"><dtml-var manage_tabs_message newline_to_br> (<dtml-var ZopeTime fmt="%Y-%m-%d %H:%M">)</div></dtml-if>
+
+</dtml-let>

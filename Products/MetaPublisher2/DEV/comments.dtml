@@ -1,0 +1,53 @@
+<dtml-let
+  page_title="'DEV'"
+  page_info="'DEV DEV DEV'"
+  management_view="'Comments'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+
+
+<dtml-let files="DEV_count_uncomments( REQUEST.get( 'todo_order', 'path' ) )">
+
+  <h3 class="hpad"><dtml-var "files[ -1 ][ 'count' ]"> Comments To Do</h3>
+
+  <table class="list" cellspacing="0" cellpadding="0" border="0">
+
+<dtml-in files prefix=file mapping>
+
+<dtml-if "file_index % 10 == 0">
+    <tr class="list-header">
+      <th><div class="list-item">#</div></th>
+      <th><div class="list-item"><a href="reference_form?todo_order=count">Count</a></div></th>
+      <th><div class="list-item"><a href="reference_form?todo_order=type">Type</a></div></th>
+      <th><div class="list-item"><a href="reference_form?todo_order=filename">Filename</a></div></th>
+      <th class="fw"><div class="list-item"><a href="reference_form?todo_order=path">Path</a></div></th>
+    </tr>
+</dtml-if>
+
+    <tr class="row-<dtml-if file_odd>normal<dtml-else>hilite</dtml-if>" style="border-top: 1px solid #666;">
+      <td><div class="list-item ar"><dtml-var file_number></td>
+      <td><div class="list-item ar"><b><dtml-var count></b></td>
+      <td><div class="list-item"><dtml-var type></td>
+      <td><div class="list-item"><dtml-var filename></td>
+      <td><div class="list-item"><dtml-var path></td>
+    </tr>
+
+<dtml-in problems prefix=problem>
+    <tr class="row-<dtml-if file_odd>normal<dtml-else>hilite</dtml-if>" style="border-top: 1px solid #999;">
+      <td><div class="list-item small">&nbsp;</div></td>
+      <td><div class="list-item small ar"><dtml-var problem_number></div></td>
+      <td colspan="3"><div class="list-item small"><code><pre style="margin: 0"><dtml-var problem_item html_quote></pre></code></div></td>
+    </tr>
+</dtml-in>
+
+</dtml-in>
+
+  </table>
+
+</dtml-let>
+
+
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

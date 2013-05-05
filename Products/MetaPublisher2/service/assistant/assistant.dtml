@@ -1,0 +1,13 @@
+<dtml-let
+  page_title="'Service Assistant'"
+  page_info="'The Service Assistant is an interactive tool to help you perform common tasks.'"
+  management_view="'Assistant'"
+  help_product="'MetaPublisher2'"
+  help_topic="'service_assistant.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-var not_available_dialog>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

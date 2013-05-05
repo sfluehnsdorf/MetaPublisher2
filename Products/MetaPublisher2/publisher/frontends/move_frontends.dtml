@@ -1,0 +1,17 @@
+<dtml-let
+  page_title="'Move Frontends'"
+  page_info="'Move selected Frontends to a new location.'"
+  management_view="'Frontends'"
+  help_product="'MetaPublisher2'"
+  help_topic="'publisher_frontends_move.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="<dtml-var get_MetaPublisher2_url>" method="post">
+
+<!-- !!! move_frontends.dtml - implement (allow to move to any frontend folder) -->
+
+<dtml-var not_available_dialog>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

@@ -1,0 +1,106 @@
+<dtml-let
+  page_title="'User Profiles'"
+  page_info="'Profiles store preferences of this instance on a per user level.'"
+  management_view="'Profiles'"
+  help_product="'MetaPublisher2'"
+  help_topic="'system_profiles.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+<!-- !!! profiles.dtml - update structure -->
+<!-- !!! profiles.dtml - update to use new ui -->
+
+  <table class="form" cellspacing="0" cellpadding="0" border="0">
+
+    <tr>
+      <th width="50%"><div class="form-label">Unused Profiles</div></th>
+      <th width="50%"><div class="form-label">Your Profile</div></th>
+    </tr>
+
+      <td>
+        <div class="form-element">
+
+          <p>
+            You can purge profiles for users which no longer exist by clicking the button below.
+            This happens when the user folder that contains a user is moved or the MetaPublisher2 is imported to a different Zope server.
+            Only unused profiles will be deleted and any profile that may still be in use is spared.
+          </p>
+          <p><input class="form-element" type="submit" name="delete_unused_profiles:method" value="Delete Unused Profiles" /></p>
+
+        </div>
+      </td>
+      <td>
+        <div class="form-element">
+
+          <p>
+            If you encounter problems with the variables stored in your profile, you can delete your complete profile at once.
+            All stored variables will be removed and default values will be used instead.
+          </p>
+
+          <p>
+            <input class="form-element" type="submit" name="delete_own_profile:method" value="Reset Profile" />
+          </p>
+
+        </div>
+      </td>
+    </tr>
+
+  </table>
+
+  <h3 class="hpad">Your Profile</h3>
+
+  <p class="hpad">
+    The following form allows you to manipulate specific values stored in your profile.
+    Please note that invalid values could cause problems with forms so be careful what you change.
+    If you made a mistake you can either delete the variable using this form or delete the complete profile.
+  </p>
+
+<dtml-let variables="list_profile_variables( REQUEST )">
+<dtml-if variables>
+    <table class="form" cellspacing="0" cellpadding="0" border="0">
+
+      <tr class="list-header">
+        <th><div class="form-label">#</div></th>
+        <th><div class="form-label">Key</div></th>
+        <th colspan="3"><div class="form-label">Value</div></th>
+      </tr>
+
+<dtml-in variables prefix=variable>
+      <tr class="row-<dtml-if variable_odd>normal<dtml-else>hilite</dtml-if>">
+        <td nowrap><div class="form-label"><dtml-var variable_number></div></td>
+        <td nowrap><div class="form-label"><dtml-var variable_key></div></td>
+        <td width="50%"><div class="form-element"><dtml-var "variable_item[ 1 ]"></div></td>
+        <td width="50%">
+<dtml-let
+  value_typegroup="variable_item[ 2 ][ 0 ]"
+  value_type="variable_item[ 2 ][ 1 ]"
+  >
+<dtml-if "value_typegroup == 'number' and value_type in [ 'int', 'float', 'long' ]">
+          <input type="text" class="num" size="15" name="value_<dtml-var variable_key>:<dtml-var value_type>" value="<dtml-var "variable_item[ 1 ]">">
+<dtml-elif "value_typegroup == 'string' and value_type == 'bytestring'">
+          <input type="text" class="fw" size="40" name="value_<dtml-var variable_key>:string" value="<dtml-var "variable_item[ 1 ]">">
+<dtml-else>
+          <div class="form-element">Value can not be changed.</div>
+          <span class="small"><br><dtml-var value_typegroup> | <dtml-var value_type></span>
+
+<!-- !!! profiles.dtml - implement display of remaining profile data types -->
+
+</dtml-if>
+</dtml-let>
+        </td>
+        <td nowrap><div class="list-item"><input type="checkbox" name="delete_keys:list" id="delete_<dtml-var variable_key>" value="<dtml-var variable_key>"> <label for="delete_<dtml-var variable_key>">Remove</label></div></td>
+      </tr>
+</dtml-in>
+
+    </table>
+
+    <p class="hpad"><input class="form-element" type="submit" name="save_profile_changes:method" value="Save Changes" /></p>
+<dtml-else>
+    <p class="hpad">You don't have a profile yet.</p>
+</dtml-if>
+</dtml-let>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

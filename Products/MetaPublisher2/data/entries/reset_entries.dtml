@@ -1,0 +1,19 @@
+<dtml-let
+  page_title="'Reset Entries'"
+  page_info="'Reset selected Entries to their default values.'"
+  management_view="'Entries'"
+  help_product="'MetaPublisher2'"
+  help_topic="'data_entries_reset.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-var not_available_dialog>
+<!--
+!!! reset_entries.dtml - should demand to confirm resetting and inform about finality
+!!! reset_entries.dtml - should display amount of selected Entries
+!!! reset_entries.dtml - should allow to display primary Fields of Entries to be deleted on demand
+!!! reset_entries.dtml - should allow to either reset full Entry or single Fields
+-->
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

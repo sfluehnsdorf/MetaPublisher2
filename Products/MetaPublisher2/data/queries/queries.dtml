@@ -1,0 +1,25 @@
+<dtml-let
+  page_title="'Query Entries'"
+  page_info="'SQL-like query shell to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2'"
+  management_view="'Queries'"
+  help_product="'MetaPublisher2'"
+  help_topic="'data_queries.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<div id="query_terminal"></div>
+
+<script type="text/javascript" src="<dtml-var get_MetaPublisher2_url>/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="<dtml-var get_MetaPublisher2_url>/jquery.terminal.js"></script>
+<script type="text/javascript">
+$( document ).ready( function () {
+  $( '#query_terminal' ).height( $( document ).height() - 175 );
+  $( '#query_terminal' ).terminal( '<dtml-var get_MetaPublisher2_url>/parse_query', {
+    custom_prompt : "&gt; ",
+    hello_message : 'Welcome to the MetaPublisher 2 Query Shell!<br>Type \'help\' for information on available commands...'
+  } ); 
+} ); 
+</script>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

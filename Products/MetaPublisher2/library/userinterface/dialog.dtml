@@ -1,0 +1,13 @@
+<div class="dialog">
+  <h2 class="dialog_headline">&dtml-headline;</h2>
+<dtml-in "message.split( '\n\n' )" prefix=line>
+  <p class="dialog_info"><dtml-var line_item></p>
+</dtml-in>
+<dtml-if buttons>
+  <p class="dialog_butons">
+<dtml-in buttons prefix=button mapping>
+    <input type="submit" name="&dtml-name;:method" value="&dtml-label;"<dtml-if js> onclick="<dtml-var js>"</dtml-if>>
+</dtml-in>
+  </p>
+</dtml-if>
+</div>

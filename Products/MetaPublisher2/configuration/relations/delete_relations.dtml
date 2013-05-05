@@ -1,0 +1,13 @@
+<dtml-let
+  page_title="'Delete Relations'"
+  page_info="'!TXT!Delete Relations'"
+  management_view="'Relations'"
+  help_product="'MetaPublisher2'"
+  help_topic="'configuration_relations_delete.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-var not_available_dialog>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

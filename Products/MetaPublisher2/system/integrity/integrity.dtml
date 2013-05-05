@@ -1,0 +1,157 @@
+<dtml-let
+  page_title="'Integrity'"
+  page_info="'Report inconsistencies in components of the MetaPublisher 2.'"
+  management_view="'Integrity'"
+  help_product="'MetaPublisher2'"
+  help_topic="'system_integrity.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<!-- !!! integrity.dtml - update to use new ui -->
+<!-- !!! integrity.dtml - review form -->
+
+<dtml-var not_available_dialog>
+ 
+
+<dtml-comment>
+
+<form action="&dtml-get_MetaPublisher2_url;" method="post">
+<dtml-call "update_profile(REQUEST, (
+  ('integrity_designs', 0),
+  ('integrity_entries', []),
+  ('integrity_fields', []),
+  ('integrity_frontends', 0),
+  ('integrity_indexing', 0),
+  ('integrity_plugins', 0),
+  ('integrity_presets', 0),
+  ('integrity_profiles', 0),
+  ('integrity_storages', 0),
+  ('integrity_widgets', 0),
+  ))">
+<dtml-let test_result="test_integrity(REQUEST)">
+
+  <table class="form" cellspacing="0" cellpadding="0" border="0">
+
+    <tr>
+      <th colspan="4">
+        <div class="form-label">Components</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td width="25%">
+        <div class="form-element">
+          <input type="checkbox" id="integrity_storages" name="integrity_storages" value="1"<dtml-if "REQUEST.get( 'integrity_storages', None )"> checked</dtml-if>>
+          <label for="integrity_storages">Storages</label>
+        </div>
+      </td>
+      <td width="25%">
+        <div class="form-element">
+          <input type="checkbox" id="integrity_designs" name="integrity_designs" value="1"<dtml-if "REQUEST.get( 'integrity_designs', None )"> checked</dtml-if>>
+          <label for="integrity_designs">Designs</label>
+        </div>
+      </td>
+      <td width="25%">
+        <div class="form-element">
+          <input type="checkbox" id="integrity_frontends" name="integrity_frontends" value="1"<dtml-if "REQUEST.get( 'integrity_frontends', None )"> checked</dtml-if>>
+          <label for="integrity_frontends">Frontends</label>
+        </div>
+      </td>
+      <td width="25%">
+        <div class="form-element">
+          <input type="checkbox" id="integrity_profiles" name="integrity_profiles" value="1"<dtml-if "REQUEST.get( 'integrity_profiles', None )"> checked</dtml-if>>
+          <label for="integrity_profiles">Profiles</label>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="form-element">
+          <input type="checkbox" id="integrity_indexing" name="integrity_indexing" value="1"<dtml-if "REQUEST.get( 'integrity_indexing', None )"> checked</dtml-if>>
+          <label for="integrity_indexing">Indexing</label>
+        </div>
+      </td>
+      <td>
+        <div class="form-element">
+          <input type="checkbox" id="integrity_widgets" name="integrity_widgets" value="1"<dtml-if "REQUEST.get( 'integrity_widgets', None )"> checked</dtml-if>>
+          <label for="integrity_widgets">Widgets</label>
+        </div>
+      </td>
+      <td>
+        <div class="form-element">
+          <input type="checkbox" id="integrity_presets" name="integrity_presets" value="1"<dtml-if "REQUEST.get( 'integrity_presets', None )"> checked</dtml-if>>
+          <label for="integrity_presets">Presets</label>
+        </div>
+      </td>
+      <td>
+        <div class="form-element">
+          <input type="checkbox" id="integrity_plugins" name="integrity_plugins" value="1"<dtml-if "REQUEST.get( 'integrity_plugins', None )"> checked</dtml-if>>
+          <label for="integrity_plugins">Plugins</label>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th colspan="2">
+        <div class="form-label">Entries (Selection)</div>
+      </th>
+      <th colspan="2">
+        <div class="form-label">Fields (Selection)</div>
+      </th>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <select class="fw" id="integrity_entries" name="integrity_entries:list" size="4" multiple>
+<dtml-in storage_ids prefix=storage>
+          <option value="<dtml-var storage_item>"<dtml-if "storage_item in REQUEST.get( 'integrity_entries', [] )"> selected</dtml-if>><dtml-var storage_item></option>
+</dtml-in>
+        </select>
+      </td>
+      <td colspan="2">
+        <select class="fw" id="integrity_fields" name="integrity_fields:list" size="4" multiple>
+<dtml-in storage_ids prefix=storage>
+          <option value="<dtml-var storage_item>"<dtml-if "storage_item in REQUEST.get( 'integrity_fields', [] )"> selected</dtml-if>><dtml-var storage_item></option>
+</dtml-in>
+        </select>
+      </td>
+    </tr>
+
+  </table>
+
+  <p class="hpad">
+    <input class="form-element" type="submit" name="integrity_form:method" value="Run Integrity Tests" />
+  </p>
+
+<dtml-if test_result>
+  <h3 class="hpad">Test Results</h3>
+
+  <table class="list" cellspacing="0" cellpadding="0" border="0">
+
+    <tr class="list-header">
+      <th><div class="list-item">&nbsp;</div></th>
+      <th><div class="list-item">Component</div></th>
+      <th><div class="list-item">Report</div></th>
+    </tr>
+
+<dtml-in test_result prefix=result>
+    <tr class="row-<dtml-if result_odd>normal<dtml-else>hilite</dtml-if>">
+      <td><div class="list-item"><img src="ui_<dtml-var "result_item[ 0 ]">.png"></div></td>
+      <td><div class="list-item"><dtml-var "result_item[ 1 ]"></div></td>
+      <td><div class="list-item"><dtml-var "result_item[ 2 ]"></div></td>
+    </tr>
+</dtml-in>
+
+  </table>
+</dtml-if>
+
+</dtml-let>
+
+</form>
+
+</dtml-comment>
+
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

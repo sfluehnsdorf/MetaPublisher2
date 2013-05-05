@@ -1,0 +1,31 @@
+<dtml-let
+  page_title="'System Settings'"
+  page_info="'The settings allow tweaking of controls and constants of the MetaPublisher2. Settings are defined in the settings.conf configuration file.'"
+  management_view="'Settings'"
+  help_product="'MetaPublisher2'"
+  help_topic="'system_settings.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<!-- !!! settings.dtml - update to use new ui -->
+
+  <table class="list" cellspacing="0" cellpadding="0" border="0">
+
+    <tr class="list-header">
+      <th><div class="list-item">#</div></th>
+      <th><div class="list-item">Key</div></th>
+      <th><div class="list-item">Value</div></th>
+    </tr>
+
+<dtml-in list_settings prefix=setting>
+    <tr class="row-<dtml-if setting_odd>normal<dtml-else>hilite</dtml-if>">
+      <td nowrap><div class="list-item"><dtml-var setting_number></div></td>
+      <td nowrap><div class="list-item"><dtml-var setting_key></div></td>
+      <td class="fw"><div class="list-item"><dtml-var setting_item></div></td>
+    </tr>
+</dtml-in>
+
+  </table>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

@@ -1,0 +1,52 @@
+<dtml-let
+  page_title="'Add New Storage'"
+  page_info="'To create a new Storage, please first select the type you wish to add.'"
+  management_view="'Storages'"
+  help_product="'MetaPublisher2'"
+  help_topic="'configuration_storages_add_type.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+  <div class="form">
+    <table>
+      <tr class="head">
+        <th>Attribute</th>
+        <th class="w100">Value</th>
+        <th>Required</th>
+      </tr>
+      <tr class="input">
+        <th>Id</th>
+        <td><input class="token" type="text" name="id" size="25" value="<dtml-var "REQUEST.form.get('id', '')">" required="required" /></td>
+        <td>required</td>
+      </tr>
+      <tr class="input">
+        <th>Title</th>
+        <td><input class="string" type="text" name="title" size="60" value="<dtml-var "REQUEST.form.get('title', '')">" /></td>
+        <td>optional</td>
+      </tr>
+    </table>
+  </div>
+
+<dtml-let
+  selections="map(
+    lambda item: {
+      'id': item[ 0 ],
+      'icon': item[ 1 ][ 'instance' ].icon,
+      'label': item[ 1 ][ 'instance' ].pluginName,
+      'description': item[ 1 ][ 'instance' ].pluginInfo,
+      },
+    storageplugin_items()
+    )"
+  selection_id="'storageType'"
+  buttons="[
+    ( 'manage_storagesNew', 'Continue' ),
+    ( 'storages_form', 'Cancel' ),
+    ]"
+  >
+<dtml-var metapublisher2_selection>
+</dtml-let>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

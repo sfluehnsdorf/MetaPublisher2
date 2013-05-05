@@ -1,0 +1,13 @@
+<dtml-let
+  page_title="'Caching'"
+  page_info="'A cache is a volatile storage for dynamic pages to increase the speed of web page delivery.'"
+  management_view="'Caching'"
+  help_product="'MetaPublisher2'"
+  help_topic="'publisher_caching.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-var not_available_dialog>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

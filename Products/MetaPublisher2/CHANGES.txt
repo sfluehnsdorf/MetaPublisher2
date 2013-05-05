@@ -1,0 +1,23 @@
+MetaPublisher2 Changes
+======================
+
+
+Release 2.3.x
+
+Complete rewrite of release 2.2.x. This version, is fully
+compatible to earlier releases of MetaPublisher2. 
+However, all earlier releases are to be considered obsolete
+and are no longer supported. Since it is unlikely there are
+any old releases in the public, this should not be a problem
+to anyone.
+
+This version redefines and extends the structure of the
+application, its plugins and its forms to be more conform
+with Zope and Python specifications and style guides, to
+provide additional functionality and to be more extensible
+and to simplify the creation of new plugins.
+
+Despite a much higher complexity, this release is much more
+user friendly through a complete visual makeover. It also
+provides a full documentation, online help, tutorials, user
+manual and source code documentation.

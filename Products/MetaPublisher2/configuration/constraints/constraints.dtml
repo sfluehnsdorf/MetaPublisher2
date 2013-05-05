@@ -1,0 +1,13 @@
+<dtml-let
+  page_title="'Constraints'"
+  page_info="'Constraints specify restrictions and requirements for Fields, such as value ranges.'"
+  management_view="'Constraints'"
+  help_product="'MetaPublisher2'"
+  help_topic="'configuration_constraints.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-var not_available_dialog>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

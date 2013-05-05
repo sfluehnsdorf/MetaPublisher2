@@ -1,0 +1,25 @@
+<dtml-let
+  page_title="'Transfers'"
+  page_info="'!TXT! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'"
+  management_view="'Transfers'"
+  help_product="'MetaPublisher2'"
+  help_topic="'data_transfers.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-if has_storageplugins>
+<dtml-if has_storages>
+
+<dtml-var "storage_selection_formlet( form_id = 'transfers_form' )">
+<dtml-var not_available_dialog>
+
+<dtml-else>
+<dtml-var no_storages_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_storageplugins_dialog>
+</dtml-if>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

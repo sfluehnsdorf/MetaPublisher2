@@ -1,0 +1,13 @@
+<dtml-let
+  page_title="'Add Relation'"
+  page_info="'!TXT!Add Relation'"
+  management_view="'Relations'"
+  help_product="'MetaPublisher2'"
+  help_topic="'configuration_relations_add.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-var not_available_dialog>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

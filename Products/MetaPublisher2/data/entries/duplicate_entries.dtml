@@ -1,0 +1,20 @@
+<dtml-let
+  page_title="'Duplicate Entries'"
+  page_info="'!TXT! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'"
+  management_view="'Entries'"
+  help_product="'MetaPublisher2'"
+  help_topic="'configuration_entries_duplicate.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<!-- !!! duplicate_entries.dtml - implement -->
+
+<dtml-let
+  dialog_title="'Not Available'"
+  dialog_info="'This feature will be available in a future release.'"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

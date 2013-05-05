@@ -1,0 +1,45 @@
+<table class="selection">
+  <tr>
+    <th class="number">#</th>
+    <th>&nbsp;</th>
+    <th class="string">Type</th>
+    <th class="string">Description</th>
+  </tr>
+<dtml-in selections prefix=selection mapping>
+  <tbody class="hover">
+    <tr>
+      <td class="w1 number">
+        <label for="selection_&dtml-selection_index;">
+          &dtml-selection_number;
+        </label>
+      </td>
+      <td class="w1">
+        <input type="radio" id="selection_&dtml-selection_index;" name="&dtml-selection_id;" value="&dtml-id;"<dtml-if selection_first> checked="checked"</dtml-if>>
+      </td>
+      <td class="nowrap">
+        <label for="selection_&dtml-selection_index;">
+          <dtml-if "selection_item.has_key( 'icon' )"><img src="&dtml-icon;"></dtml-if>
+          &dtml-label;
+        </label>
+      </td>
+      <td class="minor vab">
+        <label for="selection_&dtml-selection_index;">
+          <dtml-var description>
+        </label>
+      </td>
+    </tr>
+  </tbody>
+</dtml-in>
+</table>
+
+<div class="form">
+  <table>
+    <tr>
+      <td>
+<dtml-in buttons prefix=button>
+        <input type="submit" name="&dtml-button_key;:method" value="&dtml-button_item;"<dtml-if button_start> autofocus</dtml-if>>
+</dtml-in>
+      </td>
+    </tr>
+  </table>
+</div>

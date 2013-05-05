@@ -1,0 +1,162 @@
+<dtml-let
+  page_title="'Edit Entry'"
+  page_info="'To edit an Entry, enter new values for all Fields you wish to modify and then click the Save button.'"
+  management_view="'Entries'"
+  help_product="'MetaPublisher2'"
+  help_topic="'data_entries_edit.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+<dtml-if has s>
+
+<dtml-if has_storageplugins>
+
+<dtml-if has_storages>
+<dtml-let
+  form_id="'edit_entry_form'"
+  buttons="[
+    ( 'add_entry_form', 'Add Entry' ),
+    ( 'add_entries_form', 'Add Entries' ),
+    ]"
+  >
+<dtml-var storage_selection_formlet>
+</dtml-let>
+
+<dtml-if "has_fieldplugins( storage_id = storage_id )">
+
+<dtml-if "has_fields( storage_id )">
+
+<dtml-if "has_entries( storage_id )">
+
+<dtml-let
+  all_entry_ids="entry_ids( storage_id )"
+  entry_id="( 'entry_id' in REQUEST and REQUEST.entry_id in all_entry_ids ) and REQUEST.entry_id or all_entry_ids[ 0 ]"
+  entry_id_index="all_entry_ids.index(entry_id)"
+  >
+  <div class="form">
+    <table>
+      <tr class="head">
+        <th>Field Id</th>
+        <th>Title</th>
+        <th class="w100">Value</th>
+        <th>Required</th>
+      </tr>
+      <tr class="input">
+        <th>id</th>
+        <td class="nowrap">Entry Id</td>
+        <td class="w100">
+          <a href="edit_entry_form?entry_id=<dtml-var "all_entry_ids[0]">"><span class="icon icon-first"></span></a>
+          <a href="edit_entry_form?entry_id=<dtml-var "all_entry_ids[entry_id_index - 1]">"><span class="icon icon-prev"></span></a>
+          <select class="token" name="entry_id">
+<dtml-in all_entry_ids prefix=id>
+            <option value="&dtml-id_item;"<dtml-if "entry_id == id_item"> selected</dtml-if>>&dtml-id_item;</option>
+</dtml-in>
+          </select>
+          <a href="edit_entry_form?entry_id=<dtml-var "all_entry_ids[entry_id_index + 1 < len(all_entry_ids) and (entry_id_index + 1) or 0]">"><span class="icon icon-next"></span></a>
+          <a href="edit_entry_form?entry_id=<dtml-var "all_entry_ids[-1]">"><span class="icon icon-last"></span></a>
+        </td>
+        <td>immutable</td>
+      </tr>
+<dtml-in "field_items( storage_id )" prefix=field>
+      <tr class="input">
+        <th><dtml-var "field_key"></th>
+        <td class="nowrap"><dtml-var "field_item.title"></td>
+        <td><dtml-var "field_item.renderEdit( entry_id )"></td>
+        <td><dtml-if "field_item.is_field_requirable() and not( field_item.is_field_required() )">optional<dtml-else>required</dtml-if></td>
+      </tr>
+</dtml-in>
+      <tr class="buttons">
+        <td colspan="4">
+          <input type="submit" name="edit_entry:method" value="Save & Exit" />
+          <input type="submit" name="edit_entry_continued:method" value="Save & Continue" />
+          <input type="submit" name="entries_form:method" value="Cancel" formnovalidate="formnovalidate" /> 
+        </td>
+      </tr>
+    </table>
+  </div>
+</dtml-let>
+
+<dtml-else>
+
+<dtml-let
+  dialog_title="'No Entries Added Yet!'"
+  dialog_info="'You must add at least one Entry, before you can browse them.'"
+  dialog_butons="[
+    ( 'add_entry_form', 'Add Entry' ),
+    ]"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-let
+  dialog_title="'No Fields Added Yet!'"
+  dialog_info="'You must add at least one Field to this Storage.'"
+  dialog_butons="[
+    ( 'add_field_form', 'Add Field' ),
+    ]"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-let
+  dialog_title="'No Field Plugins Available!'"
+  dialog_info="'You must install Field plugins to work with Fields.'"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-let
+  dialog_title="'No Storages Added Yet!'"
+  dialog_info="'You must add at least one Storage.'"
+  dialog_butons="[
+    ( 'add_storage_form', 'Add Storage' ),
+    ]"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-let
+  dialog_title="'No Storage Plugins Available!'"
+  dialog_info="'You must install Storage plugins to work with Storages.'"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+<dtml-else>
+
+<dtml-let
+  dialog_title="'No Plugins Available!'"
+  dialog_info="'You must install plugins to work with MetaPublisher2.'"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>
+
+<!--
+!!! edit_entry.dtml - allow to change the id, if Storage permits/demands renaming
+!!! edit_entry.dtml - allow to toggle Field infos and specs (ranges)
+-->

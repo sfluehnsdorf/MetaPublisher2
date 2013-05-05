@@ -1,0 +1,17 @@
+<dtml-let
+  page_title="'Rename Frontends'"
+  page_info="'Rename selected Frontends by specifying a new Ids. If an Id is unchanged, no change will be made.'"
+  management_view="'Frontends'"
+  help_product="'MetaPublisher2'"
+  help_topic="'publisher_frontends_rename.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="<dtml-var get_MetaPublisher2_url>" method="post">
+
+<!-- !!! rename_frontends.dtml - implement -->
+
+<dtml-var not_available_dialog>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

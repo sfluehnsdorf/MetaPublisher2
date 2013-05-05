@@ -1,0 +1,6 @@
+<html>
+  <frameset rows="190,*">
+    <frame name="head" marginwidth="2" marginheight="2" src="preview_design_top_form" scrolling="auto">
+    <frame name="main" marginwidth="2" marginheight="2" src="preview_design?design_id=<dtml-var design_id missing>" scrolling="yes">
+  </frameset>
+</html>

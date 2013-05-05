@@ -1,0 +1,18 @@
+<dtml-let
+  page_title="'Duplicate Fields'"
+  page_info="'Duplicate selected Fields, creating identical copies.'"
+  management_view="'Fields'"
+  help_product="'MetaPublisher2'"
+  help_topic="'configuration_fields_duplicate.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+<dtml-var not_available_dialog>
+<!--
+!!! duplicate_fields.dtml - implement
+-->
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

@@ -1,0 +1,10 @@
+<dtml-let
+  page_title="'Help'"
+  page_info="'Access to local context help resources.'"
+  management_view="'Help'"
+  help_product="'MetaPublisher2'"
+  help_topic="'service_help.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

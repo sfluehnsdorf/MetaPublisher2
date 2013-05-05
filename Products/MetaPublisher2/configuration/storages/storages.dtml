@@ -1,0 +1,62 @@
+<dtml-let
+  page_title="'Storages'"
+  page_info="'Each Storage is made up of a list of Fields defining the data to store and the Entries, which store the actual data.'"
+  management_view="'Storages'"
+  help_product="'MetaPublisher2'"
+  help_topic="'configuration_storages.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+<dtml-if has_plugins>
+
+<dtml-if has_storageplugins>
+
+<dtml-if has_storages>
+
+<div class="form">
+  <table class="form_continues">
+    <tr class="buttons">
+      <td>
+        <input type="submit" name="manage_storagesNewForm:method" value="Add Storage">
+      </td>
+    </tr>
+  </table>
+
+<dtml-let
+  form_continued="true"
+  form_id="'storages_form'"
+  columns="[
+    { 'label': 'Id', 'type': 'string', 'value': 'getId', 'template': '<a href=\x22edit_storage_form?storage_id=%s\x22>%s</a>', 'values': [ 'getId', 'getId' ], 'sortable': true, },
+    { 'label': 'Title', 'type': 'string', 'value': 'title', 'sortable': true, 'hidden': false, },
+    { 'label': 'Type', 'type': 'string', 'value': 'meta_type', 'template': '<img src=\x22%s\x22 width=\x2216\x22 height=\x2216\x22> %s', 'values': [ 'icon', 'meta_type', ], 'sortable': true, 'hidden': false, },
+    { 'label': 'Fields', 'type': 'number', 'value': 'storage_countFields', 'template': '<a href=\x22fields_form?storage_id=%s\x22>%s Fields</a>', 'values': [ 'getId', 'storage_countFields', ], 'sortable': true, 'hidden': false, },
+    { 'label': 'Entries', 'type': 'number', 'value': 'storage_countEntries', 'template': '<a href=\x22entries_form?storage_id=%s\x22>%s Entries</a>', 'values': [ 'getId', 'storage_countEntries', ], 'sortable': true, 'hidden': false, },
+    { 'label': 'Position', 'type': 'position', 'value': 'position', 'method': '''move_storage?storage_id=%(key)s&position=%(position)s''', 'sortable': true, 'hidden': false, },
+    ]"
+  rows="storage_values()"
+  row_id="'getId'"
+  buttons="[
+    { 'name': 'duplicate_storages_form', 'label': 'Duplicate' },
+    { 'name': 'rename_storages_form', 'label': 'Rename' },
+    { 'name': 'delete_storages_form', 'label': 'Delete' },
+    ]"
+  >
+<dtml-var metapublisher2_table>
+</dtml-let>
+
+<dtml-else>
+<dtml-var no_storages_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_storageplugins_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_plugins_dialog>
+</dtml-if>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

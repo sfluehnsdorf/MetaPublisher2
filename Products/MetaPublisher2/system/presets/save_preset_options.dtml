@@ -1,0 +1,13 @@
+<dtml-let
+  page_title="'Save Preset'"
+  page_info="'!TXT!Save Preset'"
+  management_view="'Presets'"
+  help_product="'MetaPublisher2'"
+  help_topic="'system_presets_save_options.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-var not_available_dialog>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

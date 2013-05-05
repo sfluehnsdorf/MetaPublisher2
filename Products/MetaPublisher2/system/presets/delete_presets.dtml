@@ -1,0 +1,13 @@
+<dtml-let
+  page_title="'Delete Presets'"
+  page_info="'Delete selected Presets. Please note that this is final and can not be undone.'"
+  management_view="'Presets'"
+  help_product="'MetaPublisher2'"
+  help_topic="'system_presets_load_options.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-var not_available_dialog>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

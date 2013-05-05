@@ -1,0 +1,215 @@
+<dtml-let
+  page_title="'Renderer'"
+  page_info="'Once you finished designing your Interfaces, you must render them. Before the Interfaces get rendered, they will be tested for integrity. In case of a problem, the Interfaces will not be rendered.'"
+  management_view="'Renderer'"
+  help_product="'MetaPublisher2'"
+  help_topic="'publisher_renderer.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<!-- !!! renderer.dtml - update to use new ui -->
+<!-- !!! renderer.dtml - reimplement renderer.dtml -->
+
+<dtml-if has_frontends>
+
+  <div class="form">
+    <table>
+      <tr class="head">
+        <th>Option</th>
+        <th class="w100">Input</th>
+        <th>Required</th>
+      </tr>
+      <tr class="input">
+        <th>Selection</th>
+        <td></td>
+        <td>required</td>
+      </tr>
+      <tr class="input">
+        <th>Destination</th>
+        <td></td>
+        <td>required</td>
+      </tr>
+      <tr class="input">
+        <th>Creation</th>
+        <td></td>
+        <td>required</td>
+      </tr>
+      <tr class="input">
+        <th>Behaviour</th>
+        <td></td>
+        <td>required</td>
+      </tr>
+      <tr class="buttons">
+        <td colspan="3">
+          <input type="submit" name="render_frontends:method" value="Render Frontends" />
+          <input type="submit" name="frontends_form:method" value="Cancel" />
+        </td>
+      </tr>
+    </table>
+  </div>
+
+<dtml-var not_available_dialog>
+
+
+<dtml-comment>
+<form action="<dtml-var get_MetaPublisher2_url>" method="post">
+
+<dtml-if has_frontends>
+
+  <table class="form" cellspacing="0" cellpadding="4" border="0">
+
+    <tr>
+      <th><div class="form-label">Frontends</div></th>
+      <td width="100%">
+        <div class="form-element">
+<dtml-if ids>
+          The following Frontends have been selected for rendering:
+          <div class="s">
+<dtml-in ids prefix=id>
+            <dtml-var id_item><dtml-unless id_end>, </dtml-unless>
+            <input type="hidden" name="ids:list" value="<dtml-var id_item>">
+</dtml-in>
+          </div>
+<dtml-else>
+          Render all Frontends
+          <div class="small">To render only selected Frontends, choose them in the <a href="<dtml-var get_MetaPublisher2_url>/frontends_form">Frontend Browser</a> and click the "Render" button</div>
+          <input type="hidden" name="ids" value="*">
+</dtml-if>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th rowspan="4"><div class="form-label">Destination</div></th>
+      <td>
+        <div class="form-element">
+          <input type="radio" name="destination" id="destination_inside" value="inside" checked>
+          <label for="destination_inside">Directly inside MetaPublisher2</label>
+          <div class="small"><dtml-var get_MetaPublisher2_url></div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="form-element">
+          <input type="radio" name="destination" id="destination_parent" value="parent">
+          <label for="destination_parent">Inside the parent object of this MetaPublisher2</label>
+          <div class="small"><dtml-var "get_MetaPublisher2().aq_parent.absolute_url()"></div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="form-element">
+          <input type="radio" name="destination" id="destination_acquired" value="acquired">
+          <label for="destination_acquired">Inside an object, from where MetaPublisher2 can be acquired</label><br>
+          <div class="small">
+            <dtml-var "get_MetaPublisher2().aq_parent.absolute_url()">
+            <select name="acquired_destination_path">
+<dtml-in "get_sub_folders( get_MetaPublisher2().aq_parent )" prefix=object>
+              <option value="<dtml-var object_key>"><dtml-var object_key></option>
+</dtml-in>
+            </select>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="form-element">
+          <input type="radio" name="destination" id="destination_arbitrary" value="arbitrary">
+          <label for="destination_arbitrary">At an arbitrary location</label><br>
+          <div class="small">
+            <dtml-var "getPhysicalRoot().absolute_url()">
+            <select name="arbitrary_destination_path">
+<dtml-in "get_sub_folders( getPhysicalRoot() )" prefix=object>
+              <option value="<dtml-var object_key>"><dtml-var object_key></option>
+</dtml-in>
+            </select>
+          </div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th><div class="form-label">Container</div></th>
+      <td>
+        <div class="form-element">
+          <input type="checkbox" name="create_folder" id="create_folder" value="1"> <label for="create_folder">If checked, Frontends will be created in their own Folder</label><br>
+          Folder Id: <input type="text" name="create_folder_id" value="" size="25" class="short">
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <th rowspan="3"><div class="form-label">Overwrite</div></th>
+      <td>
+        <div class="form-element">
+          <input type="radio" name="overwrite" id="overwrite_fail" value="fail" checked>
+          <label for="overwrite_fail">Fail, if any objects already exists</label>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="form-element">
+          <input type="radio" name="overwrite" id="overwrite_none" value="none">
+          <label for="overwrite_none">Only create objects that don't exist yet</label>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="form-element">
+          <input type="radio" name="overwrite" id="overwrite_all" value="all">
+          <label for="overwrite_all">Overwrite any existing objects</label>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="form-element">
+          <input type="radio" name="overwrite" id="overwrite_replace" value="replace">
+          <label for="overwrite_replace">Replace all existing objects</label>
+          <div class="small">Preserves MetaPublisher, MetaPublisher related objects and UserFolders</div>
+        </div>
+      </td>
+    </tr>
+
+  </table>
+
+  <p>
+    <input type="submit" name="render_frontends:method" value="Render Frontends" class="default">
+    <input type="submit" name="frontends_form:method" value="Cancel">
+  </p>
+
+<dtml-else>
+<dtml-var no_frontends_dialog>
+</dtml-if>
+
+</form>
+</dtml-comment>
+
+<dtml-else>
+
+<dtml-let
+  dialog_title="'No Frontends Added Yet!'"
+  dialog_info="'You must add at least one Frontend, before you can render them.'"
+  dialog_butons="[
+    ( 'add_frontend_form', 'Add Frontend' ),
+    ]"
+  >
+<dtml-var metapublisher2_dialog>
+</dtml-let>
+
+</dtml-if>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

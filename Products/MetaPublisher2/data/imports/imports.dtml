@@ -1,0 +1,25 @@
+<dtml-let
+  page_title="'Import Entries'"
+  page_info="'Entry imports from files in various formats into a Storage.'"
+  management_view="'Imports'"
+  help_product="'MetaPublisher2'"
+  help_topic="'data_imports.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<dtml-if has_storageplugins>
+<dtml-if has_storages>
+
+<dtml-var "storage_selection_formlet( form_id = 'imports_form' )">
+<dtml-var not_available_dialog>
+
+<dtml-else>
+<dtml-var no_storages_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_storageplugins_dialog>
+</dtml-if>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>

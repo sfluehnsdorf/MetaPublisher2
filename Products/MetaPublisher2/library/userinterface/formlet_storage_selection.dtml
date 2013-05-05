@@ -1,0 +1,61 @@
+<dtml-let
+  all_storage_ids="storage_ids()"
+  default_storage_id="all_storage_ids[0]"
+  storage_id="getProfileSetting('storage_id', default_storage_id)"
+  storage_index="all_storage_ids.index(storage_id)"
+  >
+<div class="form">
+  <table>
+    <tr class="buttons">
+<dtml-if buttons>
+      <th>
+<dtml-in buttons prefix=button>
+        <input type="submit" name="&dtml-button_key;:method" value="&dtml-button_item;">
+</dtml-in>
+      </th>
+</dtml-if>
+      <th class="tar">
+        Storage:
+
+<dtml-if "storage_index > 0">
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ storage_index - 1 ]">"><img class="vab" src="batch_prev.png" border="0"></a>
+<dtml-else>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ -1 ]">"><img class="vab" src="batch_prev.png" border="0"></a>
+</dtml-if>
+
+        <select name="storage_id" onchange="location.href = '&dtml-form_id;?storage_id=' + this.options[ this.selectedIndex ].value">
+<dtml-in all_storage_ids prefix=storage>
+          <option value="&dtml-storage_item;"<dtml-if "storage_item == storage_id"> selected="selected"</dtml-if>>&dtml-storage_item;</optioN>
+</dtml-in>
+        </select>
+
+<dtml-if "storage_index < len( all_storage_ids ) - 1">
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ storage_index + 1 ]">"><img class="vab" src="batch_next.png" border="0"></a>
+<dtml-else>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ 0 ]">"><img class="vab" src="batch_next.png" border="0"></a>
+</dtml-if>
+
+        <input type="submit" name="edit_storage_form:method" value="Configuration">
+        <input type="submit" name="fields_form:method" value="Fields">
+        <input type="submit" name="entries_form:method" value="Entries">
+      </th>
+    </tr>
+  </table>
+<dtml-unless form_continues>
+</div>
+</dtml-unless>
+</dtml-let>
+
+
+
+<dtml-let
+  all_storage_ids="get_MetaPublisher2().storage_ids()"
+  >
+<dtml-call "update_profile( REQUEST, (
+  ( 'storage_id', all_storage_ids[ 0 ] ),
+  ) )">
+<dtml-unless "storage_id in all_storage_ids">
+<dtml-call "REQUEST.set( 'storage_id', all_storage_ids[ 0 ] )">
+<dtml-call "set_profile_variable( REQUEST, 'storage_id', all_storage_ids[ 0 ] )">
+</dtml-unless>
+...

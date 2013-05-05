@@ -1,0 +1,97 @@
+<dtml-let
+  page_title="'Entries'"
+  page_info="'Entries represent the data inside a Storage, specified by the Storage\'s Fields.'"
+  management_view="'Entries'"
+  help_product="'MetaPublisher2'"
+  help_topic="'data_entries.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+<dtml-if has_plugins>
+
+<dtml-if has_storageplugins>
+
+<dtml-if has_storages>
+
+<dtml-let
+  form_continues="True"
+  form_id="'entries_form'"
+  buttons="[
+    ( 'add_entry_form', 'Add Entry' ),
+    ( 'add_entries_form', 'Add Entries' ),
+    ]"
+  >
+<dtml-var storage_selection_formlet>
+</dtml-let>
+
+<dtml-if "has_fieldplugins( storage_id = storage_id )">
+
+<dtml-if "has_fields( storage_id )">
+
+<dtml-if "has_entries( storage_id )">
+
+<dtml-let
+  form_continued="true"
+  form_id="'entries_form'"
+  form_uid="'entries_form|%s' % storage_id"
+  columns="
+    [ { 'label': 'Id', 'type': 'string', 'value': 'id', 'template': '<a href=\x22edit_entry_form?entry_id=%s\x22>%s</a>', 'values': [ 'id', 'id' ], 'sortable': true }, ] +
+    map( lambda field: { 'label': field[ 0 ], 'type': 'string', 'value': field[ 0 ], 'sortable': true, 'hidden': false }, field_items( storage_id ) ) +
+    ( entriesSortable( storage_id ) and [ { 'label': 'Position', 'type': 'position', 'value': 'position', 'method': '''move_entry?storage_id=%s&entry_id=%%(key)s&position=%%(position)s''' % storage_id, 'sortable': true, 'hidden': false, }, ] or [] )
+    "
+  rows="entry_items( storage_id )"
+  row_id="'id'"
+  buttons="[
+    { 'name': 'edit_entries_form', 'label': 'Edit' },
+    { 'name': 'export_entries_form', 'label': 'Export' },
+    { 'name': 'transfer_entries_form', 'label': 'Transfer' },
+    { 'name': 'duplicate_entries_form', 'label': 'Duplicate' },
+    { 'name': 'rename_entries_form', 'label': 'Rename' },
+    { 'name': 'reset_entries_form', 'label': 'Reset' },
+    { 'name': 'delete_entries_form', 'label': 'Delete' },
+    ]"
+  >
+<dtml-var metapublisher2_table>
+</dtml-let>
+
+<dtml-else>
+</div>
+<dtml-var no_entries_dialog>
+</dtml-if>
+
+<dtml-else>
+</div>
+<dtml-var no_fields_dialog>
+</dtml-if>
+
+<dtml-else>
+</div>
+<dtml-var no_fieldplugins_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_storages_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_storageplugins_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_plugins_dialog>
+</dtml-if>
+
+</form>
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>
+
+<!--
+!!! entries.dtml - support primary fields
+!!! entries.dtml - implement ajax loading of entry_list formlet for batches, field selection, etc.
+!!! entries.dtml - multi form capability, i.e. after editing an entry should return to same list
+!!! entries.dtml - implement support for trees
+!!! entries.dtml - implement support for storages without id
+!!! entries.dtml - implement support for read-only storages
+!!! entries.dtml - implement support for write-only storages
+-->

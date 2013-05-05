@@ -1,0 +1,15 @@
+<dtml-let
+  page_title="'Add New Entries'"
+  page_info="'!TXT! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'"
+  management_view="'Entries'"
+  help_product="'MetaPublisher2'"
+  help_topic="'data_entries_add_multiple.stx'"
+  >
+<dtml-var manage_MetaPublisher2_header>
+
+<!-- !!! add_entries.dtml - implement -->
+
+<dtml-var not_available_dialog>
+
+<dtml-var manage_MetaPublisher2_footer>
+</dtml-let>
