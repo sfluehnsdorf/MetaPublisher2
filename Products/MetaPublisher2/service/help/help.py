@@ -22,9 +22,7 @@
 
 __doc__ = """Help Component
 
-!TXT! module info
-
-The online help service provides access to contextual documentation of the
+git rm -r The online help service provides access to contextual documentation of the
 MetaPublisher2. As Zope's built-in contextual help system is not always fully
 supported beginning with release Zope 2.12, this is a useful alternative
 interface to access these help pages.

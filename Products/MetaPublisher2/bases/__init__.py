@@ -22,8 +22,6 @@
 
 __doc__ = """MetaPublisher2 Base Classes
 
-!TXT! module info
-
 $Id: bases/__init__.py 5 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

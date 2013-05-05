@@ -22,8 +22,6 @@
 
 __doc__ = """Designs Component
 
-!TXT! module info
-
 $Id: publisher/designs/designs.py 2 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

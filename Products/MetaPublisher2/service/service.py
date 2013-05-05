@@ -22,9 +22,7 @@
 
 __doc__ = """Service Section
 
-!TXT! module info
-
-Module providing a mix-in class for the MetaPublisher 2's Service section.
+git rm -r Module providing a mix-in class for the MetaPublisher 2's Service section.
 
 $Id: service/service.py 4 2012-08-09 19:48:00Z sfluehnsdorf $
 """

@@ -22,8 +22,6 @@
 
 __doc__ = """Fields Component Inititalisation
 
-!TXT! module info
-
 $Id: configuration/fields/__init__.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

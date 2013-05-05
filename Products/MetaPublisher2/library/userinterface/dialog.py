@@ -22,8 +22,6 @@
 
 __doc__ = """UserInterface Dialogs
 
-!TXT! module info
-
 $Id: library/userinterface/dialog.py 4 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

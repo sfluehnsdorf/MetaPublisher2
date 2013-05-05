@@ -22,8 +22,6 @@
 
 __doc__ = """MetaPublisher2 Product Initialisation
 
-!TXT! module info
-
 $Id: products/metapublisher2/__init__.py 2 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

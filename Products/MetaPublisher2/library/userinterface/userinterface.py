@@ -22,8 +22,6 @@
 
 __doc__ = """MetaPublisher2 UserInterface
 
-!TXT! module info
-
 $Id: library/userinterface/userinterface.py 3 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

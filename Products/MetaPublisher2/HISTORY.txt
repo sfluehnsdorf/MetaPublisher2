@@ -2,30 +2,32 @@ MetaPublisher2 History
 ======================
 
 
-Release 2.2.x (obsolete, unreleased)
+Release 2.2.x (obsolete)
 
-Complete rewrite of release 2.1.x. This version extended the plugin api while
-staying fully backwards compatible. There was a barely announced preview
-release to the public, most likely without any downloads.
+Complete rewrite of release 2.1.x. This version extended the plugin
+api while staying fully backwards compatible. There was a barely
+announced preview release to the public, most likely without any
+downloads.
 
 
 Release 2.1.x (obsolete, unreleased)
 
 Complete rewrite of release 2.0.x. This version implemented plugin
-functionality, multi level tabs and was the first to include a full set of
-frontend plugins. This version was the first to be used in a production
+functionality, multi level tabs and was the first to include a full
+set of frontend plugins. This version was the first to be used in a
+production environment.
+
+
+Release 2.0.x (obsolete, unreleased)
+
+Complete rewrite of release 1.x. This version defined the main
+structure of the current MetaPublisher2 system but lacked plugin
+functionality. This version was never used in any production
 environment.
-
-
-Release 2.0.x (obsolete)
-
-Complete rewrite of release 1.x. This version defined the main structure of
-the current MetaPublisher2 system but lacked plugin functionality. This
-version was never used in any production environment.
 
 
 Release 1.x (obsolete, unreleased)
 
 First prototype and proof of concept. This version never did anything
-meaningful. It was presented at the beehive Zope BBQ in Berlin on July 12th,
-2001. (see <a href="http://www.metapublisher.org/news/20010712/"></a>)
+meaningful. It was presented at the beehive Zope BBQ in Berlin on
+July 12th, 2001. (see http://www.metapublisher.org/news/20010712/)

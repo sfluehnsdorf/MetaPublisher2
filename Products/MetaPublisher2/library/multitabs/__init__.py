@@ -22,8 +22,6 @@
 
 __doc__ = """MultiTabs Initialisation
 
-!TXT! module info
-
 $Id: multitabs/__init__.py 2 2013-04-13 02:22:26Z sfluehnsdorf $
 """
 

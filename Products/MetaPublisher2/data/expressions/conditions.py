@@ -22,8 +22,6 @@
 
 __doc__ = """Expression Conditions Component
 
-!TXT! module info
-
 $Id: data/expressions/conditions.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

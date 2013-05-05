@@ -22,8 +22,6 @@
 
 __doc__ = """Legacy Widget Base
 
-!TXT! module info
-
 $Id: bases/widget/legacywidget.py 4 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

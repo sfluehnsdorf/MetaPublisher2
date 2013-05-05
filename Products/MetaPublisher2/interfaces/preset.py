@@ -22,8 +22,6 @@
 
 __doc__ = """Preset Plugin Interface
 
-!TXT! module info
-
 $Id: interfaces/preset.py 1 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

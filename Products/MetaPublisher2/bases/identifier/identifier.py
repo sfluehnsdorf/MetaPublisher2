@@ -22,8 +22,6 @@
 
 __doc__ = """Identifier Base
 
-!TXT! module info
-
 $Id: bases/identifier/identifier.py 1 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

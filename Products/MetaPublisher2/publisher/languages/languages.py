@@ -22,8 +22,6 @@
 
 __doc__ = """Languages Component
 
-!TXT! module info
-
 $Id: publisher/languages/languages.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

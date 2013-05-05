@@ -22,9 +22,7 @@
 
 __doc__ = """Application Permissions
 
-!TXT! module info
-
-MetaPublisher2 specific permission's names are defined here, ensuring
+git rm -r MetaPublisher2 specific permission's names are defined here, ensuring
 consistency in the naming of permission.
 
 $Id: library/application/permissions.py 5 2012-02-17 15:45:00Z sfluehnsdorf $

@@ -22,8 +22,6 @@
 
 __doc__ = """EntrySet Container Interface
 
-!TXT! module info
-
 $Id: interfaces/entryset.py 1 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

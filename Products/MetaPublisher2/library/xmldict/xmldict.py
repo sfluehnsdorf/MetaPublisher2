@@ -22,8 +22,6 @@
 
 __doc__ = """XMLDict
 
-!TXT! module info
-
 $Id: xmldict/xmldict.py 5 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

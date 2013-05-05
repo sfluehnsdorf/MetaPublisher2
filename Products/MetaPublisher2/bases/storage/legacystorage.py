@@ -22,8 +22,6 @@
 
 __doc__ = """Legacy Storage Base
 
-!TXT! module info
-
 $Id: bases/storage/legacystorage.py 14 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

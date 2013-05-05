@@ -22,8 +22,6 @@
 
 __doc__ = """UserInterface Formlets
 
-!TXT! module info
-
 $Id: library/userinterface/formlet.py 5 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 
