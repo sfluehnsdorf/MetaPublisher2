@@ -24,7 +24,7 @@ __doc__ = """Deprecation Information
 
 !TXT! module info
 
-$Id: library/compatability/deprecation.py 2 2013-02-26 23:53:00Z sfluehnsdorf $
+$Id: library/compatability/deprecation.py 3 2013-05-05 18:01:53Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

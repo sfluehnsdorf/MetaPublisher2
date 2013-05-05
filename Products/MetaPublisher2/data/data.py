@@ -25,7 +25,7 @@ __doc__ = """Data Section
 !TXT! module info
 Module providing a mix-in class for the MetaPublisher 2's Data section.
 
-$Id: data/data.py 8 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: data/data.py 9 2013-05-05 18:04:28Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

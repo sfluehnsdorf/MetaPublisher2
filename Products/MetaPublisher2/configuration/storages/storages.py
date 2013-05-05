@@ -30,7 +30,7 @@ addresses, news items or the slides of a slideshow. Storages can be added,
 edited, renamed and deleted as well as retrieved, listed and tested for
 existence.
 
-$Id: configuration/storages/storages.py 18 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: configuration/storages/storages.py 19 2013-05-05 18:04:32Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

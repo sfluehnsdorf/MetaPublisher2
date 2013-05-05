@@ -24,7 +24,7 @@ __doc__ = """Manual Component Inititalisation
 
 !TXT! module info
 
-$Id: service/manual/__init__.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: service/manual/__init__.py 2 2013-05-05 18:01:02Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

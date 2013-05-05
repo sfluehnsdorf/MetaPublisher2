@@ -28,7 +28,7 @@ definition of the data stored in an Entry. Each Field represents a data type,
 such as text, numbers, images, files, etc. Fields can be added, edited, renamed,
 deleted and ordered as well as retrieved, listed and tested for existence.
 
-$Id: configuration/fields/fields.py 12 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: configuration/fields/fields.py 13 2013-05-05 18:04:40Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

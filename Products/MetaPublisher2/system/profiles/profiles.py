@@ -28,7 +28,7 @@ these settings are available any time, even after logout or server restart. Each
 profile is stored on a per-user level, identified by user name and the physical
 path to the user's UserFolder object.
 
-$Id: system/profiles/profiles.py 9 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: system/profiles/profiles.py 10 2013-05-05 18:00:15Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

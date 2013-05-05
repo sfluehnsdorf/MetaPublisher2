@@ -27,7 +27,7 @@ providing these resources in a central location, it is easy to adapt this
 application to the various implementations of the Zope server and the Python
 programming language.
 
-$Id: library/application/__init__.py 1 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: library/application/__init__.py 2 2013-05-05 18:03:42Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

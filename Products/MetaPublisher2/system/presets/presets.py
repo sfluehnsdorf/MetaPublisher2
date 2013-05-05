@@ -28,7 +28,7 @@ upgrade purposes. This service features both forward and backward
 compatibility so that Presets can exchanged with older and newer versions of
 MetaPublisher.
 
-$Id: system/presets/presets.py 4 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: system/presets/presets.py 5 2013-05-05 18:00:23Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

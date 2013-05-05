@@ -25,7 +25,7 @@ __doc__ = """System Section
 !TXT! module info
 Module providing a mix-in class for the MetaPublisher 2's System section.
 
-$Id: system/system.py 9 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: system/system.py 10 2013-05-05 18:00:47Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

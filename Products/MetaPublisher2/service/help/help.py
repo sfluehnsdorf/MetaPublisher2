@@ -32,7 +32,7 @@ HelpSys module to reintegrate the contextual help into the ZMI, introducing
 new features such as structured help pages and automatic API reference
 generation.
 
-$Id: service/help/help.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: service/help/help.py 2 2013-05-05 18:01:12Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

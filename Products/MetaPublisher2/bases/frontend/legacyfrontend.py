@@ -24,7 +24,7 @@ __doc__ = """Legacy Frontend Base
 
 !TXT! module info
 
-$Id: bases/frontend/legacyfrontend.py 1 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: bases/frontend/legacyfrontend.py 2 2013-05-05 18:01:54Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

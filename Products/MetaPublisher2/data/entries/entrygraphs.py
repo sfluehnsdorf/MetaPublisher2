@@ -24,7 +24,7 @@ __doc__ = """EntryGraphs Component
 
 !TXT! module info
 
-$Id: data/entries/entrygraphs.py 4 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: data/entries/entrygraphs.py 5 2013-05-05 18:01:53Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

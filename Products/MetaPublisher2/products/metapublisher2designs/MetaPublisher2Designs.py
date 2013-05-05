@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2Designs Product
 
 !TXT! module info
 
-$Id: products/metapublisher2designs/MetaPublisher2Designs.py 5 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: products/metapublisher2designs/MetaPublisher2Designs.py 6 2013-05-05 18:01:53Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

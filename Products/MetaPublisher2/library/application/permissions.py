@@ -25,7 +25,7 @@ __doc__ = """Application Permissions
 MetaPublisher2 specific permission's names are defined here, ensuring
 consistency in the naming of permission.
 
-$Id: library/application/permissions.py 5 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: library/application/permissions.py 6 2013-05-05 18:05:51Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

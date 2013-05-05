@@ -26,7 +26,7 @@ The plugin registry automatises Zope Product registration for a range of plugins
 and handles auomatic registration for related pluginbases supporting this
 feature.
 
-$Id: library/application/pluginregistry.py 4 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: library/application/pluginregistry.py 5 2013-05-05 18:03:32Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -26,7 +26,7 @@ Simple service providing access to the Web based manual for both end users and
 developers. The ZMI forms simply include the manual's web pages on the
 MetaPublisher website at http://metapublisher.org.
 
-$Id: service/manual/manual.py 2 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: service/manual/manual.py 3 2013-05-05 18:01:00Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -26,7 +26,7 @@ To ensure to continued operation of deprecated resources, this module provides
 wrappers and handlers for these outdated resources. It also provides an API for
 logging calls to deprecated resources.
 
-$Id: library/compatibility/historical.py 5 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: library/compatibility/historical.py 6 2013-05-05 18:03:21Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

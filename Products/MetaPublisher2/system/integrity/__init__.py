@@ -24,7 +24,7 @@ __doc__ = """Integrity Component Inititalisation
 
 !TXT! module info
 
-$Id: system/integrity/__init__.py 2 2013-04-25 02:40:27Z sfluehnsdorf $
+$Id: system/integrity/__init__.py 3 2013-05-05 18:00:41Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

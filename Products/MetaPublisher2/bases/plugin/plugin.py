@@ -26,7 +26,7 @@ The Plugin base class defines basic identity attributes and a generic API for
 describing the Plugin's specififc capabilities, called the plugin details. All
 plugin types for the MetaPublisher2 must be based on this class.
 
-$Id: bases/plugin/plugin.py 12 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: bases/plugin/plugin.py 13 2013-05-05 18:04:50Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

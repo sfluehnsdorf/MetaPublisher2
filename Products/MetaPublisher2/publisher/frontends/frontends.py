@@ -28,7 +28,7 @@ provide a public interface to the functions of the MetaPublisher 2, such as
 Entry management. Frontends can be added, edited, deleted, renamed and moved as
 well as retrieved, listed and tested for existence.
 
-$Id: publisher/frontends/frontends.py 14 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: publisher/frontends/frontends.py 15 2013-05-05 18:02:09Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

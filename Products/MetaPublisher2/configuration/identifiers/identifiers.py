@@ -24,7 +24,7 @@ __doc__ = """Identifiers Component
 
 !TXT! module info
 
-$Id: configuration/identifiers/identifiers.py 3 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: configuration/identifiers/identifiers.py 4 2013-05-05 18:01:53Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -25,7 +25,7 @@ __doc__ = """Configuration Section
 !TXT! module info
 Module providing a mix-in class for the MetaPublisher 2's Configuration section.
 
-$Id: configuration/configuration.py 6 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: configuration/configuration.py 7 2013-05-05 18:04:45Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

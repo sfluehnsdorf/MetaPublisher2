@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2 UserInterface Library
 
 !TXT! module info
 
-$Id: library/userinterface/__init__.py 2 2013-04-25 02:31:11Z sfluehnsdorf $
+$Id: library/userinterface/__init__.py 3 2013-05-05 18:02:56Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

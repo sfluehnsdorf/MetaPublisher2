@@ -43,7 +43,7 @@ The application can be managed through the Web by Zope's Management Interface,
 through an extensive API or, if desired through a user generated public
 interface.
 
-$Id: products/metapublisher2/MetaPublisher2.py 13 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: products/metapublisher2/MetaPublisher2.py 14 2013-05-05 20:44:18Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -60,7 +60,11 @@ from Products.MetaPublisher2.service import Service
 from Products.MetaPublisher2.system import System
 
 # !!! MetaPublisher2.py - remove DEV before release
-from Products.MetaPublisher2.DEV import DEV
+try:
+    from Products.MetaPublisher2.DEV import DEV
+except:
+    class DEV:
+        manage_options = ()
 
 from Products.MetaPublisher2.products.metapublisher2designs.MetaPublisher2Designs import add_MetaPublisher2Designs
 from Products.MetaPublisher2.products.metapublisher2frontends.MetaPublisher2Frontends import add_MetaPublisher2Frontends

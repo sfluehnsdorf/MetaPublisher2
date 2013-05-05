@@ -27,7 +27,7 @@ images and the online help. The individual Product registrations are
 outsourced to the products directory. For backward compatibility renamed
 modules are mapped to their new names.
 
-$Id: __init__.py 6 2013-04-25 18:58:37Z sfluehnsdorf $
+$Id: __init__.py 7 2013-05-05 18:05:03Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

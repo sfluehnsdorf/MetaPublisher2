@@ -27,7 +27,7 @@ Indexer per Storage and can index one or more Fields of the Storage. An Indexer
 can be a Zope based ZCatalog or a Storage specific indexing mechanism. If the
 Indexer requires special calls, these are also handled by the Storage.
 
-$Id: configuration/indexing/indexing.py 4 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: configuration/indexing/indexing.py 5 2013-05-05 18:04:37Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

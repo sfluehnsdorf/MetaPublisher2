@@ -24,7 +24,7 @@ __doc__ = """Plugin Base Interface
 
 !TXT! module info
 
-$Id: interfaces/plugin.py 3 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: interfaces/plugin.py 4 2013-05-05 18:01:53Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

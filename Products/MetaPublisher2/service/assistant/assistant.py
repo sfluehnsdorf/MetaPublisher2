@@ -27,7 +27,7 @@ user through the various steps. Users can select one of the three experience
 levels "novice", "intermediate" and "expert". This customises the information
 and the form of the presentation.
 
-$Id: system/assistant/assistant.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: system/assistant/assistant.py 2 2013-05-05 18:01:30Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

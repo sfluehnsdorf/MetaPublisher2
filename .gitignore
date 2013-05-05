@@ -17,4 +17,5 @@ parts
 tmtags
 *.psd
 sass-cache
+DEV
 

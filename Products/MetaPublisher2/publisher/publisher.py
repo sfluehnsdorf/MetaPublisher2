@@ -25,7 +25,7 @@ __doc__ = """Publisher Section
 !TXT! module info
 Module providing a mix-in class for the MetaPublisher 2's Publisher section.
 
-$Id: publisher/publisher.py 7 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: publisher/publisher.py 8 2013-05-05 18:02:21Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

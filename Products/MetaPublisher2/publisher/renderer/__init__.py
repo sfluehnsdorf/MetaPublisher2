@@ -24,7 +24,7 @@ __doc__ = """Renderer Component Inititalisation
 
 !TXT! module info
 
-$Id: publisher/renderer/__init__.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: publisher/renderer/__init__.py 2 2013-05-05 18:02:03Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

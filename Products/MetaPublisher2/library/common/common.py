@@ -27,7 +27,7 @@ and API's. By providing these resources in a central location, it is easy to
 adapt calls to these resources to the various implementations of the Zope server
 and the Python programming language.
 
-$Id: library/common/common.py 5 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: library/common/common.py 6 2013-05-05 18:03:28Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

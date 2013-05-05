@@ -26,7 +26,7 @@ Simple service providing access to the Web based community service. The ZMI
 forms simply include the community service's web pages on the MetaPublisher
 website at http://metapublisher.org.
 
-$Id: service/community/community.py 3 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: service/community/community.py 4 2013-05-05 18:01:23Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

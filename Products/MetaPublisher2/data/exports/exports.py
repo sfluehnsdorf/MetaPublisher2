@@ -26,7 +26,7 @@ Export service for Entries into various types of files either for the filesystem
 or download. Users can choose the Storage and match the Fields in the Storage to
 data slots in the file.
 
-$Id: data/exports/exports.py 2 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: data/exports/exports.py 3 2013-05-05 18:04:15Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

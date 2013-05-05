@@ -24,7 +24,7 @@ __doc__ = """Help Component Inititalisation
 
 !TXT! module info
 
-$Id: service/help/__init__.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
+$Id: service/help/__init__.py 2 2013-05-05 18:01:14Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

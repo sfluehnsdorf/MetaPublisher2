@@ -24,7 +24,7 @@ __doc__ = """Application Paths
 
 !TXT! module info
 
-$Id: library/application/paths.py 1 2011-11-11 05:34:20Z sfluehnsdorf $
+$Id: library/application/paths.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

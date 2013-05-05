@@ -24,7 +24,7 @@ __doc__ = """Plugins Component Inititalisation
 
 !TXT! module info
 
-$Id: system/plugins/__init__.py 2 2013-04-25 02:40:17Z sfluehnsdorf $
+$Id: system/plugins/__init__.py 3 2013-05-05 18:00:33Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

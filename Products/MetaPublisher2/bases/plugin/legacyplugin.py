@@ -29,7 +29,7 @@ It defines a plugin identifier and maps old style plugin detail attributes. It
 must preceed the plugin type base class in inheritance order to function
 properly.
 
-$Id: bases/plugin/legacyplugin.py 6 2012-02-17 15:45:00Z sfluehnsdorf $
+$Id: bases/plugin/legacyplugin.py 7 2013-05-05 18:04:52Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
