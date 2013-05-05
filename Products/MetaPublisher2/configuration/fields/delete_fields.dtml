@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Delete Fields'"
-  page_info="'Delete selected Fields. Please note that this is final and can not be undone.'"
+  page_info="'!TXT! Delete selected Fields. Please note that this is final and can not be undone.'"
   management_view="'Fields'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_fields_delete.stx'"

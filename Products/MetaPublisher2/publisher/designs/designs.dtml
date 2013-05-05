@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Designs'"
-  page_info="'Designs are special Frontends used to style other Frontends by providing page layouts, stylesheets, scripts, and imagery.'"
+  page_info="'!TXT! Designs are special Frontends used to style other Frontends by providing page layouts, stylesheets, scripts, and imagery.'"
   management_view="'Designs'"
   help_product="'MetaPublisher2'"
   help_topic="'publisher_designs.stx'"

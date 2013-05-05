@@ -20,9 +20,9 @@
 #
 # ============================================================================
 
-__doc__ = """MetaPublisher 2 !TXT!
+__doc__ = """MetaPublisher2 UserInterface Library
 
-!TXT!
+!TXT! module info
 
 $Id: library/userinterface/__init__.py 2 2013-04-25 02:31:11Z sfluehnsdorf $
 """

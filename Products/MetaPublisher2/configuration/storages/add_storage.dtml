@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Add New Storage'"
-  page_info="'To create a new Storage, please first select the type you wish to add.'"
+  page_info="'!TXT! To create a new Storage, please first select the type you wish to add.'"
   management_view="'Storages'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_storages_add_type.stx'"

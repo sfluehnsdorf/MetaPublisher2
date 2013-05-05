@@ -22,7 +22,7 @@
 
 __doc__ = """!TXT!
 
-!TXT!
+!TXT! module info
 
 $Id: library/jsondict/jsondict.py 2 2013-04-25 02:31:34Z sfluehnsdorf $
 """

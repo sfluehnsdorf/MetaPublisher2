@@ -22,6 +22,8 @@
 
 __doc__ = """Logging Service
 
+!TXT! module info
+
 $Id: library/common/log.py 2 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

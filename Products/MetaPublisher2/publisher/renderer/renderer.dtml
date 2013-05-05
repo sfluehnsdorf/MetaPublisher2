@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Renderer'"
-  page_info="'Once you finished designing your Interfaces, you must render them. Before the Interfaces get rendered, they will be tested for integrity. In case of a problem, the Interfaces will not be rendered.'"
+  page_info="'!TXT! Once you finished designing your Interfaces, you must render them. Before the Interfaces get rendered, they will be tested for integrity. In case of a problem, the Interfaces will not be rendered.'"
   management_view="'Renderer'"
   help_product="'MetaPublisher2'"
   help_topic="'publisher_renderer.stx'"

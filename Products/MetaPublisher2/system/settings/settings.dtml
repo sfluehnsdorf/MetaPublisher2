@@ -1,6 +1,6 @@
 <dtml-let
-  page_title="'System Settings'"
-  page_info="'The settings allow tweaking of controls and constants of the MetaPublisher2. Settings are defined in the settings.conf configuration file.'"
+  page_title="'Settings'"
+  page_info="'!TXT! The settings allow tweaking of controls and constants of the MetaPublisher2. Settings are defined in the settings.conf configuration file.'"
   management_view="'Settings'"
   help_product="'MetaPublisher2'"
   help_topic="'system_settings.stx'"

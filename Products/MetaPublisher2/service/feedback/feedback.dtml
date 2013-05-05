@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Feedback'"
-  page_info="'Contact form for bug reports, feature requests and business enquiries. After submitting this form you will be redirected to the <a target=\x22_blank\x22 href=\x22http://metapublisher.org\x22>MetaPublisher website</a>.'"
+  page_info="'!TXT! Contact form for bug reports, feature requests and business enquiries. After submitting this form you will be redirected to the <a target=\x22_blank\x22 href=\x22http://metapublisher.org\x22>MetaPublisher website</a>.'"
   management_view="'Feedback'"
   help_product="'MetaPublisher2'"
   help_topic="'service_feedback.stx'"

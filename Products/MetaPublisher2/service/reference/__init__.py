@@ -22,6 +22,8 @@
 
 __doc__ = """Reference Component Inititalisation
 
+!TXT! module info
+
 $Id: service/reference/__init__.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

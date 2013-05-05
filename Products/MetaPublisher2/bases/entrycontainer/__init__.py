@@ -22,6 +22,8 @@
 
 __doc__ = """EntryContainer Base Initialisation
 
+!TXT! module info
+
 $Id: bases/entrycontainer/__init__.py 1 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

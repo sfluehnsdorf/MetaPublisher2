@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Widgets'"
-  page_info="'Widgets are elements of Frontends, that represent the Fields of an Entry.'"
+  page_info="'!TXT! Widgets are elements of Frontends, that represent the Fields of an Entry.'"
   management_view="'Widgets'"
   help_product="'MetaPublisher2'"
   help_topic="'publisher_widgets.stx'"

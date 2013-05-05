@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Add New Entry'"
-  page_info="'To create a new Entry, fill out the respective Fields and click the Add button.'"
+  page_info="'!TXT! To create a new Entry, fill out the respective Fields and click the Add button.'"
   management_view="'Entries'"
   help_product="'MetaPublisher2'"
   help_topic="'data_entries_add.stx'"

@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Edit Storage'"
-  page_info="'To change a Storage\'s configuration, change all the values you wish to change and then click the Save button.'"
+  page_info="'!TXT! To change a Storage\'s configuration, change all the values you wish to change and then click the Save button.'"
   management_view="'Storages'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_storages_edit.stx'"

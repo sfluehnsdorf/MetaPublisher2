@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Add New Frontend'"
-  page_info="'To create a new Frontend, please first select the type of Interface you wish to add.'"
+  page_info="'!TXT! To create a new Frontend, please first select the type of Interface you wish to add.'"
   management_view="'Frontends'"
   help_product="'MetaPublisher2'"
   help_topic="'publisher_frontends_add.stx'"

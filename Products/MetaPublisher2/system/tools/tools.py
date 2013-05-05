@@ -22,6 +22,8 @@
 
 __doc__ = """Tools Component
 
+!TXT! module info
+
 $Id: system/tools/tools.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

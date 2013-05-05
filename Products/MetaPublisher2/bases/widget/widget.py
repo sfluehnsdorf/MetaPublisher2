@@ -22,6 +22,8 @@
 
 __doc__ = """Widget Base
 
+!TXT! module info
+
 $Id: bases/widget/widget.py 5 2011-11-11 05:34:20Z sfluehnsdorf $
 """
 

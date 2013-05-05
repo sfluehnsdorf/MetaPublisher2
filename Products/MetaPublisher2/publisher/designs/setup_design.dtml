@@ -1,5 +1,5 @@
 <dtml-let
-  page_title="'!TXT! Page Title'"
+  page_title="'Setup Design'"
   page_info="'!TXT! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'"
   management_view="'Designs'"
   help_product="'MetaPublisher2'"

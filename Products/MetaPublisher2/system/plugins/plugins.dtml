@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Plugins'"
-  page_info="'''
+  page_info="'''!TXT! 
     This list contains all Plugins succesfully installed by Products available to the MetaPublisher2.
     A single Product can register multiple Plugins.
     If any Plugins are missing from this list, please check the Products folder of the Control Panel or the log files if the respective Plugins were installed without error.

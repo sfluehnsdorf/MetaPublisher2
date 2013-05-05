@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Rename Entries'"
-  page_info="'Rename selected Entries by specifying a new Ids. If an Id is unchanged, no change will be made.'"
+  page_info="'!TXT! Rename selected Entries by specifying a new Ids. If an Id is unchanged, no change will be made.'"
   management_view="'Entries'"
   help_product="'MetaPublisher2'"
   help_topic="'data_entries_rename.stx'"

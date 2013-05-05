@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Duplicate Presets'"
-  page_info="'Duplicate Presets, creating identical copies.'"
+  page_info="'!TXT! Duplicate Presets, creating identical copies.'"
   management_view="'Presets'"
   help_product="'MetaPublisher2'"
   help_topic="'system_presets_load_options.stx'"

@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Presets'"
-  page_info="'Presets store the definition of components, including Entries, Storages and Frontends.'"
+  page_info="'!TXT! Presets store the definition of components, including Entries, Storages and Frontends.'"
   management_view="'Presets'"
   help_product="'MetaPublisher2'"
   help_topic="'system_presets.stx'"

@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Reports'"
-  page_info="'Generate statistical reports on the Entries and Entry Fields of a specified Storage.'"
+  page_info="'!TXT! Generate statistical reports on the Entries and Entry Fields of a specified Storage.'"
   management_view="'Reports'"
   help_product="'MetaPublisher2'"
   help_topic="'data_reports.stx'"

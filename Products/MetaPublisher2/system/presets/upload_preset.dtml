@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Upload Preset'"
-  page_info="'Upload a Preset into the online repository. Be aware that your Preset will be publically available.'"
+  page_info="'!TXT! Upload a Preset into the online repository. Be aware that your Preset will be publically available.'"
   management_view="'Presets'"
   help_product="'MetaPublisher2'"
   help_topic="'system_presets_upload.stx'"

@@ -22,6 +22,8 @@
 
 __doc__ = """Entry Interface
 
+!TXT! module info
+
 $Id: interfaces/entry.py 1 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

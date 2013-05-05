@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Frontends'"
-  page_info="'Frontends provide a public interface to the MetaPublisher 2 such as forms and scripts to manage the Entries.'"
+  page_info="'!TXT! Frontends provide a public interface to the MetaPublisher 2 such as forms and scripts to manage the Entries.'"
   management_view="'Frontends'"
   help_product="'MetaPublisher2'"
   help_topic="'publisher_frontends.stx'"

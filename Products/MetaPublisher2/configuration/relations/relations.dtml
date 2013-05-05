@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Relations'"
-  page_info="'A relation links two or more Entries, for example to specify ownership or ancestry.'"
+  page_info="'!TXT! A relation links two or more Entries, for example to specify ownership or ancestry.'"
   management_view="'Relations'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_relations.stx'"

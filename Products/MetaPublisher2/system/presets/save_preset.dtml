@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Save Preset'"
-  page_info="'Create a new Preset by selecting what to store.'"
+  page_info="'!TXT! Create a new Preset by selecting what to store.'"
   management_view="'Presets'"
   help_product="'MetaPublisher2'"
   help_topic="'system_presets_save.stx'"

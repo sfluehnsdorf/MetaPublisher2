@@ -22,6 +22,8 @@
 
 __doc__ = """Design Base
 
+!TXT! module info
+
 $Id: bases/design/design.py 1 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

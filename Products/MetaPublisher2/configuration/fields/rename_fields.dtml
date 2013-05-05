@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Rename Fields'"
-  page_info="'Rename selected Fields by specifying a new ids. If an id is unchanged, no change will be made.'"
+  page_info="'!TXT! Rename selected Fields by specifying a new ids. If an id is unchanged, no change will be made.'"
   management_view="'Fields'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_fields_rename.stx'"

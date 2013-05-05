@@ -22,6 +22,8 @@
 
 __doc__ = """Plugin Base Interface
 
+!TXT! module info
+
 $Id: interfaces/plugin.py 3 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

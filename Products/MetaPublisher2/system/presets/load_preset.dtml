@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Load Preset'"
-  page_info="'Load a Preset\'s contents into this MetaPublisher 2.'"
+  page_info="'!TXT! Load a Preset\'s contents into this MetaPublisher 2.'"
   management_view="'Presets'"
   help_product="'MetaPublisher2'"
   help_topic="'system_presets_load.stx'"

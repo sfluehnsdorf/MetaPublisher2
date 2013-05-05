@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Add New Field'"
-  page_info="'To create a new Field, please first select the Storage you wish to add the Field to and the type you wish to add.'"
+  page_info="'!TXT! To create a new Field, please first select the Storage you wish to add the Field to and the type you wish to add.'"
   management_view="'Fields'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_fields_add_type.stx'"

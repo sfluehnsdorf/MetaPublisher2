@@ -22,6 +22,8 @@
 
 __doc__ = """Inheritance Component
 
+!TXT! module info
+
 $Id: configuration/inheritance/inheritance.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

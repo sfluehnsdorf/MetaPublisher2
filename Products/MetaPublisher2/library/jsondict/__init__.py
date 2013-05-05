@@ -22,7 +22,7 @@
 
 __doc__ = """MetaPublisher 2 !TXT!
 
-!TXT!
+!TXT! module info
 
 $Id: library/jsondict/__init__.py 2 2013-04-25 02:31:34Z sfluehnsdorf $
 """

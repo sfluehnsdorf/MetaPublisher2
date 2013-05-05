@@ -22,6 +22,8 @@
 
 __doc__ = """Expressions Component
 
+!TXT! module info
+
 $Id: data/expressions/expressions.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

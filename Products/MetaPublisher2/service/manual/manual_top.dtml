@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Manual'"
-  page_info="'The User Manual, located at the <a target=\x22_blank\x22 href=\x22http://metapublisher.org\x22>MetaPublisher website</a>, should help you to familiarize yourself with MetaPublisher 2.'"
+  page_info="'!TXT! The User Manual, located at the <a target=\x22_blank\x22 href=\x22http://metapublisher.org\x22>MetaPublisher website</a>, should help you to familiarize yourself with MetaPublisher 2.'"
   management_view="'Manual'"
   help_product="'MetaPublisher2'"
   help_topic="'service_manual.stx'"

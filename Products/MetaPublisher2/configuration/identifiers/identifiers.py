@@ -22,6 +22,8 @@
 
 __doc__ = """Identifiers Component
 
+!TXT! module info
+
 $Id: configuration/identifiers/identifiers.py 3 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

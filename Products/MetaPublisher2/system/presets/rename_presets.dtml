@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Rename Presets'"
-  page_info="'Rename selected Presets. If an Id is unchanged, no change will be made.'"
+  page_info="'!TXT! Rename selected Presets. If an Id is unchanged, no change will be made.'"
   management_view="'Presets'"
   help_product="'MetaPublisher2'"
   help_topic="'system_presets_load_options.stx'"

@@ -22,6 +22,8 @@
 
 __doc__ = """Queries Component
 
+!TXT! module info
+
 $Id: data/queries/queries.py 4 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

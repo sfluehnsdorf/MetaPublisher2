@@ -7,9 +7,9 @@
   )">
 
 <p class="form-help">
+  MetaPublisher2 is a web application construction kit with data management and form generation features.
   To add a new MetaPublisher2, please enter an Id and press the "Add MetaPublisher2" button.
   To abort, click the "Cancel" button.
-  MetaPublisher2 is a web application construction kit with data management and form generation features.
 </p>
 
 <form action="<dtml-var URL1>" method="post">

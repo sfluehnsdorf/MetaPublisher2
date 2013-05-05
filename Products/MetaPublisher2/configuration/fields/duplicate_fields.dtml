@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Duplicate Fields'"
-  page_info="'Duplicate selected Fields, creating identical copies.'"
+  page_info="'!TXT! Duplicate selected Fields, creating identical copies.'"
   management_view="'Fields'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_fields_duplicate.stx'"

@@ -22,6 +22,8 @@
 
 __doc__ = """Product Class Repository
 
+!TXT! module info
+
 $Id: products/__init__.py 5 2013-04-25 18:52:35Z sfluehnsdorf $
 """
 

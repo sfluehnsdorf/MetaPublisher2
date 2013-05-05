@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Delete Storages'"
-  page_info="'Delete selected Storages. Please note that this is final and can not be undone.'"
+  page_info="'!TXT! Delete selected Storages. Please note that this is final and can not be undone.'"
   management_view="'Storages'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_storages_delete.stx'"

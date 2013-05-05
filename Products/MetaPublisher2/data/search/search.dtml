@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Search'"
-  page_info="'Search Entries in a Storage by specifying various filters for its Fields.'"
+  page_info="'!TXT! Search Entries in a Storage by specifying various filters for its Fields.'"
   management_view="'Search'"
   help_product="'MetaPublisher2'"
   help_topic="'data_search.stx'"

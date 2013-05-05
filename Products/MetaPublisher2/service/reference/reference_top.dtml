@@ -1,6 +1,9 @@
 <dtml-let
   page_title="'Reference'"
-  page_info="'The reference section provides an introspective API documentation of the MetaPublisher2.'"
+  page_info="'!TXT! The reference section provides an introspective API documentation of the MetaPublisher2.'"
+  management_view="'Reference'"
+  help_product="'MetaPublisher2'"
+  help_topic="'service_reference.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
 <dtml-var manage_MetaPublisher2_footer>

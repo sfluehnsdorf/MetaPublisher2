@@ -22,6 +22,8 @@
 
 __doc__ = """Presets Component Inititalisation
 
+!TXT! module info
+
 $Id: system/presets/__init__.py 2 2013-04-25 02:40:11Z sfluehnsdorf $
 """
 

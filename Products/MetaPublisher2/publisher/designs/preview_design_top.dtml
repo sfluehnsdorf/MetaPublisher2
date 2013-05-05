@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Preview Design'"
-  page_info="'Preview a Design, using a generic template page. You can specify which of the Entries\' Fields you want to reset.'"
+  page_info="'!TXT! Preview a Design, using a generic template page. You can specify which of the Entries\' Fields you want to reset.'"
   management_view="'Designs'"
   help_product="'MetaPublisher2'"
   help_topic="'publisher_designs.stx'"

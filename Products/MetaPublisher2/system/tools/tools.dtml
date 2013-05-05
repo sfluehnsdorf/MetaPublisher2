@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Tools'"
-  page_info="'Tools are special Plugins that can extend the functionality of MetaPublisher.'"
+  page_info="'!TXT! Tools are special Plugins that can extend the functionality of MetaPublisher.'"
   management_view="'Tools'"
   help_product="'MetaPublisher2'"
   help_topic="'system_tools.stx'"

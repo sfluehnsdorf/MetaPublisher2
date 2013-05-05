@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Edit Entry'"
-  page_info="'To edit an Entry, enter new values for all Fields you wish to modify and then click the Save button.'"
+  page_info="'!TXT! To edit an Entry, enter new values for all Fields you wish to modify and then click the Save button.'"
   management_view="'Entries'"
   help_product="'MetaPublisher2'"
   help_topic="'data_entries_edit.stx'"

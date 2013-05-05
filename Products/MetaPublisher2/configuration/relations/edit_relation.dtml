@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Edit Relation'"
-  page_info="'!TXT!Edit Relation'"
+  page_info="'!TXT! Edit Relation'"
   management_view="'Relations'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_relations_edit.stx'"

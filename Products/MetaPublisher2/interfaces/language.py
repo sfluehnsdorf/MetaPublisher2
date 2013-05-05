@@ -22,6 +22,8 @@
 
 __doc__ = """Language Plugin Interface
 
+!TXT! module info
+
 $Id: interfaces/language.py 1 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

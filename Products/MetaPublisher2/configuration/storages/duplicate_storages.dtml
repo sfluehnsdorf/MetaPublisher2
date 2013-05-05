@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Duplicate Storages'"
-  page_info="'Duplicate selected Storages, creating identical copies.'"
+  page_info="'!TXT! Duplicate selected Storages, creating identical copies.'"
   management_view="'Storages'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_storages_duplicate.stx'"

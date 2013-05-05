@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Reset Entries'"
-  page_info="'Reset selected Entries to their default values.'"
+  page_info="'!TXT! Reset selected Entries to their default values.'"
   management_view="'Entries'"
   help_product="'MetaPublisher2'"
   help_topic="'data_entries_reset.stx'"

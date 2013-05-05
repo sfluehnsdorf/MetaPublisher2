@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'About This Release'"
-  page_info="'Display release information of this MetaPublisher2.'"
+  page_info="'!TXT! Display release information of this MetaPublisher2.'"
   management_view="'Release'"
   help_product="'MetaPublisher2'"
   help_topic="'service_release.stx'"
@@ -22,8 +22,8 @@
       <form action="<dtml-var get_release_check_url>" target="_blank" method="post">
         <input type="hidden" name="version" value="<dtml-var get_release_version>">
         <p>
-          You can check for updates for the MetaPublisher2 and its plugins by clicking the following button.
-          Version information of the MetaPublisher2 and its plugins will be submitted to the <a target="_blank" href="http://metapublisher.org">MetaPublisher website</a> website.
+          You can check for updates for MetaPublisher2 and its plugins by clicking the following button.
+          Version information of the Zope server, of MetaPublisher2 and of installed plugins for MetaPublisher2 will be submitted to the <a target="_blank" href="http://metapublisher.org">MetaPublisher website</a> website.
           This action requires access to the internet.
         </p>
         <p><input type="submit" value="Check for Updates"></p>

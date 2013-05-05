@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Help'"
-  page_info="'Access to local context help resources.'"
+  page_info="'!TXT! Access to local context help resources.'"
   management_view="'Help'"
   help_product="'MetaPublisher2'"
   help_topic="'service_help.stx'"

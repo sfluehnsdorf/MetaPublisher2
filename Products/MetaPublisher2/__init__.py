@@ -23,9 +23,9 @@
 __doc__ = """MetaPublisher2 Product Registry
 
 Zope2 Product registry, which registers all Product classes, all Product
-images and the online help. The individual Product registrations is outsourced
-to the products directory. For backward compatibility renamed modules are
-mapped to their new names.
+images and the online help. The individual Product registrations are
+outsourced to the products directory. For backward compatibility renamed
+modules are mapped to their new names.
 
 $Id: __init__.py 6 2013-04-25 18:58:37Z sfluehnsdorf $
 """
@@ -121,6 +121,8 @@ sys.modules['Products.MetaPublisher2.MetaPublisher2'] = products.metapublisher2.
 # !!! PHASE 8 - inline error messages, integrity tests, jsondict, onexit handlers, pluginregistry, review all forms, settings.conf, tests
 # !!! PHASE 9 - online services, pep8, remove DEV, test zope release compatability
 
+# !!! global - grep for page_info to find short lines
+# !!! global - grep for dialog_title to replace custom dialogs
 # !!! global - mark (all) doc strings with !TXT!
 # !!! global - mark (all) redirect messages with !TXT!
 # !!! global - update all !TXT! markers

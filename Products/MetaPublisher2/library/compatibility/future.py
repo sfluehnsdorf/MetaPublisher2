@@ -22,6 +22,8 @@
 
 __doc__ = """Future Compatibility
 
+!TXT! module info
+
 $Id: library/compatability/future.py 2 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

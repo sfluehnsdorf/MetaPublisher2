@@ -22,6 +22,8 @@
 
 __doc__ = """Frontend Base
 
+!TXT! module info
+
 $Id: bases/frontend/frontend.py 3 2011-11-11 05:34:20Z sfluehnsdorf $
 """
 

@@ -22,6 +22,8 @@
 
 __doc__ = """Settings Component
 
+!TXT! module info
+
 $Id: system/settings/settings.py 3 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

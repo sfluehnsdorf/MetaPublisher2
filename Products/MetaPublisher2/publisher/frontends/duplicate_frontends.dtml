@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Duplicate Frontends'"
-  page_info="'Duplicate Frontends, creating an identical copy.'"
+  page_info="'!TXT! Duplicate Frontends, creating an identical copy.'"
   management_view="'Frontends'"
   help_product="'MetaPublisher2'"
   help_topic="'publisher_frontends_duplicate.stx'"

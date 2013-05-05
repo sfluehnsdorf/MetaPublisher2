@@ -22,6 +22,8 @@
 
 __doc__ = """Widgets Component
 
+!TXT! module info
+
 $Id: publisher/widgets/widgets.py 6 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

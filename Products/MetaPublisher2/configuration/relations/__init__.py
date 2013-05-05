@@ -22,6 +22,8 @@
 
 __doc__ = """Relations Component Inititalisation
 
+!TXT! module info
+
 $Id: configuration/relations/__init__.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

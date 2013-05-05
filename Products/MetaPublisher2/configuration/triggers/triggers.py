@@ -22,6 +22,8 @@
 
 __doc__ = """Triggers Component
 
+!TXT! module info
+
 $Id: configuration/triggers/triggers.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

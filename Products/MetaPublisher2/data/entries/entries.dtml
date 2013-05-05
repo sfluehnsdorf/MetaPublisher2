@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Entries'"
-  page_info="'Entries represent the data inside a Storage, specified by the Storage\'s Fields.'"
+  page_info="'!TXT! Entries represent the data inside a Storage, specified by the Storage\'s Fields.'"
   management_view="'Entries'"
   help_product="'MetaPublisher2'"
   help_topic="'data_entries.stx'"

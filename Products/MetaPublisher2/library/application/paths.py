@@ -22,6 +22,8 @@
 
 __doc__ = """Application Paths
 
+!TXT! module info
+
 $Id: library/application/paths.py 1 2011-11-11 05:34:20Z sfluehnsdorf $
 """
 

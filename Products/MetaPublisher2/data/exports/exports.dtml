@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Export Entries'"
-  page_info="'Export Entries to files in various formats from a Storage.'"
+  page_info="'!TXT! Export Entries to files in various formats from a Storage.'"
   management_view="'Exports'"
   help_product="'MetaPublisher2'"
   help_topic="'data_exports.stx'"

@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Integrity'"
-  page_info="'Report inconsistencies in components of the MetaPublisher 2.'"
+  page_info="'!TXT! Report inconsistencies in components of the MetaPublisher 2.'"
   management_view="'Integrity'"
   help_product="'MetaPublisher2'"
   help_topic="'system_integrity.stx'"

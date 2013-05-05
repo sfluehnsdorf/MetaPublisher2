@@ -22,6 +22,8 @@
 
 __doc__ = """Application Settings
 
+!TXT! module info
+
 $Id: library/application/settings.py 8 2011-11-11 05:34:20Z sfluehnsdorf $
 """
 

@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Edit Frontend'"
-  page_info="'Change a Frontend\'s configuration.'"
+  page_info="'!TXT! Change a Frontend\'s configuration.'"
   management_view="'Frontends'"
   help_product="'MetaPublisher2'"
   help_topic="'publisher_frontends_edit.stx'"

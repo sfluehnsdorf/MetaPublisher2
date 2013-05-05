@@ -22,6 +22,8 @@
 
 __doc__ = """UserInterface ZMI
 
+!TXT! module info
+
 $Id: library/userinterface/zmi.py 2 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

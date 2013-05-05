@@ -22,6 +22,8 @@
 
 __doc__ = """Storage Plugin Interface
 
+!TXT! module info
+
 $Id: interfaces/storage.py 1 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

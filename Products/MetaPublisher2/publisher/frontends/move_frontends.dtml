@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Move Frontends'"
-  page_info="'Move selected Frontends to a new location.'"
+  page_info="'!TXT! Move selected Frontends to a new location.'"
   management_view="'Frontends'"
   help_product="'MetaPublisher2'"
   help_topic="'publisher_frontends_move.stx'"

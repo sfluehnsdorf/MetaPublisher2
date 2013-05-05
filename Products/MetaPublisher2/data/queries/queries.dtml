@@ -1,6 +1,6 @@
 <dtml-let
-  page_title="'Query Entries'"
-  page_info="'SQL-like query shell to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2'"
+  page_title="'Queries'"
+  page_info="'!TXT! SQL-like query shell to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2'"
   management_view="'Queries'"
   help_product="'MetaPublisher2'"
   help_topic="'data_queries.stx'"
@@ -16,7 +16,7 @@ $( document ).ready( function () {
   $( '#query_terminal' ).height( $( document ).height() - 175 );
   $( '#query_terminal' ).terminal( '<dtml-var get_MetaPublisher2_url>/parse_query', {
     custom_prompt : "&gt; ",
-    hello_message : 'Welcome to the MetaPublisher 2 Query Shell!<br>Type \'help\' for information on available commands...'
+    hello_message : 'Welcome to MetaPublisher2 Query Shell!<br>Type \'help\' for information on available commands...'
   } ); 
 } ); 
 </script>

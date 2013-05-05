@@ -22,6 +22,8 @@
 
 __doc__ = """Storage Base
 
+!TXT! module info
+
 $Id: bases/storage/storage.py 4 2011-11-11 05:34:20Z sfluehnsdorf $
 """
 

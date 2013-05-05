@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Rename Storages'"
-  page_info="'Rename selected Storages by specifying new ids. If an id is unchanged, no change will be made.'"
+  page_info="'!TXT! Rename selected Storages by specifying new ids. If an id is unchanged, no change will be made.'"
   management_view="'Storages'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_storages_rename.stx'"

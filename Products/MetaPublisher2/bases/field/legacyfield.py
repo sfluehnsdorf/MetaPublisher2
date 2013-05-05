@@ -22,6 +22,8 @@
 
 __doc__ = """Legacy Field Base
 
+!TXT! module info
+
 $Id: bases/field/legacyfield.py 7 2012-02-17 15:45:00Z sfluehnsdorf $
 """
 

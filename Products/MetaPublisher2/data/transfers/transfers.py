@@ -22,6 +22,8 @@
 
 __doc__ = """Transfers Component
 
+!TXT! module info
+
 $Id: data/transfer/transfer.py 1 2012-08-09 19:48:00Z sfluehnsdorf $
 """
 

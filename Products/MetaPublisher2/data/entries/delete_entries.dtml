@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Delete Entries'"
-  page_info="'Delete selected Entries. Please note that this is final and can not be undone.'"
+  page_info="'!TXT! Delete selected Entries. Please note that this is final and can not be undone.'"
   management_view="'Entries'"
   help_product="'MetaPublisher2'"
   help_topic="'data_entries_delete.stx'"

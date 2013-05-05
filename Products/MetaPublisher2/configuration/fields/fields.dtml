@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Fields'"
-  page_info="'Fields define what type of data a Storage stores per Entry, with each Field defining one element of an Entry.'"
+  page_info="'!TXT! Fields define what type of data a Storage stores per Entry, with each Field defining one element of an Entry.'"
   management_view="'Fields'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_fields.stx'"

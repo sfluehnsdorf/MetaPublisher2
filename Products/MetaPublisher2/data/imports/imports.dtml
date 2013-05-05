@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Import Entries'"
-  page_info="'Entry imports from files in various formats into a Storage.'"
+  page_info="'!TXT! Entry imports from files in various formats into a Storage.'"
   management_view="'Imports'"
   help_product="'MetaPublisher2'"
   help_topic="'data_imports.stx'"
