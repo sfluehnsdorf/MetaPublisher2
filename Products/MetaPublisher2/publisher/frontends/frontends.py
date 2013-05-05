@@ -394,7 +394,7 @@ class Frontends:
 
     security.declareProtected(permission_manage_frontends, 'duplicate_frontends')
 
-    def duplicate_frontend(self, paths, new_ids=[], REQUEST=None):
+    def duplicate_frontends(self, paths, new_ids=[], REQUEST=None):
         """!TXT!"""
 
         if not paths:

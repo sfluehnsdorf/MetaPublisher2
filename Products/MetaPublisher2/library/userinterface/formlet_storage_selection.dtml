@@ -59,3 +59,4 @@
 <dtml-call "set_profile_variable( REQUEST, 'storage_id', all_storage_ids[ 0 ] )">
 </dtml-unless>
 ...
+</dtml-let>
