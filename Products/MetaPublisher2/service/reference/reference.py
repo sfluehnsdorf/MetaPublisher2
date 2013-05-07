@@ -62,6 +62,20 @@ class Reference:
 
         reference_form = DTMLFile('reference', globals())
 
+        security.declareProtected(permission_zmi, 'reference_top_form')
+
+        reference_top_form = DTMLFile('reference_top', globals(), target='_parent')
+
+    # ------------------------------------------------------------------------
+    # Manual Retrieval API
+
+    security.declareProtected(permission_zmi, 'get_reference_url')
+
+    def get_reference_url(self):
+        """Return the URL for the online reference service"""
+
+        return self.get_setting('service_reference_url')
+
 # ----------------------------------------------------------------------------
 # Class Security
 

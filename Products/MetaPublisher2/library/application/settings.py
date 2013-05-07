@@ -74,6 +74,7 @@ settings = {
     'service_release_check_url': 'http://metapublisher.org/service/2.3/update',
     'service_community_url': 'http://metapublisher.org/service/2.3/community',
     'service_manual_url': 'http://metapublisher.org/service/2.3/manual',
+    'service_reference_url': 'http://metapublisher.org/service/2.3/reference',
     'service_feedback_url': 'http://metapublisher.org/service/2.3/feedback',
 }
 
