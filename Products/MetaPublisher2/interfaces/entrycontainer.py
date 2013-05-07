@@ -24,7 +24,7 @@ __doc__ = """EntryContainer Interface
 
 !TXT! module info
 
-$Id: interfaces/entrycontainer.py 3 2013-05-07 17:48:57Z sfluehnsdorf $
+$Id: interfaces/entrycontainer.py 4 2013-05-07 20:29:39Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -34,8 +34,6 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from zope.interface import Interface
-#from zope.interface import Attribute
-#from zope.schema import Bool, BytesLine, List, Tuple, URI
 
 from Products.MetaPublisher2.library.common import false, true
 

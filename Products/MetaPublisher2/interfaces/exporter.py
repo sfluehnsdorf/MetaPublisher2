@@ -24,7 +24,7 @@ __doc__ = """Exporter Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/exporter.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: interfaces/exporter.py 3 2013-05-07 20:29:37Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -34,8 +34,6 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from zope.interface import Interface
-#from zope.interface import Attribute
-#from zope.schema import Bool, BytesLine, List, Tuple, URI
 
 
 # ============================================================================

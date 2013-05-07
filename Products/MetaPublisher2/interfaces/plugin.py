@@ -24,7 +24,7 @@ __doc__ = """Plugin Base Interface
 
 !TXT! module info
 
-$Id: interfaces/plugin.py 4 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: interfaces/plugin.py 5 2013-05-07 20:29:13Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -34,8 +34,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from zope.interface import Interface
-#from zope.interface import Attribute
-from zope.schema import Bool, BytesLine, List, Text, TextLine, Tuple, URI
+from zope.schema import BytesLine, List, Text, TextLine, URI
 
 
 # ============================================================================

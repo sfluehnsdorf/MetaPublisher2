@@ -1,1 +1,1 @@
-MetaPublisher2 2.3.703
+MetaPublisher2 2.3.719
