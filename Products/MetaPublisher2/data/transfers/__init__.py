@@ -24,7 +24,7 @@ __doc__ = """Transfers Component Inititalisation
 
 !TXT! module info
 
-$Id: data/transfer/__init__.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/transfers/__init__.py 3 2013-05-07 17:49:17Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

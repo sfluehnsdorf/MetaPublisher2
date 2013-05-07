@@ -24,7 +24,7 @@ __doc__ = """Future Compatibility
 
 !TXT! module info
 
-$Id: library/compatability/future.py 3 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: library/compatibility/future.py 4 2013-05-07 17:50:03Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

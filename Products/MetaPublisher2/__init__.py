@@ -27,7 +27,7 @@ images and the online help. The individual Product registrations are
 outsourced to the products directory. For backward compatibility renamed
 modules are mapped to their new names.
 
-$Id: __init__.py 7 2013-05-05 18:05:03Z sfluehnsdorf $
+$Id: __init__.py 8 2013-05-07 17:35:58Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -123,7 +123,9 @@ sys.modules['Products.MetaPublisher2.MetaPublisher2'] = products.metapublisher2.
 
 # !!! global - grep for page_info to find short lines
 # !!! global - grep for dialog_title to replace custom dialogs
-# !!! global - mark (all) doc strings with !TXT!
+
+# !!! global - mark (all) class doc strings with !TXT!
+# !!! global - mark (all) def doc strings with !TXT!
 # !!! global - mark (all) redirect messages with !TXT!
 # !!! global - update all !TXT! markers
 # !!! global - update all TODO markers
