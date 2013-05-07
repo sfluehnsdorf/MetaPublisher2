@@ -53,67 +53,24 @@
 </div>
 
 <dtml-var no_fields_dialog>
-<dtml-let
-  dialog_title="'No Fields Added Yet!'"
-  dialog_info="'You must add at least one Field to this Storage.'"
-  dialog_butons="[
-    ( 'add_field_form', 'Add Field' ),
-    ]"
-  >
-<dtml-var metapublisher2_dialog>
-</dtml-let>
-
 </dtml-if>
 
 <dtml-else>
 </div>
 
 <dtml-var no_fieldplugins_dialog>
-<dtml-let
-  dialog_title="'No Field Plugins Available!'"
-  dialog_info="'You must install Field plugins to work with Fields.'"
-  >
-<dtml-var metapublisher2_dialog>
-</dtml-let>
-
 </dtml-if>
 
 <dtml-else>
-
 <dtml-var no_storages_dialog>
-<dtml-let
-  dialog_title="'No Storages Added Yet!'"
-  dialog_info="'You must add at least one Storage.'"
-  dialog_butons="[
-    ( 'add_storage_form', 'Add Storage' ),
-    ]"
-  >
-<dtml-var metapublisher2_dialog>
-</dtml-let>
-
 </dtml-if>
 
 <dtml-else>
-
 <dtml-var no_storageplugins_dialog>
-<dtml-let
-  dialog_title="'No Storage Plugins Available!'"
-  dialog_info="'You must install Storage plugins to work with Storages.'"
-  >
-<dtml-var metapublisher2_dialog>
-</dtml-let>
-
 </dtml-if>
 
 <dtml-else>
-
-<dtml-let
-  dialog_title="'No Plugins Available!'"
-  dialog_info="'You must install plugins to work with MetaPublisher2.'"
-  >
-<dtml-var metapublisher2_dialog>
-</dtml-let>
-
+<dtml-var no_plugins_dialog>
 </dtml-if>
 
 </form>

@@ -7,13 +7,6 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
-<dtml-let
-  dialog_title="'Not Available'"
-  dialog_info="'This feature will be available in a future release.'"
-  >
-<dtml-var metapublisher2_dialog>
-</dtml-let>
-
 <dtml-var not_available_dialog>
 <!--
 !!! delete_entries.dtml - implement

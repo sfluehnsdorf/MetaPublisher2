@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Load Preset'"
-  page_info="'!TXT!Load Preset'"
+  page_info="'!TXT! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'"
   management_view="'Presets'"
   help_product="'MetaPublisher2'"
   help_topic="'system_presets_load_options.stx'"

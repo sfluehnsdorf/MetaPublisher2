@@ -197,17 +197,7 @@
 </dtml-comment>
 
 <dtml-else>
-
-<dtml-let
-  dialog_title="'No Frontends Added Yet!'"
-  dialog_info="'You must add at least one Frontend, before you can render them.'"
-  dialog_butons="[
-    ( 'add_frontend_form', 'Add Frontend' ),
-    ]"
-  >
-<dtml-var metapublisher2_dialog>
-</dtml-let>
-
+<dtml-var no_frontends_dialog>
 </dtml-if>
 
 </form>

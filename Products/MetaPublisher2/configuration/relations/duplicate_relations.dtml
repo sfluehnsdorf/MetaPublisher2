@@ -1,6 +1,6 @@
 <dtml-let
   page_title="'Duplicate Relations'"
-  page_info="'!TXT!Duplicate Relations'"
+  page_info="'!TXT! Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'"
   management_view="'Relations'"
   help_product="'MetaPublisher2'"
   help_topic="'configuration_relations_duplicate.stx'"

@@ -9,12 +9,7 @@
 
 <!-- !!! edit_entries.dtml - implement -->
 
-<dtml-let
-  dialog_title="'Not Available'"
-  dialog_info="'This feature will be available in a future release.'"
-  >
-<dtml-var metapublisher2_dialog>
-</dtml-let>
+<dtml-var not_available_dialog>
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>
