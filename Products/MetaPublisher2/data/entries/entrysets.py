@@ -24,7 +24,7 @@ __doc__ = """Entry Sets Component
 
 !TXT! module info
 
-$Id: data/entries/entrysets.py 9 2013-05-08 19:29:08Z sfluehnsdorf $
+$Id: data/entries/entrysets.py 10 2013-05-08 21:41:55Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

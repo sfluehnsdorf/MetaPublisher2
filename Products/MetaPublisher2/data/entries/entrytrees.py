@@ -24,7 +24,7 @@ __doc__ = """Entry Trees Component
 
 !TXT! module info
 
-$Id: data/entries/entrytrees.py 9 2013-05-08 19:29:56Z sfluehnsdorf $
+$Id: data/entries/entrytrees.py 10 2013-05-08 21:41:53Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2 Formlets
 
 !TXT! module info
 
-$Id: library/userinterface/formlets.py 8 2013-05-08 20:34:20Z sfluehnsdorf $
+$Id: library/userinterface/formlets.py 9 2013-05-08 21:24:45Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
