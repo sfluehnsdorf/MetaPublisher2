@@ -34,3 +34,5 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from jsondict import *
+
+# !!! check if to replace with https://pypi.python.org/pypi/jsondict/1.2

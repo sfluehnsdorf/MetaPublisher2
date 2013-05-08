@@ -26,7 +26,7 @@ The plugin registry automatises Zope Product registration for a range of plugins
 and handles auomatic registration for related pluginbases supporting this
 feature.
 
-$Id: library/application/pluginregistry.py 5 2013-05-05 18:03:32Z sfluehnsdorf $
+$Id: library/application/pluginregistry.py 6 2013-05-08 20:02:45Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -44,14 +44,18 @@ __all__ = [
 # PluginRegistry Class
 
 class PluginRegistry:
-    """PluginRegistry Class"""
+    """!TXT! PluginRegistry Class"""
 
     def __init__(self, context, prefix):
+        """!TXT!"""
+
         self.context = context
         self.prefix = prefix
         self.pluginbases = []
 
     def register_plugin(self, pluginclass):
+        """!TXT!"""
+
         context.register(
             pluginclass,
             meta_type='%s_%s' % (self.prefix, pluginbase.plugin_subtype),
@@ -61,10 +65,14 @@ class PluginRegistry:
         self.pluginbases.append(pluginclass.plugin_subtype)
 
     def register_plugins(self, basepath):
+        """!TXT!"""
+
         for pluginclass in pluginclasses:
             register_plugin(pluginclass)
 
     def autoregister_plugins(self):
+        """!TXT!"""
+
         for pluginbase, baseclasses, modifiers in self._get_plugin_autoregistries():
             pluginclass = type('%s_%s' % (prefix, pluginbase.plugin_subtype), baseclasses, {})
             for name, attribute in modifiers:
@@ -79,6 +87,8 @@ class PluginRegistry:
 
     # !!! pluginregistry.py - repeat until no more autoregistries can be matched...
     def _get_plugin_autoregistries(self):
+        """!TXT!"""
+
         result = []
         registered_pluginbases = self.pluginbases
         for pluginbase in self._get_pluginbases():
@@ -91,6 +101,8 @@ class PluginRegistry:
 
     # !!! pluginregistry.py - return pluginbase classes (currently not implemented)
     def _get_pluginbases(self):
+        """!TXT!"""
+
         result = []
         return result
 

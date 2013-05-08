@@ -24,7 +24,7 @@ __doc__ = """Service Section Inititalisation
 
 !TXT! module info
 
-$Id: service/__init__.py 2 2013-05-05 18:01:48Z sfluehnsdorf $
+$Id: service/__init__.py 4 2013-05-08 18:59:31Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

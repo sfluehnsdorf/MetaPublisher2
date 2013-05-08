@@ -25,7 +25,7 @@ __doc__ = """Search Component
 Keyword search for Entries in a Storage, allowing to define search conditions
 with a variety of conditions, provided by Field plugins.
 
-$Id: data/search/search.py 4 2013-05-05 18:03:58Z sfluehnsdorf $
+$Id: data/search/search.py 5 2013-05-08 19:34:16Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -46,10 +46,10 @@ __all__ = [
 
 
 # ============================================================================
-# Search Mix-In Class
+# Search Component Mix-In Class
 
 class Search:
-    """Search Mix-In Class"""
+    """!TXT! Search Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

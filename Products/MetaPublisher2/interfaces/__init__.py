@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """MetaPublisher2 Interfaces
+__doc__ = """MetaPublisher2 Interface Inititalisation
 
 !TXT! module info
 
-$Id: interfaces/__init__.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: interfaces/__init__.py 3 2013-05-08 18:47:15Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -24,7 +24,7 @@ __doc__ = """Reports Component
 
 !TXT! module info
 
-$Id: data/reports/reports.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/reports/reports.py 3 2013-05-08 19:34:04Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Reports Mix-In Class
+# Reports Component Mix-In Class
 
 class Reports:
-    """Reports Mix-In Class"""
+    """!TXT! Reports Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

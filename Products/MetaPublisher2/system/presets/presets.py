@@ -28,7 +28,7 @@ upgrade purposes. This service features both forward and backward
 compatibility so that Presets can exchanged with older and newer versions of
 MetaPublisher.
 
-$Id: system/presets/presets.py 5 2013-05-05 18:00:23Z sfluehnsdorf $
+$Id: system/presets/presets.py 6 2013-05-08 18:54:47Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -51,10 +51,10 @@ __all__ = [
 
 
 # ============================================================================
-# Presets Mix-In Class
+# Presets Component Mix-In Class
 
 class Presets:
-    """Presets Mix-In Class"""
+    """!TXT! Presets Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -111,49 +111,49 @@ class Presets:
     # Preset Retrieval API
 
     def _parse_preset(self, xmldata):
-        """Parse XML Preset definition into a mapping object"""
+        """!TXT! Parse XML Preset definition into a mapping object"""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'describe_preset')
 
     def describe_preset(self, filename):
-        """Read Preset file and return description of its contents."""
+        """!TXT! Read Preset file and return description of its contents."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'download_preset')
 
     def download_preset(self, url, REQUEST=None):
-        """Download a Preset file from the online repository and save locally."""
+        """!TXT! Download a Preset file from the online repository and save locally."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'get_preset')
 
     def get_preset(self, filename):
-        """Return the contents of the specified Preset file."""
+        """!TXT! Return the contents of the specified Preset file."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'get_preset_metadata')
 
     def get_preset_metadata(self, filename):
-        """Return the metadata of the specified Preset file."""
+        """!TXT! Return the metadata of the specified Preset file."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'has_preset')
 
     def has_preset(self, filename):
-        """Return True if the specified Preset file exists."""
+        """!TXT! Return True if the specified Preset file exists."""
 
         return filename in self.preset_ids()
 
     security.declareProtected(permission_load_presets, 'include_preset')
 
     def include_preset(self, filename, options, REQUEST=None):
-        """Load a Preset file from a local file, extending existing defintions."""
+        """!TXT! Load a Preset file from a local file, extending existing defintions."""
 
         # TODO: specify options parameter to map plugins, fields, etc.
 
@@ -171,21 +171,21 @@ class Presets:
     security.declareProtected(permission_manage_presets, 'preset_ids')
 
     def preset_ids(self):
-        """Return filenames of Presets files."""
+        """!TXT! Return filenames of Presets files."""
 
         return map(lambda item: item[0], self.preset_items())
 
     security.declareProtected(permission_manage_presets, 'preset_items')
 
     def preset_items(self):
-        """Return tuples of filename, metadata of Presets files."""
+        """!TXT! Return tuples of filename, metadata of Presets files."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'preset_values')
 
     def preset_values(self):
-        """Return metadata of Presets files."""
+        """!TXT! Return metadata of Presets files."""
 
         return map(lambda item: item[1], self.preset_items())
 
@@ -193,56 +193,56 @@ class Presets:
     # Preset Mutation API
 
     def _encode_preset(self, options):
-        """Encode a mapping object into XML preset definition."""
+        """!TXT! Encode a mapping object into XML preset definition."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'duplicate_preset')
 
     def duplicate_preset(self, preset_id, new_id, REQUEST=None):
-        """Duplicate the specified Preset file."""
+        """!TXT! Duplicate the specified Preset file."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'duplicate_presets')
 
     def duplicate_presets(self, preset_ids, new_ids, REQUEST=None):
-        """Duplicate the specified Preset files. Both id lists must have the same length or ValueError is raised."""
+        """!TXT! Duplicate the specified Preset files. Both id lists must have the same length or ValueError is raised."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'delete_preset')
 
     def delete_preset(self, preset_id, REQUEST=None):
-        """Rename the specified Preset file."""
+        """!TXT! Rename the specified Preset file."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'delete_presets')
 
     def delete_presets(self, preset_ids=[], REQUEST=None):
-        """Rename the specified Preset files."""
+        """!TXT! Rename the specified Preset files."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'rename_preset')
 
     def rename_preset(self, preset_id, new_id, REQUEST=None):
-        """Rename the specified Preset file."""
+        """!TXT! Rename the specified Preset file."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_manage_presets, 'rename_presets')
 
     def rename_presets(self, preset_ids, new_ids, REQUEST=None):
-        """Rename the specified Preset files. Both id lists must have the same length or ValueError is raised."""
+        """!TXT! Rename the specified Preset files. Both id lists must have the same length or ValueError is raised."""
 
         raise NotImplementedError
 
     security.declareProtected(permission_save_presets, 'save_preset')
 
     def save_preset(self, filename, options, REQUEST=None):
-        """Save a Preset file to a local file."""
+        """!TXT! Save a Preset file to a local file."""
 
         # TODO: specify options parameter to specify which entries, configuration, frontends, etc. to include
 
@@ -251,7 +251,7 @@ class Presets:
     security.declareProtected(permission_upload_presets, 'upload_preset')
 
     def upload_preset(self, filename, title, description, version, author, REQUEST=None):
-        """Upload a Preset file to the online Preset repository."""
+        """!TXT! Upload a Preset file to the online Preset repository."""
 
         # TODO: specify how to authenticate
 

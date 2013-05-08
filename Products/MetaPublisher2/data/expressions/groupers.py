@@ -24,7 +24,7 @@ __doc__ = """Expression Groupers Component
 
 !TXT! module info
 
-$Id: data/expressions/groupers.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/expressions/groupers.py 3 2013-05-08 19:32:09Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Groupers tes Mix-In Class
+# Groupers Components Mix-In Class
 
 class Groupers:
-    """Groupers Mix-In Class"""
+    """!TXT! Groupers Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

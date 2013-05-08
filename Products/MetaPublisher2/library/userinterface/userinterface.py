@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """MetaPublisher2 UserInterface
+__doc__ = """MetaPublisher2 User Interface
 
 !TXT! module info
 
-$Id: library/userinterface/userinterface.py 4 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: library/userinterface/userinterface.py 5 2013-05-08 20:31:13Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -36,10 +36,10 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 from Products.MetaPublisher2.library.application import permission_zmi
 from Products.MetaPublisher2.library.common import ClassSecurityInfo, false, InitializeClass, quote_plus
 
-from dialog import Dialog
-from formlet import Formlet
-from zmi import ZMI
-from resources import Resources
+from dialogs import *
+from formlets import *
+from resources import *
+from zmi import *
 
 
 # ============================================================================
@@ -51,10 +51,10 @@ __all__ = [
 
 
 # ============================================================================
-# UserInterface Mix-In Class
+# MetaPublisher2 User Interface Mix-In Class
 
-class UserInterface(Formlet, Dialog, Resources, ZMI):
-    """UserInterface Mix-In Class"""
+class UserInterface(Formlets, Dialogs, Resources, ZMI):
+    """!TXT! MetaPublisher2 User Interface Mix-In Class"""
 
     security = ClassSecurityInfo()
 

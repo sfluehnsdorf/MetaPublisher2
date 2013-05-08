@@ -4,7 +4,6 @@
   storage_id="getProfileSetting('storage_id', default_storage_id)"
   storage_index="all_storage_ids.index(storage_id)"
   >
-<div class="form">
   <table>
     <tr class="buttons">
 <dtml-if buttons>
@@ -41,9 +40,6 @@
       </th>
     </tr>
   </table>
-<dtml-unless form_continues>
-</div>
-</dtml-unless>
 </dtml-let>
 
 

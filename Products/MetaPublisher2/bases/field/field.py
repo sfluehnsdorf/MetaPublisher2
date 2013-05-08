@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Field Base
+__doc__ = """Field Plugin Base
 
 !TXT! module info
 
-$Id: bases/field/field.py 6 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/field/field.py 7 2013-05-08 19:52:58Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,10 +48,10 @@ __all__ = [
 
 
 # ============================================================================
-# Field Plugin Base
+# Field Plugin Base Class
 
 class FieldPluginBase(PluginBase, OrderedFolder):
-    """Field Plugin Base"""
+    """!TXT! Field Plugin Base Class"""
 
     security = ClassSecurityInfo()
 

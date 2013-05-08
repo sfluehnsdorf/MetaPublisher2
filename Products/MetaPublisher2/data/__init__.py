@@ -22,9 +22,7 @@
 
 __doc__ = """Data Section Inititalisation
 
-!TXT! module info
-
-$Id: data/__init__.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/__init__.py 3 2013-05-08 18:44:04Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

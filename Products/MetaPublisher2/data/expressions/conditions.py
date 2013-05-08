@@ -24,7 +24,7 @@ __doc__ = """Expression Conditions Component
 
 !TXT! module info
 
-$Id: data/expressions/conditions.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/expressions/conditions.py 3 2013-05-08 19:31:17Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Conditions Mix-In Class
+# Conditions Component Mix-In Class
 
 class Conditions:
-    """Conditions Mix-In Class"""
+    """!TXT! Conditions Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

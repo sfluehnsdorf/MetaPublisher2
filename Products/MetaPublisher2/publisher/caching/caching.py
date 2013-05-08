@@ -24,7 +24,7 @@ __doc__ = """Caching Component
 
 !TXT! module info
 
-$Id: publisher/caching/caching.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: publisher/caching/caching.py 3 2013-05-08 19:03:43Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Caching Mix-In Class
+# Caching Component Mix-In Class
 
 class Caching:
-    """Caching Mix-In Class"""
+    """!TXT! Caching Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

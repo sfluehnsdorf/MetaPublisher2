@@ -24,7 +24,7 @@ __doc__ = """Identifier Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/identifier.py 3 2013-05-07 20:29:35Z sfluehnsdorf $
+$Id: interfaces/identifier.py 4 2013-05-08 19:36:17Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Identifier Plugin Base Interface
 
 class IIdentifierPluginBase(Interface):
-    """Identifier Plugin Base Interface"""
+    """!TXT! Identifier Plugin Base Interface"""
 
     pass
 

@@ -24,7 +24,7 @@ __doc__ = """EntryField Container Interface
 
 !TXT! module info
 
-$Id: interfaces/entryfield.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: interfaces/entryfield.py 3 2013-05-08 19:36:32Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # EntryField Class Interface
 
 class IEntryField(Interface):
-    """EntryField Class Interface"""
+    """!TXT! EntryField Class Interface"""
 
     pass
 

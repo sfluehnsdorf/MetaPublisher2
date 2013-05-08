@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2Designs Product
 
 !TXT! module info
 
-$Id: products/metapublisher2designs/MetaPublisher2Designs.py 6 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: products/metapublisher2designs/MetaPublisher2Designs.py 7 2013-05-08 19:11:25Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -49,7 +49,7 @@ __all__ = [
 # MetaPublisher2Designs Product Class
 
 class MetaPublisher2Designs(Folder):
-    """MetaPublisher2Designs Product Class"""
+    """!TXT! MetaPublisher2Designs Product Class"""
 
     security = ClassSecurityInfo()
 
@@ -71,7 +71,7 @@ class MetaPublisher2Designs(Folder):
     # ZMI Events
 
     def all_meta_types(self, interfaces=None):
-        """Return list of containable object types"""
+        """!TXT! Return list of containable object types"""
 
         interfaces = (interfaces and list(interfaces) or []) + [IDesignPluginBase, ]
         return Folder.all_meta_types(self, interfaces)
@@ -82,14 +82,14 @@ class MetaPublisher2Designs(Folder):
     security.declarePublic('get_MetaPublisher2Designs')
 
     def get_MetaPublisher2Designs(self):
-        """Return this instance"""
+        """!TXT! Return this instance"""
 
         return self
 
     security.declarePublic('get_MetaPublisher2Designs_url')
 
     def get_MetaPublisher2Designs_url(self):
-        """Return this instance's absolute url"""
+        """!TXT! Return this instance's absolute url"""
 
         return self.absolute_url()
 
@@ -106,7 +106,7 @@ add_MetaPublisher2Designs_form = DTMLFile('add', globals())
 
 
 def add_MetaPublisher2Designs(self, id, title='Designs Folder', REQUEST=None):
-    """ZMI constructor for MetaPublisher2Designs"""
+    """!TXT! ZMI constructor for MetaPublisher2Designs"""
 
     if not container_filter(self.this()):
         raise TypeError("Can't add a MetaPublisher2Designs Folder outside of a MetaPublisher2")
@@ -135,6 +135,7 @@ def add_MetaPublisher2Designs(self, id, title='Designs Folder', REQUEST=None):
 # MetaPublisher2 Designs Content Filter
 
 def container_filter(folder):
+    """!TXT!"""
 
     if folder.meta_type == 'MetaPublisher2':
         return true
@@ -144,6 +145,7 @@ def container_filter(folder):
 # MetaPublisher2 Designs Registration
 
 def register_MetaPublisher2Designs(context):
+    """!TXT!"""
 
     try:
         context.registerClass(

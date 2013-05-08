@@ -32,7 +32,7 @@ with arbitrary attributes. Custom Exceptions include:
 - ImmutableError for values which may not be altered
 - UnreadableError for values which may not be queried
 
-$Id: library/application/exceptions.py 4 2013-05-05 18:03:40Z sfluehnsdorf $
+$Id: library/application/exceptions.py 5 2013-05-08 20:03:10Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -54,10 +54,10 @@ __all__ = [
 
 
 # ============================================================================
-# ExceptionBase
+# Exception Base Class
 
 class ExceptionBase(Exception):
-    """Exception Base Class
+    """!TXT! Exception Base Class
 
     Exception base class that can be initialized with arbitrary attributes.
     """
@@ -76,7 +76,7 @@ class ExceptionBase(Exception):
 # Ambiguity Error Exception
 
 class AmbiguityError(ExceptionBase):
-    """Ambiguity Error Exception
+    """!TXT! Ambiguity Error Exception
 
     Ambiguity errors are caused when available parameters are insufficient for
     decision making.
@@ -89,7 +89,7 @@ class AmbiguityError(ExceptionBase):
 # Configuration Error Exception
 
 class ConfigurationError(ExceptionBase):
-    """Configuration Error Exception
+    """!TXT! Configuration Error Exception
 
     Configuration errors are caused by parser errors of the settings.conf file
     or by invalid values of settings.
@@ -102,7 +102,7 @@ class ConfigurationError(ExceptionBase):
 # Connection Error Exception
 
 class ConnectionError(ExceptionBase):
-    """Connection Error Exception
+    """!TXT! Connection Error Exception
 
     Connection errors are caused by unavailable remote data sources, i.e. when
     an SQL database is not connected.
@@ -115,7 +115,7 @@ class ConnectionError(ExceptionBase):
 # Constraint Error Exception
 
 class ConstraintError(ExceptionBase):
-    """Constraint Error Exception
+    """!TXT! Constraint Error Exception
 
     Constraint errors are caused when quotas are exceeded, i.e. when a value is
     outside of predefined limit of a Field or the maximum number of Entries a
@@ -129,7 +129,7 @@ class ConstraintError(ExceptionBase):
 # Immutable Error Exception
 
 class ImmutableError(ExceptionBase):
-    """Immutable Error Exception
+    """!TXT! Immutable Error Exception
 
     Immutable errors are caused by actions on immutable data, such as modifying
     Entries of a read-only Storage.
@@ -142,7 +142,7 @@ class ImmutableError(ExceptionBase):
 # Unreadable Error Exception
 
 class UnreadableError(ExceptionBase):
-    """Unreadable Error Exception
+    """!TXT! Unreadable Error Exception
 
     Unreadable errors are caused by actions on unreadable data, such as
     retrieving Entries from a write-only Storage.
@@ -155,7 +155,7 @@ class UnreadableError(ExceptionBase):
 # Unsupported Error Exception
 
 class UnsupportedError(ExceptionBase):
-    """Unsupported Error Exception
+    """!TXT! Unsupported Error Exception
 
     Unsupported errors are caused by action which are not provided by a
     particular plugin, such as ordering Entries of an unordered Storage.
@@ -168,7 +168,7 @@ class UnsupportedError(ExceptionBase):
 # Render Error Exception
 
 class RenderError(ExceptionBase):
-    """Render Error Exception
+    """!TXT! Render Error Exception
 
     Render errors are raised when Frontend rendering fails for whatever reason.
     """

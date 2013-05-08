@@ -22,9 +22,10 @@
 
 __doc__ = """Service Section
 
+!TXT! module info
 Module providing a mix-in class for the MetaPublisher 2's Service section.
 
-$Id: service/service.py 5 2013-05-05 18:01:43Z sfluehnsdorf $
+$Id: service/service.py 6 2013-05-08 18:45:35Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

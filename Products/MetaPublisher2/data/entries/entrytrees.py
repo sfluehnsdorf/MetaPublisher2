@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """EntryTrees Component
+__doc__ = """Entry Trees Component
 
 !TXT! module info
 
-$Id: data/entries/entrytrees.py 8 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/entries/entrytrees.py 9 2013-05-08 19:29:56Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# EntryTrees Mix-In Class
+# Entry Trees Component Mix-In Class
 
 class EntryTrees:
-    """EntryTrees Mix-In Class"""
+    """!TXT! Entry Trees Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

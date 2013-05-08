@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Design Base
+__doc__ = """Design Plugin Base
 
 !TXT! module info
 
-$Id: bases/design/design.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/design/design.py 3 2013-05-08 19:54:52Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -46,10 +46,10 @@ __all__ = [
 
 
 # ============================================================================
-# Design Plugin Base
+# Design Plugin Base Class
 
 class DesignPluginBase:
-    """Design Plugin Base"""
+    """!TXT! Design Plugin Base Class"""
 
     security = ClassSecurityInfo()
 

@@ -29,7 +29,7 @@ It defines a plugin identifier and maps old style plugin detail attributes. It
 must preceed the plugin type base class in inheritance order to function
 properly.
 
-$Id: bases/plugin/legacyplugin.py 7 2013-05-05 18:04:52Z sfluehnsdorf $
+$Id: bases/plugin/legacyplugin.py 8 2013-05-08 19:47:57Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -59,7 +59,7 @@ all_plugintypes = ['ZMP2StoragePlugin', 'ZMP2FieldPlugin', 'ZMP2InterfacePlugin'
 # Legacy Plugin Base Class
 
 class LegacyPluginBase:
-    """Legacy Plugin Base Mix-In Class"""
+    """!TXT! Legacy Plugin Base Class"""
 
     security = ClassSecurityInfo()
 

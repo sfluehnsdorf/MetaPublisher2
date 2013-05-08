@@ -24,7 +24,7 @@ __doc__ = """Entry Component
 
 !TXT! module info
 
-$Id: data/entries/entry.py 10 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/entries/entry.py 11 2013-05-08 19:26:16Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Entry Mix-In Class
+# Entry Component Mix-In Class
 
 class Entry:
-    """Entry Mix-In Class"""
+    """Entry Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -59,7 +59,7 @@ class Entry:
 
     def get_entry(self, source, parent_entry_id=None, entry_id=None, entry_position=None, field_ids=None, failsafe=false, bound=true):
         """
-        Retrieve a single Entry
+        !TXT! Retrieve a single Entry
 
         Return the specified EntryFields of the Entry specified by either id or
         position from the specified source. Unless failsafe is True, raises
@@ -106,7 +106,7 @@ class Entry:
     security.declareProtected(permission_access_entries, 'entry_ids')
 
     def entry_ids(self, source, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None, bound=None):
-        """Return the ids of Entries of the specified source, ordered by a specific EntryField's value and limited to the Entries specified by ids or positions and matching conditions if defined."""
+        """!TXT! Return the ids of Entries of the specified source, ordered by a specific EntryField's value and limited to the Entries specified by ids or positions and matching conditions if defined."""
 
         source = self.get_storage(source)
         return source.entry_ids(parent_entry_id, entry_ids, entry_positions, conditions, order_by, offset, limit, bound)
@@ -114,7 +114,7 @@ class Entry:
     security.declareProtected(permission_access_entries, 'entry_items')
 
     def entry_items(self, source, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, field_ids=None, order_by=None, offset=None, limit=None, bound=None):
-        """Return a list of tuples of id, Entry of the Entries of the specified source, ordered by a specific EntryField's value and limited to the Entries specified by ids or positions and matching conditions if defined. If the Fields to return are undefined, all primary Fields will be returned."""
+        """!TXT! Return a list of tuples of id, Entry of the Entries of the specified source, ordered by a specific EntryField's value and limited to the Entries specified by ids or positions and matching conditions if defined. If the Fields to return are undefined, all primary Fields will be returned."""
 
         source = self.get_storage(source)
         return source.entry_items(parent_entry_id, entry_ids, entry_positions, conditions, field_ids, order_by, offset, limit, bound)
@@ -122,7 +122,7 @@ class Entry:
     security.declareProtected(permission_access_entries, 'entry_values')
 
     def entry_values(self, source, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, field_ids=None, order_by=None, offset=None, limit=None, bound=None):
-        """Return a list of Entries of the specified source, ordered by a specific EntryField's value and limited to the Entries specified by ids or positions and matching conditions if defined. If the Fields to return are undefined, all primary Fields will be returned."""
+        """!TXT! Return a list of Entries of the specified source, ordered by a specific EntryField's value and limited to the Entries specified by ids or positions and matching conditions if defined. If the Fields to return are undefined, all primary Fields will be returned."""
 
         source = self.get_storage(source)
         return source.entry_values(parent_entry_id, entry_ids, entry_positions, conditions, field_ids, order_by, offset, limit, bound)
@@ -133,7 +133,7 @@ class Entry:
     security.declareProtected(permission_access_entries, 'count_entries')
 
     def count_entries(self, source, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
-        """Return the number of Entries of the specified source, limited to the Entries specified by ids or positions and filtered by conditions if defined."""
+        """!TXT! Return the number of Entries of the specified source, limited to the Entries specified by ids or positions and filtered by conditions if defined."""
 
         source = self.get_storage(source)
         return source.count_entries(parent_entry_id, entry_ids, entry_positions, conditions)
@@ -144,7 +144,7 @@ class Entry:
     security.declareProtected(permission_access_entries, 'has_all_entries')
 
     def has_all_entries(self, source, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
-        """Return True if all Entries exist in the specified source, limited to the Entries specified by ids or positions and matching conditions if specified, False otherwise."""
+        """!TXT! Return True if all Entries exist in the specified source, limited to the Entries specified by ids or positions and matching conditions if specified, False otherwise."""
 
         source = self.get_storage(source)
         return source.has_all_entries(parent_entry_id, entry_ids, entry_positions, conditions)
@@ -152,7 +152,7 @@ class Entry:
     security.declareProtected(permission_access_entries, 'has_any_entries')
 
     def has_any_entries(self, source, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
-        """Return True if any Entries exist in the specified source, limited to the Entries specified by ids or positions and matching conditions if defined, False otherwise."""
+        """!TXT! Return True if any Entries exist in the specified source, limited to the Entries specified by ids or positions and matching conditions if defined, False otherwise."""
 
         source = self.get_storage(source)
         return source.has_any_entries(parent_entry_id, entry_ids, entry_positions, conditions)
@@ -160,7 +160,7 @@ class Entry:
     security.declareProtected(permission_access_entries, 'has_entry')
 
     def has_entry(self, source, parent_entry_id=None, entry_id=None, entry_position=None):
-        """Return True if the Entry specified by id or position exists in the specified source, False otherwise."""
+        """!TXT! Return True if the Entry specified by id or position exists in the specified source, False otherwise."""
 
         source = self.get_storage(source)
         return source.has_entry(parent_entry_id, entry_id, entry_position)
@@ -171,7 +171,7 @@ class Entry:
     security.declareProtected(permission_create_entries, 'add_entry')
 
     def add_entry(self, source, parent_entry_id=None, entry_id=None, entry_position=None, data={}, REQUEST=None, **args):
-        """Add a new Entry to the specified source with the specified id and/or position and the specified data. If no id is specified and the source expects an id, it will be automatically generated. If no position is specified and the source, the Entry will be added to the default position."""
+        """!TXT! Add a new Entry to the specified source with the specified id and/or position and the specified data. If no id is specified and the source expects an id, it will be automatically generated. If no position is specified and the source, the Entry will be added to the default position."""
 
         data.update(args)
         if REQUEST:
@@ -187,7 +187,7 @@ class Entry:
     security.declareProtected(permission_create_entries, 'add_entry_continued')
 
     def add_entry_continued(self, source, parent_entry_id=None, entry_id=None, entry_position=None, data={}, REQUEST=None, **args):
-        """Convenience method to add a new Entry and redirect to the add form."""
+        """!TXT! Convenience method to add a new Entry and redirect to the add form."""
 
         data.update(args)
         if REQUEST:
@@ -202,7 +202,7 @@ class Entry:
     security.declareProtected(permission_create_entries, 'add_entry_to_top')
 
     def add_entry_to_top(self, source, parent_entry_id=None, entry_id=None, data={}, REQUEST=None, **args):
-        """Convenience method to add a new Entry to the beginning of the source."""
+        """!TXT! Convenience method to add a new Entry to the beginning of the source."""
 
         data.update(args)
         if REQUEST:
@@ -218,7 +218,7 @@ class Entry:
     security.declareProtected(permission_create_entries, 'add_entry_to_bottom')
 
     def add_entry_to_bottom(self, source, parent_entry_id=None, entry_id=None, data={}, REQUEST=None, **args):
-        """Convenience method to add a new Entry to the end of the source."""
+        """!TXT! Convenience method to add a new Entry to the end of the source."""
 
         data.update(args)
         if REQUEST:
@@ -234,7 +234,7 @@ class Entry:
     security.declareProtected(permission_create_entries, 'add_entry_somewhere')
 
     def add_entry_somewhere(self, source, parent_entry_id=None, entry_id=None, data={}, REQUEST=None, **args):
-        """Convenience method to add a new Entry at a random position in the source."""
+        """!TXT! Convenience method to add a new Entry at a random position in the source."""
 
         data.update(args)
         if REQUEST:
@@ -307,7 +307,7 @@ class Entry:
     security.declareProtected(permission_create_entries, 'duplicate_entry')
 
     def duplicate_entry(self, source, parent_entry_id=None, entry_id=None, entry_position=None, new_id=None, REQUEST=None):
-        """Duplicate the Entry, specified by id or position, in the specified storage, automatically generating a new id if not specified"""
+        """!TXT! Duplicate the Entry, specified by id or position, in the specified storage, automatically generating a new id if not specified"""
 
         source = self.get_storage(source)
         new_id, new_position = source.duplicate_entry(parent_entry_id, entry_id, entry_position, new_id)
@@ -320,7 +320,7 @@ class Entry:
     security.declareProtected(permission_create_entries, 'duplicate_entries')
 
     def duplicate_entries(self, source, parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, new_ids=None, REQUEST=None):
-        """Duplicate the Entries, specified by ids or positions, in the specified storage, matching conditions if defined, automatically generating new ids if not specified. If the new ids are specfied, both id lists must have the same length or ValueError is raised."""
+        """!TXT! Duplicate the Entries, specified by ids or positions, in the specified storage, matching conditions if defined, automatically generating new ids if not specified. If the new ids are specfied, both id lists must have the same length or ValueError is raised."""
 
         source = self.get_storage(source)
         new_ids, new_positions = source.duplicate_entries(parent_entry_id, entry_ids, entry_positions, conditions, new_ids)
@@ -333,7 +333,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'set_entry')
 
     def set_entry(self, source, parent_entry_id=None, entry_id=None, entry_position=None, data={}, REQUEST=None, **args):
-        """Add or edit an Entry of the specified Storage"""
+        """!TXT! Add or edit an Entry of the specified Storage"""
 
         data.update(args)
         if REQUEST:
@@ -352,7 +352,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'edit_entry')
 
     def edit_entry(self, source, parent_entry_id=None, entry_id=None, entry_position=None, data={}, REQUEST=None, **args):
-        """Edit an Entry of the specified source with the specified id and/or position and the specified data."""
+        """!TXT! Edit an Entry of the specified source with the specified id and/or position and the specified data."""
 
         data.update(args)
         if REQUEST:
@@ -368,7 +368,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'edit_entry_continued')
 
     def edit_entry_continued(self, source, parent_entry_id=None, entry_id=None, entry_position=None, data={}, REQUEST=None, **args):
-        """Edit an Entry of the specified Storage and redirect to the add form."""
+        """!TXT! Edit an Entry of the specified Storage and redirect to the add form."""
 
         data.update(args)
         if REQUEST:
@@ -383,7 +383,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'edit_entries')
 
     def edit_entries(self, source, parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, data={}, REQUEST=None, **args):
-        """Edit Entries of the specified Storage with the specified data, identified by the specified ids and/or positions, matching conditions if defined"""
+        """!TXT! Edit Entries of the specified Storage with the specified data, identified by the specified ids and/or positions, matching conditions if defined"""
 
         data.update(args)
         if REQUEST:
@@ -401,7 +401,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'rename_entry')
 
     def rename_entry(self, source, parent_entry_id=None, entry_id=None, entry_position=None, new_id=None, REQUEST=None):
-        """Rename the specified Entry of the specified Storage, automatically generating a new id if not specified."""
+        """!TXT! Rename the specified Entry of the specified Storage, automatically generating a new id if not specified."""
 
         source = self.get_storage(source)
         new_id = source.rename_entry(parent_entry_id, entry_id, entry_position, new_id)
@@ -414,7 +414,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'rename_entries')
 
     def rename_entries(self, source, parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, new_ids=None, REQUEST=None):
-        """Rename the specified Entries of the specified Storage, automatically generating new ids if not specified, matching conditions if defined. If the new ids are specified, both id lists must have the same length."""
+        """!TXT! Rename the specified Entries of the specified Storage, automatically generating new ids if not specified, matching conditions if defined. If the new ids are specified, both id lists must have the same length."""
 
         source = self.get_storage(source)
         entry_ids, new_ids = source.rename_entries(parent_entry_id, entry_ids, entry_positions, conditions, new_ids)
@@ -427,7 +427,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'reset_entry')
 
     def reset_entry(self, source, parent_entry_id=None, entry_id=None, entry_position=None, field_ids=None, REQUEST=None):
-        """Reset either all or only the specified Fields of the specified Entry to default values."""
+        """!TXT! Reset either all or only the specified Fields of the specified Entry to default values."""
 
         source = self.get_storage(source)
         entry_id, entry_position = source.reset_entry(parent_entry_id, entry_id, entry_position, field_ids)
@@ -440,7 +440,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'reset_entries')
 
     def reset_entries(self, source, parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, field_ids=None, REQUEST=None):
-        """Reset either all or only the specified Fields of the specified Entries, matching conditions if defined, to default values."""
+        """!TXT! Reset either all or only the specified Fields of the specified Entries, matching conditions if defined, to default values."""
 
         source = self.get_storage(source)
         entry_ids, entry_positions = source.reset_entries(parent_entry_id, entry_ids, entry_positions, conditions, field_ids)
@@ -456,7 +456,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'clear_entries')
 
     def clear_entries(self, source, REQUEST=None):
-        """Delete all Entries in the specified source."""
+        """!TXT! Delete all Entries in the specified source."""
 
         source = self.get_storage(source)
         entry_ids, entry_positions = self.clear_entries()
@@ -469,7 +469,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'delete_entry')
 
     def delete_entry(self, source, parent_entry_id=None, entry_id=None, entry_position=None, failsafe=false, REQUEST=None):
-        """Delete an Entry from the specified Storage. Either an Entry's id or position must be specified. Unless failsafe is True, raises KeyError if the specified Entry does not exist."""
+        """!TXT! Delete an Entry from the specified Storage. Either an Entry's id or position must be specified. Unless failsafe is True, raises KeyError if the specified Entry does not exist."""
 
         source = self.get_storage(source)
         entry_id, entry_position = source.delete_entry(parent_entry_id, entry_id, entry_position, failsafe)
@@ -482,7 +482,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'delete_entries')
 
     def delete_entries(self, source, parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, failsafe=false, REQUEST=None):
-        """Delete the Entries, matching conditions if defined, from the specified Storage. Either Entries' ids or positions must be specified. Unless failsafe is True, raises KeyError if any of the specified Entries does not exist."""
+        """!TXT! Delete the Entries, matching conditions if defined, from the specified Storage. Either Entries' ids or positions must be specified. Unless failsafe is True, raises KeyError if any of the specified Entries does not exist."""
 
         source = self.get_storage(source)
         entry_ids, entry_positions = source.delete_entries(parent_entry_id, entry_ids, entry_positions, conditions, failsafe)
@@ -495,7 +495,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'pop_first_entry')
 
     def pop_first_entry(self, source, parent_entry_id=None, conditions=None, REQUEST=None):
-        """Convenience method to delete and return the Entry at the beginning of the source."""
+        """!TXT! Convenience method to delete and return the Entry at the beginning of the source."""
 
         source = self.get_storage(source)
         entry_id, entry_position, entry = source.pop_first_entry(parent_entry_id, conditions)
@@ -508,7 +508,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'pop_last_entry')
 
     def pop_last_entry(self, source, parent_entry_id=None, conditions=None, REQUEST=None):
-        """Convenience method to delete and return the Entry at the end of the source."""
+        """!TXT! Convenience method to delete and return the Entry at the end of the source."""
 
         source = self.get_storage(source)
         entry_id, entry_position, entry = source.pop_last_entry(parent_entry_id, conditions)
@@ -521,7 +521,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'pop_random_entry')
 
     def pop_random_entry(self, source, parent_entry_id=None, conditions=None, REQUEST=None):
-        """Convenience method to delete and return the Entry at a random position in the source."""
+        """!TXT! Convenience method to delete and return the Entry at a random position in the source."""
 
         source = self.get_storage(source)
         entry_id, entry_position, entry = source.pop_random_entry(parent_entry_id, conditions)

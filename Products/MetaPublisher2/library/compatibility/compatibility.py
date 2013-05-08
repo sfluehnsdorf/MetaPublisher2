@@ -20,13 +20,13 @@
 #
 # ============================================================================
 
-__doc__ = """Compatibility Mix-In
+__doc__ = """Compatibility Library
 
 To ensure to continued operation of deprecated resources, this module provides
-wrappers and handlers for these outdated resources. It also provides an API for
-logging calls to deprecated resources.
+wrappers and handlers for these outdated resources. It also provides an API
+for logging calls to deprecated resources.
 
-$Id: library/compatibility/compatibility.py 7 2013-05-07 17:52:28Z sfluehnsdorf $
+$Id: library/compatibility/compatibility.py 8 2013-05-08 20:23:10Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -55,8 +55,8 @@ __all__ = [
 # ============================================================================
 # Compatibility Mix-In Class
 
-class Compatibility(Future, Historical):
-    """Compatibility Mix-In Class"""
+class Compatibility(FutureCompatibility, HistoricalCompatibility):
+    """!TXT! Compatibility Mix-In Class"""
 
     security = ClassSecurityInfo()
 

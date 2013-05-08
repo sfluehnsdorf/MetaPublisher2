@@ -26,7 +26,7 @@ API for retrieval, mutation and ordering of Entries. An Entry is a singular unit
 of data stored. Entries are stored in Storages and are defined by the Storage's
 Fields and in EntrySets, which store the result of methods on Entries.
 
-$Id: data/entries/entries.py 7 2013-05-05 18:04:22Z sfluehnsdorf $
+$Id: data/entries/entries.py 8 2013-05-08 19:24:50Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -55,10 +55,10 @@ __all__ = [
 
 
 # ============================================================================
-# Entries Mix-In Class
+# Entries Component Mix-In Class
 
 class Entries(Entry, EntryFields, EntrySets, EntryOrder, EntryTrees, EntryGraphs, EntryStats):
-    """Entries Mix-In Class"""
+    """Entries Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -111,7 +111,7 @@ class Entries(Entry, EntryFields, EntrySets, EntryOrder, EntryTrees, EntryGraphs
     security.declareProtected(permission_access_entries, 'extract_entry_data')
 
     def extract_entry_data(self, source, mapping, failsafe=true):
-        """Extract the values of the Fields of the specified source from the specified mapping."""
+        """!TXT! Extract the values of the Fields of the specified source from the specified mapping."""
 
         source = self.get_storage(source)
         return source.extract_entry_data(mapping, failsafe)
@@ -119,7 +119,7 @@ class Entries(Entry, EntryFields, EntrySets, EntryOrder, EntryTrees, EntryGraphs
     security.declareProtected(permission_access_entries, 'extract_entryfield_data')
 
     def extract_entryfield_data(self, source, field_id, mapping, failsafe=true):
-        """Extract the value of the specified Field of the specified source from the specified mapping"""
+        """!TXT! Extract the value of the specified Field of the specified source from the specified mapping"""
 
         source = self.get_storage(source)
         return source.extract_entryfield_data(field_id, mapping, failsafe)

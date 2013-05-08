@@ -24,7 +24,7 @@ __doc__ = """Relations Component
 
 !TXT! module info
 
-$Id: configuration/relations/relations.py 3 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: configuration/relations/relations.py 4 2013-05-08 19:21:18Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ==============================================================================
-# Relations Mix-In Class
+# Relations Component Mix-In Class
 
 class Relations:
-    """Relations Mix-In Class"""
+    """!TXT! Relations Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Legacy Frontend Base
+__doc__ = """Legacy Frontend Plugin Base
 
 !TXT! module info
 
-$Id: bases/frontend/legacyfrontend.py 2 2013-05-05 18:01:54Z sfluehnsdorf $
+$Id: bases/frontend/legacyfrontend.py 3 2013-05-08 19:49:29Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,10 +48,10 @@ __all__ = [
 
 
 # ============================================================================
-# Legacy Frontend Plugin Base
+# Legacy Frontend Plugin Base Class
 
 class LegacyFrontendPlugin(LegacyPluginBase, FrontendPluginBase):
-    """Legacy Frontend Plugin Base"""
+    """Legacy Frontend Plugin Base Class"""
 
     security = ClassSecurityInfo()
 

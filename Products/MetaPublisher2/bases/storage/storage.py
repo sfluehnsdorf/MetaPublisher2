@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Storage Base
+__doc__ = """Storage Plugin Base
 
 !TXT! module info
 
-$Id: bases/storage/storage.py 5 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/storage/storage.py 6 2013-05-08 19:51:13Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -50,10 +50,10 @@ __all__ = [
 
 
 # ============================================================================
-# Storage Plugin Base
+# Storage Plugin Base Class
 
 class StoragePluginBase(EntryContainer, UserInterface, PluginBase, OrderedFolder):
-    """Storage Plugin Base"""
+    """!TXT! Storage Plugin Base Class"""
 
     security = ClassSecurityInfo()
 
@@ -81,7 +81,7 @@ class StoragePluginBase(EntryContainer, UserInterface, PluginBase, OrderedFolder
     security.declareProtected(permission_access_configuration, 'get_plugin_specification')
 
     def get_plugin_specification(self):
-        """Return a dictionary describing this Storage"""
+        """!TXT! Return a dictionary describing this Storage"""
 
         options = PluginBase.get_plugin_specification(self)
         options.update({

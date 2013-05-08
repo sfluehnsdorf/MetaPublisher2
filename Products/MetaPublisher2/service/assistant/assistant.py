@@ -27,7 +27,7 @@ user through the various steps. Users can select one of the three experience
 levels "novice", "intermediate" and "expert". This customises the information
 and the form of the presentation.
 
-$Id: service/assistant/assistant.py 3 2013-05-07 17:49:36Z sfluehnsdorf $
+$Id: service/assistant/assistant.py 4 2013-05-08 18:55:47Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -49,10 +49,10 @@ __all__ = [
 
 
 # ============================================================================
-# Assistant Mix-In Class
+# Assistant Component Mix-In Class
 
 class Assistant:
-    """Assistant Mix-In Class"""
+    """!TXT! Assistant Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

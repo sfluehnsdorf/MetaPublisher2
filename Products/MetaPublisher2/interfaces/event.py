@@ -24,7 +24,7 @@ __doc__ = """Event Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/event.py 3 2013-05-07 20:29:38Z sfluehnsdorf $
+$Id: interfaces/event.py 4 2013-05-08 19:36:28Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Event Plugin Base Interface
 
 class IEventPluginBase(Interface):
-    """Event Plugin Base Interface"""
+    """!TXT! Event Plugin Base Interface"""
 
     pass
 

@@ -24,7 +24,7 @@ __doc__ = """Language Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/language.py 3 2013-05-07 20:29:32Z sfluehnsdorf $
+$Id: interfaces/language.py 4 2013-05-08 19:36:11Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Language Plugin Base Interface
 
 class ILanguagePluginBase(Interface):
-    """Language Plugin Base Interface"""
+    """!TXT! Language Plugin Base Interface"""
 
     pass
 

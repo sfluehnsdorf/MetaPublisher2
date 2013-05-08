@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """EntryContainer Base
+__doc__ = """Entry Container Base
 
 !TXT! module info
 
-$Id: bases/entrycontainer/entrycontainer.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/entrycontainer/entrycontainer.py 3 2013-05-08 19:54:13Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -46,10 +46,10 @@ __all__ = [
 
 
 # ============================================================================
-# Entry Container Base
+# Entry Container Base Class
 
 class EntryContainer:
-    """Entry Container Base"""
+    """!TXT! Entry Container Base Class"""
 
     security = ClassSecurityInfo()
 

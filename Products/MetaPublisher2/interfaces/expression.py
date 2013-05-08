@@ -24,7 +24,7 @@ __doc__ = """Expression Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/expression.py 3 2013-05-07 20:29:36Z sfluehnsdorf $
+$Id: interfaces/expression.py 4 2013-05-08 19:36:25Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Expression Plugin Base Interface
 
 class IExpressionPluginBase(Interface):
-    """Expression Plugin Base Interface"""
+    """!TXT! Expression Plugin Base Interface"""
 
     pass
 

@@ -22,9 +22,7 @@
 
 __doc__ = """Configuration Section Inititalisation
 
-!TXT! module info
-
-$Id: configuration/__init__.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: configuration/__init__.py 3 2013-05-08 18:44:08Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

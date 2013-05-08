@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Widget Base
+__doc__ = """Widget Plugin Base
 
 !TXT! module info
 
-$Id: bases/widget/widget.py 6 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/widget/widget.py 7 2013-05-08 19:51:41Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,10 +48,10 @@ __all__ = [
 
 
 # ============================================================================
-# Widget Plugin Base
+# Widget Plugin Base Class
 
 class WidgetPluginBase(PluginBase, OrderedFolder):
-    """Widget Plugin Base"""
+    """!TXT! Widget Plugin Base Class"""
 
     security = ClassSecurityInfo()
 
@@ -88,7 +88,7 @@ class WidgetPluginBase(PluginBase, OrderedFolder):
     security.declareProtected(permission_manage_frontends, 'get_plugin_specification')
 
     def get_plugin_specification(self):
-        """Return a dictionary describing this Widget"""
+        """!TXT! Return a dictionary describing this Widget"""
 
         options = PluginBase.get_plugin_specification(self)
         options.update({

@@ -24,7 +24,7 @@ __doc__ = """Importer Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/importer.py 3 2013-05-07 20:29:34Z sfluehnsdorf $
+$Id: interfaces/importer.py 4 2013-05-08 19:36:15Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Importer Plugin Base Interface
 
 class IImporterPluginBase(Interface):
-    """Importer Plugin Base Interface"""
+    """!TXT! Importer Plugin Base Interface"""
 
     pass
 

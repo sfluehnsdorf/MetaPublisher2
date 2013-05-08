@@ -26,7 +26,7 @@ __doc__ = """Integrity Component
 Reporting service, which tests the integrity of the MetaPublisher 2 components
 and reports inconsistencies in the configuration.
 
-$Id: system/integrity/integrity.py 5 2013-05-05 18:00:40Z sfluehnsdorf $
+$Id: system/integrity/integrity.py 6 2013-05-08 18:54:47Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -47,10 +47,10 @@ __all__ = [
 
 
 # ==============================================================================
-# Integrity Mix-In Class
+# Integrity Component Mix-In Class
 
 class Integrity:
-    """Integrity Mix-In Class"""
+    """!TXT! Integrity Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -67,7 +67,7 @@ class Integrity:
     security.declareProtected(permission_manage, 'test_integrity')
 
     def test_integrity(self, REQUEST):
-        """Perform integrity tests with specified options."""
+        """!TXT! Perform integrity tests with specified options."""
 
         result = []
 
@@ -105,42 +105,42 @@ class Integrity:
     # Integrity Subsystem Test API
 
     def _test_designs_integrity(self):
-        """Perform integrity tests on all Designs."""
+        """!TXT! Perform integrity tests on all Designs."""
 
         # TODO: implement designs integrity tests
 
         return []
 
     def _test_entries_integrity(self, storage_id):
-        """Perform integrity tests on all Entries in the specified Storage."""
+        """!TXT! Perform integrity tests on all Entries in the specified Storage."""
 
         # !!! integrity.py - implement entries integrity tests
 
         return []
 
     def _test_fields_integrity(self, storage_id):
-        """Perform integrity tests on all Fields in the specified Storage."""
+        """!TXT! Perform integrity tests on all Fields in the specified Storage."""
 
         # !!! integrity.py - implement fields integrity tests
 
         return []
 
     def _test_frontends_integrity(self):
-        """Perform integrity tests on all Frontends."""
+        """!TXT! Perform integrity tests on all Frontends."""
 
         # TODO: implement frontends integrity tests
 
         return []
 
     def _test_indexing_integrity(self):
-        """Perform integrity tests on all Indexes."""
+        """!TXT! Perform integrity tests on all Indexes."""
 
         # TODO: implement indexing integrity tests
 
         return []
 
     def _test_plugins_integrity(self):
-        """Perform integrity tests on all Plugins."""
+        """!TXT! Perform integrity tests on all Plugins."""
 
         result = []
         if not(self.has_storageplugins()):
@@ -157,28 +157,28 @@ class Integrity:
         return result
 
     def _test_presets_integrity(self):
-        """Perform integrity tests on all Presets."""
+        """!TXT! Perform integrity tests on all Presets."""
 
         # TODO: implement presets integrity tests
 
         return []
 
     def _test_profiles_integrity(self):
-        """Perform integrity tests on all Profiles."""
+        """!TXT! Perform integrity tests on all Profiles."""
 
         # !!! integrity.py - implement profiles integrity tests
 
         return []
 
     def _test_storages_integrity(self):
-        """Perform integrity tests on all Storages."""
+        """!TXT! Perform integrity tests on all Storages."""
 
         # !!! integrity.py - implement storages integrity tests
 
         return []
 
     def _test_widgets_integrity(self):
-        """Perform integrity tests on all Widgets."""
+        """!TXT! Perform integrity tests on all Widgets."""
 
         # TODO: implement widgets integrity tests
 

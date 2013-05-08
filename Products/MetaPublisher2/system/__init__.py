@@ -24,7 +24,7 @@ __doc__ = """System Section Inititalisation
 
 !TXT! module info
 
-$Id: system/__init__.py 3 2013-05-05 18:00:49Z sfluehnsdorf $
+$Id: system/__init__.py 5 2013-05-08 18:59:49Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

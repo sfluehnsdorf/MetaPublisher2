@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """EntryGraphs Component
+__doc__ = """Entry Graphs Component
 
 !TXT! module info
 
-$Id: data/entries/entrygraphs.py 5 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/entries/entrygraphs.py 6 2013-05-08 19:27:11Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# EntryGraphs Mix-In Class
+# Entry Graphs Component Mix-In Class
 
 class EntryGraphs:
-    """EntryGraphs Mix-In Class"""
+    """!TXT! Entry Graphs Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

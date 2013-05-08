@@ -20,14 +20,14 @@
 #
 # ============================================================================
 
-__doc__ = """Compatibility Library
+__doc__ = """Compatibility Library Initialisation
 
-To avoid incompatobilities with previous and future release of the application,
-MetaPublisher2 provides wrappers and handlers for outdated and upcoming
-resources. Calls to any such resource is logged by functions provided by this
-module.
+To avoid incompatobilities with previous and future release of the
+application, MetaPublisher2 provides wrappers and handlers for outdated and
+upcoming resources. Calls to any such resource is logged by functions provided
+by this module.
 
-$Id: library/compatibility/__init__.py 3 2013-05-05 18:03:22Z sfluehnsdorf $
+$Id: library/compatibility/__init__.py 4 2013-05-08 20:07:44Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

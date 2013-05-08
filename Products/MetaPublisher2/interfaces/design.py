@@ -24,7 +24,7 @@ __doc__ = """Design Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/design.py 3 2013-05-07 20:29:41Z sfluehnsdorf $
+$Id: interfaces/design.py 4 2013-05-08 19:36:56Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Design Plugin Base Interface
 
 class IDesignPluginBase(Interface):
-    """Design Plugin Base Interface"""
+    """!TXT! Design Plugin Base Interface"""
 
     pass
 

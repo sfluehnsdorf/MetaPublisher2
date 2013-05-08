@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """MetaPublisher2 Base Classes
+__doc__ = """MetaPublisher2 Base Class Inititalisation
 
 !TXT! module info
 
-$Id: bases/__init__.py 6 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/__init__.py 7 2013-05-08 18:47:16Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

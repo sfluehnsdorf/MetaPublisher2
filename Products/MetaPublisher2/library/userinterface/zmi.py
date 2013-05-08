@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """UserInterface ZMI
+__doc__ = """MetaPublisher2 ZMI
 
 !TXT! module info
 
-$Id: library/userinterface/zmi.py 3 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: library/userinterface/zmi.py 4 2013-05-08 20:29:56Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -46,10 +46,10 @@ __all__ = [
 
 
 # ============================================================================
-# ZMI Mix-In Class
+# MetaPublisher2 ZMI Mix-In Class
 
 class ZMI:
-    """ZMI Mix-In Class"""
+    """!TXT! MetaPublisher2 ZMI Mix-In Class"""
 
     security = ClassSecurityInfo()
 

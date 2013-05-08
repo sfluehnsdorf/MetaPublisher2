@@ -24,7 +24,7 @@ __doc__ = """Tools Component Inititalisation
 
 !TXT! module info
 
-$Id: system/tools/__init__.py 2 2013-05-05 18:00:09Z sfluehnsdorf $
+$Id: system/tools/__init__.py 3 2013-05-08 18:59:47Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

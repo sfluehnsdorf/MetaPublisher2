@@ -8,9 +8,13 @@
 <dtml-var manage_MetaPublisher2_header>
 
 <dtml-if has_storageplugins>
+
 <dtml-if has_storages>
 
+<dtml-var formlet_header>
 <dtml-var "storage_selection_formlet( form_id = 'transfers_form' )">
+<dtml-var formlet_footer>
+
 <dtml-var not_available_dialog>
 
 <dtml-else>

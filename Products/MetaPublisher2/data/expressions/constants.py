@@ -24,7 +24,7 @@ __doc__ = """Expression Constants Component
 
 !TXT! module info
 
-$Id: data/expressions/constants.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/expressions/constants.py 3 2013-05-08 19:31:32Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Constants Mix-In Class
+# Constants Component Mix-In Class
 
 class Constants:
-    """Constants Mix-In Class"""
+    """!TXT! Constants Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

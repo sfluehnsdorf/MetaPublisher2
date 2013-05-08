@@ -28,7 +28,7 @@ definition of the data stored in an Entry. Each Field represents a data type,
 such as text, numbers, images, files, etc. Fields can be added, edited, renamed,
 deleted and ordered as well as retrieved, listed and tested for existence.
 
-$Id: configuration/fields/fields.py 13 2013-05-05 18:04:40Z sfluehnsdorf $
+$Id: configuration/fields/fields.py 14 2013-05-08 19:20:24Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -50,10 +50,10 @@ __all__ = [
 
 
 # ============================================================================
-# Fields Mix-In Class
+# Fields Component Mix-In Class
 
 class Fields:
-    """Fields Mix-In Class"""
+    """!TXT! Fields Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -94,35 +94,35 @@ class Fields:
     security.declareProtected(permission_manage, 'has_fieldplugins')
 
     def has_fieldplugins(self):
-        """Return the specified MetaPublisher2 Field plugin"""
+        """!TXT! Return the specified MetaPublisher2 Field plugin"""
 
         return self.has_plugins(IFieldPluginBase)
 
     security.declareProtected(permission_manage, 'get_fieldplugin')
 
     def get_fieldplugin(self, fieldplugin_id):
-        """Return the specified MetaPublisher2 Field plugin"""
+        """!TXT! Return the specified MetaPublisher2 Field plugin"""
 
         return self.get_plugin(fieldplugin_id, IFieldPluginBase)
 
     security.declareProtected(permission_manage, 'fieldplugin_ids')
 
     def fieldplugin_ids(self):
-        """Return ids of installed MetaPublisher2 Field plugins"""
+        """!TXT! Return ids of installed MetaPublisher2 Field plugins"""
 
         return self.plugin_ids(IFieldPluginBase)
 
     security.declareProtected(permission_manage, 'fieldplugin_items')
 
     def fieldplugin_items(self):
-        """Return tuples of id, value of installed MetaPublisher2 Field plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2 Field plugins"""
 
         return self.plugin_items(IFieldPluginBase)
 
     security.declareProtected(permission_manage, 'fieldplugin_values')
 
     def fieldplugin_values(self):
-        """Return tuples of id, value of installed MetaPublisher2 Field plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2 Field plugins"""
 
         return self.plugin_values(IFieldPluginBase)
 
@@ -132,7 +132,7 @@ class Fields:
     security.declareProtected(permission_manage, 'get_fieldflags')
 
     def get_fieldflags(self, storage_id, field_id):
-        """Return tuples of id, boolean states of all Plugin flags"""
+        """!TXT! Return tuples of id, boolean states of all Plugin flags"""
 
         field = self.get_field(storage_id, field_id)
         return field.get_pluginflag()
@@ -140,7 +140,7 @@ class Fields:
     security.declareProtected(permission_manage, 'get_fieldflag_ids')
 
     def get_fieldflag_ids(self, storage_id, field_id):
-        """Return the ids of all Plugin flags"""
+        """!TXT! Return the ids of all Plugin flags"""
 
         field = self.get_field(storage_id, field_id)
         return field.get_pluginflag_ids()
@@ -148,7 +148,7 @@ class Fields:
     security.declareProtected(permission_manage, 'get_fieldflag')
 
     def get_fieldflag(self, storage_id, field_id, pluginflag_id):
-        """Return the boolean state of the specified Design flag if it exists, raises KeyError otherwise"""
+        """!TXT! Return the boolean state of the specified Design flag if it exists, raises KeyError otherwise"""
 
         field = self.get_field(storage_id, field_id)
         return field.get_pluginflag(pluginflag_id)
@@ -156,7 +156,7 @@ class Fields:
     security.declareProtected(permission_manage, 'has_fieldflag')
 
     def has_fieldflag(self, storage_id, field_id, pluginflag_id):
-        """Return True if the Design flag exists, False otherwise"""
+        """!TXT! Return True if the Design flag exists, False otherwise"""
 
         field = self.get_field(storage_id, field_id)
         return field.has_pluginflag(pluginflag_id)
@@ -167,7 +167,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'count_fields')
 
     def count_fields(self, storage_id):
-        """Return the number of Fields of the specified Storage"""
+        """!TXT! Return the number of Fields of the specified Storage"""
 
         storage = self.get_storage(storage_id)
         return storage.count_fields()
@@ -175,7 +175,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'field_ids')
 
     def field_ids(self, storage_id):
-        """Return the ids of the specified Storage's Fields."""
+        """!TXT! Return the ids of the specified Storage's Fields."""
 
         storage = self.get_storage(storage_id)
         return storage.field_ids()
@@ -183,7 +183,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'field_items')
 
     def field_items(self, storage_id):
-        """Return tuples of id, object of the specified Storage's Fields."""
+        """!TXT! Return tuples of id, object of the specified Storage's Fields."""
 
         storage = self.get_storage(storage_id)
         return storage.field_items()
@@ -191,7 +191,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'field_values')
 
     def field_values(self, storage_id):
-        """Return the objects of the specified Storage's Fields."""
+        """!TXT! Return the objects of the specified Storage's Fields."""
 
         storage = self.get_storage(storage_id)
         return storage.field_values()
@@ -199,7 +199,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'get_field')
 
     def get_field(self, storage_id, field_id):
-        """Return the specified Storage's Field."""
+        """!TXT! Return the specified Storage's Field."""
 
         storage = self.get_storage(storage_id)
         return storage.get_field(field_id)
@@ -207,7 +207,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'get_field_default')
 
     def get_field_default(self, storage_id, field_id):
-        """Return the default value of the specified Storage's Field."""
+        """!TXT! Return the default value of the specified Storage's Field."""
 
         storage = self.get_storage(storage_id)
         return storage.get_field_default(field_id)
@@ -215,7 +215,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'has_all_fields')
 
     def has_all_fields(self, storage_id, field_ids=None, field_types=None):
-        """Return True if all of the specified Storage's Fields exist, limited to Field Types if specified. If no Fields are specified, checks if all Fields are of the specified Field Types."""
+        """!TXT! Return True if all of the specified Storage's Fields exist, limited to Field Types if specified. If no Fields are specified, checks if all Fields are of the specified Field Types."""
 
         storage = self.get_storage(storage_id)
         return storage.has_all_fields(field_ids, field_types)
@@ -223,7 +223,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'has_any_fields')
 
     def has_any_fields(self, storage_id, field_ids=None, field_types=None):
-        """Return True if any of the specified Storage's Fields exist, limited to Field Types if specified. If no Fields are specified, checks if any Fields are of the specified Field Types."""
+        """!TXT! Return True if any of the specified Storage's Fields exist, limited to Field Types if specified. If no Fields are specified, checks if any Fields are of the specified Field Types."""
 
         storage = self.get_storage(storage_id)
         return storage.has_any_fields(field_ids, field_types)
@@ -231,7 +231,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'has_field')
 
     def has_field(self, storage_id, field_id):
-        """Return True if the specified Storage's Field exists."""
+        """!TXT! Return True if the specified Storage's Field exists."""
 
         storage = self.get_storage(storage_id)
         return storage.has_field(field_id)
@@ -257,7 +257,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'add_field')
 
     def add_field(self, storage_id, field_id, field_type_id, options={}, REQUEST=None, **args):
-        """Add a new Field of the specified type in the specified Storage with specified id and configuration."""
+        """!TXT! Add a new Field of the specified type in the specified Storage with specified id and configuration."""
 
         options.update(args)
         if REQUEST:
@@ -281,7 +281,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'delete_field')
 
     def delete_field(self, storage_id, field_id, REQUEST=None):
-        """Delete the specified Storage's Field."""
+        """!TXT! Delete the specified Storage's Field."""
 
         storage = self.get_storage(storage_id)
         storage.delete_field(field_id)
@@ -291,7 +291,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'delete_fields')
 
     def delete_fields(self, storage_id, field_ids=[], REQUEST=None):
-        """Delete the specified Storage's Fields."""
+        """!TXT! Delete the specified Storage's Fields."""
 
         storage = self.get_storage(storage_id)
         storage.delete_fields(field_ids)
@@ -301,7 +301,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'duplicate_field')
 
     def duplicate_field(self, storage_id, field_id, new_id, REQUEST=None):
-        """Duplicate the specified Storage's Field."""
+        """!TXT! Duplicate the specified Storage's Field."""
 
         storage = self.get_storage(storage_id)
         storage.duplicate_field(field_id, new_id)
@@ -311,7 +311,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'duplicate_fields')
 
     def duplicate_fields(self, storage_id, field_ids=[], new_ids=[], REQUEST=None):
-        """Duplicate the specified Storage's Fields."""
+        """!TXT! Duplicate the specified Storage's Fields."""
 
         storage = self.get_storage(storage_id)
         storage.duplicate_fields(field_ids, new_ids)
@@ -321,7 +321,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'edit_field')
 
     def edit_field(self, storage_id, field_id, options={}, REQUEST=None, **args):
-        """Change the specified Storage's Field's configuration."""
+        """!TXT! Change the specified Storage's Field's configuration."""
 
         options.update(args)
         if REQUEST:
@@ -335,7 +335,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'rename_field')
 
     def rename_field(self, storage_id, field_id, new_id, REQUEST=None):
-        """Rename the specified Storage's Field."""
+        """!TXT! Rename the specified Storage's Field."""
 
         storage = self.get_storage(storage_id)
         storage.rename_field(field_id, new_id)
@@ -345,7 +345,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'rename_fields')
 
     def rename_fields(self, storage_id, field_ids, new_ids):
-        """Rename the specified Storage's Fields."""
+        """!TXT! Rename the specified Storage's Fields."""
 
         storage = self.get_storage(storage_id)
         storage.rename_fields(field_ids, new_ids)
@@ -355,7 +355,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'set_field_default')
 
     def set_field_default(self, storage_id, field_id, value):
-        """Set the default value of the specified Storage's Field."""
+        """!TXT! Set the default value of the specified Storage's Field."""
 
         storage = self.get_storage(storage_id)
         storage.set_field_default(field_id, value)
@@ -368,7 +368,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'clear_primary_fields')
 
     def clear_primary_fields(self, storage_id):
-        """Set all primary Storage's Fields to non-primary."""
+        """!TXT! Set all primary Storage's Fields to non-primary."""
 
         unset_primary_field = self.unset_primary_field
         for field_id in self.primary_field_ids(storage_id):
@@ -377,7 +377,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'is_primary_field')
 
     def is_primary_field(self, storage_id, field_id):
-        """Return True if the specified Storage's Field is primary, False otherwise."""
+        """!TXT! Return True if the specified Storage's Field is primary, False otherwise."""
 
         storage = self.get_storage(storage_id)
         return storage.is_primary_field(field_id)
@@ -385,7 +385,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'primary_field_ids')
 
     def primary_field_ids(self, storage_id):
-        """Return the ids of the specified Storage's primary Fields."""
+        """!TXT! Return the ids of the specified Storage's primary Fields."""
 
         storage = self.get_storage(storage_id)
         return storage.primary_field_ids()
@@ -393,7 +393,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'primary_field_items')
 
     def primary_field_items(self, storage_id):
-        """Return tuples of id, value of the specified Storage's primary Fields."""
+        """!TXT! Return tuples of id, value of the specified Storage's primary Fields."""
 
         storage = self.get_storage(storage_id)
         return storage.primary_field_items()
@@ -401,7 +401,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'primary_field_values')
 
     def primary_field_values(self, storage_id):
-        """Return the values of the specified Storage's primary Fields."""
+        """!TXT! Return the values of the specified Storage's primary Fields."""
 
         storage = self.get_storage(storage_id)
         return storage.primary_field_values()
@@ -409,7 +409,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'set_primary_field')
 
     def set_primary_field(self, storage_id, field_id):
-        """Set the specified Storage's Field to primary."""
+        """!TXT! Set the specified Storage's Field to primary."""
 
         storage = self.get_storage(storage_id)
         storage.set_primary_field(field_id)
@@ -417,7 +417,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'set_primary_fields')
 
     def set_primary_fields(self, storage_id, field_ids=[]):
-        """Set all specified Storage's Fields to primary."""
+        """!TXT! Set all specified Storage's Fields to primary."""
 
         set_primary_field = self.set_primary_field
         for field_id in field_ids:
@@ -426,7 +426,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'unset_primary_field')
 
     def unset_primary_field(self, storage_id, field_id):
-        """Set the specified Storage's Fields to non-primary."""
+        """!TXT! Set the specified Storage's Fields to non-primary."""
 
         storage = self.get_storage(storage_id)
         storage.unset_primary_field(field_id)
@@ -434,7 +434,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'unset_primary_fields')
 
     def unset_primary_fields(self, storage_id, field_ids=[]):
-        """Set all specified Storage's Fields to non-primary."""
+        """!TXT! Set all specified Storage's Fields to non-primary."""
 
         unset_primary_field = self.unset_primary_field
         for field_id in field_ids:
@@ -448,7 +448,7 @@ class Fields:
     security.declareProtected(permission_access_configuration, 'get_field_position')
 
     def get_field_position(self, storage_id, field_id):
-        """Return the position of an the specified Storage's Field."""
+        """!TXT! Return the position of an the specified Storage's Field."""
 
         storage = self.get_storage(storage_id)
         return storage.get_field_position(field_id)
@@ -456,7 +456,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'move_field_to_position')
 
     def move_field_to_position(self, storage_id, field_id, position, REQUEST=None):
-        """Move the specified Storage's Field to the specified position."""
+        """!TXT! Move the specified Storage's Field to the specified position."""
 
         storage = self.get_storage(storage_id)
         storage.move_field_to_position(field_id, position)
@@ -466,7 +466,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'move_field_to_top')
 
     def move_field_to_top(self, storage_id, field_id, REQUEST=None):
-        """Move the specified Storage's Field to the top."""
+        """!TXT! Move the specified Storage's Field to the top."""
 
         storage = self.get_storage(storage_id)
         storage.move_field_to_top(field_id)
@@ -476,7 +476,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'move_field_up')
 
     def move_field_up(self, storage_id, field_id, REQUEST=None):
-        """Move the specified Storage's Field up one position."""
+        """!TXT! Move the specified Storage's Field up one position."""
 
         storage = self.get_storage(storage_id)
         storage.move_field_up(field_id)
@@ -486,7 +486,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'move_field_down')
 
     def move_field_down(self, storage_id, field_id, REQUEST=None):
-        """Move the specified Storage's Field down one position."""
+        """!TXT! Move the specified Storage's Field down one position."""
 
         storage = self.get_storage(storage_id)
         storage.move_field_down(field_id)
@@ -496,7 +496,7 @@ class Fields:
     security.declareProtected(permission_change_configuration, 'move_field_to_bottom')
 
     def move_field_to_bottom(self, storage_id, field_id, REQUEST=None):
-        """Move the specified Storage's Field to the bottom."""
+        """!TXT! Move the specified Storage's Field to the bottom."""
 
         storage = self.get_storage(storage_id)
         storage.move_field_to_bottom(field_id)

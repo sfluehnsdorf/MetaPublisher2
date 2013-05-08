@@ -24,7 +24,7 @@ __doc__ = """Cache Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/cache.py 3 2013-05-07 20:29:43Z sfluehnsdorf $
+$Id: interfaces/cache.py 4 2013-05-08 19:37:02Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Cache Plugin Base Interface
 
 class ICachePluginBase(Interface):
-    """Cache Plugin Base Interface"""
+    """!TXT! Cache Plugin Base Interface"""
 
     pass
 

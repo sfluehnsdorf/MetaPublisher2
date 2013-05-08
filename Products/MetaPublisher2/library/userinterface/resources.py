@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """UserInterface Resources
+__doc__ = """MetaPublisher2 Resources
 
 !TXT! module info
 
-$Id: library/userinterface/resources.py 3 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: library/userinterface/resources.py 4 2013-05-08 20:29:56Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -46,13 +46,10 @@ __all__ = [
 
 
 # ============================================================================
-# Imagery
-
-# ------------------------------------------------------------------------------
-# Resources Mix-In Class
+# MetaPublisher2 Resources Mix-In Class
 
 class Resources:
-    """Resources Mix-In Class"""
+    """!TXT! MetaPublisher2 Resources Mix-In Class"""
 
     security = ClassSecurityInfo()
 

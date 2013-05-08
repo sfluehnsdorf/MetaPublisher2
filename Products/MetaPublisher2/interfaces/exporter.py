@@ -24,7 +24,7 @@ __doc__ = """Exporter Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/exporter.py 3 2013-05-07 20:29:37Z sfluehnsdorf $
+$Id: interfaces/exporter.py 4 2013-05-08 19:36:27Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Exporter Plugin Base Interface
 
 class IExporterPluginBase(Interface):
-    """Exporter Plugin Base Interface"""
+    """!TXT! Exporter Plugin Base Interface"""
 
     pass
 

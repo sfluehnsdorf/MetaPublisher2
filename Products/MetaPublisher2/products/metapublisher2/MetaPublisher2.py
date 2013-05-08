@@ -22,28 +22,28 @@
 
 __doc__ = """MetaPublisher 2 Product
 
-The MetaPublisher 2 Product is an application made up of a range of components,
-including...
+The MetaPublisher 2 Product is an application made up of a range of sections
+with components including...
 
-- Data: for storing, mutating and retrieving data
+- Data: for retrieving and mutating arbitrary data of storages and entrysets
 
-- Configuration: for configuring and accessing data storages, storage columns
-  and indexing services
+- Configuration: for configuring and accessing data storages, fields and
+  related services
 
-- Publisher: for defining and rendering public user interfaces, where applicable
-  based on the data configuration
+- Publisher: for defining and rendering user interfaces, including forms for
+  data managemenbt based on the configuration
 
-- System: for running integrity tests, for loading and saving application
-  presets and for managing user profiles and plugins
+- System: for running integrity tests, managing and sharing presets and for
+  managing user profiles and plugins
 
-- Service: for retrieving release information, for accessing the user & developer
-  manual and for sending feedback
+- Service: for retrieving release information, for accessing the user &
+  developer manual and for sending feedback
 
 The application can be managed through the Web by Zope's Management Interface,
 through an extensive API or, if desired through a user generated public
 interface.
 
-$Id: products/metapublisher2/MetaPublisher2.py 14 2013-05-05 20:44:18Z sfluehnsdorf $
+$Id: products/metapublisher2/MetaPublisher2.py 15 2013-05-08 19:11:25Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -86,7 +86,7 @@ __all__ = [
 
 # !!! MetaPublisher2.py - remove DEV before release
 class MetaPublisher2(Data, Configuration, Publisher, System, Service, DEV, JSONDict, XMLDict, Compatibility, UserInterface, MultiTabs, Folder):
-    """MetaPublisher2 Product Class"""
+    """!TXT! MetaPublisher2 Product Class"""
 
     security = ClassSecurityInfo()
 
@@ -124,13 +124,13 @@ class MetaPublisher2(Data, Configuration, Publisher, System, Service, DEV, JSOND
     # ZMI Events
 
     def manage_afterAdd(self, item, container):
-        """Handle creation event"""
+        """!TXT! Handle creation event"""
 
         # initialize profiles
         self.init_profiles()
 
     def __setstate__(self, state):
-        """Handle startup event"""
+        """!TXT! Handle startup event"""
 
         Folder.inheritedAttribute('__setstate__')(self, state)
 
@@ -167,14 +167,14 @@ class MetaPublisher2(Data, Configuration, Publisher, System, Service, DEV, JSOND
     security.declarePublic('get_MetaPublisher2')
 
     def get_MetaPublisher2(self):
-        """Return this instance"""
+        """!TXT! Return this instance"""
 
         return self
 
     security.declarePublic('get_MetaPublisher2_url')
 
     def get_MetaPublisher2_url(self):
-        """Return this instance's absolute url"""
+        """!TXT! Return this instance's absolute url"""
 
         return self.absolute_url()
 
@@ -191,7 +191,7 @@ add_MetaPublisher2_form = DTMLFile('add', globals())
 
 
 def add_MetaPublisher2(self, id, title='', presets=[], REQUEST=None):
-    """MetaPublisher2 Constructor"""
+    """!TXT! MetaPublisher2 Constructor"""
 
     id = str(id)
     title = str(title)
@@ -224,7 +224,7 @@ def add_MetaPublisher2(self, id, title='', presets=[], REQUEST=None):
 # MetaPublisher2 Product Registration
 
 def register_MetaPublisher2(context):
-    """MetaPublisher2 Product Registration"""
+    """!TXT! MetaPublisher2 Product Registration"""
 
     context.registerClass(
         MetaPublisher2,

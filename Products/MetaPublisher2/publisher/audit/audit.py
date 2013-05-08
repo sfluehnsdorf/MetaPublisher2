@@ -24,7 +24,7 @@ __doc__ = """Audit Component
 
 !TXT! module info
 
-$Id: publisher/audit/audit.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: publisher/audit/audit.py 3 2013-05-08 19:03:47Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Audit Mix-In Class
+# Audit Component Mix-In Class
 
 class Audit:
-    """Audit Mix-In Class"""
+    """!TXT! Audit Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

@@ -14,12 +14,13 @@
 
 <dtml-if has_storages>
 
+<dtml-var formlet_header>
 <dtml-let
-  form_continues="True"
   form_id="'edit_storage_form'"
   >
 <dtml-var storage_selection_formlet>
 </dtml-let>
+<dtml-var formlet_footer>
 
 
 

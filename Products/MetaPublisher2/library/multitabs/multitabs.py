@@ -32,31 +32,32 @@ class Fruit:
 
     manage_options = (
 
-      # first management tab on the first level
-      {
-        'label': 'Apples',
-        'action': 'Apples_form',
-        'sub': (
+        # first management tab on the first level
+        {
+            'label': 'Apples',
+            'action': 'Apples_form',
+            'sub': (
 
-          # first management tab on the second level of the apple's tab
-          {
-            'label': 'McIntosh',
-            'action': 'Apples_McIntosh_form',
-          },
+                # first management tab on the second level of the apple's tab
+                {
+                    'label': 'McIntosh',
+                    'action': 'Apples_McIntosh_form',
+                },
 
-          # second management tab on the second level of the apple's tab
-          {
-            'label': 'Granny Smith',
-            'action': 'Apples_GrannySmith_form',
-          },
+            # second management tab on the second level of the apple's tab
+            {
+                'label': 'Granny Smith',
+                'action': 'Apples_GrannySmith_form',
+            },
 
-        ),
+          ),
 
       },
 
       # second management tab on the first level
       {
         ...
+      }
 
 Just like the regular management tabs, unavailable and restricted actions are
 purged. If only one child exists with the same action as its parent, the list
@@ -107,10 +108,10 @@ except:
 
 
 # ============================================================================
-# MultiTabs Mixin Class
+# MultiTabs Mix-In Class
 
 class MultiTabs:
-    """MultiTabs Mixin Class
+    """!TXT! MultiTabs Mix-In Class
 
     This class overwrites the standard Zope management tabs with tabs that
     provide multiple levels for complex applications.
@@ -130,7 +131,7 @@ class MultiTabs:
     security.declarePublic('manage_workspace')
 
     def manage_workspace(self, REQUEST):
-        """Dispatch to first interface in manage_options"""
+        """!TXT! Dispatch to first interface in manage_options"""
 
         options = self.filtered_manage_options(REQUEST)
 
@@ -150,6 +151,7 @@ class MultiTabs:
     # !TXT MultiTabs Manage Workspace Method
 
     def _get_manage_options_map(self, REQUEST):
+        """!TXT!"""
 
         try:
             options = tuple(self.manage_options)
@@ -222,7 +224,7 @@ class MultiTabs:
     security.declarePublic('_get_manage_options_map')
 
     def get_active_manage_option(self, REQUEST=None):
-        """Return the active management tab"""
+        """!TXT! Return the active management tab"""
 
         # initialize
 
@@ -239,7 +241,7 @@ class MultiTabs:
     security.declarePublic('filtered_manage_options')
 
     def filtered_manage_options(self, REQUEST=None):
-        """Return the list of available management tabs"""
+        """!TXT! Return the list of available management tabs"""
 
         # initialize
 

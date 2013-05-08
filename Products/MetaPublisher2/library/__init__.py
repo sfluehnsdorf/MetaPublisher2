@@ -20,13 +20,13 @@
 #
 # ============================================================================
 
-__doc__ = """MetaPublisher2 Library
+__doc__ = """MetaPublisher2 Library Inititalisation
 
 The library of the MetaPublisher2 is a collection of resources, used by the main
 application and by its plugins. Please check each of the modules inside for
 detailed information on these resources.
 
-$Id: library/__init__.py 2 2013-05-05 18:03:44Z sfluehnsdorf $
+$Id: library/__init__.py 3 2013-05-08 18:46:33Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -19,9 +19,6 @@
   >
 <input type="hidden" name="form_id" value="<dtml-var "_.has_key( 'form_uid' ) and form_uid or form_id">">
 
-<dtml-unless form_continued>
-<div class="form">
-</dtml-unless>
   <table>
     <tr class="input">
       <td>
@@ -193,7 +190,6 @@
     </tr>
 </dtml-if>
   </table>
-</div>
 </dtml-if>
 
 </dtml-let>

@@ -24,7 +24,7 @@ __doc__ = """Identifiers Component
 
 !TXT! module info
 
-$Id: configuration/identifiers/identifiers.py 4 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: configuration/identifiers/identifiers.py 5 2013-05-08 19:18:39Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ==============================================================================
-# Identifiers Mix-In Class
+# Identifiers Component Mix-In Class
 
 class Identifiers:
-    """Identifiers Mix-In Class"""
+    """!TXT! Identifiers Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -87,7 +87,7 @@ class Identifiers:
     security.declareProtected(permission_access_configuration, 'last_entry_id')
 
     def last_entry_id(self, storage_id):
-        """Returns the last generated Entry id."""
+        """!TXT! Returns the last generated Entry id."""
 
         storage = self.get_storage(storage_id)
         return storage.last_entry_id()
@@ -98,7 +98,7 @@ class Identifiers:
     security.declareProtected(permission_access_configuration, 'new_entry_id')
 
     def new_entry_id(self, storage_id):
-        """Generate a new Entry id, suitable for the specified Storage."""
+        """!TXT! Generate a new Entry id, suitable for the specified Storage."""
 
         storage = self.get_storage(storage_id)
         return storage.new_entry_id()

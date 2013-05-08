@@ -24,7 +24,7 @@ __doc__ = """EntrySet Container Interface
 
 !TXT! module info
 
-$Id: interfaces/entryset.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: interfaces/entryset.py 3 2013-05-08 19:36:30Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # EntrySet Class Interface
 
 class IEntrySet(Interface):
-    """EntrySet Class Interface"""
+    """!TXT! EntrySet Class Interface"""
 
     pass
 

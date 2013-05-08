@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """EntryStats Component
+__doc__ = """Entry Stats Component
 
 !TXT! module info
 
-$Id: data/entries/entrystats.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/entries/entrystats.py 3 2013-05-08 19:29:23Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# EntryStats Mix-In Class
+# Entry Stats Component Mix-In Class
 
 class EntryStats:
-    """EntryStats Mix-In Class"""
+    """!TXT! Entry Stats Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

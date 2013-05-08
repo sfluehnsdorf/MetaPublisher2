@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Frontend Base
+__doc__ = """Frontend Plugin Base
 
 !TXT! module info
 
-$Id: bases/frontend/frontend.py 4 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/frontend/frontend.py 5 2013-05-08 19:49:02Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,10 +48,10 @@ __all__ = [
 
 
 # ============================================================================
-# Frontend Plugin Base
+# Frontend Plugin Base Class
 
 class FrontendPluginBase(PluginBase, OrderedFolder):
-    """Frontend Plugin Base"""
+    """!TXT! Frontend Plugin Base Class"""
 
     security = ClassSecurityInfo()
 
@@ -80,7 +80,7 @@ class FrontendPluginBase(PluginBase, OrderedFolder):
     security.declareProtected(permission_manage_frontends, 'get_plugin_specification')
 
     def get_plugin_specification(self):
-        """Return a dictionary describing this Frontend"""
+        """!TXT! Return a dictionary describing this Frontend"""
 
         options = PluginBase.get_plugin_specification(self)
         options.update({

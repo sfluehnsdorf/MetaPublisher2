@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """MetaPublisher2 UserInterface Library
+__doc__ = """MetaPublisher2 User Interface Initialisation
 
 !TXT! module info
 
-$Id: library/userinterface/__init__.py 3 2013-05-05 18:02:56Z sfluehnsdorf $
+$Id: library/userinterface/__init__.py 4 2013-05-08 20:29:54Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

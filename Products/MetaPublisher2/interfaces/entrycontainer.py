@@ -24,7 +24,7 @@ __doc__ = """EntryContainer Interface
 
 !TXT! module info
 
-$Id: interfaces/entrycontainer.py 4 2013-05-07 20:29:39Z sfluehnsdorf $
+$Id: interfaces/entrycontainer.py 5 2013-05-08 19:36:51Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -50,7 +50,7 @@ __all__ = [
 # EntryContainer Class Interface
 
 class IEntryContainer(Interface):
-    """EntryContainer Class Interface"""
+    """!TXT! EntryContainer Class Interface"""
 
     # ------------------------------------------------------------------------
     # Entry Data Processing Helpers

@@ -24,7 +24,7 @@ __doc__ = """Trigger Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/trigger.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: interfaces/trigger.py 3 2013-05-08 19:35:13Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Trigger Plugin Base Interface
 
 class ITriggerPluginBase(Interface):
-    """Trigger Plugin Base Interface"""
+    """!TXT! Trigger Plugin Base Interface"""
 
     pass
 

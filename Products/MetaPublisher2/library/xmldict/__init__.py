@@ -34,3 +34,5 @@ __version__ = '$Revision: 1.2 $'[11:-2]
 # Module Imports
 
 from xmldict import *
+
+# !!! check if to replace with https://pypi.python.org/pypi/xmldict/0.4.1

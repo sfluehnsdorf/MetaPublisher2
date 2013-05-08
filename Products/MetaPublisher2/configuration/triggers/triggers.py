@@ -24,7 +24,7 @@ __doc__ = """Triggers Component
 
 !TXT! module info
 
-$Id: configuration/triggers/triggers.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: configuration/triggers/triggers.py 3 2013-05-08 19:15:10Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ==============================================================================
-# Triggers Mix-In Class
+# Triggers Component Mix-In Class
 
 class Triggers:
-    """Triggers Mix-In Class"""
+    """!TXT! Triggers Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

@@ -24,7 +24,7 @@ __doc__ = """Application Settings
 
 !TXT! module info
 
-$Id: library/application/settings.py 10 2013-05-07 17:08:24Z sfluehnsdorf $
+$Id: library/application/settings.py 11 2013-05-08 20:02:52Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

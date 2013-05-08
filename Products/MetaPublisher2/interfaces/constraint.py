@@ -24,7 +24,7 @@ __doc__ = """Constraint Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/constraint.py 3 2013-05-07 20:29:42Z sfluehnsdorf $
+$Id: interfaces/constraint.py 4 2013-05-08 19:36:59Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Constraint Plugin Base Interface
 
 class IConstraintPluginBase(Interface):
-    """Constraint Plugin Base Interface"""
+    """!TXT! Constraint Plugin Base Interface"""
 
     pass
 

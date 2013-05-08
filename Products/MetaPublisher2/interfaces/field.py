@@ -24,7 +24,7 @@ __doc__ = """Field Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/field.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: interfaces/field.py 3 2013-05-08 19:36:23Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Field Plugin Base Interface
 
 class IFieldPluginBase(Interface):
-    """Field Plugin Base Interface"""
+    """!TXT! Field Plugin Base Interface"""
 
     pass
 

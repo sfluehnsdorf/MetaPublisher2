@@ -28,7 +28,7 @@ definition of the final public interface as such is not publically viewable.
 Users can choose the destination for the public interface, relative to the
 MetaPublisher 2 instance.
 
-$Id: publisher/renderer/renderer.py 8 2013-05-05 18:02:00Z sfluehnsdorf $
+$Id: publisher/renderer/renderer.py 9 2013-05-08 19:02:12Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -49,10 +49,10 @@ __all__ = [
 
 
 # ============================================================================
-# Renderer Mix-In Class
+# Renderer Component Mix-In Class
 
 class Renderer:
-    """Renderer Mix-In Class"""
+    """!TXT! Renderer Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -69,7 +69,7 @@ class Renderer:
     security.declareProtected(permission_publish_frontends, 'is_frontend_modified')
 
     def is_frontend_modified(self, frontend_path):
-        """Return True if the specified Frontend has been changed since last rendering, False if not and None if Frontend is unrendered."""
+        """!TXT! Return True if the specified Frontend has been changed since last rendering, False if not and None if Frontend is unrendered."""
 
         frontend = self.get_frontend(frontend_path)
         if hasattr(frontend, 'is_frontend_modified'):
@@ -79,7 +79,7 @@ class Renderer:
     security.declareProtected(permission_publish_frontends, 'is_frontend_renderable')
 
     def is_frontend_renderable(self, frontend_path):
-        """Return True if the specified Frontend can be rendered, False otherwise."""
+        """!TXT! Return True if the specified Frontend can be rendered, False otherwise."""
 
         frontend = self.get_frontend(frontend_path)
         if hasattr(frontend, 'is_frontend_renderable'):
@@ -89,7 +89,7 @@ class Renderer:
     security.declareProtected(permission_publish_frontends, 'get_rendering_errors')
 
     def get_rendering_errors(self, frontend_path):
-        """Return a list of errors of the specified Frontend."""
+        """!TXT! Return a list of errors of the specified Frontend."""
 
         frontend = self.get_frontend(frontend_path)
         if hasattr(frontend, 'get_rendering_errors'):
@@ -102,7 +102,7 @@ class Renderer:
     security.declareProtected(permission_publish_frontends, 'render_frontends')
 
     def render_frontends(self, ids, destination, acquired_destination_path=None, arbitrary_destination_path=None, create_folder=false, create_folder_id=None, overwrite='fail', REQUEST=None):
-        """Render Interface objects"""
+        """!TXT! Render Interface objects"""
 
         rendered_frontends = []
 

@@ -18,22 +18,19 @@
 
 <dtml-if "has_fields( storage_id )">
 
+<dtml-var formlet_header>
 <dtml-let
-  form_continues="True"
   form_id="'edit_storage_form'"
   >
 <dtml-var storage_selection_formlet>
 </dtml-let>
-
-
+<dtml-var formlet_footer>
 
 <!--
 !!! edit_field.dtml - reimplement
 !!! edit_field.dtml - update to use new ui
 !!! edit_field.dtml - integrate Field's formlet transparently (allow to override with a form)
 -->
-
-
 
 <input type="hidden" name="storage_id" value="&dtml-storage_id;">
   <table cellspacing="0" cellpadding="2" border="0">
@@ -53,6 +50,7 @@
 
 <dtml-else>
 
+<dtml-var formlet_header>
 <dtml-let
   form_id="'fields_form'"
   buttons="[
@@ -61,12 +59,14 @@
   >
 <dtml-var storage_selection_formlet>
 </dtml-let>
+<dtml-var formlet_footer>
 
 <dtml-var no_fields_dialog>
 </dtml-if>
 
 <dtml-else>
 
+<dtml-var formlet_header>
 <dtml-let
   form_id="'fields_form'"
   buttons="[
@@ -75,14 +75,13 @@
   >
 <dtml-var storage_selection_formlet>
 </dtml-let>
+<dtml-var formlet_footer>
 
 <dtml-var no_fieldplugins_dialog>
 </dtml-if>
 
 <dtml-else>
 <dtml-var no_storages_dialog>
-</dtml-let>
-
 </dtml-if>
 
 <dtml-else>

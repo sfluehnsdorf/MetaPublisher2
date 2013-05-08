@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Logging Service
+__doc__ = """!TXT! Logging Service
 
 !TXT! module info
 
-$Id: library/common/log.py 3 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: library/common/log.py 4 2013-05-08 20:15:04Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -47,7 +47,7 @@ try:
     logger = getLogger('MetaPublisher2')
 
     def log(message):
-        """MetaPublisher2 log writer method"""
+        """!TXT! MetaPublisher2 log writer method"""
 
         logger.info(message)
 
@@ -56,6 +56,6 @@ except:
     from zLOG import LOG, INFO
 
     def log(message):
-        """MetaPublisher2 log writer method"""
+        """!TXT! MetaPublisher2 log writer method"""
 
         LOG('MetaPublisher2', INFO, message)

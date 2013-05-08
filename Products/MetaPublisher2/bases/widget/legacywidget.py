@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Legacy Widget Base
+__doc__ = """Legacy Widget Plugin Base
 
 !TXT! module info
 
-$Id: bases/widget/legacywidget.py 5 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/widget/legacywidget.py 6 2013-05-08 19:51:34Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,10 +48,10 @@ __all__ = [
 
 
 # ============================================================================
-# Legacy Widget Plugin Base
+# Legacy Widget Plugin Base Class
 
 class LegacyWidgetPlugin(LegacyPluginBase, WidgetPluginBase):
-    """Widget Plugin Base"""
+    """!TXT! Legacy Widget Plugin Base Class"""
 
     security = ClassSecurityInfo()
 
@@ -87,13 +87,13 @@ class LegacyWidgetPlugin(LegacyPluginBase, WidgetPluginBase):
     # !TXT!
 
     def get_immutable_pluginflag_ids(self):
-        """Return list of Plugin flag ids, which are either constants or set by an external source and may not be altered by MetaPublisher2 or its users"""
+        """!TXT! Return list of Plugin flag ids, which are either constants or set by an external source and may not be altered by MetaPublisher2 or its users"""
 
         # !!! bases/widget/legacywidget.py -  get_immutable_pluginflag_ids
         return []
 
     def get_mutable_pluginflag_ids(self):
-        """Return list of Plugin flag ids, which may be altered by MetaPublisher2 and its users"""
+        """!TXT! Return list of Plugin flag ids, which may be altered by MetaPublisher2 and its users"""
 
         # !!! bases/widget/legacywidget.py -  get_mutable_pluginflag_ids
         return []
@@ -102,12 +102,12 @@ class LegacyWidgetPlugin(LegacyPluginBase, WidgetPluginBase):
     # !TXT!
 
     def setWidgetData(self, data={}):
-        """Return a dictionary describing this widget"""
+        """!TXT! Return a dictionary describing this widget"""
 
         raise NotImplementedError
 
     def getWidgetData(self, form_type_id):
-        """Return a dictionary describing this widget"""
+        """!TXT! Return a dictionary describing this widget"""
 
         raise NotImplementedError
 

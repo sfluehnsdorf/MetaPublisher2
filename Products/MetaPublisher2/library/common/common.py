@@ -20,14 +20,14 @@
 #
 # ============================================================================
 
-__doc__ = """Common Resource Library
+__doc__ = """Common Library
 
 Central repository for Python and Zope resources, including imports, constants
 and API's. By providing these resources in a central location, it is easy to
-adapt calls to these resources to the various implementations of the Zope server
-and the Python programming language.
+adapt calls to these resources to the various implementations of the Zope
+server and the Python programming language.
 
-$Id: library/common/common.py 6 2013-05-05 18:03:28Z sfluehnsdorf $
+$Id: library/common/common.py 7 2013-05-08 20:23:12Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -63,15 +63,17 @@ try:
 except:
 
     class Counter(dict):
-        '''Simplified Counter class'''
+        """!TXT! Simplified Counter class"""
 
         def __init__(self, iterable=None):
-            '''Create a new, empty Counter object.'''
+            """Create a new, empty Counter object."""
+
             super(Counter, self).__init__()
             self.update(iterable)
 
         def update(self, iterable=None, **kwds):
-            '''Update data and add counts instead of replacing them.'''
+            """Update data and add counts instead of replacing them."""
+
             if iterable is not None:
                 if isinstance(iterable, Mapping):
                     if self:
@@ -92,7 +94,7 @@ except:
 # Path Splitter
 
 def split_paths(path):
-    """Split a path into all its parts"""
+    """!TXT! Split a path into all its parts"""
 
     return normpath(path).split(sep)
 
@@ -118,5 +120,8 @@ except:
     from random import randrange
 
     def uuid4():
-        """generate uuid4"""
+        """!TXT! generate uuid4"""
+
         return '%x%x%x%x%x%x%x%x-%x%x%x%x-%x%x%x%x-%x%x%x%x-%x%x%x%x%x%x%x%x%x%x%x%x' % map(lambda index: randrange(16), range(32))
+
+# !!! common.py - insert module exports

@@ -24,7 +24,7 @@ __doc__ = """Entry Interface
 
 !TXT! module info
 
-$Id: interfaces/entry.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: interfaces/entry.py 3 2013-05-08 19:36:54Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Entry Class Interface
 
 class IEntry(Interface):
-    """Entry Class Interface"""
+    """!TXT! Entry Class Interface"""
 
     pass
 

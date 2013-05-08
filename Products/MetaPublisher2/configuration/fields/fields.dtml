@@ -14,8 +14,8 @@
 
 <dtml-if has_storages>
 
+<dtml-var formlet_header>
 <dtml-let
-  form_continues="True"
   form_id="'fields_form'"
   buttons="[
     ('add_field_form', 'Add Field'),
@@ -29,7 +29,6 @@
 <dtml-if "has_fields(storage_id)">
 
 <dtml-let
-  form_continued="true"
   form_id="'fields_form'"
   form_uid="'fields_form|%s' % storage_id"
   columns="[
@@ -50,14 +49,12 @@
 </dtml-let>
 
 <dtml-else>
-</div>
-
+<dtml-var formlet_footer>
 <dtml-var no_fields_dialog>
 </dtml-if>
 
 <dtml-else>
-</div>
-
+<dtml-var formlet_footer>
 <dtml-var no_fieldplugins_dialog>
 </dtml-if>
 

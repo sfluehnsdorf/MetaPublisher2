@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Widget Base Initialisation
+__doc__ = """Widget Plugin Base Initialisation
 
 !TXT! module info
 
-$Id: bases/widget/__init__.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/widget/__init__.py 3 2013-05-08 19:41:23Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

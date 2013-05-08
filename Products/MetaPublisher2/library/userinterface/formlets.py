@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """UserInterface Formlets
+__doc__ = """MetaPublisher2 Formlets
 
 !TXT! module info
 
-$Id: library/userinterface/formlet.py 6 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: library/userinterface/formlets.py 8 2013-05-08 20:34:20Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -41,25 +41,40 @@ from Products.MetaPublisher2.library.common import ClassSecurityInfo, DTMLFile, 
 # Module Exports
 
 __all__ = [
-    'Formlet',
+    'Formlets',
 ]
 
 
 # ============================================================================
-# Formlet Mix-In Class
+# MetaPublisher2 Formlets Mix-In Class
 
-class Formlet:
-    """Formlet Mix-In Class"""
+class Formlets:
+    """!TXT! MetaPublisher2 Formlets Mix-In Class"""
 
     security = ClassSecurityInfo()
 
     # ------------------------------------------------------------------------
+    # Formlet Layout
+
+    security.declareProtected(permission_zmi, 'formlet_header')
+
+    formlet_header = DTMLFile('dtml/formlet_header', globals())
+
+    security.declareProtected(permission_zmi, 'formlet_footer')
+
+    formlet_footer = DTMLFile('dtml/formlet_footer', globals())
+
+    # ------------------------------------------------------------------------
     # Selection Formlet
 
-    selection_formlet = DTMLFile('dtml/selection_formlet', globals())
+    security.declareProtected(permission_zmi, 'selection_formlet')
+
+    selection_formlet = DTMLFile('dtml/formlet_selection', globals())
 
     # ------------------------------------------------------------------------
     # Data Table Formlet
+
+    security.declareProtected(permission_zmi, 'frontend_path_formlet')
 
     datatable_formlet = DTMLFile('dtml/formlet_datatable', globals())
 
@@ -189,7 +204,7 @@ class Formlet:
 # ------------------------------------------------------------------------------
 # Class Security
 
-InitializeClass(Formlet)
+InitializeClass(Formlets)
 
 # !!! formlet.py - add table header & footer to be able to remove continued flags
 # !!! formlet.py - create list_formlet for storages, fields, etc.

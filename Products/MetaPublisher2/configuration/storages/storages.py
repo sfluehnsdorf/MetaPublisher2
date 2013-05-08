@@ -30,7 +30,7 @@ addresses, news items or the slides of a slideshow. Storages can be added,
 edited, renamed and deleted as well as retrieved, listed and tested for
 existence.
 
-$Id: configuration/storages/storages.py 19 2013-05-05 18:04:32Z sfluehnsdorf $
+$Id: configuration/storages/storages.py 20 2013-05-08 19:21:26Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -52,8 +52,10 @@ __all__ = [
 
 
 # ============================================================================
+# Storages Component Mix-In Class
+
 class Storages:
-    """Storages Mix-In Class"""
+    """!TXT! Storages Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -94,35 +96,35 @@ class Storages:
     security.declareProtected(permission_manage, 'has_storageplugins')
 
     def has_storageplugins(self):
-        """Return the specified MetaPublisher2 Storage plugin"""
+        """!TXT! Return the specified MetaPublisher2 Storage plugin"""
 
         return self.has_plugins(IStoragePluginBase)
 
     security.declareProtected(permission_manage, 'get_storageplugin')
 
     def get_storageplugin(self, storageplugin_id):
-        """Return the specified MetaPublisher2 Storage plugin"""
+        """!TXT! Return the specified MetaPublisher2 Storage plugin"""
 
         return self.get_plugin(storageplugin_id, IStoragePluginBase)
 
     security.declareProtected(permission_manage, 'storageplugin_ids')
 
     def storageplugin_ids(self):
-        """Return ids of installed MetaPublisher2 Storage plugins"""
+        """!TXT! Return ids of installed MetaPublisher2 Storage plugins"""
 
         return self.plugin_ids(IStoragePluginBase)
 
     security.declareProtected(permission_manage, 'storageplugin_items')
 
     def storageplugin_items(self):
-        """Return tuples of id, value of installed MetaPublisher2 Storage plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2 Storage plugins"""
 
         return self.plugin_items(IStoragePluginBase)
 
     security.declareProtected(permission_manage, 'storageplugin_values')
 
     def storageplugin_values(self):
-        """Return tuples of id, value of installed MetaPublisher2 Storage plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2 Storage plugins"""
 
         return self.plugin_values(IStoragePluginBases)
 
@@ -132,7 +134,7 @@ class Storages:
     security.declareProtected(permission_manage, 'get_storageflags')
 
     def get_storageflags(self, storage_id):
-        """Return tuples of id, boolean states of all Plugin flags"""
+        """!TXT! Return tuples of id, boolean states of all Plugin flags"""
 
         storage = get_storage(self, storage_id)
         return storage.get_pluginflag()
@@ -140,7 +142,7 @@ class Storages:
     security.declareProtected(permission_manage, 'get_storageflag_ids')
 
     def get_storageflag_ids(self, storage_id):
-        """Return the ids of all Plugin flags"""
+        """!TXT! Return the ids of all Plugin flags"""
 
         storage = get_storage(self, storage_id)
         return storage.get_pluginflag_ids()
@@ -148,7 +150,7 @@ class Storages:
     security.declareProtected(permission_manage, 'get_storageflag')
 
     def get_storageflag(self, storage_id, pluginflag_id):
-        """Return the boolean state of the specified Storage flag if it exists, raises KeyError otherwise"""
+        """!TXT! Return the boolean state of the specified Storage flag if it exists, raises KeyError otherwise"""
 
         storage = get_storage(self, storage_id)
         return storage.get_pluginflag(pluginflag_id)
@@ -156,7 +158,7 @@ class Storages:
     security.declareProtected(permission_manage, 'has_storageflag')
 
     def has_storageflag(self, storage_id, pluginflag_id):
-        """Return True if the Storage flag exists, False otherwise"""
+        """!TXT! Return True if the Storage flag exists, False otherwise"""
 
         storage = get_storage(self, storage_id)
         return storage.has_pluginflag(pluginflag_id)
@@ -167,14 +169,14 @@ class Storages:
     security.declareProtected(permission_access_configuration, 'count_storages')
 
     def count_storages(self):
-        """Return the number of Storages."""
+        """!TXT! Return the number of Storages."""
 
         return len(self.storage_ids())
 
     security.declareProtected(permission_access_configuration, 'get_storage')
 
     def get_storage(self, source):
-        """Return the specified Storage. Source is either a Storage's id, a Storage or an EntrySet. Raises KeyError if no Storage can be returned."""
+        """!TXT! Return the specified Storage. Source is either a Storage's id, a Storage or an EntrySet. Raises KeyError if no Storage can be returned."""
 
         if IStoragePluginBase.providedBy(source) or IEntrySet.providedBy(source):
             return source
@@ -183,7 +185,7 @@ class Storages:
     security.declareProtected(permission_access_configuration, 'get_storage_by_id')
 
     def get_storage_by_id(self, storage_id):
-        """Return the specified Storage, raise KeyError otherwise."""
+        """!TXT! Return the specified Storage, raise KeyError otherwise."""
 
         storage = self._getOb(storage_id)
         if IStoragePluginBase.providedBy(storage):
@@ -193,21 +195,21 @@ class Storages:
     security.declareProtected(permission_access_configuration, 'has_storage')
 
     def has_storage(self, storage_id):
-        """Return True if the specified Storage exists."""
+        """!TXT! Return True if the specified Storage exists."""
 
         return storage_id in self.storage_ids()
 
     security.declareProtected(permission_access_configuration, 'has_storages')
 
     def has_storages(self):
-        """Return True if any Storages exist."""
+        """!TXT! Return True if any Storages exist."""
 
         return self.storage_ids() and true or false
 
     security.declareProtected(permission_access_configuration, 'has_all_storages')
 
     def has_all_storages(self, storage_ids=None, storage_types=None):
-        """Return True if all of the specified Storages exist, limited to Storage Types if specified. If no Storages are specified, checks if all Storages are of the specified Storage Types."""
+        """!TXT! Return True if all of the specified Storages exist, limited to Storage Types if specified. If no Storages are specified, checks if all Storages are of the specified Storage Types."""
 
         if storage_types is None:
 
@@ -246,7 +248,7 @@ class Storages:
     security.declareProtected(permission_access_configuration, 'has_any_storages')
 
     def has_any_storages(self, storage_ids=None, storage_types=None):
-        """Return True if any of the specified Storages exist, limited to Storage Types if specified. If no Storages are specified, checks if any Storages are of the specified Storage Types."""
+        """!TXT! Return True if any of the specified Storages exist, limited to Storage Types if specified. If no Storages are specified, checks if any Storages are of the specified Storage Types."""
 
         if storage_types is None:
 
@@ -282,14 +284,14 @@ class Storages:
     security.declareProtected(permission_access_configuration, 'storage_ids')
 
     def storage_ids(self):
-        """Return ids of Storages"""
+        """!TXT! Return ids of Storages"""
 
         return map(lambda item: item[0], self.storage_items())
 
     security.declareProtected(permission_access_configuration, 'storage_items')
 
     def storage_items(self):
-        """Return tuples of id, value of Storages"""
+        """!TXT! Return tuples of id, value of Storages"""
 
         result = []
         for id, object in self.objectItems():
@@ -300,7 +302,7 @@ class Storages:
     security.declareProtected(permission_access_configuration, 'storage_values')
 
     def storage_values(self):
-        """Return values of Storages"""
+        """!TXT! Return values of Storages"""
 
         return map(lambda item: item[1], self.storage_items())
 
@@ -324,7 +326,7 @@ class Storages:
     security.declareProtected(permission_change_configuration, 'add_storage')
 
     def add_storage(self, storage_id, storage_type_id, options={}, REQUEST=None, **args):
-        """Add a new Storage with specified id and configuration."""
+        """!TXT! Add a new Storage with specified id and configuration."""
 
         options.update(args)
         if REQUEST:
@@ -343,7 +345,7 @@ class Storages:
     security.declareProtected(permission_change_configuration, 'delete_storage')
 
     def delete_storage(self, storage_id, REQUEST=None):
-        """Delete the specified Storage."""
+        """!TXT! Delete the specified Storage."""
 
         storage = self.get_storage(storage_id)
         storage.before_delete()
@@ -355,7 +357,7 @@ class Storages:
     security.declareProtected(permission_change_configuration, 'delete_storages')
 
     def delete_storages(self, storage_ids=[], REQUEST=None):
-        """Delete the specified Storages."""
+        """!TXT! Delete the specified Storages."""
 
         for storage_id in storage_ids:
             storage = self.get_storage(storage_id)
@@ -369,7 +371,7 @@ class Storages:
     security.declareProtected(permission_change_configuration, 'duplicate_storage')
 
     def duplicate_storage(self, storage_id, new_id, REQUEST=None):
-        """Duplicate the specified Storage."""
+        """!TXT! Duplicate the specified Storage."""
 
         storage = self.get_storage(storage_id)
         storage.before_duplicate(new_id)
@@ -384,7 +386,7 @@ class Storages:
     security.declareProtected(permission_change_configuration, 'duplicate_storages')
 
     def duplicate_storages(self, storage_ids, new_ids, REQUEST=None):
-        """Duplicate the specified Storages. Both id lists must have the same length or ValueError is raised."""
+        """!TXT! Duplicate the specified Storages. Both id lists must have the same length or ValueError is raised."""
 
         if len(storage_ids) != len(new_ids):
             raise ValueError("Unmatched ids and new ids lists")
@@ -405,7 +407,7 @@ class Storages:
     security.declareProtected(permission_change_configuration, 'edit_storage')
 
     def edit_storage(self, storage_id, options={}, REQUEST=None, **args):
-        """Change the specified Storage's configuration."""
+        """!TXT! Change the specified Storage's configuration."""
 
         options.update(args)
         if REQUEST:
@@ -418,7 +420,7 @@ class Storages:
     security.declareProtected(permission_change_configuration, 'rename_storage')
 
     def rename_storage(self, storage_id, new_id, REQUEST=None):
-        """Rename the specified Storage."""
+        """!TXT! Rename the specified Storage."""
 
         storage = self.get_storage(storage_id)
         storage.before_rename(storage_id, new_id)
@@ -433,7 +435,7 @@ class Storages:
     security.declareProtected(permission_change_configuration, 'rename_storages')
 
     def rename_storages(self, storage_ids, new_ids, REQUEST=None):
-        """Rename the specified Storages. Both id lists must have the same length or ValueError is raised."""
+        """!TXT! Rename the specified Storages. Both id lists must have the same length or ValueError is raised."""
 
         if len(storage_ids) != len(new_ids):
             raise ValueError("Unmatched ids and new ids lists")

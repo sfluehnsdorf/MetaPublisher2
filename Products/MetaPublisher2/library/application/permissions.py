@@ -25,7 +25,7 @@ __doc__ = """Application Permissions
 MetaPublisher2 specific permission's names are defined here, ensuring
 consistency in the naming of permission.
 
-$Id: library/application/permissions.py 6 2013-05-05 18:05:51Z sfluehnsdorf $
+$Id: library/application/permissions.py 7 2013-05-08 20:03:05Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -78,7 +78,7 @@ permission_manage = 'MetaPublisher2 - Manage Instance'
 # Configurable Permissions
 
 def configure_permission(setting, permission):
-    """Return parameter for access control based on setting"""
+    """!TXT! Return parameter for access control based on setting"""
 
     if settings[setting + '_security'] == 'protected':
         return permission

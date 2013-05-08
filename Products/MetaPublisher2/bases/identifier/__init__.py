@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Identifier Base Initialisation
+__doc__ = """Identifier Plugin Base Initialisation
 
 !TXT! module info
 
-$Id: bases/identifier/__init__.py 3 2013-05-05 18:01:54Z sfluehnsdorf $
+$Id: bases/identifier/__init__.py 4 2013-05-08 19:41:35Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

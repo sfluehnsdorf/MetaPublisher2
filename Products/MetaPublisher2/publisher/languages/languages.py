@@ -24,7 +24,7 @@ __doc__ = """Languages Component
 
 !TXT! module info
 
-$Id: publisher/languages/languages.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: publisher/languages/languages.py 3 2013-05-08 19:02:17Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Languages Mix-In Class
+# Languages Component Mix-In Class
 
 class Languages:
-    """Languages Mix-In Class"""
+    """!TXT! Languages Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

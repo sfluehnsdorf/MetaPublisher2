@@ -24,7 +24,7 @@ __doc__ = """Frontend Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/frontend.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: interfaces/frontend.py 3 2013-05-08 19:36:19Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Frontend Plugin Base Interface
 
 class IFrontendPluginBase(Interface):
-    """Frontend Plugin Base Interface"""
+    """!TXT! Frontend Plugin Base Interface"""
 
     pass
 

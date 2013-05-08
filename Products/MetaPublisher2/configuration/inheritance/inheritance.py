@@ -24,7 +24,7 @@ __doc__ = """Inheritance Component
 
 !TXT! module info
 
-$Id: configuration/inheritance/inheritance.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: configuration/inheritance/inheritance.py 3 2013-05-08 19:17:21Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ==============================================================================
-# Inheritance Mix-In Class
+# Inheritance Component Mix-In Class
 
 class Inheritance:
-    """Inheritance Mix-In Class"""
+    """!TXT! Inheritance Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

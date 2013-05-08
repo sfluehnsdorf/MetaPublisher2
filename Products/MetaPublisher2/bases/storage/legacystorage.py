@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Legacy Storage Base
+__doc__ = """Legacy Storage Plugin Base
 
 !TXT! module info
 
-$Id: bases/storage/legacystorage.py 15 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/storage/legacystorage.py 16 2013-05-08 19:51:05Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -49,10 +49,10 @@ __all__ = [
 
 
 # ============================================================================
-# Legacy Storage Plugin Base
+# Legacy Storage Plugin Base Class
 
 class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
-    """Legacy Storage Plugin Base"""
+    """!TXT! Legacy Storage Plugin Base Class"""
 
     security = ClassSecurityInfo()
 
@@ -74,13 +74,13 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
     # !TXT!
 
     def get_immutable_pluginflag_ids(self):
-        """Return list of Plugin flag ids, which are either constants or set by an external source and may not be altered by MetaPublisher2 or its users"""
+        """!TXT! Return list of Plugin flag ids, which are either constants or set by an external source and may not be altered by MetaPublisher2 or its users"""
 
         # !!! bases/storage/legacystorage.py -  get_immutable_pluginflag_ids
         return []
 
     def get_mutable_pluginflag_ids(self):
-        """Return list of Plugin flag ids, which may be altered by MetaPublisher2 and its users"""
+        """!TXT! Return list of Plugin flag ids, which may be altered by MetaPublisher2 and its users"""
 
         # !!! bases/storage/legacystorage.py -  get_mutable_pluginflag_ids
         return []
@@ -89,6 +89,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
     # !TXT!
 
     def all_meta_types(self, interfaces=None):
+        """!TXT!"""
 
         result = StoragePluginBase.all_meta_types(interfaces)
         for product in Products.meta_types:
@@ -102,14 +103,14 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
     manage_configureStorageForm = DTMLFile('storageplugin_edit', globals())
 
     def manage_configureStorage(self, REQUEST=None):
-        """Change Storage's configuration parameters"""
+        """!TXT! Change Storage's configuration parameters"""
 
         self.title = REQUEST.get('title', '')
 
         self.redirect(REQUEST, 'storages_form', 'Changes saved')
 
     def storage_getOptions(self):
-        """Return a list of the Storage's configuration parameters"""
+        """!TXT! Return a list of the Storage's configuration parameters"""
 
         raise NotImplementedError
 
@@ -117,22 +118,22 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
     # Entry Retrieval
 
     def storage_entryIds(self):
-        """Return ids of Entries of the specified Storage"""
+        """!TXT! Return ids of Entries of the specified Storage"""
 
         raise NotImplementedError
 
     def storage_entryItems(self):
-        """Return tuples of id, value of Entries of the specified Storage"""
+        """!TXT! Return tuples of id, value of Entries of the specified Storage"""
 
         raise NotImplementedError
 
     def storage_entryValues(self):
-        """Return values of Entries of the specified Storage"""
+        """!TXT! Return values of Entries of the specified Storage"""
 
         raise NotImplementedError
 
     def storage_getEntry(self, entry_id):
-        """Return the specified Entry as a mapping object"""
+        """!TXT! Return the specified Entry as a mapping object"""
 
         raise NotImplementedError
 
@@ -140,27 +141,27 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
     # Entry Mutation
 
     def storage_addEntry(self, entry_id, data):
-        """Add a new Entry in the specified Storage"""
+        """!TXT! Add a new Entry in the specified Storage"""
 
         raise NotImplementedError
 
     def storage_delEntry(self, entry_id):
-        """Delete an Entry from the specified Storage"""
+        """!TXT! Delete an Entry from the specified Storage"""
 
         raise NotImplementedError
 
     def storage_delEntries(self, entry_ids=[]):
-        """Delete Entries from the specified Storage"""
+        """!TXT! Delete Entries from the specified Storage"""
 
         raise NotImplementedError
 
     def storage_editEntry(self, entry_id, data):
-        """Edit an Entry of the specified Storage"""
+        """!TXT! Edit an Entry of the specified Storage"""
 
         raise NotImplementedError
 
     def storage_renameEntry(self, entry_id, new_id):
-        """Rename an Entry"""
+        """!TXT! Rename an Entry"""
 
         raise NotImplementedError
 
@@ -168,12 +169,12 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
     # EntryFields
 
     def storage_getEntryField(self, entry_id, field_id, default=None):
-        """Return the specified Entry's Field's value"""
+        """!TXT! Return the specified Entry's Field's value"""
 
         raise NotImplementedError
 
     def storage_setEntryField(self, entry_id, field_id, value):
-        """Set the specified Entry's Field's value"""
+        """!TXT! Set the specified Entry's Field's value"""
 
         raise NotImplementedError
 
@@ -181,32 +182,32 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
     # EntryOrder
 
     def storage_getEntryPosition(self, entry_id):
-        """Return the position of an Entry"""
+        """!TXT! Return the position of an Entry"""
 
         raise NotImplementedError
 
     def storage_moveEntryToPosition(self, entry_id, position):
-        """Move an Entry to the specified position"""
+        """!TXT! Move an Entry to the specified position"""
 
         raise NotImplementedError
 
     def storage_moveEntryTop(self, entry_id):
-        """Move an Entry to the top"""
+        """!TXT! Move an Entry to the top"""
 
         raise NotImplementedError
 
     def storage_moveEntryUp(self, entry_id):
-        """Move an Entry up one position"""
+        """!TXT! Move an Entry up one position"""
 
         raise NotImplementedError
 
     def storage_moveEntryDown(self, entry_id):
-        """Move an Entry down one position"""
+        """!TXT! Move an Entry down one position"""
 
         raise NotImplementedError
 
     def storage_moveEntryBottom(self, entry_id):
-        """Move an Entry to the bottom"""
+        """!TXT! Move an Entry to the bottom"""
 
         raise NotImplementedError
 
@@ -303,7 +304,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
         return self.storage_fieldIds()
 
     def storage_fieldIds(self):
-        """Return ids of Fields of the specified Storage"""
+        """!TXT! Return ids of Fields of the specified Storage"""
 
         raise NotImplementedError
 
@@ -314,7 +315,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
         return self.storage_fieldItems()
 
     def storage_fieldItems(self):
-        """Return tuples of id, value of Fields of the specified Storage"""
+        """!TXT! Return tuples of id, value of Fields of the specified Storage"""
 
         raise NotImplementedError
 
@@ -325,7 +326,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
         return self.storage_fieldValues()
 
     def storage_fieldValues(self):
-        """Return values of Fields of the specified Storage"""
+        """!TXT! Return values of Fields of the specified Storage"""
 
         raise NotImplementedError
 
@@ -336,7 +337,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
         return self.storage_getField(field_id)
 
     def storage_getField(self, field_id):
-        """Return the specified Field of the Storage"""
+        """!TXT! Return the specified Field of the Storage"""
 
         raise NotImplementedError
 
@@ -390,7 +391,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
         self.storage_delField(field_id)
 
     def storage_delField(self, field_id):
-        """Delete the specified Field from the Storage"""
+        """!TXT! Delete the specified Field from the Storage"""
 
         raise NotImplementedError
 
@@ -401,7 +402,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
         self.storage_delFields(field_ids)
 
     def storage_delFields(self, field_id=[]):
-        """Delete the specified Fields from the Storage"""
+        """!TXT! Delete the specified Fields from the Storage"""
 
         raise NotImplementedError
 
@@ -430,7 +431,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
         self.storage_renameField(field_id, new_id)
 
     def storage_renameField(self, field_id, new_id):
-        """Rename a Field"""
+        """!TXT! Rename a Field"""
 
         raise NotImplementedError
 
@@ -513,7 +514,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
         self.storage_moveFieldTop(field_id)
 
     def storage_moveFieldTop(self, field_id):
-        """Move a Field to the top"""
+        """!TXT! Move a Field to the top"""
 
         raise NotImplementedError
 
@@ -524,7 +525,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
         self.storage_moveFieldUp(field_id)
 
     def storage_moveFieldUp(self, field_id):
-        """Move a Field up one position"""
+        """!TXT! Move a Field up one position"""
 
         raise NotImplementedError
 
@@ -535,7 +536,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
         self.storage_moveFieldDown(field_id)
 
     def storage_moveFieldDown(self, field_id):
-        """Move a Field down one position"""
+        """!TXT! Move a Field down one position"""
 
         raise NotImplementedError
 
@@ -546,7 +547,7 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
         self.storage_moveFieldBottom(field_id)
 
     def storage_moveFieldBottom(self, field_id):
-        """Move a Field to the bottom"""
+        """!TXT! Move a Field to the bottom"""
 
         raise NotImplementedError
 
@@ -590,13 +591,13 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
     # Storage Configuration
 
     def get_storage_options(self):
-        """Return a list of the Storage's configuration parameters"""
+        """!TXT! Return a list of the Storage's configuration parameters"""
 
         deprecated_method('')
         return sef.storage_getOptions()
 
     def storage_getOptions(self):
-        """Return a list of the Storage's configuration parameters"""
+        """!TXT! Return a list of the Storage's configuration parameters"""
 
         raise NotImplementedError
 

@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """EntrySets Component
+__doc__ = """Entry Sets Component
 
 !TXT! module info
 
-$Id: data/entries/entrysets.py 8 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/entries/entrysets.py 9 2013-05-08 19:29:08Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# EntrySets Mix-In Class
+# Entry Sets Component Mix-In Class
 
 class EntrySets:
-    """EntrySets Mix-In Class"""
+    """!TXT! Entry Sets Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -59,7 +59,7 @@ class EntrySets:
 
     def get_entryset(self, source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None, bound=true, lazy=true, live=false):
         """
-        Retrieve Entries from a source
+        !TXT! Retrieve Entries from a source
 
         Return an EntrySet with the Entries of the specified source, ordered by
         a specific EntryField's value and limited to the Entries specified by
@@ -122,7 +122,7 @@ class EntrySets:
 
     def join_entries(self, left_source, right_source, join_type='inner', join_conditions=None, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None, left_field_ids=None, left_parent_entry_id=None, left_entry_ids=[], left_entry_positions=[], left_conditions=None, left_order_by=None, left_offset=None, left_limit=None, right_field_ids=None, right_parent_entry_id=None, right_entry_ids=[], right_entry_positions=[], right_conditions=None, right_order_by=None, right_offset=None, right_limit=None, bound=true, lazy=true, live=True):
         """
-        Join the Entries of two sources
+        !TXT! Join the Entries of two sources
 
         Return an EntrySet with the Entries resulting from the join of the two
         specified sources, using the specified join type and matching the
@@ -203,7 +203,7 @@ class EntrySets:
     # !!! entrysets.py - revise select_entries api
     def select_entries(self, source, fields=None, joins=None, conditions=None, order_by=None, offset=None, limit=None, bound=true, live=True):
         """
-        Retrieve Entries from one or more sources
+        !TXT! Retrieve Entries from one or more sources
 
         Return an EntrySet with the Entries from the specified source, joined
         with the specified sources matching optional conditions, ordered by a
@@ -268,7 +268,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_access_entries, 'is_entryset_bound')
 
     def is_entryset_bound(self, source):
-        """Return True if the specified source is bound to one or more Storages, meaning that the EntrySet indicates the sources (Storages) for Fields and their values, False otherwise."""
+        """!TXT! Return True if the specified source is bound to one or more Storages, meaning that the EntrySet indicates the sources (Storages) for Fields and their values, False otherwise."""
 
         source = self.get_storage(source)
         return source.is_entryset_bound()
@@ -276,6 +276,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_access_entries, 'is_source_storage')
 
     def is_source_storage(self, source):
+        """!TXT!"""
 
         source = self.get_storage(source)
         return source.is_source_storage()
@@ -283,7 +284,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_access_entries, 'get_source_storages')
 
     def get_source_storages(self, source):
-        """Return the list of all Storages, the specified source is bound to. If the source is unbound or a Storage, the result is None."""
+        """!TXT! Return the list of all Storages, the specified source is bound to. If the source is unbound or a Storage, the result is None."""
 
         source = self.get_storage(source)
         return source.get_source_storages()
@@ -294,7 +295,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_change_entries, 'commit_entryset')
 
     def commit_entryset(self, source):
-        """Save all changes made to the specified source. If the source is an EntrySet changed are saved to the bound Storages. If the source is a transactional Storage, it will commit changes to the connected storage engine."""
+        """!TXT! Save all changes made to the specified source. If the source is an EntrySet changed are saved to the bound Storages. If the source is a transactional Storage, it will commit changes to the connected storage engine."""
 
         source = self.get_storage(source)
         return source.commit_entryset()
@@ -302,7 +303,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_change_entries, 'reload_entryset')
 
     def reload_entryset(self, source):
-        """Remove and reload all Entries of the EntrySet from the bound Storages, by calling the conditions used to populate the EntrySet again. If no method to reload the EntrySet exists, an !TXT! exception is raised."""
+        """!TXT! Remove and reload all Entries of the EntrySet from the bound Storages, by calling the conditions used to populate the EntrySet again. If no method to reload the EntrySet exists, an !TXT! exception is raised."""
 
         source = self.get_storage(source)
         return source.reload_entryset()
@@ -310,7 +311,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_change_entries, 'refresh_entryset')
 
     def refresh_entryset(self, source, field_ids, entry_ids=None, entry_positions=None, conditions=None):
-        """Reload the values for all EntryFields stored in the EntrySet from the bound Storages, limited to, if defined, the Entries specified by ids, position and matching conditions. If an Entry no longer exists in the bound Storage, it will remain in the EntrySet untouched."""
+        """!TXT! Reload the values for all EntryFields stored in the EntrySet from the bound Storages, limited to, if defined, the Entries specified by ids, position and matching conditions. If an Entry no longer exists in the bound Storage, it will remain in the EntrySet untouched."""
 
         source = self.get_storage(source)
         return source.refresh_entryset(field_ids, entry_ids, entry_positions, conditions)
@@ -322,7 +323,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
 
     def is_member(self, source, entry, fields=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
         """
-        Return True if the entry is a member of the Storage.
+        !TXT! Return True if the entry is a member of the Storage.
 
         Test if the an Entry with the specified Fields' values exists in the
         specified source.
@@ -368,7 +369,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_access_entries, 'is_disjoint')
 
     def is_disjoint(self, source, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=None, other_entry_positions=None, other_conditions=None):
-        """Return True if the Storage has no Entries in common with the other Storage."""
+        """!TXT! Return True if the Storage has no Entries in common with the other Storage."""
 
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
@@ -377,7 +378,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_access_entries, 'is_subset')
 
     def is_subset(self, source, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=None, other_entry_positions=None, other_conditions=None):
-        """Return True if all Entries from the Storage is in the other Storage."""
+        """!TXT! Return True if all Entries from the Storage is in the other Storage."""
 
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
@@ -386,7 +387,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_access_entries, 'is_true_subset')
 
     def is_true_subset(self, source, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
-        """Return True if all Entries from the Storage are in the other Storage, but both Storages are not identical."""
+        """!TXT! Return True if all Entries from the Storage are in the other Storage, but both Storages are not identical."""
 
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
@@ -395,7 +396,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_access_entries, 'is_superset')
 
     def is_superset(self, source, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
-        """Return True if all Entries from the Storage is in the other Storage."""
+        """!TXT! Return True if all Entries from the Storage is in the other Storage."""
 
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
@@ -404,7 +405,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_access_entries, 'is_true_superset')
 
     def is_true_superset(self, source, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
-        """Return True if all Entries from the Storage is in the other Storage, but both Storages are not identical."""
+        """!TXT! Return True if all Entries from the Storage is in the other Storage, but both Storages are not identical."""
 
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
@@ -416,7 +417,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_change_entries, 'intersection')
 
     def intersection(self, source, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
-        """Return an EntrySet with Entries common to both sources."""
+        """!TXT! Return an EntrySet with Entries common to both sources."""
 
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
@@ -425,7 +426,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_change_entries, 'difference')
 
     def difference(self, source, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
-        """Return an EntrySet with Entries in the source that are not in the other source."""
+        """!TXT! Return an EntrySet with Entries in the source that are not in the other source."""
 
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
@@ -434,7 +435,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_change_entries, 'symmetric_difference')
 
     def symmetric_difference(self, source, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
-        """Return an EntrySet with Entries in either the source or the other source but not in both."""
+        """!TXT! Return an EntrySet with Entries in either the source or the other source but not in both."""
 
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
@@ -443,7 +444,7 @@ seperated from the Field's by a period, for example 'mystorage.id' or '0.id'
     security.declareProtected(permission_change_entries, 'union')
 
     def union(self, source, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
-        """Return an EntrySet with Entries from two sources."""
+        """!TXT! Return an EntrySet with Entries from two sources."""
 
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)

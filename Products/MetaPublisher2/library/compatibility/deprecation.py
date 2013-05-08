@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Deprecation Information
+__doc__ = """!TXT! Deprecation Information
 
 !TXT! module info
 
-$Id: library/compatibility/deprecation.py 4 2013-05-07 17:50:13Z sfluehnsdorf $
+$Id: library/compatibility/deprecation.py 5 2013-05-08 20:14:59Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -56,6 +56,7 @@ logger = getLogger('MetaPublisher2')
 # Deprecated Forms
 
 def deprecated_form(form_name):
+    """!TXT!"""
 
     message = 'The "%s" form is deprecated and will be removed in a future release!' % form_name
 
@@ -67,6 +68,7 @@ def deprecated_form(form_name):
 # Deprecated Methods
 
 def deprecated_method(method_name):
+    """!TXT!"""
 
     message = 'The "%s" method is deprecated and will be removed in a future release!' % method_name
 

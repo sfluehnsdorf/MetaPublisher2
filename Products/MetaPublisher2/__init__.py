@@ -27,7 +27,7 @@ images and the online help. The individual Product registrations are
 outsourced to the products directory. For backward compatibility renamed
 modules are mapped to their new names.
 
-$Id: __init__.py 12 2013-05-07 20:29:52Z sfluehnsdorf $
+$Id: __init__.py 14 2013-05-08 19:30:58Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -111,6 +111,7 @@ sys.modules['Products.MetaPublisher2.Library'] = library.compatibility.historica
 sys.modules['Products.MetaPublisher2.Interfaces'] = library.compatibility.historical
 sys.modules['Products.MetaPublisher2.MetaPublisher2'] = products.metapublisher2.MetaPublisher2
 
+
 # !!! PHASE 1 - global
 # !!! PHASE 2 - library (except jsondict, pluginregistry)
 # !!! PHASE 3 - interfaces/__init__.py, interfaces/plugin/
@@ -121,8 +122,6 @@ sys.modules['Products.MetaPublisher2.MetaPublisher2'] = products.metapublisher2.
 # !!! PHASE 8 - inline error messages, integrity tests, jsondict, onexit handlers, pluginregistry, review all forms, settings.conf, tests
 # !!! PHASE 9 - online services, pep8, remove DEV, test zope release compatability
 
-# !!! global - mark (all) class doc strings with !TXT!
-# !!! global - mark (all) def doc strings with !TXT!
 # !!! global - mark (all) redirect messages with !TXT!
 # !!! global - update all !TXT! markers
 # !!! global - update all TODO markers

@@ -24,7 +24,7 @@ __doc__ = """Plugin Base Interface
 
 !TXT! module info
 
-$Id: interfaces/plugin.py 5 2013-05-07 20:29:13Z sfluehnsdorf $
+$Id: interfaces/plugin.py 6 2013-05-08 19:36:04Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -49,7 +49,7 @@ __all__ = [
 # Plugin Base Interface
 
 class IPluginBase(Interface):
-    """Plugin base interface
+    """!TXT! Plugin base interface
 
     This interface provides a common base class for all MetaPublisher2 Plugins.
     """
@@ -117,45 +117,45 @@ class IPluginBase(Interface):
     # Plugin Detail Retrieval
 
     def pluginflag_ids(self):
-        """Return the ids of all Plugin flags"""
+        """!TXT! Return the ids of all Plugin flags"""
 
     def pluginflag_items(self):
-        """Return tuples of id, boolean states of all Plugin flags"""
+        """!TXT! Return tuples of id, boolean states of all Plugin flags"""
 
     def pluginflag_values(self):
-        """Return the boolean states of all Plugin flags"""
+        """!TXT! Return the boolean states of all Plugin flags"""
 
     def get_available_immutable_pluginflags(self):
-        """Return list of Plugin flag ids, which are either constants or set by an external source and may not be altered by MetaPublisher3 or its users"""
+        """!TXT! Return list of Plugin flag ids, which are either constants or set by an external source and may not be altered by MetaPublisher3 or its users"""
 
     def get_available_mutable_pluginflags(self):
-        """Return list of Plugin flag ids, which may be altered by MetaPublisher3 and its users"""
+        """!TXT! Return list of Plugin flag ids, which may be altered by MetaPublisher3 and its users"""
 
     def get_pluginflag(self, pluginflag_id, failsafe=None):
-        """Return the boolean state of the specified Plugin flag if it exists, raises KeyError otherwise"""
+        """!TXT! Return the boolean state of the specified Plugin flag if it exists, raises KeyError otherwise"""
 
     def get_plugin_specification(self):
-        """Return a dictionary describing this Plugin"""
+        """!TXT! Return a dictionary describing this Plugin"""
 
     def has_pluginflag(self, pluginflag_id):
-        """Return True if the Plugin flag exists, False otherwise"""
+        """!TXT! Return True if the Plugin flag exists, False otherwise"""
 
     # ------------------------------------------------------------------------
     # Plugin Detail Mutation
 
     def define_pluginflags(self, pluginflag_ids):
-        """Clear all mutable Plugin flags and set the specified Plugin flags, raises ImmutableError if the Plugin flag is not mutable or raises KeyError if the Plugin flag is not undefined"""
+        """!TXT! Clear all mutable Plugin flags and set the specified Plugin flags, raises ImmutableError if the Plugin flag is not mutable or raises KeyError if the Plugin flag is not undefined"""
 
     def set_pluginflag(self, pluginflag_id):
-        """Set the specified Plugin flag if it is mutable, raises ImmutableError if the Plugin flag is not mutable or raises KeyError if the Plugin flag is not undefined"""
+        """!TXT! Set the specified Plugin flag if it is mutable, raises ImmutableError if the Plugin flag is not mutable or raises KeyError if the Plugin flag is not undefined"""
 
     def set_pluginflags(self, pluginflag_ids):
-        """Set the specified mutable Plugin flags, raises ImmutableError if a Plugin flag is not mutable or raises KeyError if a Plugin flag is not undefined"""
+        """!TXT! Set the specified mutable Plugin flags, raises ImmutableError if a Plugin flag is not mutable or raises KeyError if a Plugin flag is not undefined"""
 
     def unset_pluginflag(self, pluginflag_id):
-        """Set the specified Plugin flag if it is mutable, raises ImmutableError if the Plugin flag is not mutable or raises KeyError if the Plugin flag is not undefined"""
+        """!TXT! Set the specified Plugin flag if it is mutable, raises ImmutableError if the Plugin flag is not mutable or raises KeyError if the Plugin flag is not undefined"""
 
     def unset_pluginflags(self, pluginflag_ids):
-        """Unset the specified mutable Plugin flags, raises ImmutableError if a Plugin flag is not mutable or raises KeyError if a Plugin flag is not undefined"""
+        """!TXT! Unset the specified mutable Plugin flags, raises ImmutableError if a Plugin flag is not mutable or raises KeyError if a Plugin flag is not undefined"""
 
 # !!! interfaces/plugin.py - review api

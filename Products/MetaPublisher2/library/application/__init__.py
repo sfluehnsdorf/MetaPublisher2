@@ -20,14 +20,14 @@
 #
 # ============================================================================
 
-__doc__ = """Application Resource Library
+__doc__ = """Application Library Initialisation
 
 Application specific resources, including constants, definitions and API's. By
 providing these resources in a central location, it is easy to adapt this
 application to the various implementations of the Zope server and the Python
 programming language.
 
-$Id: library/application/__init__.py 2 2013-05-05 18:03:42Z sfluehnsdorf $
+$Id: library/application/__init__.py 3 2013-05-08 20:23:16Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -26,7 +26,7 @@ Plugin service, providing access to all installed Product classess based on the
 MetaPublisher2's Plugin base class. Retrieval can be limited to one or more
 Plugin interfaces.
 
-$Id: system/plugins/plugins.py 12 2013-05-05 18:00:31Z sfluehnsdorf $
+$Id: system/plugins/plugins.py 13 2013-05-08 18:54:47Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,10 +48,10 @@ __all__ = [
 
 
 # ============================================================================
-# Plugins Mix-In Class
+# Plugins Component Mix-In Class
 
 class Plugins:
-    """Plugins Mix-In Class"""
+    """!TXT! Plugins Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -68,7 +68,7 @@ class Plugins:
     security.declareProtected(permission_manage, 'get_plugin')
 
     def get_plugin(self, plugin_id, interfaces=[]):
-        """Return the registry mapping of the specified MetaPublisher2 plugin"""
+        """!TXT! Return the registry mapping of the specified MetaPublisher2 plugin"""
 
         for id, plugin in self.plugin_items(interfaces):
             if id == plugin_id:
@@ -78,14 +78,14 @@ class Plugins:
     security.declareProtected(permission_manage, 'has_plugins')
 
     def has_plugins(self, interfaces=[]):
-        """Return True if any MetaPublisher2 plugins are installed"""
+        """!TXT! Return True if any MetaPublisher2 plugins are installed"""
 
         return self.plugin_ids(interfaces) and true or false
 
     security.declareProtected(permission_manage, 'list_plugins')
 
     def list_plugins(self, plugin_type, order_by, reverse_order):
-        """Return a filtered and sorted plugin list for the ZMI form."""
+        """!TXT! Return a filtered and sorted plugin list for the ZMI form."""
 
         if plugin_type:
             result = []
@@ -121,14 +121,14 @@ class Plugins:
     security.declareProtected(permission_manage, 'plugin_ids')
 
     def plugin_ids(self, interfaces=[]):
-        """Return the ids of installed MetaPublisher2 plugins"""
+        """!TXT! Return the ids of installed MetaPublisher2 plugins"""
 
         return map(lambda item: item[0], self.plugin_items(interfaces))
 
     security.declareProtected(permission_manage, 'plugin_items')
 
     def plugin_items(self, interfaces=[]):
-        """Return tuples of id, registry mapping of installed MetaPublisher2 plugins"""
+        """!TXT! Return tuples of id, registry mapping of installed MetaPublisher2 plugins"""
 
         if not(interfaces):
             interfaces = [IPluginBase, ]
@@ -151,7 +151,7 @@ class Plugins:
     security.declareProtected(permission_manage, 'plugin_values')
 
     def plugin_values(self, interfaces=[]):
-        """Return the registry mapping of installed MetaPublisher2 plugins"""
+        """!TXT! Return the registry mapping of installed MetaPublisher2 plugins"""
 
         return map(lambda item: item[1], self.plugin_items(interfaces))
 

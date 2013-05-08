@@ -24,7 +24,7 @@ __doc__ = """Transfers Component
 
 !TXT! module info
 
-$Id: data/transfers/transfers.py 3 2013-05-07 17:49:12Z sfluehnsdorf $
+$Id: data/transfers/transfers.py 4 2013-05-08 19:34:25Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Transfers Mix-In Class
+# Transfers Component Mix-In Class
 
 class Transfers:
-    """Transfer Mix-In Class"""
+    """!TXT! Transfer Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

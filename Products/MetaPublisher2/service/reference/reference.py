@@ -24,7 +24,7 @@ __doc__ = """Reference Component
 
 !TXT! module info
 
-$Id: service/reference/reference.py 4 2013-05-07 17:49:45Z sfluehnsdorf $
+$Id: service/reference/reference.py 5 2013-05-08 18:57:01Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -46,10 +46,10 @@ __all__ = [
 
 
 # ============================================================================
-# Reference Mix-In Class
+# Reference Component Mix-In Class
 
 class Reference:
-    """Reference Mix-In Class"""
+    """!TXT! Reference Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -72,7 +72,7 @@ class Reference:
     security.declareProtected(permission_zmi, 'get_reference_url')
 
     def get_reference_url(self):
-        """Return the URL for the online reference service"""
+        """!TXT! Return the URL for the online reference service"""
 
         return self.get_setting('service_reference_url')
 

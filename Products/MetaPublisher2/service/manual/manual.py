@@ -26,7 +26,7 @@ Simple service providing access to the Web based manual for both end users and
 developers. The ZMI forms simply include the manual's web pages on the
 MetaPublisher website at http://metapublisher.org.
 
-$Id: service/manual/manual.py 3 2013-05-05 18:01:00Z sfluehnsdorf $
+$Id: service/manual/manual.py 4 2013-05-08 18:56:48Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,10 +48,10 @@ __all__ = [
 
 
 # ============================================================================
-# Manual Mix-In Class
+# Manual Component Mix-In Class
 
 class Manual:
-    """Manual Mix-In Class"""
+    """!TXT! Manual Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -72,7 +72,7 @@ class Manual:
     security.declareProtected(permission_zmi, 'get_manual_url')
 
     def get_manual_url(self):
-        """Return the URL for the online manual service"""
+        """!TXT! Return the URL for the online manual service"""
 
         return self.get_setting('service_manual_url')
 

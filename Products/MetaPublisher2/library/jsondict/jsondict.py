@@ -42,7 +42,7 @@ __all__ = [
 # JSONDict Mix-In Class
 
 class JSONDict:
-    """!TXT!"""
+    """JSONDict Mix-In Class"""
 
     # !!! jsondict.py - implement encode_JSONDict
 

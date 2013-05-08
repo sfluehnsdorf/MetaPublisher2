@@ -24,7 +24,7 @@ __doc__ = """Designs Component
 
 !TXT! module info
 
-$Id: publisher/designs/designs.py 3 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: publisher/designs/designs.py 4 2013-05-08 19:03:39Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -46,10 +46,10 @@ __all__ = [
 
 
 # ============================================================================
-# Designs Mix-In Class
+# Designs Component Mix-In Class
 
 class Designs:
-    """Designs Mix-In Class"""
+    """!TXT! Designs Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -80,35 +80,35 @@ class Designs:
     security.declareProtected(permission_manage, 'has_designplugins')
 
     def has_designplugins(self):
-        """Return the specified MetaPublisher2 Design plugin"""
+        """!TXT! Return the specified MetaPublisher2 Design plugin"""
 
         return self.has_plugins(IDesignPluginBase)
 
     security.declareProtected(permission_manage, 'get_designplugin')
 
     def get_designplugin(self, designplugin_id):
-        """Return the specified MetaPublisher2 Design plugin"""
+        """!TXT! Return the specified MetaPublisher2 Design plugin"""
 
         return self.get_plugin(designplugin_id, IDesignPluginBase)
 
     security.declareProtected(permission_manage, 'designplugin_ids')
 
     def designplugin_ids(self):
-        """Return ids of installed MetaPublisher2 Design plugins"""
+        """!TXT! Return ids of installed MetaPublisher2 Design plugins"""
 
         return self.plugin_ids(IDesignPluginBase)
 
     security.declareProtected(permission_manage, 'designplugin_items')
 
     def designplugin_items(self):
-        """Return tuples of id, value of installed MetaPublisher2 Design plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2 Design plugins"""
 
         return self.plugin_items(IDesignPluginBase)
 
     security.declareProtected(permission_manage, 'designplugin_values')
 
     def designplugin_values(self):
-        """Return tuples of id, value of installed MetaPublisher2 Design plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2 Design plugins"""
 
         return self.plugin_values(IDesignPluginBase)
 
@@ -118,7 +118,7 @@ class Designs:
     security.declareProtected(permission_manage_designs, 'get_designflags')
 
     def get_designflags(self, design_id):
-        """Return tuples of id, boolean states of all Plugin flags"""
+        """!TXT! Return tuples of id, boolean states of all Plugin flags"""
 
         design = get_design(self, design_id)
         return design.get_designflags()
@@ -126,7 +126,7 @@ class Designs:
     security.declareProtected(permission_manage_designs, 'get_designflag_ids')
 
     def get_designflag_ids(self, design_id):
-        """Return the ids of all Plugin flags"""
+        """!TXT! Return the ids of all Plugin flags"""
 
         design = get_design(self, design_id)
         return design.get_designflag_ids()
@@ -134,7 +134,7 @@ class Designs:
     security.declareProtected(permission_manage_designs, 'get_designflag')
 
     def get_designflag(self, design_id, pluginflag_id):
-        """Return the boolean state of the specified Design flag if it exists, raises KeyError otherwise"""
+        """!TXT! Return the boolean state of the specified Design flag if it exists, raises KeyError otherwise"""
 
         design = get_design(self, design_id)
         return design.get_pluginflag(pluginflag_id)
@@ -142,7 +142,7 @@ class Designs:
     security.declareProtected(permission_manage_designs, 'has_designflag')
 
     def has_designflag(self, design_id, pluginflag_id):
-        """Return True if the Design flag exists, False otherwise"""
+        """!TXT! Return True if the Design flag exists, False otherwise"""
 
         design = get_design(self, design_id)
         return design.has_pluginflag(pluginflag_id)
@@ -153,35 +153,35 @@ class Designs:
     security.declareProtected(permission_manage_designs, 'design_ids')
 
     def design_ids(self):
-        """Return the ids of Frontends."""
+        """!TXT! Return the ids of Frontends."""
 
         return self.designs.objectIds()
 
     security.declareProtected(permission_manage_designs, 'design_items')
 
     def design_items(self):
-        """Return tuples of id, objects of Frontends."""
+        """!TXT! Return tuples of id, objects of Frontends."""
 
         return self.designs.objectItems()
 
     security.declareProtected(permission_manage_designs, 'design_values')
 
     def design_values(self):
-        """Return the objects of Frontends."""
+        """!TXT! Return the objects of Frontends."""
 
         return self.designs.objectValues()
 
     security.declareProtected(permission_manage_designs, 'get_design')
 
     def get_design(self, design_id):
-        """Return the specified Frontend."""
+        """!TXT! Return the specified Frontend."""
 
         return self.designs._getOb(design_id)
 
     security.declareProtected(permission_manage_designs, 'preview_design')
 
     def preview_design(self, design_id, options={}, REQUEST=None, **args):
-        """Preview a Design with the specified options."""
+        """!TXT! Preview a Design with the specified options."""
 
         # TODO: preview_design
         raise NotImplemented
@@ -192,7 +192,7 @@ class Designs:
     security.declareProtected(permission_manage_designs, 'setup_design')
 
     def setup_design(self, frontend_parent_id, design_id, options={}, REQUEST=None, **args):
-        """Add a Design with the specified options to the Frontends."""
+        """!TXT! Add a Design with the specified options to the Frontends."""
 
         # TODO: setup_design
         raise NotImplemented

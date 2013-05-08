@@ -24,7 +24,7 @@ __doc__ = """Expression Aggregates Component
 
 !TXT! module info
 
-$Id: data/expressions/aggregates.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/expressions/aggregates.py 3 2013-05-08 19:31:09Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Aggregates Mix-In Class
+# Aggregates Component Mix-In Class
 
 class Aggregates:
-    """Aggregates Mix-In Class"""
+    """!TXT! Aggregates Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

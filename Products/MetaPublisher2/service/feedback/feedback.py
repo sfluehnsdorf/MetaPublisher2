@@ -26,7 +26,7 @@ Simple service providing access to the Web based feedback service for a variety
 of types of feedback. The ZMI forms simply include the feedback service's web
 pages on the MetaPublisher website at http://metapublisher.org.
 
-$Id: service/feedback/feedback.py 3 2013-05-05 18:01:18Z sfluehnsdorf $
+$Id: service/feedback/feedback.py 4 2013-05-08 18:56:17Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,10 +48,10 @@ __all__ = [
 
 
 # ============================================================================
-# Feedback Mix-In Class
+# Feedback Component Mix-In Class
 
 class Feedback:
-    """Feedback Mix-In Class"""
+    """!TXT! Feedback Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -68,7 +68,7 @@ class Feedback:
     security.declareProtected(permission_zmi, 'get_feedback_url')
 
     def get_feedback_url(self):
-        """Return the URL for the online feedback service"""
+        """!TXT! Return the URL for the online feedback service"""
 
         return self.get_setting('service_feedback_url')
 

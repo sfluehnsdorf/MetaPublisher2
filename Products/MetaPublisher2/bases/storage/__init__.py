@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Storage Base Initialisation
+__doc__ = """Storage Plugin Base Initialisation
 
 !TXT! module info
 
-$Id: bases/storage/__init__.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/storage/__init__.py 3 2013-05-08 19:41:27Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

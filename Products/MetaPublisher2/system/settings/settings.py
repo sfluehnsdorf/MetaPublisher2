@@ -24,7 +24,7 @@ __doc__ = """Settings Component
 
 !TXT! module info
 
-$Id: system/settings/settings.py 4 2013-05-05 18:00:10Z sfluehnsdorf $
+$Id: system/settings/settings.py 5 2013-05-08 18:54:47Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Settings Mix-In Class
+# Settings Component Mix-In Class
 
 class Settings:
-    """Settings Mix-In Class"""
+    """!TXT! Settings Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

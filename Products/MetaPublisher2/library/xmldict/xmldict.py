@@ -37,10 +37,7 @@ from types import BooleanType, ComplexType, DictType, FloatType, IntType, ListTy
 try:
     from elementtree.ElementTree import Element, tostring, fromstring
 except ImportError:
-    try:
-        from xml.etree.ElementTree import Element, tostring, fromstring
-    except ImportError:
-        from etree.ElementTree import Element, tostring, fromstring
+    from xml.etree.ElementTree import Element, tostring, fromstring
 
 
 # ============================================================================

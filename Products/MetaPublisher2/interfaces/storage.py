@@ -24,7 +24,7 @@ __doc__ = """Storage Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/storage.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: interfaces/storage.py 3 2013-05-08 19:35:24Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Storage Plugin Base Interface
 
 class IStoragePluginBase(Interface):
-    """Storage Plugin Base Interface"""
+    """!TXT! Storage Plugin Base Interface"""
 
     # ------------------------------------------------------------------------
     # Storage Mutation API

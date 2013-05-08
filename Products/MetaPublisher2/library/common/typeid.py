@@ -20,12 +20,12 @@
 #
 # ============================================================================
 
-__doc__ = """Type Identification
+__doc__ = """!TXT! Type Identification
 
 !TXT! module info
 Resources for type identification of variables.
 
-$Id: library/common/typeid.py 5 2013-05-05 18:03:25Z sfluehnsdorf $
+$Id: library/common/typeid.py 6 2013-05-08 20:15:03Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -75,7 +75,7 @@ except:
 # !TXT!
 
 def identify_type(unidentified):
-    """identify type of object and return tuple of typegroup, typeid"""
+    """!TXT! identify type of object and return tuple of typegroup, typeid"""
 
     result = object_types.get(type(unidentified), None)
     if result:
@@ -100,7 +100,7 @@ null_values = ('null', 'none', 'undefined', )
 # !TXT!
 
 def is_true_value(value):
-    """return true, if value matches a true value"""
+    """!TXT! return true, if value matches a true value"""
 
     if str(value) in true_values:
         return true
@@ -111,7 +111,7 @@ def is_true_value(value):
 # !TXT!
 
 def is_false_value(value):
-    """return true, if value matches a false value"""
+    """!TXT! return true, if value matches a false value"""
 
     if str(value) in false_values:
         return true
@@ -122,7 +122,7 @@ def is_false_value(value):
 # !TXT!
 
 def is_null_value(value):
-    """return true, if value matches a null value"""
+    """!TXT! return true, if value matches a null value"""
 
     if str(value) in null_values:
         return true
@@ -133,7 +133,7 @@ def is_null_value(value):
 # !TXT!
 
 def is_not_null_value(value):
-    """return true, if value does not match a null value"""
+    """!TXT! return true, if value does not match a null value"""
 
     if str(value) in null_values:
         return false
@@ -144,7 +144,7 @@ def is_not_null_value(value):
 # !TXT!
 
 def get_boolean_value(value):
-    """return true if value matches a true, false if value matches a false value, raise value error otherwise"""
+    """!TXT! return true if value matches a true, false if value matches a false value, raise value error otherwise"""
 
     if is_true_value(value):
         return true
@@ -157,7 +157,7 @@ def get_boolean_value(value):
 # !TXT!
 
 def get_nullableboolean_value(value):
-    """return true if value matches a true, false if value matches a false value, null if value matches a null value, raise value error otherwise"""
+    """!TXT! return true if value matches a true, false if value matches a false value, null if value matches a null value, raise value error otherwise"""
 
     if is_null_value(value):
         return None
@@ -168,7 +168,7 @@ def get_nullableboolean_value(value):
 # String Evaluation
 
 def eval_valuestring(value, reference):
-    """determine type of value and cast it based on type of reference value"""
+    """!TXT! determine type of value and cast it based on type of reference value"""
 
     reference_typegroup, reference_type = identify_type(reference)
     if reference_type == 'boolean':

@@ -24,7 +24,7 @@ __doc__ = """Queries Component
 
 !TXT! module info
 
-$Id: data/queries/queries.py 5 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/queries/queries.py 6 2013-05-08 19:33:51Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Queries Mix-In Class
+# Queries Component Mix-In Class
 
 class Queries:
-    """Queries Mix-In Class"""
+    """!TXT! Queries Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -68,6 +68,7 @@ class Queries:
 
     def parse_query(self):
         """!TXT!"""
+
         result = u''
         request = self.REQUEST
         input = request.form['input'].replace('  ', ' ').strip()
@@ -147,6 +148,8 @@ class Queries:
 
     # ------------------------------------------------------------------------
     # Queries Output API
+
+    # !!! change this crap (maybe this could be part of settings.conf)
 
     def _format_query_lines(self, *lines):
         return u'<br>'.join(lines)

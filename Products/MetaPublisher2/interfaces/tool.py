@@ -24,7 +24,7 @@ __doc__ = """Tool Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/tool.py 3 2013-05-07 20:29:29Z sfluehnsdorf $
+$Id: interfaces/tool.py 4 2013-05-08 19:35:16Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,7 +48,7 @@ __all__ = [
 # Tool Plugin Base Interface
 
 class IToolPluginBase(Interface):
-    """Tool Plugin Base Interface"""
+    """!TXT! Tool Plugin Base Interface"""
 
     pass
 

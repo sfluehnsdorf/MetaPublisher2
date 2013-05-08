@@ -24,7 +24,7 @@ __doc__ = """Expression Functions Component
 
 !TXT! module info
 
-$Id: data/expressions/functions.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: data/expressions/functions.py 3 2013-05-08 19:31:55Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ============================================================================
-# Functions Mix-In Class
+# Functions Component Mix-In Class
 
 class Functions:
-    """Functions Mix-In Class"""
+    """!TXT! Functions Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

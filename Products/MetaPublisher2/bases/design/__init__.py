@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Design Base Initialisation
+__doc__ = """Design Plugin Base Initialisation
 
 !TXT! module info
 
-$Id: bases/design/__init__.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/design/__init__.py 3 2013-05-08 19:42:18Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Frontend Base Initialisation
+__doc__ = """Frontend Plugin Base Initialisation
 
 !TXT! module info
 
-$Id: bases/frontend/__init__.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/frontend/__init__.py 3 2013-05-08 19:41:40Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

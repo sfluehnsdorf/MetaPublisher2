@@ -32,7 +32,7 @@ HelpSys module to reintegrate the contextual help into the ZMI, introducing
 new features such as structured help pages and automatic API reference
 generation.
 
-$Id: service/help/help.py 2 2013-05-05 18:01:12Z sfluehnsdorf $
+$Id: service/help/help.py 3 2013-05-08 18:56:30Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -54,10 +54,10 @@ __all__ = [
 
 
 # ============================================================================
-# Help Mix-In Class
+# Help Component Mix-In Class
 
 class Help:
-    """Help Mix-In Class"""
+    """!TXT! Help Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 

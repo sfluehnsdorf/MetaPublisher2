@@ -22,13 +22,13 @@
 
 __doc__ = """Profiles Component
 
-User profiles are settings that are stored transparently and persistently. This
-service removes the need to pass settings through the REQUEST and ensures that
-these settings are available any time, even after logout or server restart. Each
-profile is stored on a per-user level, identified by user name and the physical
-path to the user's UserFolder object.
+User profiles are settings that are stored transparently and persistently.
+This service removes the need to pass settings through the REQUEST and ensures
+that these settings are available any time, even after logout or server
+restart. Each profile is stored on a per-user level, identified by user name
+and the physical path to the user's UserFolder object.
 
-$Id: system/profiles/profiles.py 10 2013-05-05 18:00:15Z sfluehnsdorf $
+$Id: system/profiles/profiles.py 11 2013-05-08 18:54:47Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -49,10 +49,10 @@ __all__ = [
 
 
 # ============================================================================
-# Profiles Mix-In Class
+# Profiles Component Mix-In Class
 
 class Profiles:
-    """Profiles Mix-In Class"""
+    """!TXT! Profiles Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -73,21 +73,21 @@ class Profiles:
     # Profile Retrieval API
 
     def _get_profile_id(self, user):
-        """Return the Profile id based on the user object."""
+        """!TXT! Return the Profile id based on the user object."""
 
         return '/'.join(user.aq_parent.getPhysicalPath()) + '/' + user.getUserName()
 
     security.declareProtected(permission_manage, 'get_profile_variable')
 
     def get_profile_variable(self, request, key, default=None):
-        """Return the value of the specified variable from the user's profile."""
+        """!TXT! Return the value of the specified variable from the user's profile."""
 
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
         return settings.get(key, default)
 
     def list_profile_variables(self, request):
-        """Return a list of the profile's settings."""
+        """!TXT! Return a list of the profile's settings."""
 
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
@@ -105,7 +105,7 @@ class Profiles:
     security.declareProtected(permission_manage, 'delete_own_profile')
 
     def save_profile_changes(self, REQUEST):
-        """Save changes to the user's profile."""
+        """!TXT! Save changes to the user's profile."""
 
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
@@ -129,7 +129,7 @@ class Profiles:
     security.declareProtected(permission_manage, 'delete_own_profile')
 
     def delete_own_profile(self, REQUEST):
-        """Delete the user's Profile."""
+        """!TXT! Delete the user's Profile."""
 
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         profiles = self.__profiles
@@ -141,7 +141,7 @@ class Profiles:
     security.declareProtected(permission_manage, 'delete_unused_profiles')
 
     def delete_unused_profiles(self, REQUEST=None):
-        """Delete all Profiles for whose Users object no longer exist."""
+        """!TXT! Delete all Profiles for whose Users object no longer exist."""
 
         profiles = self.__profiles
 
@@ -170,7 +170,7 @@ class Profiles:
     security.declareProtected(permission_manage, 'set_profile_variable')
 
     def set_profile_variable(self, request, key, value):
-        """Set the value of the specified variable in the User's profile."""
+        """!TXT! Set the value of the specified variable in the User's profile."""
 
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
@@ -187,7 +187,7 @@ class Profiles:
     security.declareProtected(permission_zmi, 'update_profile')
 
     def update_profile(self, request, variables):
-        """Set the value of the specified variable in the User's profile."""
+        """!TXT! Set the value of the specified variable in the User's profile."""
 
         form = request.form
         form_has_key = form.has_key

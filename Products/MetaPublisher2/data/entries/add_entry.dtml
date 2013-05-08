@@ -13,6 +13,8 @@
 <dtml-if has_storageplugins>
 
 <dtml-if has_storages>
+
+<dtml-var formlet_header>
 <dtml-let
   form_id="'edit_entry_form'"
   buttons="[
@@ -22,6 +24,7 @@
   >
 <dtml-var storage_selection_formlet>
 </dtml-let>
+<dtml-var formlet_footer>
 
 <dtml-if "has_fieldplugins( storage_id = storage_id )">
 

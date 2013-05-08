@@ -24,7 +24,7 @@ __doc__ = """EntrySet Base
 
 !TXT! module info
 
-$Id: bases/entryset/entryset.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: bases/entryset/entryset.py 3 2013-05-08 19:53:11Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -47,10 +47,10 @@ __all__ = [
 
 
 # ============================================================================
-# Entry Set Base
+# Entry Set Base Class
 
 class EntrySet(EntryContainer):
-    """Entry Set Base"""
+    """!TXT! Entry Set Base Class"""
 
     security = ClassSecurityInfo()
 

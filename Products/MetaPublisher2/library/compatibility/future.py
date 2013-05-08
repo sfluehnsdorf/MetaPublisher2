@@ -24,7 +24,7 @@ __doc__ = """Future Compatibility
 
 !TXT! module info
 
-$Id: library/compatibility/future.py 4 2013-05-07 17:50:03Z sfluehnsdorf $
+$Id: library/compatibility/future.py 5 2013-05-08 20:23:05Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -40,7 +40,7 @@ from Products.MetaPublisher2.library.common import ClassSecurityInfo, false, Ini
 # Module Exports
 
 __all__ = [
-    'Future',
+    'FutureCompatibility',
     'show_future',
 ]
 
@@ -57,14 +57,14 @@ show_future = true
 
 
 # ============================================================================
-# Future Mix-In Class
+# Future Compatibility Mix-In Class
 
-class Future:
-    """Future Mix-In Class"""
+class FutureCompatibility:
+    """!TXT! Future Compatibility Mix-In Class"""
 
     security = ClassSecurityInfo()
 
 # ----------------------------------------------------------------------------
 # Class Security
 
-InitializeClass(Future)
+InitializeClass(FutureCompatibility)

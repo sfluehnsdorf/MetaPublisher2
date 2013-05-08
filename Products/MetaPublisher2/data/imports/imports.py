@@ -26,7 +26,7 @@ Import service for Entries from various types of files either in the filesystem
 or uploaded. Users can choose the destination Storage and match the data in the
 file to the Fields in the Storage.
 
-$Id: data/imports/imports.py 4 2013-05-05 18:04:09Z sfluehnsdorf $
+$Id: data/imports/imports.py 5 2013-05-08 19:32:36Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -47,10 +47,10 @@ __all__ = [
 
 
 # ============================================================================
-# Imports Mix-In Class
+# Imports Component Mix-In Class
 
 class Imports:
-    """Imports Mix-In Class"""
+    """!TXT! Imports Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -69,19 +69,19 @@ class Imports:
     security.declareProtected(permission_import_entries, 'import_entries')
 
     def import_entries(self, file, storage_id, field_map={}, REQUEST=None):
-        """Import entries from the specified local file into the specified Storage, mapping the data to the Storage's Field according the specified field map."""
+        """!TXT! Import entries from the specified local file into the specified Storage, mapping the data to the Storage's Field according the specified field map."""
 
         raise NotImplemented
 
     security.declareProtected(permission_import_entries, 'upload_entries')
 
     def upload_entries(self, file, storage_id, field_map={}, REQUEST=None):
-        """Upload a data file for entry import to a local file."""
+        """!TXT! Upload a data file for entry import to a local file."""
 
         raise NotImplemented
 
     def _inspect_entry_import(self, filename):
-        """Inspect a data file for importing, returning the file format and available data for mapping it to a Storage's Fields."""
+        """!TXT! Inspect a data file for importing, returning the file format and available data for mapping it to a Storage's Fields."""
 
         raise NotImplemented
 

@@ -26,7 +26,7 @@ Simple service providing access to the Web based community service. The ZMI
 forms simply include the community service's web pages on the MetaPublisher
 website at http://metapublisher.org.
 
-$Id: service/community/community.py 4 2013-05-05 18:01:23Z sfluehnsdorf $
+$Id: service/community/community.py 5 2013-05-08 18:56:02Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -48,10 +48,10 @@ __all__ = [
 
 
 # ============================================================================
-# Community Mix-In Class
+# Community Component Mix-In Class
 
 class Community:
-    """Community Mix-In Class"""
+    """!TXT! Community Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
@@ -72,7 +72,7 @@ class Community:
     security.declareProtected(permission_zmi, 'get_community_url')
 
     def get_community_url(self):
-        """Return the URL for the online community service"""
+        """!TXT! Return the URL for the online community service"""
 
         return self.get_setting('service_community_url')
 

@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Identifier Base
+__doc__ = """Identifier Plugin Base
 
 !TXT! module info
 
-$Id: bases/identifier/identifier.py 2 2013-05-05 18:01:54Z sfluehnsdorf $
+$Id: bases/identifier/identifier.py 3 2013-05-08 19:49:54Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -47,10 +47,10 @@ __all__ = [
 
 
 # ============================================================================
-# Identifier Plugin Base
+# Identifier Plugin Base Class
 
 class IdentifierPluginBase(PluginBase):
-    """Identifier Plugin Base"""
+    """!TXT! Identifier Plugin Base Class"""
 
     security = ClassSecurityInfo()
 
@@ -100,6 +100,7 @@ class IdentifierPluginBase(PluginBase):
     entryIdPattern_formlet = DTMLFile('formlet_entryIdPattern', globals())
 
     def entryIdPattern_test(self, errors, entryIdPatternType, entryIdPattern):
+        """!TXT!"""
 
         if entryIdPatternType != 'custom':
             if entryIdPatternType == 'sequence':

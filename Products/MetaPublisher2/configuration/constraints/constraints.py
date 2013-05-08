@@ -24,7 +24,7 @@ __doc__ = """Constraints Component
 
 !TXT! module info
 
-$Id: configuration/constraints/constraints.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
+$Id: configuration/constraints/constraints.py 3 2013-05-08 19:20:42Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -45,10 +45,10 @@ __all__ = [
 
 
 # ==============================================================================
-# Constraints Mix-In Class
+# Constraints Component Mix-In Class
 
 class Constraints:
-    """Constraints Mix-In Class"""
+    """!TXT! Constraints Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
