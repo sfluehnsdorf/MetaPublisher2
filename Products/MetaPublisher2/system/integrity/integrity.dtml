@@ -9,6 +9,7 @@
 
 <!-- !!! integrity.dtml - update to use new ui -->
 <!-- !!! integrity.dtml - review form -->
+<!-- !!! integrity.dtml - disable unsupported functions -->
 
 <dtml-var not_available_dialog>
  

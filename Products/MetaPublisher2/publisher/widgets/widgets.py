@@ -143,7 +143,7 @@ class Widgets:
     def get_fields_for_widget(self, widget_type_id):
         """!TXT! Return a list of Fields appropriate for the specified Widget type."""
 
-        # TODO widgets.py - implement get_fields_for_widget
+        # !!! widgets.py - implement get_fields_for_widget
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'get_widgets_for_field')
@@ -207,7 +207,7 @@ class Widgets:
     def add_widget(self, frontend_path, widget_type_id, options={}, REQUEST=None, **args):
         """!TXT! Add a new Widget in the specified Frontend with specified type and configuration."""
 
-        # TODO widgets.py - implement add_widgets
+        # !!! widgets.py - implement add_widgets
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'edit_widget')
@@ -223,7 +223,7 @@ class Widgets:
     def delete_widget(self, frontend_path, widget_id, REQUEST=None):
         """!TXT! Delete the specified Widget in the specified Frontend."""
 
-        # TODO widgets.py - implement del_widget
+        # !!! widgets.py - implement delete_widget
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'delete_widgets')
@@ -231,39 +231,39 @@ class Widgets:
     def delete_widgets(self, frontend_path, widget_ids=[], REQUEST=None):
         """!TXT! Delete the specified Widgets in the specified Frontend."""
 
-        # !!! widgets.py - implement del_widgets
+        # !!! widgets.py - implement delete_widgets
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'duplicate_widget')
 
-    def duplicate_widget(self, frontend_path, widget_id, REQUEST=None):
+    def duplicate_widget(self, frontend_path, widget_id, new_id, REQUEST=None):
         """!TXT! Duplicate the specified Widget in the specified Frontend."""
 
-        # TODO widgets.py - implement del_widget
+        # !!! widgets.py - implement duplicate_widget
         raise NotImplemented
 
-    security.declareProtected(permission_manage_frontends, 'delete_widgets')
+    security.declareProtected(permission_manage_frontends, 'duplicate_widgets')
 
-    def delete_widgets(self, frontend_path, widget_ids=[], REQUEST=None):
-        """!TXT! Delete the specified Widgets in the specified Frontend."""
+    def duplicate_widgets(self, frontend_path, widget_ids, new_ids, REQUEST=None):
+        """!TXT! Duplicate the specified Widgets in the specified Frontend."""
 
-        # !!! widgets.py - implement del_widgets
+        # !!! widgets.py - implement duplicate_widgets
         raise NotImplemented
 
-    security.declareProtected(permission_manage_frontends, 'delete_widget')
+    security.declareProtected(permission_manage_frontends, 'rename_widget')
 
-    def delete_widget(self, frontend_path, widget_id, REQUEST=None):
-        """!TXT! Delete the specified Widget in the specified Frontend."""
+    def rename_widget(self, frontend_path, widget_id, new_id, REQUEST=None):
+        """!TXT! Rename the specified Widget in the specified Frontend."""
 
-        # TODO widgets.py - implement del_widget
+        # !!! widgets.py - implement rename_widget
         raise NotImplemented
 
-    security.declareProtected(permission_manage_frontends, 'delete_widgets')
+    security.declareProtected(permission_manage_frontends, 'rename_widgets')
 
-    def delete_widgets(self, frontend_path, widget_ids=[], REQUEST=None):
-        """!TXT! Delete the specified Widgets in the specified Frontend."""
+    def rename_widgets(self, frontend_path, widget_ids, new_ids, REQUEST=None):
+        """!TXT! Rename the specified Widgets in the specified Frontend."""
 
-        # !!! widgets.py - implement del_widgets
+        # !!! widgets.py - implement rename_widgets
         raise NotImplemented
 
     # ------------------------------------------------------------------------

@@ -36,7 +36,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile,\
-    InitializeClass, permission_zmi
+    InitializeClass, permission_zmi, show_future
 
 
 # ============================================================================
@@ -58,13 +58,15 @@ class Manual:
     # ------------------------------------------------------------------------
     # Manual ZMI
 
-    security.declareProtected(permission_zmi, 'manual_form')
+    if show_future:
 
-    manual_form = DTMLFile('manual', globals())
+        security.declareProtected(permission_zmi, 'manual_form')
 
-    security.declareProtected(permission_zmi, 'manual_top_form')
+        manual_form = DTMLFile('manual', globals())
 
-    manual_top_form = DTMLFile('manual_top', globals(), target='_parent')
+        security.declareProtected(permission_zmi, 'manual_top_form')
+
+        manual_top_form = DTMLFile('manual_top', globals(), target='_parent')
 
     # ------------------------------------------------------------------------
     # Manual Retrieval API

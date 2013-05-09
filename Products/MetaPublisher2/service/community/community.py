@@ -36,7 +36,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile,\
-    InitializeClass, permission_zmi
+    InitializeClass, permission_zmi, show_future
 
 
 # ============================================================================
@@ -58,13 +58,15 @@ class Community:
     # ------------------------------------------------------------------------
     # Community ZMI
 
-    security.declareProtected(permission_zmi, 'community_form')
+    if show_future:
 
-    community_form = DTMLFile('community', globals())
+        security.declareProtected(permission_zmi, 'community_form')
 
-    security.declareProtected(permission_zmi, 'community_top_form')
+        community_form = DTMLFile('community', globals())
 
-    community_top_form = DTMLFile('community_top', globals(), target='_parent')
+        security.declareProtected(permission_zmi, 'community_top_form')
+
+        community_top_form = DTMLFile('community_top', globals(), target='_parent')
 
     # ------------------------------------------------------------------------
     # Community Retrieval API

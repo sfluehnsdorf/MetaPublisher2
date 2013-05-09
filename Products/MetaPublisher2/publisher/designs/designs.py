@@ -204,3 +204,6 @@ InitializeClass(Designs)
 
 # !!! designs.py - implement
 # !!! designs.py - handle default designs and secondary designs
+# !!! designs.py - revise API and comments
+#     designs.py must manage designs in frontends and designsfolder
+#     either provide two sets of methods or handle in designsfolder if frontend_path is None
