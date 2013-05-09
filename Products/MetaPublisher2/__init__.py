@@ -27,7 +27,7 @@ images and the online help. The individual Product registrations are
 outsourced to the products directory. For backward compatibility renamed
 modules are mapped to their new names.
 
-$Id: __init__.py 16 2013-05-08 23:24:47Z sfluehnsdorf $
+$Id: __init__.py 17 2013-05-09 01:27:25Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -64,7 +64,7 @@ def initialize(context):
 # ============================================================================
 # Product Imagery
 
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # Product Icon Imagery
 
 misc_ = {}
@@ -79,7 +79,7 @@ while todo:
         key = '_'.join(filename.split(sep))
         misc_[key] = ImageFile(filepath, globals())
 
-# ------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # Legacy Icon Imagery
 
 misc_.update({
@@ -95,7 +95,7 @@ misc_.update({
 })
 
 
-# ==============================================================================
+# ============================================================================
 # Product Backwards Compatibility
 
 # Setting __module_aliases__ failed for whatever reason, which is why I have to
@@ -111,6 +111,7 @@ sys.modules['Products.MetaPublisher2.Library'] = library.compatibility.historica
 sys.modules['Products.MetaPublisher2.Interfaces'] = library.compatibility.historical
 sys.modules['Products.MetaPublisher2.MetaPublisher2'] = products.metapublisher2.MetaPublisher2
 
+# ============================================================================
 
 # !!! PHASE 1 - global
 # !!! PHASE 2 - library (except jsondict, pluginregistry)
@@ -122,7 +123,8 @@ sys.modules['Products.MetaPublisher2.MetaPublisher2'] = products.metapublisher2.
 # !!! PHASE 8 - inline error messages, integrity tests, jsondict, onexit handlers, pluginregistry, review all forms, settings.conf, tests
 # !!! PHASE 9 - online services, pep8, remove DEV, test zope release compatability
 
-# !!! global - update all TODO markers
+# ----------------------------------------------------------------------------
+
 # !!! global - check all redirects
 # !!! global - check all attribute retrieval if get_MetaPublisher2 needed
 # !!! global - check all href's if they start with get_MetaPublisher2_url
