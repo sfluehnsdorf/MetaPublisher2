@@ -66,6 +66,6 @@ class Audit:
 
 InitializeClass(Audit)
 
-# TODO: Audit Component
-#       The Audit displays a summary of Permission settings to help find security problems), security map, permissions, roles, ownership, ...
-#       owners, permissions, proxies, roles, users
+# TODO audit.py - implement
+#      The Audit displays a summary of Permission settings to help find security problems), security map, permissions, roles, ownership, ...
+#      owners, permissions, proxies, roles, users

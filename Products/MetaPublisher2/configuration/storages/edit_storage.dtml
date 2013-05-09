@@ -47,7 +47,7 @@
     </tr>
   </table>
 <div class="list-item">
-  <input type="submit" name="&dtml-getId;/manage_configureStorage:method" value=" Save Changes " class="default" /> 
+  <input type="submit" name="&dtml-getId;/manage_configureStorage:method" value="Save Changes" class="default" /> 
   <input type="submit" name="storages_form:method" value=" Cancel " /> 
 </div>
 

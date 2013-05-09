@@ -109,7 +109,7 @@ def add_MetaPublisher2Widgets(self, id, title='Widgets Folder', REQUEST=None):
     """!TXT! ZMI constructor for MetaPublisher2Widgets"""
 
     if not container_filter(self.this()):
-        raise TypeError("Can't add a MetaPublisher2Widgets Folder outside of a MetaPublisher2")
+        raise TypeError("!TXT! Can't add a MetaPublisher2Widgets Folder outside of a MetaPublisher2")
 
     id = str(id)
     title = str(title)
@@ -126,7 +126,7 @@ def add_MetaPublisher2Widgets(self, id, title='Widgets Folder', REQUEST=None):
             url_base = REQUEST['URL1']
         url = '%s/%s?update_menu=1&manage_tabs_message=%s' % (
             url_base,
-            quote_plus('New MetaPublisher2Widgets "%s" created.' % id)
+            quote_plus('!TXT! New MetaPublisher2Widgets "%s" created.' % id)
         )
         REQUEST.RESPONSE.redirect(url)
 

@@ -22,12 +22,12 @@
 
 __doc__ = """Storages Component
 
-API and ZMI services for managing Storages. Storages contain the definition for
-the data source, the Fields defining the data elements that make up a single
-data entry, and provide access to the Entries and EntryFields stored within the
-Storage. A single Storage is a homogenous list of data, such as list of
-addresses, news items or the slides of a slideshow. Storages can be added,
-edited, renamed and deleted as well as retrieved, listed and tested for
+API and ZMI services for managing Storages. Storages contain the definition
+for the data source, the Fields defining the data elements that make up a
+single data entry, and provide access to the Entries and EntryFields stored
+within the Storage. A single Storage is a homogenous list of data, such as
+list of addresses, news items or the slides of a slideshow. Storages can be
+added, edited, renamed and deleted as well as retrieved, listed and tested for
 existence.
 
 $Id: configuration/storages/storages.py 21 2013-05-08 21:40:03Z sfluehnsdorf $
@@ -190,7 +190,7 @@ class Storages:
         storage = self._getOb(storage_id)
         if IStoragePluginBase.providedBy(storage):
             return storage
-        raise KeyError('Storage "%s" not found.' % storage_id)
+        raise KeyError('!TXT! Storage "%s" not found.' % storage_id)
 
     security.declareProtected(permission_access_configuration, 'has_storage')
 
@@ -321,7 +321,7 @@ class Storages:
                 storageplugin['action']
             ))
         except:
-            self.redirect(REQUEST, 'storages_form', 'Storage type "%s" is invalid.' % REQUEST.get('storageType', None))
+            self.redirect(REQUEST, 'storages_form', '!TXT! Storage type "%s" is invalid.' % REQUEST.get('storageType', None))
 
     security.declareProtected(permission_change_configuration, 'add_storage')
 
@@ -340,7 +340,7 @@ class Storages:
         storage = self._getOb(storage_id)
         storage.add_storage(options)
 
-        self.redirect(REQUEST, 'storages_form', 'Storage "%s" added.' % storage_id)
+        self.redirect(REQUEST, 'storages_form', '!TXT! Storage "%s" added.' % storage_id)
 
     security.declareProtected(permission_change_configuration, 'delete_storage')
 
@@ -352,7 +352,7 @@ class Storages:
 
         self.manage_delObjects([storage_id, ])
 
-        self.redirect(REQUEST, 'storages_form', 'Storage "%s" deleted.' % storage_id)
+        self.redirect(REQUEST, 'storages_form', '!TXT! Storage "%s" deleted.' % storage_id)
 
     security.declareProtected(permission_change_configuration, 'delete_storages')
 
@@ -366,7 +366,7 @@ class Storages:
         for storage_id in storage_ids:
             self.manage_delObjects(storage_id)
 
-        self.redirect(REQUEST, 'storages_form', '%d Storages deleted.' % len(ids))
+        self.redirect(REQUEST, 'storages_form', '!TXT! %d Storages deleted.' % len(ids))
 
     security.declareProtected(permission_change_configuration, 'duplicate_storage')
 
@@ -381,7 +381,7 @@ class Storages:
         storage = self.get_storage(new_id)
         storage.after_duplicate(storage_id)
 
-        self.redirect(REQUEST, 'storages_form', 'Storage "%s" duplicated as "%s".' % (storage_id, new_id))
+        self.redirect(REQUEST, 'storages_form', '!TXT! Storage "%s" duplicated as "%s".' % (storage_id, new_id))
 
     security.declareProtected(permission_change_configuration, 'duplicate_storages')
 
@@ -402,7 +402,7 @@ class Storages:
             storage = self.get_storage(new_ids[index])
             storage.after_duplicate(storage_ids[index], new_ids[index])
 
-        self.redirect(REQUEST, 'storages_form', '%d Storages duplicated.' % len(ids))
+        self.redirect(REQUEST, 'storages_form', '!TXT! %d Storages duplicated.' % len(ids))
 
     security.declareProtected(permission_change_configuration, 'edit_storage')
 
@@ -415,7 +415,7 @@ class Storages:
         storage = self.get_storage(storage_id)
         storage.edit_storage(options)
 
-        self.redirect(REQUEST, 'storages_form', 'Storage "%s" edited.' % storage_id)
+        self.redirect(REQUEST, 'storages_form', '!TXT! Storage "%s" edited.' % storage_id)
 
     security.declareProtected(permission_change_configuration, 'rename_storage')
 
@@ -430,7 +430,7 @@ class Storages:
         storage = self.get_storage(new_id)
         storage.after_rename(storage_id, new_id)
 
-        self.redirect(REQUEST, 'storages_form', 'Storage "%s" renamed to "%s".' % (storage_id, new_id))
+        self.redirect(REQUEST, 'storages_form', '!TXT! Storage "%s" renamed to "%s".' % (storage_id, new_id))
 
     security.declareProtected(permission_change_configuration, 'rename_storages')
 
@@ -451,7 +451,7 @@ class Storages:
             storage = self.get_storage(new_ids[index])
             storage.after_rename(storage_ids[index])
 
-        self.redirect(REQUEST, 'storages_form', '%d Storages renamed.' % len(ids))
+        self.redirect(REQUEST, 'storages_form', '!TXT! %d Storages renamed.' % len(ids))
 
     # ------------------------------------------------------------------------
     # Storage Ordering API
@@ -475,7 +475,7 @@ class Storages:
         self.redirect(
             REQUEST,
             'storages_form',
-            message='Storage "%s" moved to position %d' % (storage_id, position + 1),
+            message='!TXT! Storage "%s" moved to position %d' % (storage_id, position + 1),
             update_menu=True,
         )
 
@@ -488,7 +488,7 @@ class Storages:
         self.redirect(
             REQUEST,
             'storages_form',
-            message='Storage "%s" moved to the top' % storage_id,
+            message='!TXT! Storage "%s" moved to the top' % storage_id,
             update_menu=True,
         )
 
@@ -501,7 +501,7 @@ class Storages:
         self.redirect(
             REQUEST,
             'storages_form',
-            message='Storage "%s" moved up' % storage_id,
+            message='!TXT! Storage "%s" moved up' % storage_id,
             update_menu=True,
         )
 
@@ -514,7 +514,7 @@ class Storages:
         self.redirect(
             REQUEST,
             'storages_form',
-            message='Storage "%s" moved down' % storage_id,
+            message='!TXT! Storage "%s" moved down' % storage_id,
             update_menu=True,
         )
 
@@ -527,7 +527,7 @@ class Storages:
         self.redirect(
             REQUEST,
             'storages_form',
-            message='Storage "%s" moved to the bottom' % storage_id,
+            message='!TXT! Storage "%s" moved to the bottom' % storage_id,
             update_menu=True,
         )
 

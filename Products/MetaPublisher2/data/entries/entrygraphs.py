@@ -55,7 +55,7 @@ class EntryGraphs:
     # ------------------------------------------------------------------------
     # Entry Graph Retrieval API
 
-    # TODO: realise graphs via field? methods accept a field_id to identify that field
+    # TODO entrygraphs.py - realise graphs via field? methods accept a field_id to identify that field
     #def has_edge(self, source, graph_field_id, entry_id, destination_entry_id=None):
     #def has_any_edges(self, source, graph_field_id, entry_id, destination_entry_ids=None):
     #def has_all_edges(self, source, graph_field_id, entry_id, destination_entry_ids=None):
@@ -69,7 +69,7 @@ class EntryGraphs:
     # ------------------------------------------------------------------------
     # Entry Graph Mutation API
 
-    # TODO: realise graphs via field? methods accept a field_id to identify that field
+    # TODO entrygraphs.py - realise graphs via field? methods accept a field_id to identify that field
     #def add_edge(self, source, graph_field_id, entry_id, weight=1.0, direction=0):
     #def edit_edge(self, source, graph_field_id, entry_id, weight=None, direction=None):
     #def delete_edge(self, source, graph_field_id, entry_id, destination_entry_id):
@@ -106,3 +106,4 @@ class EntryGraphs:
 InitializeClass(EntryGraphs)
 
 # !!! entrygraphs.py - define api
+# TODO entrygraphs.py - implement

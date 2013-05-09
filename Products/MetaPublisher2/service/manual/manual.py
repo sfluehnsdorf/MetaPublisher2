@@ -81,4 +81,4 @@ class Manual:
 
 InitializeClass(Manual)
 
-# !!! manual.py - implement online manual service
+# TODO manual.py - implement online manual service

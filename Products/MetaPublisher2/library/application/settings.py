@@ -88,11 +88,11 @@ for section in parser.sections():
     for option, value in parser.items(section):
         key = '%s_%s' % (section, option)
         if not key in settings:
-            raise ConfigurationError('Unknown configuration option "%s" in section "%s"' % (option, section))
+            raise ConfigurationError('!TXT! Unknown configuration option "%s" in section "%s"' % (option, section))
         if option.endswith('_security'):
             value = parser.get(section, option)
             if not value in ['protected', 'private', 'none']:
-                raise ConfigurationError('Invalid value "%s" for security option "%s" in section "%s"' % (value, option, section))
+                raise ConfigurationError('!TXT! Invalid value "%s" for security option "%s" in section "%s"' % (value, option, section))
         elif settings[key] in [true, false]:
             value = parser.getboolean(section, option)
         elif isinstance(settings[key], IntType):

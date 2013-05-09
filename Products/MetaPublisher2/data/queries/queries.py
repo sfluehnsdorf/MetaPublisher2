@@ -95,14 +95,14 @@ class Queries:
             topic = topic.strip()
             return self._format_query_lines(
                 self._format_query_bright(u'Queries'),
-                self._format_query_error(u'This feature is not yet available...'),
-                self._format_query_normal(u'In an upcoming release you can use an SQL-like query language to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2, making it possible to automatise various tasks.'),
+                self._format_query_error(u'!TXT! This feature is not yet available...'),
+                self._format_query_normal(u'!TXT! In an upcoming release you can use an SQL-like query language to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2, making it possible to automatise various tasks.'),
             )
         else:
             return self._format_query_lines(
                 self._format_query_bright(u'Queries'),
-                self._format_query_error(u'This feature is not yet available...'),
-                self._format_query_normal(u'In an upcoming release you can use an SQL-like query language to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2, making it possible to automatise various tasks.'),
+                self._format_query_error(u'!TXT! This feature is not yet available...'),
+                self._format_query_normal(u'!TXT! In an upcoming release you can use an SQL-like query language to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2, making it possible to automatise various tasks.'),
             )
 
     security.declareProtected(permission_access_entries, 'query_history_clear')
@@ -113,7 +113,7 @@ class Queries:
         self.set_profile_variable(self.REQUEST, 'queries_history', [])
 
         return self._format_query_lines(
-            self._format_query_bright(u'Command history cleared.'),
+            self._format_query_bright(u'!TXT! Command history cleared.'),
         )
 
     security.declareProtected(permission_access_entries, 'query_history')
@@ -136,7 +136,7 @@ class Queries:
         else:
             return self._format_query_lines(
                 self._format_query_bright(u'Command history'),
-                self._format_query_normal(u'No command history...'),
+                self._format_query_normal(u'!TXT! No command history...'),
             )
 
     security.declareProtected(permission_access_entries, 'query_history')
@@ -176,8 +176,8 @@ class Queries:
 
         return self._format_query_lines(
             self._format_query_bright(u'Queries'),
-            self._format_query_error(u'This feature is not yet available...'),
-            self._format_query_normal(u'In an upcoming release you can use an SQL-like query language to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2, making it possible to automatise various tasks.'),
+            self._format_query_error(u'!TXT! This feature is not yet available...'),
+            self._format_query_normal(u'!TXT! In an upcoming release you can use an SQL-like query language to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2, making it possible to automatise various tasks.'),
         )
 
 # ----------------------------------------------------------------------------
@@ -185,5 +185,5 @@ class Queries:
 
 InitializeClass(Queries)
 
-# TODO: Queries Component
-# TODO: queries.py - revise command Interpreter
+# TODO queries.py - implement
+# TODO queries.py - revise command Interpreter

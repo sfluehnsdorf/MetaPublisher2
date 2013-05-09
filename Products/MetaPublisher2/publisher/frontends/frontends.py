@@ -326,7 +326,7 @@ class Frontends:
                 frontendplugin = self.get_plugin(REQUEST.get('frontend_type'))
                 REQUEST.RESPONSE.redirect(path + frontendplugin['action'])
             except:
-                self.redirect(REQUEST, 'frontends_form', 'Invalid Frontend Type')
+                self.redirect(REQUEST, 'frontends_form', '!TXT! Invalid Frontend Type')
 
     security.declareProtected(permission_manage_frontends, 'add_frontend')
 
@@ -348,7 +348,7 @@ class Frontends:
         self.redirect(
             REQUEST,
             'frontends_form',
-            message='Frontend "%s" at "%s" deleted.' % (frontend_id, path, new_id),
+            message='!TXT! Frontend "%s" at "%s" deleted.' % (frontend_id, path, new_id),
             update_menu=true,
         )
 
@@ -358,14 +358,14 @@ class Frontends:
         """!TXT!"""
 
         if not paths:
-            raise ValueError('No Frontends specified')
+            raise ValueError('!TXT! No Frontends specified')
         delete_frontend = self.delete_frontend
         for path in paths:
             delete_frontend(path)
         self.redirect(
             REQUEST,
             'frontends_form',
-            message='%d Frontends deleted.' % len(paths),
+            message='!TXT! %d Frontends deleted.' % len(paths),
             update_menu=true,
         )
 
@@ -387,7 +387,7 @@ class Frontends:
         self.redirect(
             REQUEST,
             'frontends_form',
-            message='Frontend "%s" at "%s" duplicated as "%s"' % (frontend_id, path, new_id),
+            message='!TXT! Frontend "%s" at "%s" duplicated as "%s"' % (frontend_id, path, new_id),
             update_menu=true,
         )
         return new_id
@@ -402,7 +402,7 @@ class Frontends:
         elif not new_ids:
             new_ids = [None] * len(paths)
         elif len(paths) != len(new_ids):
-            raise ValueError("Number of old and new ids for duplicating Frontends mismatch.")
+            raise ValueError("!TXT! Number of old and new ids for duplicating Frontends mismatch.")
         result_ids = []
         result_ids_append = result.append
         duplicate_frontend = self.duplicate_frontend
@@ -411,7 +411,7 @@ class Frontends:
         self.redirect(
             REQUEST,
             'frontends_form',
-            message='%d Frontends duplicated.' % len(result_ids),
+            message='!TXT! %d Frontends duplicated.' % len(result_ids),
             update_menu=true,
         )
         return result_ids
@@ -454,7 +454,7 @@ class Frontends:
         self.redirect(
             REQUEST,
             'frontends_form',
-            message='Frontend "%s" at "%s" renamed to "%s".' % (frontend_id, path, new_id),
+            message='!TXT! Frontend "%s" at "%s" renamed to "%s".' % (frontend_id, path, new_id),
             update_menu=true,
         )
         return new_id
@@ -465,9 +465,9 @@ class Frontends:
         """!TXT! Rename the specified Frontends. Both id lists must have the same length or ValueError is raised."""
 
         if not paths:
-            raise ValueError('No Frontends specified')
+            raise ValueError('!TXT! No Frontends specified')
         elif len(paths) != len(new_ids):
-            raise ValueError("Number of old and new ids for renaming Frontends mismatch.")
+            raise ValueError("!TXT! Number of old and new ids for renaming Frontends mismatch.")
         result_ids = []
         result_ids_append = result.append
         rename_frontend = self.rename_frontend
@@ -476,7 +476,7 @@ class Frontends:
         self.redirect(
             REQUEST,
             'frontends_form',
-            message='%d Frontends renamed.' % len(frontend_ids),
+            message='!TXT! %d Frontends renamed.' % len(frontend_ids),
             update_menu=true,
         )
         return result_ids
@@ -488,4 +488,4 @@ InitializeClass(Frontends)
 
 # !!! frontends.py - form/formlet handler for add_frontend
 # !!! frontends.py - form/formlet handler for edit_frontend
-# TODO: frontends preview
+# TODO frontends.py - implement frontend preview

@@ -64,7 +64,7 @@ purged. If only one child exists with the same action as its parent, the list
 will automatically collapse. If a parent's action is an empty string, it will
 be filled with the first child's action.
 
-$Id: multitabs/multitabs.py 8 2013-04-13 02:39:56Z sfluehnsdorf $
+$Id: multitabs/multitabs.py 19 2013-05-09 01:13:56Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 1.3 $'[11:-2]

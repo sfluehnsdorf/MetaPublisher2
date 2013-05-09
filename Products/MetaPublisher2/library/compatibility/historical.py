@@ -49,7 +49,7 @@ from Products.MetaPublisher2.library.compatibility.deprecation import deprecated
 # Module Exports
 
 __all__ = [
-    'Historical',
+    'HistoricalCompatibility',
     'InterfacesFolder',
     'standard_form_footer',
     'standard_form_header',
@@ -442,7 +442,7 @@ class HistoricalCompatibility:
         source = REQUEST.get('storage_id', REQUEST.get('storageId', self.get_profile_variable(REQUEST, 'storage_id')))
         entry_id = REQUEST.get('entry_id', REQUEST.get('entryId', None))
         entry_id = self.add_entry(source, entry_id, REQUEST.form)
-        self.redirect(REQUEST, 'entries_form', message='Entry "%s" in Storage "%s" added.' % (entry_id, source))
+        self.redirect(REQUEST, 'entries_form', message='!TXT! Entry "%s" in Storage "%s" added.' % (entry_id, source))
 
     security.declareProtected(permission_create_entries, 'manage_entriesNewMore')
 
@@ -453,7 +453,7 @@ class HistoricalCompatibility:
         source = REQUEST.get('storage_id', REQUEST.get('storageId', self.get_profile_variable(REQUEST, 'storage_id')))
         entry_id = REQUEST.get('entry_id', REQUEST.get('entryId', None))
         entry_id = self.add_entry(source, entry_id, REQUEST.form)
-        self.redirect(REQUEST, 'add_entry_form', 'Entry "%s" in Storage "%s" added.' % (entry_id, source))
+        self.redirect(REQUEST, 'add_entry_form', '!TXT! Entry "%s" in Storage "%s" added.' % (entry_id, source))
 
     security.declareProtected(permission_change_entries, 'manage_entriesEdit')
 

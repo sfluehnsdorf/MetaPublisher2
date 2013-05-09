@@ -180,7 +180,7 @@ class Entry:
         entry_id, entry_position = source.add_entry(parent_entry_id, entry_id, entry_position, data)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
         else:
             return entry_id, entry_position
 
@@ -195,7 +195,7 @@ class Entry:
         entry_id, entry_position = self.add_entry(parent_entry_id, entry_id, entry_position, data)
 
         if REQUEST:
-            self.redirect(REQUEST, 'add_entry_form', 'Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
+            self.redirect(REQUEST, 'add_entry_form', '!TXT! Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
         else:
             return entry_id, entry_position
 
@@ -211,7 +211,7 @@ class Entry:
         entry_id, entry_position = source.add_entry_to_top(parent_entry_id, entry_id, data)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %sadded to the top of Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %sadded to the top of Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', source.getId()))
         else:
             return entry_id, entry_position
 
@@ -227,7 +227,7 @@ class Entry:
         entry_id, entry_position = source.add_entry_to_bottom(parent_entry_id, entry_id, data)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %sadded to the end of Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %sadded to the end of Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', source.getId()))
         else:
             return entry_id, entry_position
 
@@ -243,7 +243,7 @@ class Entry:
         entry_id, entry_position = source.add_entry_somewhere(parent_entry_id, entry_id, data)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
         else:
             return entry_id, entry_position
 
@@ -256,7 +256,7 @@ class Entry:
         entry_ids, entry_positions = source.add_entries(parent_entry_id, entries)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '%d Entries %sadded to Storage "%s".' % (len(entry_ids), entry_id and '"%s" ' % entry_id or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries %sadded to Storage "%s".' % (len(entry_ids), entry_id and '"%s" ' % entry_id or '', source.getId()))
         else:
             return entry_ids, entry_positions
 
@@ -313,7 +313,7 @@ class Entry:
         new_id, new_position = source.duplicate_entry(parent_entry_id, entry_id, entry_position, new_id)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %s%sin Storage "%s" duplicated%s%s.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId(), new_id and ' as "%s"' % new_id, new_position is not None and ' at position %d' % new_position or ''))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sin Storage "%s" duplicated%s%s.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId(), new_id and ' as "%s"' % new_id, new_position is not None and ' at position %d' % new_position or ''))
         else:
             return new_id, new_position
 
@@ -326,7 +326,7 @@ class Entry:
         new_ids, new_positions = source.duplicate_entries(parent_entry_id, entry_ids, entry_positions, conditions, new_ids)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '%d Entries duplicated in Storage "%s".' % (len(new_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries duplicated in Storage "%s".' % (len(new_ids), source.getId()))
         else:
             return new_ids, new_positions
 
@@ -342,7 +342,7 @@ class Entry:
         entry_id, entry_position = source.set_entry(parent_entry_id, entry_id, entry_position, data)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %s%sset in Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sset in Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
         else:
             return entry_id, entry_position
 
@@ -361,7 +361,7 @@ class Entry:
         entry_id, entry_position = source.edit_entry(parent_entry_id, entry_id, entry_position, data)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %s%sin Storage "%s" changed.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sin Storage "%s" changed.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
         else:
             return entry_id, entry_position
 
@@ -376,7 +376,7 @@ class Entry:
         entry_id, entry_position = edit_entry(source, parent_entry_id, entry_id, entry_position, data)
 
         if REQUEST:
-            self.redirect(REQUEST, 'edit_entry_form', 'Entry %s%sin Storage "%s" changed.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
+            self.redirect(REQUEST, 'edit_entry_form', '!TXT! Entry %s%sin Storage "%s" changed.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
         else:
             return entry_id, entry_position
 
@@ -392,7 +392,7 @@ class Entry:
         entry_ids, entry_positions = source.edit_entries(parent_entry_id, entry_ids, entry_positions, conditions, data)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '%d Entries in Storage "%s" changed.' % (len(entry_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" changed.' % (len(entry_ids), source.getId()))
         else:
             return entry_ids, entry_positions
 
@@ -407,7 +407,7 @@ class Entry:
         new_id = source.rename_entry(parent_entry_id, entry_id, entry_position, new_id)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %s%sin Storage "%s" renamed to "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId(), new_id))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sin Storage "%s" renamed to "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId(), new_id))
         else:
             return new_id
 
@@ -420,7 +420,7 @@ class Entry:
         entry_ids, new_ids = source.rename_entries(parent_entry_id, entry_ids, entry_positions, conditions, new_ids)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '%d Entries renamed in Storage "%s".' % (len(new_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries renamed in Storage "%s".' % (len(new_ids), source.getId()))
         else:
             return entry_ids, new_ids
 
@@ -433,7 +433,7 @@ class Entry:
         entry_id, entry_position = source.reset_entry(parent_entry_id, entry_id, entry_position, field_ids)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %s%sin Storage "%s" resetted to default values.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sin Storage "%s" resetted to default values.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
         else:
             return entry_id, entry_position
 
@@ -446,7 +446,7 @@ class Entry:
         entry_ids, entry_positions = source.reset_entries(parent_entry_id, entry_ids, entry_positions, conditions, field_ids)
 
         if REQUEST is not None:
-            self.redirect(REQUEST, 'entries_form', '%d Entries in Storage "%s" resetted to default values.' % (len(entry_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" resetted to default values.' % (len(entry_ids), source.getId()))
         else:
             return entry_ids, entry_positions
 
@@ -462,7 +462,7 @@ class Entry:
         entry_ids, entry_positions = self.clear_entries()
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'All %d Entries deleted from Storage "%s".' % (len(entry_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! All %d Entries deleted from Storage "%s".' % (len(entry_ids), source.getId()))
         else:
             return entry_ids, entry_positions
 
@@ -475,7 +475,7 @@ class Entry:
         entry_id, entry_position = source.delete_entry(parent_entry_id, entry_id, entry_position, failsafe)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
         else:
             return entry_id, entry_position
 
@@ -488,7 +488,7 @@ class Entry:
         entry_ids, entry_positions = source.delete_entries(parent_entry_id, entry_ids, entry_positions, conditions, failsafe)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '%d Entries deleted from Storage "%s".' % (len(entry_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries deleted from Storage "%s".' % (len(entry_ids), source.getId()))
         else:
             return entry_ids, entry_positions
 
@@ -501,7 +501,7 @@ class Entry:
         entry_id, entry_position, entry = source.pop_first_entry(parent_entry_id, conditions)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
         else:
             return entry_id, entry_position, entry
 
@@ -514,7 +514,7 @@ class Entry:
         entry_id, entry_position, entry = source.pop_last_entry(parent_entry_id, conditions)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
         else:
             return entry_id, entry_position, entry
 
@@ -527,7 +527,7 @@ class Entry:
         entry_id, entry_position, entry = source.pop_random_entry(parent_entry_id, conditions)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', 'Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
         else:
             return entry_id, entry_position, entry
 
@@ -536,9 +536,9 @@ class Entry:
 
 InitializeClass(Entry)
 
-# TODO: include **options parameter to support special tree and graph options OR define additional parameters (
-#       delete_entry() with exclude_self=false, include_descendants=false, max_descendant_levels=None
-#       delete_entries() with exclude_selves=false, include_ancestors=false, include_ancestor_siblings=false, max_ancestor_levels=None, include_descendants=false, max_descendant_levels=None
-#       - ascend=false, ascend_levels=0, descend=false, descend_levels=0
+# TODO entry.py - include **options parameter to support special tree and graph options OR define additional parameters (
+#                 delete_entry() with exclude_self=false, include_descendants=false, max_descendant_levels=None
+#                 delete_entries() with exclude_selves=false, include_ancestors=false, include_ancestor_siblings=false, max_ancestor_levels=None, include_descendants=false, max_descendant_levels=None
+#                 - ascend=false, ascend_levels=0, descend=false, descend_levels=0
 
 # !!! entry.py - use list_entries_formlet where applicable

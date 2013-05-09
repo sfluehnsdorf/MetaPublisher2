@@ -208,7 +208,7 @@ def add_MetaPublisher2(self, id, title='', presets=[], REQUEST=None):
     add_MetaPublisher2Widgets(metapublisher2, 'widgets')
 
     if presets:
-        raise NotImplemented("Preset initialization not yet implemented!")
+        raise NotImplemented("!TXT! Preset initialization not yet implemented!")
 
     if REQUEST is not None:
         try:
@@ -216,7 +216,7 @@ def add_MetaPublisher2(self, id, title='', presets=[], REQUEST=None):
         except:
             url = REQUEST['URL1']
         REQUEST.RESPONSE.redirect('%s/manage_main?update_menu=1&manage_tabs_message=%s' % (
-            url, quote_plus('New MetaPublisher2 "%s" created.' % id)
+            url, quote_plus('!TXT! New MetaPublisher2 "%s" created.' % id)
         ))
 
 

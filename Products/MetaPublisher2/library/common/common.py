@@ -72,7 +72,7 @@ except:
             self.update(iterable)
 
         def update(self, iterable=None, **kwds):
-            """Update data and add counts instead of replacing them."""
+            """!TXT! Update data and add counts instead of replacing them."""
 
             if iterable is not None:
                 if isinstance(iterable, Mapping):

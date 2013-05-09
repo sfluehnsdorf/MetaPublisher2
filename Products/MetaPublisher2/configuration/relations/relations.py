@@ -86,9 +86,8 @@ class Relations:
 
 InitializeClass(Relations)
 
-# TODO: Relations Component
-
-# TODO: relation types (move to base?): unidirectional, bidirectional, weighted, conditional, 1:1, 1:m, m:1, m:n
+# TODO relations.py - implement
+#     relation types (move to base?): unidirectional, bidirectional, weighted, conditional, 1:1, 1:m, m:1, m:n
 #     The heart of the database consists of these primary components: Items, Relations
 #     An Item consists of:
 #     - A unique ID

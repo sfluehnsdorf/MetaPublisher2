@@ -122,10 +122,8 @@ sys.modules['Products.MetaPublisher2.MetaPublisher2'] = products.metapublisher2.
 # !!! PHASE 8 - inline error messages, integrity tests, jsondict, onexit handlers, pluginregistry, review all forms, settings.conf, tests
 # !!! PHASE 9 - online services, pep8, remove DEV, test zope release compatability
 
-# !!! global - update all !TXT! markers
 # !!! global - update all TODO markers
 # !!! global - check all redirects
-# !!! global - mark (all) redirect messages with !TXT!
 # !!! global - check all attribute retrieval if get_MetaPublisher2 needed
 # !!! global - check all href's if they start with get_MetaPublisher2_url
 # !!! global - either add <form> to all forms or include in header/footer

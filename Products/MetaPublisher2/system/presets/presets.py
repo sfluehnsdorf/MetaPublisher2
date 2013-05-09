@@ -155,7 +155,7 @@ class Presets:
     def include_preset(self, filename, options, REQUEST=None):
         """!TXT! Load a Preset file from a local file, extending existing defintions."""
 
-        # TODO: specify options parameter to map plugins, fields, etc.
+        # TODO presets.py - include_preset - specify options parameter to map plugins, fields, etc.
 
         raise NotImplementedError
 
@@ -164,7 +164,7 @@ class Presets:
     def load_preset(self, filename, options, REQUEST=None):
         """Load a Preset file from a local file, replacing existing defintions."""
 
-        # TODO: specify options parameter to map plugins, fields, etc.
+        # TODO presets.py - load_preset - specify options parameter to map plugins, fields, etc.
 
         raise NotImplementedError
 
@@ -244,7 +244,7 @@ class Presets:
     def save_preset(self, filename, options, REQUEST=None):
         """!TXT! Save a Preset file to a local file."""
 
-        # TODO: specify options parameter to specify which entries, configuration, frontends, etc. to include
+        # TODO presets.py - save_preset - specify options parameter to specify which entries, configuration, frontends, etc. to include
 
         raise NotImplementedError
 
@@ -253,7 +253,7 @@ class Presets:
     def upload_preset(self, filename, title, description, version, author, REQUEST=None):
         """!TXT! Upload a Preset file to the online Preset repository."""
 
-        # TODO: specify how to authenticate
+        # TODO presets.py - upload_preset -  specify how to authenticate
 
         raise NotImplementedError
 
@@ -262,6 +262,8 @@ class Presets:
 
 InitializeClass(Presets)
 
-# TODO: Presets Component
-# TODO: Presets - backups
-# TODO: Preset Title,Type,Author,Version,Vendor,Description,Homepage,File Name,Created,Last Modified - store several stuff in config for reusability
+# TODO presets.py - implement
+# TODO presets.py - realize backup system
+# TODO presets.py - define file format
+#      Title,Type,Author,Version,Vendor,Description,Homepage,File Name,Created,Last Modified
+#      store attributes in profile for reusability?

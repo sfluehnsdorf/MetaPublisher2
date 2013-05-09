@@ -52,4 +52,4 @@ class IIndexerPluginBase(Interface):
 
     pass
 
-# TODO: Indexer Plugin Base Interface
+# TODO interfaces/indexer.py - implement

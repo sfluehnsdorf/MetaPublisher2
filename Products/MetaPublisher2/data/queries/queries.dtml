@@ -16,7 +16,7 @@ $( document ).ready( function () {
   $( '#query_terminal' ).height( $( document ).height() - 175 );
   $( '#query_terminal' ).terminal( '<dtml-var get_MetaPublisher2_url>/parse_query', {
     custom_prompt : "&gt; ",
-    hello_message : 'Welcome to MetaPublisher2 Query Shell!<br>Type \'help\' for information on available commands...'
+    hello_message : '!TXT! Welcome to MetaPublisher2 Query Shell!<br>Type \'help\' for information on available commands...'
   } ); 
 } ); 
 </script>

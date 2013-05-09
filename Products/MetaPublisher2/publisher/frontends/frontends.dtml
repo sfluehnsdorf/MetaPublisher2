@@ -44,7 +44,9 @@
       <td valign="top" nowrap><div class="list-item"><a href="<dtml-var get_MetaPublisher2_url>/frontends/<dtml-var frontend_key>/<dtml-if "getattr( frontend_item, 'edit_frontend_form', None )">edit_frontend_form<dtml-else>manage_main</dtml-if>"><dtml-var frontend_key></a></div></td>
       <td valign="top"><div class="list-item"><dtml-var "frontend_item.title"></div></td>
       <td valign="top" nowrap><div class="list-item"><dtml-if "getattr( frontend_item, plugin_name, None )"><dtml-var "frontend_item.plugin_name"><dtml-else><dtml-var "frontend_item.meta_type"></dtml-if></div></td>
-      <td valign="top" nowrap><div class="list-item"><em>TODO: Design info</em></div></td>
+      <td valign="top" nowrap><div class="list-item"><em>
+        !!! frontends.dtml - design info
+      </em></div></td>
     </tr>
 
     <tr class="row-<dtml-if frontend_odd>normal<dtml-else>hilite</dtml-if>">

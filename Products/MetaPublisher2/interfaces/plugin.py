@@ -34,7 +34,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from zope.interface import Interface
-from zope.schema import BytesLine, List, Text, TextLine, URI
+from zope.schema import BytesLine, List, Text, TextLine, Tuple, URI
 
 
 # ============================================================================
@@ -59,12 +59,12 @@ class IPluginBase(Interface):
 
     icon = BytesLine(
         title=u"Icon",
-        description=u"Name of icon, relative to SOFTWARE_URL",
+        description=u"!TXT! Name of icon, relative to SOFTWARE_URL",
     )
 
     meta_type = BytesLine(
         title=u"Meta type",
-        description=u"The object's Zope2 meta type",
+        description=u"!TXT! The object's Zope2 meta type",
     )
 
     # ------------------------------------------------------------------------
@@ -72,45 +72,45 @@ class IPluginBase(Interface):
 
     plugin_type = BytesLine(
         title=u"Plugin Type",
-        description=u"Plugin type realised with this PluginBase.",
+        description=u"!TXT! Plugin type realised with this PluginBase.",
     )
 
     plugin_name = TextLine(
         title=u"Plugin Name",
-        description=u"Name of the Plugin realised with this PluginBase.",
+        description=u"!TXT! Name of the Plugin realised with this PluginBase.",
     )
 
     plugin_info = Text(
         title=u"Plugin Info",
-        description=u"Description of the Plugin realised with this PluginBase.",
+        description=u"!TXT! Description of the Plugin realised with this PluginBase.",
     )
 
     plugin_version = TextLine(
         title=u"Plugin Version",
-        description=u"Version of the Plugin realised with this PluginBase.",
+        description=u"!TXT! Version of the Plugin realised with this PluginBase.",
     )
 
     plugin_vendor = TextLine(
         title=u"Plugin Vendor",
-        description=u"Vendor of the Plugin realised with this PluginBase.",
+        description=u"!TXT! Vendor of the Plugin realised with this PluginBase.",
     )
 
     plugin_author = TextLine(
         title=u"Plugin Author",
-        description=u"Author of the Plugin realised with this PluginBase.",
+        description=u"!TXT! Author of the Plugin realised with this PluginBase.",
     )
 
     plugin_homepage = URI(
         title=u"Plugin URL",
-        description=u"URL of the homepage of the Plugin realised with this PluginBase",
+        description=u"!TXT! URL of the homepage of the Plugin realised with this PluginBase",
     )
 
     plugin_flags = List(
-        title=u"List of active plugin flags",
+        title=u"!TXT! List of active plugin flags",
     )
 
     _properties = Tuple(
-        title=u"Properties",
+        title=u"!TXT! Properties",
     )
 
     # ------------------------------------------------------------------------

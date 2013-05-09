@@ -220,13 +220,7 @@ class IEntryContainer(Interface):
     def get_entryset(field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None, bound=true, lazy=true, live=false):
         """!TXT!"""
 
-    def join_entries(
-        right_source, join_type='inner', join_conditions=None, field_ids=None,
-        parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None,
-        left_field_ids=None, left_parent_entry_id=None, left_entry_ids=[], left_entry_positions=[], left_conditions=None, left_order_by=None, left_offset=None, left_limit=None,
-        right_field_ids=None, right_parent_entry_id=None, right_entry_ids=[], right_entry_positions=[], right_conditions=None, right_order_by=None, right_offset=None, right_limit=None,
-        bound=true, lazy=true, live=True
-    ):
+    def join_entries(right_source, join_type='inner', join_conditions=None, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None, left_field_ids=None, left_parent_entry_id=None, left_entry_ids=[], left_entry_positions=[], left_conditions=None, left_order_by=None, left_offset=None, left_limit=None, right_field_ids=None, right_parent_entry_id=None, right_entry_ids=[], right_entry_positions=[], right_conditions=None, right_order_by=None, right_offset=None, right_limit=None, bound=true, lazy=true, live=True ):
         """!TXT!"""
 
     # !!! interfaces/entrycontainer.py - check API of select_entries

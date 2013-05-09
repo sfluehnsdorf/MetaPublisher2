@@ -52,4 +52,4 @@ class IToolPluginBase(Interface):
 
     pass
 
-# TODO: Tool Plugin Base Interface
+# TODO interfaces/tool.py - implement

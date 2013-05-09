@@ -81,5 +81,4 @@ class Reference:
 
 InitializeClass(Reference)
 
-# !!! reference.py - create placeholder forms
-# !!! reference.py - implement online reference service
+# TODO reference.py - implement online reference service

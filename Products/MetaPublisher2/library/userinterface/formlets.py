@@ -90,7 +90,7 @@ class Formlets:
             if result is marker:
                 result = getattr(row, column, marker)
             if result is marker:
-                return '<span class="error">Error retrieving value</span>'
+                return '<span class="error">!TXT! Error retrieving value</span>'
             else:
                 return callable(result) and str(result()) or str(result)
 

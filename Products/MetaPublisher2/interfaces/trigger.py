@@ -52,4 +52,4 @@ class ITriggerPluginBase(Interface):
 
     pass
 
-# TODO: Trigger Plugin Base Interface
+# TODO interfaces/trigger.py - implement

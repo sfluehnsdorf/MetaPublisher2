@@ -52,4 +52,4 @@ class IConstraintPluginBase(Interface):
 
     pass
 
-# TODO: Constraint Plugin Base Interface
+# TODO interfaces/constraint.py - implement

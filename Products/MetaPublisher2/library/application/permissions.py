@@ -87,7 +87,7 @@ def configure_permission(setting, permission):
     elif settings[setting + '_security'] == 'none':
         return ACCESS_NONE
     else:
-        raise ConfigurationError('Invalid value "%s" for security setting "%s"' % (settings[setting + '_security'], setting))
+        raise ConfigurationError('!TXT! Invalid value "%s" for security setting "%s"' % (settings[setting + '_security'], setting))
 
 # ----------------------------------------------------------------------------
 # !TXT!

@@ -124,7 +124,7 @@ class Profiles:
         profiles[profile_id] = settings
         self.__profiles = profiles
 
-        self.redirect(REQUEST, 'profiles_form', 'The changes to your profile have been saved.')
+        self.redirect(REQUEST, 'profiles_form', '!TXT! The changes to your profile have been saved.')
 
     security.declareProtected(permission_manage, 'delete_own_profile')
 
@@ -136,7 +136,7 @@ class Profiles:
         profiles[profile_id] = {}
         self.__profiles = profiles
 
-        self.redirect(REQUEST, 'profiles_form', 'Your profile has been removed.')
+        self.redirect(REQUEST, 'profiles_form', '!TXT! Your profile has been removed.')
 
     security.declareProtected(permission_manage, 'delete_unused_profiles')
 
@@ -161,9 +161,9 @@ class Profiles:
 
         if counter:
             self.__profiles = profiles
-            message = 'Found and purged %d unused profile%s.' % (counter, counter > 1 and 's' or '')
+            message = '!TXT! Found and purged %d unused profile%s.' % (counter, counter > 1 and 's' or '')
         else:
-            message = 'No unused profiles found.'
+            message = '!TXT! No unused profiles found.'
 
         self.redirect(REQUEST, 'profiles_form', message)
 

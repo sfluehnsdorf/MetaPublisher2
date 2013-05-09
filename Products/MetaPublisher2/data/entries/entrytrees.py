@@ -401,7 +401,7 @@ class EntryTrees:
         entry_ids, entry_positions = source.move_entry_branch(tree_field_id, destination_entry_id, parent_entry_id, entry_id, entry_position)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '%d Entries in Storage "%s" moved.' % (len(entry_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" moved.' % (len(entry_ids), source.getId()))
         else:
             return entry_ids, entry_positions
 
@@ -412,7 +412,7 @@ class EntryTrees:
         entry_ids, entry_positions = source.move_entry_branches(tree_field_id, destination_entry_id, parent_entry_id, entry_ids, entry_positions, conditions)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '%d Entries in Storage "%s" moved.' % (len(entry_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" moved.' % (len(entry_ids), source.getId()))
         else:
             return entry_ids, entry_positions
 
@@ -423,7 +423,7 @@ class EntryTrees:
         entry_ids, entry_positions = source.flatten_entry_branch(tree_field_id, parent_entry_id, entry_id, entry_position, max_levels)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '%d Entries in Storage "%s" flattened.' % (len(entry_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" flattened.' % (len(entry_ids), source.getId()))
         else:
             return entry_ids, entry_positions
 
@@ -434,7 +434,7 @@ class EntryTrees:
         entry_ids, entry_positions = source.flatten_entry_branches(tree_field_id, parent_entry_id, entry_ids, entry_positions, conditions, max_levels)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '%d Entries in Storage "%s" flattened.' % (len(entry_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" flattened.' % (len(entry_ids), source.getId()))
         else:
             return entry_ids, entry_positions
 
@@ -445,7 +445,7 @@ class EntryTrees:
         entry_ids, entry_positions = source.crop_entry_branch(tree_field_id, parent_entry_id, entry_id, entry_position, max_levels)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '%d Entries in Storage "%s" cropped.' % (len(entry_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" cropped.' % (len(entry_ids), source.getId()))
         else:
             return entry_ids, entry_positions
 
@@ -456,7 +456,7 @@ class EntryTrees:
         entry_ids, entry_positions = source.crop_entry_branches(tree_field_id, parent_entry_id, entry_ids, entry_positions, conditions)
 
         if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '%d Entries in Storage "%s" cropped.' % (len(entry_ids), source.getId()))
+            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" cropped.' % (len(entry_ids), source.getId()))
         else:
             return entry_ids, entry_positions
 

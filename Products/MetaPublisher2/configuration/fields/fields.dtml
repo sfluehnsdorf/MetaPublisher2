@@ -75,5 +75,5 @@
 </dtml-let>
 
 <!--
-TODO: configuration/fields/fields.dtml - should list all field groups as items and all its fields as items beneath, no matter what the sorting - like Mac Finder list view
+TODO fields.dtml - should list all field groups as items and all its fields as items beneath, no matter what the sorting - like Mac Finder list view
 -->

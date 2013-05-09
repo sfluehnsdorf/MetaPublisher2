@@ -78,3 +78,4 @@ class Feedback:
 InitializeClass(Feedback)
 
 # !!! feedback.py - implement online feedback service
+# !!! feedback.py - replace local form with online form (include via ajax?)

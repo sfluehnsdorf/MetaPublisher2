@@ -52,4 +52,4 @@ class IEventPluginBase(Interface):
 
     pass
 
-# TODO: Event Plugin Base Interface
+# TODO interfaces/event.py - implement

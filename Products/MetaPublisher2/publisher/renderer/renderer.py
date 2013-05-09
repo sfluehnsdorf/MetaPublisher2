@@ -119,7 +119,7 @@ class Renderer:
             get_MetaPublisher2_code = '''container[ '%s' ]''' % self.get_MetaPublisher2().getId()
         elif destination == 'acquired':
             if not acquired_destination_path:
-                raise ValueError('Path for acquired destination must be specified.')
+                raise ValueError('!TXT! Path for acquired destination must be specified.')
             render_base = render_base.aq_parent
             for id in acquired_destination_path.split('/'):
                 if id:
@@ -127,7 +127,7 @@ class Renderer:
             get_MetaPublisher2_code = '''container[ '%s' ]''' % self.get_MetaPublisher2().getId()
         elif destination == 'arbitrary':
             if not arbitrary_destination_path:
-                raise ValueError('Path for arbitrary destination must be specified.')
+                raise ValueError('!TXT! Path for arbitrary destination must be specified.')
             render_base = self.getPhysicalRoot()
             for id in arbitrary_destination_path.split('/'):
                 if id:
@@ -136,19 +136,19 @@ class Renderer:
             for id in self.get_MetaPublisher2_url()[len(self.getPhysicalRoot().absolute_url()) + 1:].split('/'):
                 get_MetaPublisher2_code = get_MetaPublisher2_code + '.' + id
         else:
-            raise ValueError('Unknown destination mode "%s".' % destination)
+            raise ValueError('!TXT! Unknown destination mode "%s".' % destination)
 
         # check overwrite mode
         if not overwrite in ['fail', 'none', 'all', 'replace']:
-            raise ValueError('Unknown overwrite mode "%s".' % overwrite)
+            raise ValueError('!TXT! Unknown overwrite mode "%s".' % overwrite)
 
         # create destination Folder
         if create_folder:
             if not create_folder_id:
-                raise ValueError('Id for Folder must be specified.')
+                raise ValueError('!TXT! Id for Folder must be specified.')
             if create_folder_id in render_base.objectIds():
                 if overwrite == 'fail':
-                    raise RenderError('Folder "%s" already exists.' % create_folder_id)
+                    raise RenderError('!TXT! Folder "%s" already exists.' % create_folder_id)
                 elif overwrite == 'replace':
                     render_base.manage_delObject(create_folder_id)
                     render_base.manage_addFolder(create_folder_id)
@@ -164,7 +164,7 @@ class Renderer:
         do_render = true
         if 'get_MetaPublisher2' in render_base.objectIds():
             if overwrite == 'fail':
-                raise RenderError('MetaPublisher2 instance retrieval method with id "get_MetaPublisher" already exists.')
+                raise RenderError('!TXT! MetaPublisher2 instance retrieval method with id "get_MetaPublisher" already exists.')
             elif overwrite == 'none':
                 do_render = false
             elif overwrite == 'all':
@@ -193,7 +193,7 @@ class Renderer:
                 for rendering_id in rendering_ids:
                     if rendering_id in object_base.objectIds():
                         if overwrite == 'fail':
-                            raise RenderError('An object with id "%s" already exists.' % rendering_id)
+                            raise RenderError('!TXT! An object with id "%s" already exists.' % rendering_id)
                         elif overwrite == 'none':
                             do_render = false
                         elif overwrite == 'all':
@@ -210,7 +210,7 @@ class Renderer:
                     frontend_id = frontend.getId()
                     do_render = true
                     if overwrite == 'fail':
-                        raise RenderError('An object with id "%s" already exists.' % frontend_id)
+                        raise RenderError('!TXT! An object with id "%s" already exists.' % frontend_id)
                     elif overwrite == 'none':
                         do_render = false
                     elif overwrite == 'all':
@@ -244,7 +244,7 @@ class Renderer:
 
                         rendered_frontends.append(id)
 
-        self.redirect(REQUEST, 'frontends_form', '%d Frontends rendered.' % (rendered_frontends and len(rendered_frontends) or 'No'))
+        self.redirect(REQUEST, 'frontends_form', '!TXT! %d Frontends rendered.' % (rendered_frontends and len(rendered_frontends) or 'No'))
 
 # ----------------------------------------------------------------------------
 # Class Security

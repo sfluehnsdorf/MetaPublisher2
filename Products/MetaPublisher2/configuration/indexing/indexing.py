@@ -271,4 +271,4 @@ class Indexing:
 
 InitializeClass(Indexing)
 
-# TODO: Indexing Component
+# TODO indexing.py - implement

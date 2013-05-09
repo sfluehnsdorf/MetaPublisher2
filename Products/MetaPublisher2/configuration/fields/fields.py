@@ -252,7 +252,7 @@ class Fields:
                 fieldplugin['action']
             ))
         except:
-            self.redirect(REQUEST, 'fields_form', 'Field type "%s" is invalid.' % REQUEST.get('storageType', None))
+            self.redirect(REQUEST, 'fields_form', '!TXT! Field type "%s" is invalid.' % REQUEST.get('storageType', None))
 
     security.declareProtected(permission_change_configuration, 'add_field')
 
@@ -276,7 +276,7 @@ class Fields:
 
         storage.after_add_field(field_id, field_type_id, options)
 
-        self.redirect(REQUEST, 'fields_form', 'Field "%s" of type "%s" added to Storage "%s".' % (field_id, field_type_id, storage_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! Field "%s" of type "%s" added to Storage "%s".' % (field_id, field_type_id, storage_id))
 
     security.declareProtected(permission_change_configuration, 'delete_field')
 
@@ -286,7 +286,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.delete_field(field_id)
 
-        self.redirect(REQUEST, 'fields_form', 'Field "%s" in Storage "%s" deleted.' % (field_id, storage_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! Field "%s" in Storage "%s" deleted.' % (field_id, storage_id))
 
     security.declareProtected(permission_change_configuration, 'delete_fields')
 
@@ -296,7 +296,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.delete_fields(field_ids)
 
-        self.redirect(REQUEST, 'fields_form', '%d Fields deleted from Storage "%s".' % (len(field_ids), storage_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! %d Fields deleted from Storage "%s".' % (len(field_ids), storage_id))
 
     security.declareProtected(permission_change_configuration, 'duplicate_field')
 
@@ -306,7 +306,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.duplicate_field(field_id, new_id)
 
-        self.redirect(REQUEST, 'fields_form', 'Field "%s" in Storage "%s" duplicated as "%s".' % (field_id, storage_id, new_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! Field "%s" in Storage "%s" duplicated as "%s".' % (field_id, storage_id, new_id))
 
     security.declareProtected(permission_change_configuration, 'duplicate_fields')
 
@@ -316,7 +316,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.duplicate_fields(field_ids, new_ids)
 
-        self.redirect(REQUEST, 'fields_form', '%d Fields in Storage "%s" duplicated .' % (len(field_ids), storage_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! %d Fields in Storage "%s" duplicated .' % (len(field_ids), storage_id))
 
     security.declareProtected(permission_change_configuration, 'edit_field')
 
@@ -330,7 +330,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.edit_field(field_id, options)
 
-        self.redirect(REQUEST, 'fields_form', 'Field "%s" in Storage "%s" edited.' % (field_id, storage_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! Field "%s" in Storage "%s" edited.' % (field_id, storage_id))
 
     security.declareProtected(permission_change_configuration, 'rename_field')
 
@@ -340,7 +340,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.rename_field(field_id, new_id)
 
-        self.redirect(REQUEST, 'fields_form', 'Field "%s" in Storage "%s" renamed to "%s".' % (field_id, storage_id, new_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! Field "%s" in Storage "%s" renamed to "%s".' % (field_id, storage_id, new_id))
 
     security.declareProtected(permission_change_configuration, 'rename_fields')
 
@@ -350,7 +350,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.rename_fields(field_ids, new_ids)
 
-        self.redirect(REQUEST, 'fields_form', '%d Fields in Storage "%s" renamed.' % (len(field_ids), storage_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! %d Fields in Storage "%s" renamed.' % (len(field_ids), storage_id))
 
     security.declareProtected(permission_access_configuration, 'set_field_default')
 
@@ -360,7 +360,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.set_field_default(field_id, value)
 
-        self.redirect(REQUEST, 'fields_form', 'Default value of Field "%s" in Storage "%s" changed.' % (field_id, storage_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! Default value of Field "%s" in Storage "%s" changed.' % (field_id, storage_id))
 
     # ------------------------------------------------------------------------
     # Primary Field API
@@ -461,7 +461,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.move_field_to_position(field_id, position)
 
-        self.redirect(REQUEST, 'fields_form', 'Field "%s" in Storage "%s" moved to position %d.' % (field_id, storage_id, position))
+        self.redirect(REQUEST, 'fields_form', '!TXT! Field "%s" in Storage "%s" moved to position %d.' % (field_id, storage_id, position))
 
     security.declareProtected(permission_change_configuration, 'move_field_to_top')
 
@@ -471,7 +471,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.move_field_to_top(field_id)
 
-        self.redirect(REQUEST, 'fields_form', 'Field "%s" in Storage "%s" moved to top.' % (field_id, storage_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! Field "%s" in Storage "%s" moved to top.' % (field_id, storage_id))
 
     security.declareProtected(permission_change_configuration, 'move_field_up')
 
@@ -481,7 +481,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.move_field_up(field_id)
 
-        self.redirect(REQUEST, 'fields_form', 'Field "%s" in Storage "%s" moved up.' % (field_id, storage_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! Field "%s" in Storage "%s" moved up.' % (field_id, storage_id))
 
     security.declareProtected(permission_change_configuration, 'move_field_down')
 
@@ -491,7 +491,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.move_field_down(field_id)
 
-        self.redirect(REQUEST, 'fields_form', 'Field "%s" in Storage "%s" moved down.' % (field_id, storage_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! Field "%s" in Storage "%s" moved down.' % (field_id, storage_id))
 
     security.declareProtected(permission_change_configuration, 'move_field_to_bottom')
 
@@ -501,7 +501,7 @@ class Fields:
         storage = self.get_storage(storage_id)
         storage.move_field_to_bottom(field_id)
 
-        self.redirect(REQUEST, 'fields_form', 'Field "%s" in Storage "%s" moved to bottom.' % (field_id, storage_id))
+        self.redirect(REQUEST, 'fields_form', '!TXT! Field "%s" in Storage "%s" moved to bottom.' % (field_id, storage_id))
 
     # !!! fields.py - implement move_fields_* methods
 
@@ -512,5 +512,5 @@ InitializeClass(Fields)
 
 # !!! fields.py - form/formlet handler for add_field
 # !!! fields.py - form/formlet handler for edit_field
-# TODO: Fields Component - implement handling of grouped fields (field groups)
-# TODO: Fields Component - implement handling of multi values fields
+# TODO fields.py - implement handling of grouped fields (field groups)
+# TODO fields.py - implement handling of multi values fields

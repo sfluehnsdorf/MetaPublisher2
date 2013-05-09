@@ -101,10 +101,6 @@ class Entries(Entry, EntryFields, EntrySets, EntryOrder, EntryTrees, EntryGraphs
 
     reset_entries_form = DTMLFile('reset_entries', globals())
 
-    security.declareProtected(permission_change_entries, 'transfer_entries_form')
-
-    transfer_entries_form = DTMLFile('transfer_entries', globals())
-
     # ------------------------------------------------------------------------
     # Entry Data Processing Helpers
 
@@ -129,7 +125,7 @@ class Entries(Entry, EntryFields, EntrySets, EntryOrder, EntryTrees, EntryGraphs
 
 InitializeClass(Entries)
 
-# TODO: entries.py - support multi column per field
-# TODO: entries.py - specify/implement api for entries without id
-# TODO: entries.py - specify/implement api for entries in a tree storage
-# TODO: entries.py - specify/implement api for entries in a path storage
+# TODO entries.py - support multi column per field
+# TODO entries.py - specify/implement api for entries without id
+# TODO entries.py - specify/implement api for entries in a tree storage
+# TODO entries.py - specify/implement api for entries in a path storage

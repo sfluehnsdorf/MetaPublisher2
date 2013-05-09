@@ -110,13 +110,13 @@ class IdentifierPluginBase(PluginBase):
             elif entryIdPatternType == 'uid':
                 entryIdPattern = '%(storageId)s_%(uid)s'
             else:
-                errors['entryIdPattern'] = u'The specified Entry Id pattern type is unknown!'
+                errors['entryIdPattern'] = u'!TXT! The specified Entry Id pattern type is unknown!'
         if not 'entryId' in errors:
             entryIdPattern = str(entryIdPattern)
             try:
                 test_id = entryIdPattern % {'mp2Id': 'test', 'storageId': 'test', 'sequence': 1, 'random': 1, 'uid': 'abcdef'}
             except Exception, e:
-                errors['entryIdPattern'] = u'The specified Entry Id pattern has errors (%s)!' % e
+                errors['entryIdPattern'] = u'!TXT! The specified Entry Id pattern has errors (%s)!' % e
 
         return errors, entryIdPattern
 

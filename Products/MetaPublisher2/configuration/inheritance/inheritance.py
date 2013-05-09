@@ -66,4 +66,4 @@ class Inheritance:
 
 InitializeClass(Inheritance)
 
-# TODO: Inheritance Component
+# TODO inheritance.py - implement

@@ -107,7 +107,7 @@ class Integrity:
     def _test_designs_integrity(self):
         """!TXT! Perform integrity tests on all Designs."""
 
-        # TODO: implement designs integrity tests
+        # TODO integrity.py - _test_designs_integrity - implement designs integrity tests
 
         return []
 
@@ -128,14 +128,14 @@ class Integrity:
     def _test_frontends_integrity(self):
         """!TXT! Perform integrity tests on all Frontends."""
 
-        # TODO: implement frontends integrity tests
+        # TODO integrity.py - _test_frontends_integrity - implement frontends integrity tests
 
         return []
 
     def _test_indexing_integrity(self):
         """!TXT! Perform integrity tests on all Indexes."""
 
-        # TODO: implement indexing integrity tests
+        # TODO integrity.py - _test_indexing_integrity - implement indexing integrity tests
 
         return []
 
@@ -153,13 +153,13 @@ class Integrity:
             result.append(('info', 'Plugins', 'No Widget Plugins installed.'))
         for plugin_id, plugin in self.plugin_items():
             if hasattr(plugin['instance'], 'pluginName'):
-                result.append(('info', 'Plugins', 'Legacy Plugin "%s" is based on deprecated API which will be removed in a future version.' % plugin_id))
+                result.append(('info', 'Plugins', '!TXT! Legacy Plugin "%s" is based on deprecated API which will be removed in a future version.' % plugin_id))
         return result
 
     def _test_presets_integrity(self):
         """!TXT! Perform integrity tests on all Presets."""
 
-        # TODO: implement presets integrity tests
+        # TODO integrity.py - _test_presets_integrity - implement presets integrity tests
 
         return []
 
@@ -180,7 +180,7 @@ class Integrity:
     def _test_widgets_integrity(self):
         """!TXT! Perform integrity tests on all Widgets."""
 
-        # TODO: implement widgets integrity tests
+        # TODO integrity.py - _test_widgets_integrity - implement widgets integrity tests
 
         return []
 

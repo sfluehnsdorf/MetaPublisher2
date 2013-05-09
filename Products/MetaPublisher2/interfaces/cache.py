@@ -52,4 +52,4 @@ class ICachePluginBase(Interface):
 
     pass
 
-# TODO: Cache Plugin Base Interface
+# TODO interfaces/cache.py - implement

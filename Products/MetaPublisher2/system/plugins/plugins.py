@@ -22,9 +22,9 @@
 
 __doc__ = """Plugins Component
 
-Plugin service, providing access to all installed Product classess based on the
-MetaPublisher2's Plugin base class. Retrieval can be limited to one or more
-Plugin interfaces.
+Plugin service, providing access to all installed Product classess based on
+the MetaPublisher2's Plugin base class. Retrieval can be limited to one or
+more Plugin interfaces.
 
 $Id: system/plugins/plugins.py 13 2013-05-08 18:54:47Z sfluehnsdorf $
 """
@@ -73,7 +73,7 @@ class Plugins:
         for id, plugin in self.plugin_items(interfaces):
             if id == plugin_id:
                 return plugin
-        raise KeyError("No plugin named '%s'" % plugin_id)
+        raise KeyError("!TXT! No plugin named '%s'" % plugin_id)
 
     security.declareProtected(permission_manage, 'has_plugins')
 

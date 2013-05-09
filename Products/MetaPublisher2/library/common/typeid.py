@@ -196,6 +196,6 @@ def eval_valuestring(value, reference):
             if value_typegroup == 'string':
                 return (value, )
             return tuple(value)
-    raise ValueError("Can't identify and evaluate value %s %s" % (repr(value), repr((reference_typegroup, reference_type))))
+    raise ValueError("!TXT! Can't identify and evaluate value %s %s" % (repr(value), repr((reference_typegroup, reference_type))))
 
 # !!! typeid.py - check if all methods are needed and must be exported

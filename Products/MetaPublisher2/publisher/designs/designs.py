@@ -183,7 +183,7 @@ class Designs:
     def preview_design(self, design_id, options={}, REQUEST=None, **args):
         """!TXT! Preview a Design with the specified options."""
 
-        # TODO: preview_design
+        # !!! designs.py - implement preview_design
         raise NotImplemented
 
     # ------------------------------------------------------------------------
@@ -194,7 +194,7 @@ class Designs:
     def setup_design(self, frontend_parent_id, design_id, options={}, REQUEST=None, **args):
         """!TXT! Add a Design with the specified options to the Frontends."""
 
-        # TODO: setup_design
+        # !!! designs.py - implement setup_design
         raise NotImplemented
 
 # ----------------------------------------------------------------------------
