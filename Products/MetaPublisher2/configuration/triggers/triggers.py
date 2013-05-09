@@ -24,7 +24,7 @@ __doc__ = """Triggers Component
 
 !TXT! module info
 
-$Id: configuration/triggers/triggers.py 3 2013-05-08 19:15:10Z sfluehnsdorf $
+$Id: configuration/triggers/triggers.py 4 2013-05-09 00:01:53Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -28,7 +28,7 @@ definition of the final public interface as such is not publically viewable.
 Users can choose the destination for the public interface, relative to the
 MetaPublisher 2 instance.
 
-$Id: publisher/renderer/renderer.py 9 2013-05-08 19:02:12Z sfluehnsdorf $
+$Id: publisher/renderer/renderer.py 10 2013-05-08 22:53:38Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -24,7 +24,7 @@ __doc__ = """Cache Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/cache.py 4 2013-05-08 19:37:02Z sfluehnsdorf $
+$Id: interfaces/cache.py 5 2013-05-08 23:53:10Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

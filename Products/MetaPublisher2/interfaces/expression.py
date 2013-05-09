@@ -24,7 +24,7 @@ __doc__ = """Expression Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/expression.py 4 2013-05-08 19:36:25Z sfluehnsdorf $
+$Id: interfaces/expression.py 5 2013-05-08 23:51:32Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

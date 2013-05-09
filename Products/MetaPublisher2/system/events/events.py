@@ -24,7 +24,7 @@ __doc__ = """Events Component
 
 !TXT! module info
 
-$Id: system/events/events.py 5 2013-05-08 18:54:47Z sfluehnsdorf $
+$Id: system/events/events.py 6 2013-05-08 23:45:22Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

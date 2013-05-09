@@ -24,7 +24,7 @@ __doc__ = """Reference Component
 
 !TXT! module info
 
-$Id: service/reference/reference.py 6 2013-05-08 21:47:33Z sfluehnsdorf $
+$Id: service/reference/reference.py 7 2013-05-09 00:07:55Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

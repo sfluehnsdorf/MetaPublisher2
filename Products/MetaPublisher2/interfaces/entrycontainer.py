@@ -24,7 +24,7 @@ __doc__ = """EntryContainer Interface
 
 !TXT! module info
 
-$Id: interfaces/entrycontainer.py 5 2013-05-08 19:36:51Z sfluehnsdorf $
+$Id: interfaces/entrycontainer.py 6 2013-05-08 23:09:02Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

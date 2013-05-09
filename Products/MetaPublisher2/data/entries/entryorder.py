@@ -24,7 +24,7 @@ __doc__ = """Entry Order Component
 
 !TXT! module info
 
-$Id: data/entries/entryorder.py 11 2013-05-08 21:41:03Z sfluehnsdorf $
+$Id: data/entries/entryorder.py 12 2013-05-08 23:04:05Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -24,7 +24,7 @@ __doc__ = """Constraints Component
 
 !TXT! module info
 
-$Id: configuration/constraints/constraints.py 3 2013-05-08 19:20:42Z sfluehnsdorf $
+$Id: configuration/constraints/constraints.py 4 2013-05-09 00:03:06Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

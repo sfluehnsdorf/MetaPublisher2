@@ -24,7 +24,7 @@ __doc__ = """Expression Aggregates Component
 
 !TXT! module info
 
-$Id: data/expressions/aggregates.py 3 2013-05-08 19:31:09Z sfluehnsdorf $
+$Id: data/expressions/aggregates.py 4 2013-05-08 23:56:03Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

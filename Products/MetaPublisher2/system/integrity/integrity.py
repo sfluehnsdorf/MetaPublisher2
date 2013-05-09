@@ -26,7 +26,7 @@ __doc__ = """Integrity Component
 Reporting service, which tests the integrity of the MetaPublisher 2 components
 and reports inconsistencies in the configuration.
 
-$Id: system/integrity/integrity.py 6 2013-05-08 18:54:47Z sfluehnsdorf $
+$Id: system/integrity/integrity.py 7 2013-05-08 23:45:10Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

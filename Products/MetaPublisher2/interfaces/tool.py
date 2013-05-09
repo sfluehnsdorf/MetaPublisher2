@@ -24,7 +24,7 @@ __doc__ = """Tool Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/tool.py 4 2013-05-08 19:35:16Z sfluehnsdorf $
+$Id: interfaces/tool.py 5 2013-05-08 23:49:52Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

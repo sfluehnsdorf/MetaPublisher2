@@ -24,7 +24,7 @@ __doc__ = """Caching Component
 
 !TXT! module info
 
-$Id: publisher/caching/caching.py 3 2013-05-08 19:03:43Z sfluehnsdorf $
+$Id: publisher/caching/caching.py 4 2013-05-08 23:48:02Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

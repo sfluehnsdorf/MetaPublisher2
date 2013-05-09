@@ -24,7 +24,7 @@ __doc__ = """Indexer Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/indexer.py 4 2013-05-08 19:36:13Z sfluehnsdorf $
+$Id: interfaces/indexer.py 5 2013-05-08 23:51:00Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

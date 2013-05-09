@@ -26,7 +26,7 @@ API for retrieval, mutation and ordering of Entries. An Entry is a singular unit
 of data stored. Entries are stored in Storages and are defined by the Storage's
 Fields and in EntrySets, which store the result of methods on Entries.
 
-$Id: data/entries/entries.py 8 2013-05-08 19:24:50Z sfluehnsdorf $
+$Id: data/entries/entries.py 9 2013-05-08 23:59:58Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

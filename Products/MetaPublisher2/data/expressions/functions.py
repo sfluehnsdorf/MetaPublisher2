@@ -24,7 +24,7 @@ __doc__ = """Expression Functions Component
 
 !TXT! module info
 
-$Id: data/expressions/functions.py 3 2013-05-08 19:31:55Z sfluehnsdorf $
+$Id: data/expressions/functions.py 4 2013-05-08 23:56:48Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

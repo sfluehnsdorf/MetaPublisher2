@@ -24,7 +24,7 @@ __doc__ = """Exporter Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/exporter.py 4 2013-05-08 19:36:27Z sfluehnsdorf $
+$Id: interfaces/exporter.py 5 2013-05-08 23:53:13Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

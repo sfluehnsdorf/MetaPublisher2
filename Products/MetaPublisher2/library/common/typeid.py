@@ -25,7 +25,7 @@ __doc__ = """!TXT! Type Identification
 !TXT! module info
 Resources for type identification of variables.
 
-$Id: library/common/typeid.py 6 2013-05-08 20:15:03Z sfluehnsdorf $
+$Id: library/common/typeid.py 7 2013-05-08 23:10:07Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -24,7 +24,7 @@ __doc__ = """Expression Constants Component
 
 !TXT! module info
 
-$Id: data/expressions/constants.py 3 2013-05-08 19:31:32Z sfluehnsdorf $
+$Id: data/expressions/constants.py 4 2013-05-08 23:56:23Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

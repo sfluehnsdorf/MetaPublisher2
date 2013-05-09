@@ -24,7 +24,7 @@ __doc__ = """Event Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/event.py 4 2013-05-08 19:36:28Z sfluehnsdorf $
+$Id: interfaces/event.py 5 2013-05-08 23:53:12Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -24,7 +24,7 @@ __doc__ = """Identifier Plugin Base
 
 !TXT! module info
 
-$Id: bases/identifier/identifier.py 3 2013-05-08 19:49:54Z sfluehnsdorf $
+$Id: bases/identifier/identifier.py 4 2013-05-08 22:53:37Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -26,7 +26,7 @@ Plugin service, providing access to all installed Product classess based on
 the MetaPublisher2's Plugin base class. Retrieval can be limited to one or
 more Plugin interfaces.
 
-$Id: system/plugins/plugins.py 13 2013-05-08 18:54:47Z sfluehnsdorf $
+$Id: system/plugins/plugins.py 14 2013-05-08 22:53:41Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

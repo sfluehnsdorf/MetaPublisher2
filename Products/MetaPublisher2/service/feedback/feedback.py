@@ -26,7 +26,7 @@ Simple service providing access to the Web based feedback service for a variety
 of types of feedback. The ZMI forms simply include the feedback service's web
 pages on the MetaPublisher website at http://metapublisher.org.
 
-$Id: service/feedback/feedback.py 4 2013-05-08 18:56:17Z sfluehnsdorf $
+$Id: service/feedback/feedback.py 5 2013-05-09 00:08:29Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -24,7 +24,7 @@ __doc__ = """Inheritance Component
 
 !TXT! module info
 
-$Id: configuration/inheritance/inheritance.py 3 2013-05-08 19:17:21Z sfluehnsdorf $
+$Id: configuration/inheritance/inheritance.py 4 2013-05-09 00:02:34Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

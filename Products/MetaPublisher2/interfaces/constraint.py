@@ -24,7 +24,7 @@ __doc__ = """Constraint Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/constraint.py 4 2013-05-08 19:36:59Z sfluehnsdorf $
+$Id: interfaces/constraint.py 5 2013-05-08 23:52:55Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

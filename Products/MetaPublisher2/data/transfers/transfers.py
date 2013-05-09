@@ -24,7 +24,7 @@ __doc__ = """Transfers Component
 
 !TXT! module info
 
-$Id: data/transfers/transfers.py 4 2013-05-08 19:34:25Z sfluehnsdorf $
+$Id: data/transfers/transfers.py 5 2013-05-08 23:54:18Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

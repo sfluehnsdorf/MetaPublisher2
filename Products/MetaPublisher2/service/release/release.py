@@ -25,7 +25,7 @@ __doc__ = """Release Component
 Retrieval service of the MetaPublisher2 release information text files and
 online release version check service.
 
-$Id: service/release/release.py 6 2013-05-08 18:57:49Z sfluehnsdorf $
+$Id: service/release/release.py 7 2013-05-09 00:08:20Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

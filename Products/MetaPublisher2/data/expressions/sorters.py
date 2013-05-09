@@ -24,7 +24,7 @@ __doc__ = """Expression Sorters Component
 
 !TXT! module info
 
-$Id: data/expressions/sorters.py 3 2013-05-08 19:32:19Z sfluehnsdorf $
+$Id: data/expressions/sorters.py 4 2013-05-08 23:57:08Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

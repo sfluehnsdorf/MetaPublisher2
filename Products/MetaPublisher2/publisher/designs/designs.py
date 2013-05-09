@@ -24,7 +24,7 @@ __doc__ = """Designs Component
 
 !TXT! module info
 
-$Id: publisher/designs/designs.py 4 2013-05-08 19:03:39Z sfluehnsdorf $
+$Id: publisher/designs/designs.py 5 2013-05-08 23:43:59Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

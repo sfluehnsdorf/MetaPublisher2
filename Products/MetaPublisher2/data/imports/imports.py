@@ -26,7 +26,7 @@ Import service for Entries from various types of files either in the filesystem
 or uploaded. Users can choose the destination Storage and match the data in the
 file to the Fields in the Storage.
 
-$Id: data/imports/imports.py 5 2013-05-08 19:32:36Z sfluehnsdorf $
+$Id: data/imports/imports.py 6 2013-05-08 23:54:51Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -24,7 +24,7 @@ __doc__ = """Language Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/language.py 4 2013-05-08 19:36:11Z sfluehnsdorf $
+$Id: interfaces/language.py 5 2013-05-08 23:51:33Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

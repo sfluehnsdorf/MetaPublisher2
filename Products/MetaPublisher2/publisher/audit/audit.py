@@ -24,7 +24,7 @@ __doc__ = """Audit Component
 
 !TXT! module info
 
-$Id: publisher/audit/audit.py 3 2013-05-08 19:03:47Z sfluehnsdorf $
+$Id: publisher/audit/audit.py 4 2013-05-08 23:48:18Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

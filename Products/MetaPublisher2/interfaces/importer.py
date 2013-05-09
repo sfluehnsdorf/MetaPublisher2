@@ -24,7 +24,7 @@ __doc__ = """Importer Plugin Interface
 
 !TXT! module info
 
-$Id: interfaces/importer.py 4 2013-05-08 19:36:15Z sfluehnsdorf $
+$Id: interfaces/importer.py 5 2013-05-08 23:51:11Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2 Dialogs
 
 !TXT! module info
 
-$Id: library/userinterface/dialogs.py 8 2013-05-08 21:18:33Z sfluehnsdorf $
+$Id: library/userinterface/dialogs.py 9 2013-05-08 23:19:53Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
