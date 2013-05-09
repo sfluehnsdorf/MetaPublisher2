@@ -24,7 +24,7 @@ __doc__ = """Legacy Storage Plugin Base
 
 !TXT! module info
 
-$Id: bases/storage/legacystorage.py 16 2013-05-08 19:51:05Z sfluehnsdorf $
+$Id: bases/storage/legacystorage.py 17 2013-05-09 18:07:30Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -107,7 +107,11 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
 
         self.title = REQUEST.get('title', '')
 
-        self.redirect(REQUEST, 'storages_form', 'Changes saved')
+        self.redirect(
+            REQUEST,
+            'storages_form',
+            message='!TXT! Changes saved'
+        )
 
     def storage_getOptions(self):
         """!TXT! Return a list of the Storage's configuration parameters"""
@@ -627,8 +631,11 @@ class LegacyStoragePlugin(LegacyPluginBase, StoragePluginBase):
 
         self.title = REQUEST.get('title', '')
 
-        if REQUEST is not None:
-            REQUEST.RESPONSE.redirect(self.get_MetaPublisher2_url() + '/manage_storagesBrowserForm?manage_tabs_message=Changes+saved')
+        self.redirect(
+            REQUEST,
+            'storages_form',
+            message='!TXT! Changes saved'
+        )
 
     # ------------------------------------------------------------------------
     # Storage's Field Options

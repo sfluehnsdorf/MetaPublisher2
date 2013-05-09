@@ -28,7 +28,7 @@ definition of the final public interface as such is not publically viewable.
 Users can choose the destination for the public interface, relative to the
 MetaPublisher 2 instance.
 
-$Id: publisher/renderer/renderer.py 10 2013-05-08 22:53:38Z sfluehnsdorf $
+$Id: publisher/renderer/renderer.py 11 2013-05-09 13:31:20Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -244,7 +244,11 @@ class Renderer:
 
                         rendered_frontends.append(id)
 
-        self.redirect(REQUEST, 'frontends_form', '!TXT! %d Frontends rendered.' % (rendered_frontends and len(rendered_frontends) or 'No'))
+        self.redirect(
+            REQUEST,
+            'frontends_form',
+            message='!TXT! %d Frontends rendered.' % (rendered_frontends and len(rendered_frontends) or 'No')
+        )
 
 # ----------------------------------------------------------------------------
 # Class Security

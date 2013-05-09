@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2Designs Product
 
 !TXT! module info
 
-$Id: products/metapublisher2designs/MetaPublisher2Designs.py 8 2013-05-08 22:55:50Z sfluehnsdorf $
+$Id: products/metapublisher2designs/MetaPublisher2Designs.py 9 2013-05-09 17:12:11Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -121,11 +121,11 @@ def add_MetaPublisher2Designs(self, id, title='Designs Folder', REQUEST=None):
 
     if REQUEST:
         try:
-            url_base = self.DestinationURL()
+            url = self.DestinationURL()
         except:
-            url_base = REQUEST['URL1']
+            url = REQUEST['URL1']
         url = '%s/%s?update_menu=1&manage_tabs_message=%s' % (
-            url_base,
+            url,
             quote_plus('!TXT! New MetaPublisher2Designs "%s" created.' % id)
         )
         REQUEST.RESPONSE.redirect(url)

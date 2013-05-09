@@ -28,7 +28,7 @@ provide a public interface to the functions of the MetaPublisher 2, such as
 Entry management. Frontends can be added, edited, deleted, renamed and moved as
 well as retrieved, listed and tested for existence.
 
-$Id: publisher/frontends/frontends.py 18 2013-05-09 00:25:06Z sfluehnsdorf $
+$Id: publisher/frontends/frontends.py 19 2013-05-09 17:08:33Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -316,17 +316,26 @@ class Frontends:
     def add_frontend_type(self, REQUEST=None):
         """!TXT! Add a new Frontend in the specified path with specified id and configuration."""
 
-        path = self.get_app_url() + '/frontends' + REQUEST.get('path', '')
+        path = 'frontends' + REQUEST.get('path', '')
         frontend_type = REQUEST.get('frontend_type', '')
         if frontend_type == 'OFS':
-            REQUEST.RESPONSE.redirect(path + REQUEST.get('ofs_object_type'))
-
+            self.redirect(
+                REQUEST,
+                path + REQUEST.get('ofs_object_type')
+            )
         else:
             try:
-                frontendplugin = self.get_plugin(REQUEST.get('frontend_type'))
-                REQUEST.RESPONSE.redirect(path + frontendplugin['action'])
+                frontendplugin = self.get_plugin(REQUEST['frontend_type'])
+                self.redirect(
+                    REQUEST,
+                    path + frontendplugin['action']
+                )
             except:
-                self.redirect(REQUEST, 'frontends_form', '!TXT! Invalid Frontend Type')
+                self.redirect(
+                    REQUEST,
+                    'frontends_form',
+                    message='!TXT! Invalid Frontend Type'
+                )
 
     security.declareProtected(permission_manage_frontends, 'add_frontend')
 

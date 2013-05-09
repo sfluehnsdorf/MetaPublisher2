@@ -24,7 +24,7 @@ __doc__ = """Entry Order Component
 
 !TXT! module info
 
-$Id: data/entries/entryorder.py 12 2013-05-08 23:04:05Z sfluehnsdorf $
+$Id: data/entries/entryorder.py 13 2013-05-09 18:15:42Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -84,10 +84,12 @@ class EntryOrder:
         source = self.get_storage(source)
         entry_ids = source.rotate_entries(steps, parent_entry_id, entry_ids, entry_positions, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" rotated by %d steps.' % (len(entry_ids), source.getId(), steps))
-        else:
-            return entry_ids
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" rotated by %d steps.' % (len(entry_ids), source.getId(), steps)
+        )
+        return entry_ids
 
     security.declareProtected(permission_change_entries, 'order_entries')
 
@@ -97,10 +99,12 @@ class EntryOrder:
         source = self.get_storage(source)
         entry_ids = source.order_entries(order_by, parent_entry_id, entry_ids, entry_positions, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" reordered.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" reordered.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids
 
     security.declareProtected(permission_change_entries, 'shuffle_entries')
 
@@ -110,10 +114,12 @@ class EntryOrder:
         source = self.get_storage(source)
         entry_ids = source.shuffle_entries(parent_entry_id, entry_ids, entry_positions, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" shuffled.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" shuffled.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids
 
     security.declareProtected(permission_change_entries, 'reverse_entries')
 
@@ -123,10 +129,12 @@ class EntryOrder:
         source = self.get_storage(source)
         entry_ids = source.reverse_entries(parent_entry_id, entry_ids, entry_positions, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" reversed order.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" reversed order.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids
 
     security.declareProtected(permission_change_entries, 'move_entry')
 
@@ -136,7 +144,11 @@ class EntryOrder:
         source = self.get_storage(source)
         source.move_entry(position, parent_entry_id, entry_id, entry_position)
 
-        self.redirect(REQUEST, 'entries_form', '!TXT! Entry "%s" in Storage "%s" moved to position %d.' % (entry_id, source.getId(), position))
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry "%s" in Storage "%s" moved to position %d.' % (entry_id, source.getId(), position)
+        )
 
     security.declareProtected(permission_change_entries, 'move_entry_to_top')
 
@@ -146,7 +158,11 @@ class EntryOrder:
         source = self.get_storage(source)
         source.move_entry_to_top(parent_entry_id, entry_id, entry_position)
 
-        self.redirect(REQUEST, 'entries_form', '!TXT! Entry "%s" in Storage "%s" moved to top.' % (entry_id, source.getId()))
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry "%s" in Storage "%s" moved to top.' % (entry_id, source.getId())
+        )
 
     security.declareProtected(permission_change_entries, 'move_entry_up')
 
@@ -156,7 +172,11 @@ class EntryOrder:
         source = self.get_storage(source)
         source.move_entry_up(parent_entry_id, entry_id, entry_position)
 
-        self.redirect(REQUEST, 'entries_form', '!TXT! Entry "%s" in Storage "%s" moved up.' % (entry_id, source.getId()))
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry "%s" in Storage "%s" moved up.' % (entry_id, source.getId())
+        )
 
     security.declareProtected(permission_change_entries, 'move_entry_down')
 
@@ -166,7 +186,11 @@ class EntryOrder:
         source = self.get_storage(source)
         source.move_entry_down(parent_entry_id, entry_id, entry_position)
 
-        self.redirect(REQUEST, 'entries_form', '!TXT! Entry "%s" in Storage "%s" moved down.' % (entry_id, source.getId()))
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry "%s" in Storage "%s" moved down.' % (entry_id, source.getId())
+        )
 
     security.declareProtected(permission_change_entries, 'move_entry_to_bottom')
 
@@ -176,7 +200,11 @@ class EntryOrder:
         source = self.get_storage(source)
         source.move_entry_to_bottom(parent_entry_id, entry_id, entry_position)
 
-        self.redirect(REQUEST, 'entries_form', '!TXT! Entry "%s" in Storage "%s" moved to bottom.' % (entry_id, source.getId()))
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry "%s" in Storage "%s" moved to bottom.' % (entry_id, source.getId())
+        )
 
     security.declareProtected(permission_change_entries, 'move_entries')
 
@@ -186,10 +214,12 @@ class EntryOrder:
         source = self.get_storage(source)
         entry_ids = source.move_entries(position, parent_entry_id, entry_ids, entry_positions, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" moved to position %s.' % (len(entry_ids), source.getId(), position))
-        else:
-            return entry_ids
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" moved to position %s.' % (len(entry_ids), source.getId(), position)
+        )
+        return entry_ids
 
     security.declareProtected(permission_change_entries, 'move_entries_to_top')
 
@@ -199,10 +229,12 @@ class EntryOrder:
         source = self.get_storage(source)
         entry_ids = source.move_entries_to_top(parent_entry_id, entry_ids, entry_positions, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" moved to top.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" moved to top.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids
 
     security.declareProtected(permission_change_entries, 'move_entries_up')
 
@@ -212,10 +244,12 @@ class EntryOrder:
         source = self.get_storage(source)
         entry_ids = source.move_entries_up(parent_entry_id, entry_ids, entry_positions, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" moved up' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" moved up' % (len(entry_ids), source.getId())
+        )
+        return entry_ids
 
     security.declareProtected(permission_change_entries, 'move_entries_down')
 
@@ -225,10 +259,12 @@ class EntryOrder:
         source = self.get_storage(source)
         entry_ids = source.move_entries_down(parent_entry_id, entry_ids, entry_positions, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" moved down.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" moved down.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids
 
     security.declareProtected(permission_change_entries, 'move_entries_to_bottom')
 
@@ -238,10 +274,12 @@ class EntryOrder:
         source = self.get_storage(source)
         entry_ids = source.move_entries_to_bottom(parent_entry_id, entry_ids, entry_positions, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" moved to bottom.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" moved to bottom.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids
 
 # ----------------------------------------------------------------------------
 # Class Security

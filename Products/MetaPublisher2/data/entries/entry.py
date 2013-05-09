@@ -24,7 +24,7 @@ __doc__ = """Entry Component
 
 !TXT! module info
 
-$Id: data/entries/entry.py 12 2013-05-09 00:00:30Z sfluehnsdorf $
+$Id: data/entries/entry.py 13 2013-05-09 18:13:56Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -179,10 +179,12 @@ class Entry:
         source = self.get_storage(source)
         entry_id, entry_position = source.add_entry(parent_entry_id, entry_id, entry_position, data)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
-        else:
-            return entry_id, entry_position
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId())
+        )
+        return entry_id, entry_position
 
     security.declareProtected(permission_create_entries, 'add_entry_continued')
 
@@ -194,10 +196,12 @@ class Entry:
             data.update(REQUEST.form)
         entry_id, entry_position = self.add_entry(parent_entry_id, entry_id, entry_position, data)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'add_entry_form', '!TXT! Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
-        else:
-            return entry_id, entry_position
+        self.redirect(
+            REQUEST,
+            'add_entry_form',
+            message='!TXT! Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId())
+        )
+        return entry_id, entry_position
 
     security.declareProtected(permission_create_entries, 'add_entry_to_top')
 
@@ -210,10 +214,12 @@ class Entry:
         source = self.get_storage(source)
         entry_id, entry_position = source.add_entry_to_top(parent_entry_id, entry_id, data)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %sadded to the top of Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', source.getId()))
-        else:
-            return entry_id, entry_position
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %sadded to the top of Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', source.getId())
+        )
+        return entry_id, entry_position
 
     security.declareProtected(permission_create_entries, 'add_entry_to_bottom')
 
@@ -226,10 +232,12 @@ class Entry:
         source = self.get_storage(source)
         entry_id, entry_position = source.add_entry_to_bottom(parent_entry_id, entry_id, data)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %sadded to the end of Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', source.getId()))
-        else:
-            return entry_id, entry_position
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %sadded to the end of Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', source.getId())
+        )
+        return entry_id, entry_position
 
     security.declareProtected(permission_create_entries, 'add_entry_somewhere')
 
@@ -242,10 +250,12 @@ class Entry:
         source = self.get_storage(source)
         entry_id, entry_position = source.add_entry_somewhere(parent_entry_id, entry_id, data)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
-        else:
-            return entry_id, entry_position
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %s%sadded to Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId())
+        )
+        return entry_id, entry_position
 
     security.declareProtected(permission_create_entries, 'add_entries')
 
@@ -255,10 +265,12 @@ class Entry:
         source = self.get_storage(source)
         entry_ids, entry_positions = source.add_entries(parent_entry_id, entries)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries %sadded to Storage "%s".' % (len(entry_ids), entry_id and '"%s" ' % entry_id or '', source.getId()))
-        else:
-            return entry_ids, entry_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries %sadded to Storage "%s".' % (len(entry_ids), entry_id and '"%s" ' % entry_id or '', source.getId())
+        )
+        return entry_ids, entry_positions
 
     # !!! entry.py - implement add_entries_continued
 
@@ -312,10 +324,12 @@ class Entry:
         source = self.get_storage(source)
         new_id, new_position = source.duplicate_entry(parent_entry_id, entry_id, entry_position, new_id)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sin Storage "%s" duplicated%s%s.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId(), new_id and ' as "%s"' % new_id, new_position is not None and ' at position %d' % new_position or ''))
-        else:
-            return new_id, new_position
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %s%sin Storage "%s" duplicated%s%s.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId(), new_id and ' as "%s"' % new_id, new_position is not None and ' at position %d' % new_position or '')
+        )
+        return new_id, new_position
 
     security.declareProtected(permission_create_entries, 'duplicate_entries')
 
@@ -325,10 +339,12 @@ class Entry:
         source = self.get_storage(source)
         new_ids, new_positions = source.duplicate_entries(parent_entry_id, entry_ids, entry_positions, conditions, new_ids)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries duplicated in Storage "%s".' % (len(new_ids), source.getId()))
-        else:
-            return new_ids, new_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries duplicated in Storage "%s".' % (len(new_ids), source.getId())
+        )
+        return new_ids, new_positions
 
     security.declareProtected(permission_change_entries, 'set_entry')
 
@@ -341,10 +357,12 @@ class Entry:
         source = self.get_storage(source)
         entry_id, entry_position = source.set_entry(parent_entry_id, entry_id, entry_position, data)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sset in Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
-        else:
-            return entry_id, entry_position
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %s%sset in Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId())
+        )
+        return entry_id, entry_position
 
     # ------------------------------------------------------------------------
     # Entry Modification Mutation API
@@ -360,10 +378,12 @@ class Entry:
         source = self.get_storage(source)
         entry_id, entry_position = source.edit_entry(parent_entry_id, entry_id, entry_position, data)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sin Storage "%s" changed.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
-        else:
-            return entry_id, entry_position
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %s%sin Storage "%s" changed.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId())
+        )
+        return entry_id, entry_position
 
     security.declareProtected(permission_change_entries, 'edit_entry_continued')
 
@@ -375,10 +395,12 @@ class Entry:
             data.update(REQUEST.form)
         entry_id, entry_position = edit_entry(source, parent_entry_id, entry_id, entry_position, data)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'edit_entry_form', '!TXT! Entry %s%sin Storage "%s" changed.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
-        else:
-            return entry_id, entry_position
+        self.redirect(
+            REQUEST,
+            'edit_entry_form',
+            message='!TXT! Entry %s%sin Storage "%s" changed.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId())
+        )
+        return entry_id, entry_position
 
     security.declareProtected(permission_change_entries, 'edit_entries')
 
@@ -391,10 +413,12 @@ class Entry:
         source = self.get_storage(source)
         entry_ids, entry_positions = source.edit_entries(parent_entry_id, entry_ids, entry_positions, conditions, data)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" changed.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids, entry_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" changed.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids, entry_positions
 
     # !!! entry.py - implement edit_entries_continued
 
@@ -406,10 +430,12 @@ class Entry:
         source = self.get_storage(source)
         new_id = source.rename_entry(parent_entry_id, entry_id, entry_position, new_id)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sin Storage "%s" renamed to "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId(), new_id))
-        else:
-            return new_id
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %s%sin Storage "%s" renamed to "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId(), new_id)
+        )
+        return new_id
 
     security.declareProtected(permission_change_entries, 'rename_entries')
 
@@ -419,10 +445,12 @@ class Entry:
         source = self.get_storage(source)
         entry_ids, new_ids = source.rename_entries(parent_entry_id, entry_ids, entry_positions, conditions, new_ids)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries renamed in Storage "%s".' % (len(new_ids), source.getId()))
-        else:
-            return entry_ids, new_ids
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries renamed in Storage "%s".' % (len(new_ids), source.getId())
+        )
+        return entry_ids, new_ids
 
     security.declareProtected(permission_change_entries, 'reset_entry')
 
@@ -432,10 +460,12 @@ class Entry:
         source = self.get_storage(source)
         entry_id, entry_position = source.reset_entry(parent_entry_id, entry_id, entry_position, field_ids)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sin Storage "%s" resetted to default values.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
-        else:
-            return entry_id, entry_position
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %s%sin Storage "%s" resetted to default values.' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId())
+        )
+        return entry_id, entry_position
 
     security.declareProtected(permission_change_entries, 'reset_entries')
 
@@ -445,10 +475,12 @@ class Entry:
         source = self.get_storage(source)
         entry_ids, entry_positions = source.reset_entries(parent_entry_id, entry_ids, entry_positions, conditions, field_ids)
 
-        if REQUEST is not None:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" resetted to default values.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids, entry_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" resetted to default values.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids, entry_positions
 
     # ------------------------------------------------------------------------
     # Entry Deletion Mutation API
@@ -461,10 +493,12 @@ class Entry:
         source = self.get_storage(source)
         entry_ids, entry_positions = self.clear_entries()
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! All %d Entries deleted from Storage "%s".' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids, entry_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! All %d Entries deleted from Storage "%s".' % (len(entry_ids), source.getId())
+        )
+        return entry_ids, entry_positions
 
     security.declareProtected(permission_change_entries, 'delete_entry')
 
@@ -474,10 +508,12 @@ class Entry:
         source = self.get_storage(source)
         entry_id, entry_position = source.delete_entry(parent_entry_id, entry_id, entry_position, failsafe)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
-        else:
-            return entry_id, entry_position
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId())
+        )
+        return entry_id, entry_position
 
     security.declareProtected(permission_change_entries, 'delete_entries')
 
@@ -487,10 +523,12 @@ class Entry:
         source = self.get_storage(source)
         entry_ids, entry_positions = source.delete_entries(parent_entry_id, entry_ids, entry_positions, conditions, failsafe)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries deleted from Storage "%s".' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids, entry_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries deleted from Storage "%s".' % (len(entry_ids), source.getId())
+        )
+        return entry_ids, entry_positions
 
     security.declareProtected(permission_change_entries, 'pop_first_entry')
 
@@ -500,10 +538,12 @@ class Entry:
         source = self.get_storage(source)
         entry_id, entry_position, entry = source.pop_first_entry(parent_entry_id, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
-        else:
-            return entry_id, entry_position, entry
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId())
+        )
+        return entry_id, entry_position, entry
 
     security.declareProtected(permission_change_entries, 'pop_last_entry')
 
@@ -513,10 +553,12 @@ class Entry:
         source = self.get_storage(source)
         entry_id, entry_position, entry = source.pop_last_entry(parent_entry_id, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
-        else:
-            return entry_id, entry_position, entry
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId())
+        )
+        return entry_id, entry_position, entry
 
     security.declareProtected(permission_change_entries, 'pop_random_entry')
 
@@ -526,10 +568,12 @@ class Entry:
         source = self.get_storage(source)
         entry_id, entry_position, entry = source.pop_random_entry(parent_entry_id, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId()))
-        else:
-            return entry_id, entry_position, entry
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! Entry %s%sdeleted from Storage "%s".' % (entry_id and '"%s" ' % entry_id or '', entry_position is not None and 'at position %d ' % entry_position or '', source.getId())
+        )
+        return entry_id, entry_position, entry
 
 # ----------------------------------------------------------------------------
 # Class Security

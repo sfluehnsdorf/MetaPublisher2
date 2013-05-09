@@ -28,7 +28,7 @@ that these settings are available any time, even after logout or server
 restart. Each profile is stored on a per-user level, identified by user name
 and the physical path to the user's UserFolder object.
 
-$Id: system/profiles/profiles.py 12 2013-05-08 22:40:37Z sfluehnsdorf $
+$Id: system/profiles/profiles.py 14 2013-05-09 17:21:24Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -75,7 +75,7 @@ class Profiles:
     def _get_profile_id(self, user):
         """!TXT! Return the Profile id based on the user object."""
 
-        return '/'.join(user.aq_parent.getPhysicalPath()) + '/' + user.getUserName()
+        return '%s/%s' % ('/'.join(user.aq_parent.getPhysicalPath()), user.getUserName())
 
     security.declareProtected(permission_manage, 'get_profile_variable')
 
@@ -124,7 +124,11 @@ class Profiles:
         profiles[profile_id] = settings
         self.__profiles = profiles
 
-        self.redirect(REQUEST, 'profiles_form', '!TXT! The changes to your profile have been saved.')
+        self.redirect(
+            REQUEST,
+            'profiles_form',
+            message='!TXT! The changes to your profile have been saved.',
+        )
 
     security.declareProtected(permission_manage, 'delete_own_profile')
 
@@ -136,7 +140,11 @@ class Profiles:
         profiles[profile_id] = {}
         self.__profiles = profiles
 
-        self.redirect(REQUEST, 'profiles_form', '!TXT! Your profile has been removed.')
+        self.redirect(
+            REQUEST,
+            'profiles_form',
+            message='!TXT! Your profile has been removed.',
+        )
 
     security.declareProtected(permission_manage, 'delete_unused_profiles')
 
@@ -165,7 +173,11 @@ class Profiles:
         else:
             message = '!TXT! No unused profiles found.'
 
-        self.redirect(REQUEST, 'profiles_form', message)
+        self.redirect(
+            REQUEST,
+            'profiles_form',
+            message=message,
+        )
 
     security.declareProtected(permission_manage, 'set_profile_variable')
 
@@ -215,7 +227,7 @@ InitializeClass(Profiles)
 
 # !!! profiles.py - review api use and implementation
 
-# !!! profiles.py - refactor getProfileSetting and replace with get_profile_variable
+# !!! profiles.py - refactor getProfileSetting -> get_profile_variable
 
     #def getProfileSetting(self, key, default=None):
     #    """!TXT!"""
@@ -228,7 +240,7 @@ InitializeClass(Profiles)
     #    request.set(key, value)
     #    return value
 
-# !!! profiles.py - refactor setProfileSetting and replace with set_profile_variable
+# !!! profiles.py - refactor setProfileSetting -> set_profile_variable
 
     #def setProfileSetting(self, key, value, default=None):
     #    """!TXT!"""

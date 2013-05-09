@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2 User Interface
 
 !TXT! module info
 
-$Id: library/userinterface/userinterface.py 5 2013-05-08 20:31:13Z sfluehnsdorf $
+$Id: library/userinterface/userinterface.py 6 2013-05-09 17:16:19Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -34,7 +34,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.library.application import permission_zmi
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, false, InitializeClass, quote_plus
+from Products.MetaPublisher2.library.common import ClassSecurityInfo, false,\
+    InitializeClass, quote_plus
 
 from dialogs import *
 from formlets import *

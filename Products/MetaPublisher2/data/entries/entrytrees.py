@@ -24,7 +24,7 @@ __doc__ = """Entry Trees Component
 
 !TXT! module info
 
-$Id: data/entries/entrytrees.py 11 2013-05-08 23:05:13Z sfluehnsdorf $
+$Id: data/entries/entrytrees.py 12 2013-05-09 18:17:10Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -400,10 +400,12 @@ class EntryTrees:
         source = self.get_storage(source)
         entry_ids, entry_positions = source.move_entry_branch(tree_field_id, destination_entry_id, parent_entry_id, entry_id, entry_position)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" moved.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids, entry_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" moved.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids, entry_positions
 
     def move_entry_branches(self, source, tree_field_id=None, destination_entry_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, REQUEST=None):
         """!TXT! move_entry_branches"""
@@ -411,10 +413,12 @@ class EntryTrees:
         source = self.get_storage(source)
         entry_ids, entry_positions = source.move_entry_branches(tree_field_id, destination_entry_id, parent_entry_id, entry_ids, entry_positions, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" moved.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids, entry_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" moved.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids, entry_positions
 
     def flatten_entry_branch(self, source, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None, REQUEST=None):
         """!TXT! flatten_entry_branch"""
@@ -422,10 +426,12 @@ class EntryTrees:
         source = self.get_storage(source)
         entry_ids, entry_positions = source.flatten_entry_branch(tree_field_id, parent_entry_id, entry_id, entry_position, max_levels)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" flattened.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids, entry_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" flattened.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids, entry_positions
 
     def flatten_entry_branches(self, source, tree_field_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, max_levels=None, REQUEST=None):
         """!TXT! flatten_entry_branches"""
@@ -433,10 +439,12 @@ class EntryTrees:
         source = self.get_storage(source)
         entry_ids, entry_positions = source.flatten_entry_branches(tree_field_id, parent_entry_id, entry_ids, entry_positions, conditions, max_levels)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" flattened.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids, entry_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" flattened.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids, entry_positions
 
     def crop_entry_branch(self, source, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, REQUEST=None):
         """!TXT! crop_entry_branch"""
@@ -444,10 +452,12 @@ class EntryTrees:
         source = self.get_storage(source)
         entry_ids, entry_positions = source.crop_entry_branch(tree_field_id, parent_entry_id, entry_id, entry_position, max_levels)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" cropped.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids, entry_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" cropped.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids, entry_positions
 
     def crop_entry_branches(self, source, tree_field_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, REQUEST=None):
         """!TXT! crop_entry_branches"""
@@ -455,10 +465,12 @@ class EntryTrees:
         source = self.get_storage(source)
         entry_ids, entry_positions = source.crop_entry_branches(tree_field_id, parent_entry_id, entry_ids, entry_positions, conditions)
 
-        if REQUEST:
-            self.redirect(REQUEST, 'entries_form', '!TXT! %d Entries in Storage "%s" cropped.' % (len(entry_ids), source.getId()))
-        else:
-            return entry_ids, entry_positions
+        self.redirect(
+            REQUEST,
+            'entries_form',
+            message='!TXT! %d Entries in Storage "%s" cropped.' % (len(entry_ids), source.getId())
+        )
+        return entry_ids, entry_positions
 
 # ----------------------------------------------------------------------------
 # Class Security

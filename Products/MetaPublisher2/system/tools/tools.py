@@ -24,7 +24,7 @@ __doc__ = """Tools Component
 
 !TXT! module info
 
-$Id: system/tools/tools.py 4 2013-05-08 23:44:06Z sfluehnsdorf $
+$Id: system/tools/tools.py 5 2013-05-09 17:20:35Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

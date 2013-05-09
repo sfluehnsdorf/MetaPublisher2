@@ -30,7 +30,7 @@ list of addresses, news items or the slides of a slideshow. Storages can be
 added, edited, renamed and deleted as well as retrieved, listed and tested for
 existence.
 
-$Id: configuration/storages/storages.py 22 2013-05-08 23:00:29Z sfluehnsdorf $
+$Id: configuration/storages/storages.py 23 2013-05-09 17:26:39Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -316,12 +316,16 @@ class Storages:
 
         try:
             storageplugin = self.get_plugin(storage_type)
-            REQUEST.RESPONSE.redirect('%s/%s' % (
-                self.get_MetaPublisher2_url(),
+            self.redirect(
+                REQUEST,
                 storageplugin['action']
-            ))
+            )
         except:
-            self.redirect(REQUEST, 'storages_form', '!TXT! Storage type "%s" is invalid.' % REQUEST.get('storageType', None))
+            self.redirect(
+                REQUEST,
+                'storages_form',
+                message='!TXT! Storage type "%s" is invalid.' % REQUEST['storageType']
+            )
 
     security.declareProtected(permission_change_configuration, 'add_storage')
 
@@ -340,7 +344,11 @@ class Storages:
         storage = self._getOb(storage_id)
         storage.add_storage(options)
 
-        self.redirect(REQUEST, 'storages_form', '!TXT! Storage "%s" added.' % storage_id)
+        self.redirect(
+            REQUEST,
+            'storages_form',
+            message='!TXT! Storage "%s" added.' % storage_id
+        )
 
     security.declareProtected(permission_change_configuration, 'delete_storage')
 
@@ -352,7 +360,11 @@ class Storages:
 
         self.manage_delObjects([storage_id, ])
 
-        self.redirect(REQUEST, 'storages_form', '!TXT! Storage "%s" deleted.' % storage_id)
+        self.redirect(
+            REQUEST,
+            'storages_form',
+            message='!TXT! Storage "%s" deleted.' % storage_id
+        )
 
     security.declareProtected(permission_change_configuration, 'delete_storages')
 
@@ -366,7 +378,11 @@ class Storages:
         for storage_id in storage_ids:
             self.manage_delObjects(storage_id)
 
-        self.redirect(REQUEST, 'storages_form', '!TXT! %d Storages deleted.' % len(ids))
+        self.redirect(
+            REQUEST,
+            'storages_form',
+            message='!TXT! %d Storages deleted.' % len(ids)
+        )
 
     security.declareProtected(permission_change_configuration, 'duplicate_storage')
 
@@ -381,7 +397,11 @@ class Storages:
         storage = self.get_storage(new_id)
         storage.after_duplicate(storage_id)
 
-        self.redirect(REQUEST, 'storages_form', '!TXT! Storage "%s" duplicated as "%s".' % (storage_id, new_id))
+        self.redirect(
+            REQUEST,
+            'storages_form',
+            message='!TXT! Storage "%s" duplicated as "%s".' % (storage_id, new_id)
+        )
 
     security.declareProtected(permission_change_configuration, 'duplicate_storages')
 
@@ -402,7 +422,11 @@ class Storages:
             storage = self.get_storage(new_ids[index])
             storage.after_duplicate(storage_ids[index], new_ids[index])
 
-        self.redirect(REQUEST, 'storages_form', '!TXT! %d Storages duplicated.' % len(ids))
+        self.redirect(
+            REQUEST,
+            'storages_form',
+            message='!TXT! %d Storages duplicated.' % len(ids)
+        )
 
     security.declareProtected(permission_change_configuration, 'edit_storage')
 
@@ -415,7 +439,11 @@ class Storages:
         storage = self.get_storage(storage_id)
         storage.edit_storage(options)
 
-        self.redirect(REQUEST, 'storages_form', '!TXT! Storage "%s" edited.' % storage_id)
+        self.redirect(
+            REQUEST,
+            'storages_form',
+            message='!TXT! Storage "%s" edited.' % storage_id
+        )
 
     security.declareProtected(permission_change_configuration, 'rename_storage')
 
@@ -430,7 +458,11 @@ class Storages:
         storage = self.get_storage(new_id)
         storage.after_rename(storage_id, new_id)
 
-        self.redirect(REQUEST, 'storages_form', '!TXT! Storage "%s" renamed to "%s".' % (storage_id, new_id))
+        self.redirect(
+            REQUEST,
+            'storages_form',
+            message='!TXT! Storage "%s" renamed to "%s".' % (storage_id, new_id)
+        )
 
     security.declareProtected(permission_change_configuration, 'rename_storages')
 
@@ -451,7 +483,11 @@ class Storages:
             storage = self.get_storage(new_ids[index])
             storage.after_rename(storage_ids[index])
 
-        self.redirect(REQUEST, 'storages_form', '!TXT! %d Storages renamed.' % len(ids))
+        self.redirect(
+            REQUEST,
+            'storages_form',
+            message='!TXT! %d Storages renamed.' % len(ids)
+        )
 
     # ------------------------------------------------------------------------
     # Storage Ordering API

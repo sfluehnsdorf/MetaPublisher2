@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2Tools Product
 
 !TXT! module info
 
-$Id: products/metapublisher2tools/MetaPublisher2Tools.py 4 2013-05-08 22:55:51Z sfluehnsdorf $
+$Id: products/metapublisher2tools/MetaPublisher2Tools.py 5 2013-05-09 17:11:47Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -121,11 +121,11 @@ def add_MetaPublisher2Tools(self, id, title='Tools Folder', REQUEST=None):
 
     if REQUEST:
         try:
-            url_base = self.DestinationURL()
+            url = self.DestinationURL()
         except:
-            url_base = REQUEST['URL1']
+            url = REQUEST['URL1']
         url = '%s/%s?update_menu=1&manage_tabs_message=%s' % (
-            url_base,
+            url,
             quote_plus('!TXT! New MetaPublisher2Tools "%s" created.' % id)
         )
         REQUEST.RESPONSE.redirect(url)

@@ -24,7 +24,7 @@ __doc__ = """Legacy Field Plugin Base
 
 !TXT! module info
 
-$Id: bases/field/legacyfield.py 9 2013-05-08 19:52:34Z sfluehnsdorf $
+$Id: bases/field/legacyfield.py 10 2013-05-09 17:22:57Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -106,7 +106,12 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
 
         self.title = REQUEST.get('title', '')
 
-        self.redirect(REQUEST, 'fields_form', 'Changes saved', storage_id=self.getStorageId())
+        self.redirect(
+            REQUEST,
+            'fields_form',
+            message='!TXT! Changes saved',
+            storage_id=self.getStorageId()
+        )
 
     def renderAdd(self):
         """!TXT! Return a html code for adding an Entry with this Field"""

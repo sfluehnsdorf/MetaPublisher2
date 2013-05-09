@@ -27,7 +27,7 @@ images and the online help. The individual Product registrations are
 outsourced to the products directory. For backward compatibility renamed
 modules are mapped to their new names.
 
-$Id: __init__.py 17 2013-05-09 01:27:25Z sfluehnsdorf $
+$Id: __init__.py 19 2013-05-09 18:18:03Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -98,8 +98,8 @@ misc_.update({
 # ============================================================================
 # Product Backwards Compatibility
 
-# Setting __module_aliases__ failed for whatever reason, which is why I have to
-# directly change the sys.modules mapping here. It may not be pretty but it
+# Setting __module_aliases__ failed for whatever reason, which is why I have
+# to directly change the sys.modules mapping here. It may not be pretty but it
 # seems to work.
 
 import sys
@@ -125,7 +125,6 @@ sys.modules['Products.MetaPublisher2.MetaPublisher2'] = products.metapublisher2.
 
 # ----------------------------------------------------------------------------
 
-# !!! global - check all redirects
 # !!! global - check all attribute retrieval if get_MetaPublisher2 needed
 # !!! global - check all href's if they start with get_MetaPublisher2_url
 # !!! global - either add <form> to all forms or include in header/footer
