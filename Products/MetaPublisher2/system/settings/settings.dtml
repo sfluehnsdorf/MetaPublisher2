@@ -7,6 +7,10 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
+
+
+
+
 <!-- !!! settings.dtml - update to use new ui -->
 
   <table class="list" cellspacing="0" cellpadding="0" border="0">
@@ -19,13 +23,17 @@
 
 <dtml-in list_settings prefix=setting>
     <tr class="row-<dtml-if setting_odd>normal<dtml-else>hilite</dtml-if>">
-      <td nowrap><div class="list-item"><dtml-var setting_number></div></td>
-      <td nowrap><div class="list-item"><dtml-var setting_key></div></td>
+      <td nowrap><div class="list-item"><dtml-var setting_number></td>
+      <td nowrap><div class="list-item"><dtml-var setting_key></td>
       <td class="fw"><div class="list-item"><dtml-var setting_item></div></td>
     </tr>
 </dtml-in>
 
   </table>
+
+
+
+
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

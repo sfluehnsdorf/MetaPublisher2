@@ -1,6 +1,6 @@
 <html>
   <frameset rows="160,*">
-    <frame name="head" marginwidth="2" marginheight="2" src="manual_top_form" scrolling="auto">
+    <frame name="head" marginwidth="2" marginheight="2" src="<dtml-var get_MetaPublisher2_url>/manual_top_form" scrolling="auto">
     <frame name="main" marginwidth="2" marginheight="2" src="<dtml-var get_manual_url>" scrolling="yes">
   </frameset>
 </html>

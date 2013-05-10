@@ -7,16 +7,18 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
+
+
+
+
+
+
 <!-- !!! integrity.dtml - update to use new ui -->
 <!-- !!! integrity.dtml - review form -->
 <!-- !!! integrity.dtml - disable unsupported functions -->
 
-<dtml-var not_available_dialog>
- 
-
 <dtml-comment>
 
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
 <dtml-call "update_profile(REQUEST, (
   ('integrity_designs', 0),
   ('integrity_entries', []),
@@ -138,7 +140,7 @@
 
 <dtml-in test_result prefix=result>
     <tr class="row-<dtml-if result_odd>normal<dtml-else>hilite</dtml-if>">
-      <td><div class="list-item"><img src="ui_<dtml-var "result_item[ 0 ]">.png"></div></td>
+      <td><div class="list-item"><span class="icon icon-status-<dtml-var "result_item[ 0 ]">"></span></div></td>
       <td><div class="list-item"><dtml-var "result_item[ 1 ]"></div></td>
       <td><div class="list-item"><dtml-var "result_item[ 2 ]"></div></td>
     </tr>
@@ -149,9 +151,11 @@
 
 </dtml-let>
 
-</form>
-
 </dtml-comment>
+
+
+
+
 
 
 <dtml-var manage_MetaPublisher2_footer>

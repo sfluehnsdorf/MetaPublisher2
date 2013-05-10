@@ -2,10 +2,10 @@
 <dtml-var manage_page_header>
 </dtml-let>
 <dtml-var manage_tabs>
-<link href="&dtml-get_MetaPublisher2_url;/manage_MetaPublisher2_css" type="text/css" rel="stylesheet" />
+<link href="<dtml-var get_MetaPublisher2_url>/manage_MetaPublisher2_css" type="text/css" rel="stylesheet" />
 
 <div class="page_header">
-  <dtml-if management_view><img src="section_<dtml-var "management_view.lower()">.png" class="page_icon" alt="<dtml-var page_title missing>"></dtml-if>
+  <dtml-if management_view><img src="<dtml-var get_MetaPublisher2_url>/section_<dtml-var "management_view.lower()">.png" class="page_icon" alt="<dtml-var page_title missing>"></dtml-if>
   <h2 class="page_title"><dtml-var page_title></h2>
   <p class="page_info"><dtml-var page_info></p>
 </div>
@@ -14,3 +14,7 @@
 <dtml-if storageId><dtml-call "REQUEST.set( 'storage_id', storageId )"></dtml-if>
 <dtml-if fieldId><dtml-call "REQUEST.set( 'field_id', fieldId )"></dtml-if>
 <dtml-if entryId><dtml-call "REQUEST.set( 'entry_id', entryId )"></dtml-if>
+
+<dtml-unless no_form>
+<form action="<dtml-var get_MetaPublisher2_url>" method="post">
+</dtml-unless>

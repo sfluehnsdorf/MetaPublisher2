@@ -6,7 +6,14 @@
   help_topic="'configuration_storages.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+
+
+
+
+
+
+<!-- !!! storages.dtml - check / revise -->
 
 <dtml-if has_plugins>
 
@@ -23,15 +30,17 @@
     </tr>
   </table>
 
+<dtml-comment>
+
 <dtml-let
   form_continued="true"
   form_id="'storages_form'"
   columns="[
-    { 'label': 'Id', 'type': 'string', 'value': 'getId', 'template': '<a href=\x22edit_storage_form?storage_id=%s\x22>%s</a>', 'values': [ 'getId', 'getId' ], 'sortable': true, },
+    { 'label': 'Id', 'type': 'string', 'value': 'getId', 'template': '<a href=\x22' + get_MetaPublisher2_url() + '/edit_storage_form?storage_id=%s\x22>%s</a>', 'values': [ 'getId', 'getId' ], 'sortable': true, },
     { 'label': 'Title', 'type': 'string', 'value': 'title', 'sortable': true, 'hidden': false, },
     { 'label': 'Type', 'type': 'string', 'value': 'meta_type', 'template': '<img src=\x22%s\x22 width=\x2216\x22 height=\x2216\x22> %s', 'values': [ 'icon', 'meta_type', ], 'sortable': true, 'hidden': false, },
-    { 'label': 'Fields', 'type': 'number', 'value': 'storage_countFields', 'template': '<a href=\x22fields_form?storage_id=%s\x22>%s Fields</a>', 'values': [ 'getId', 'storage_countFields', ], 'sortable': true, 'hidden': false, },
-    { 'label': 'Entries', 'type': 'number', 'value': 'storage_countEntries', 'template': '<a href=\x22entries_form?storage_id=%s\x22>%s Entries</a>', 'values': [ 'getId', 'storage_countEntries', ], 'sortable': true, 'hidden': false, },
+    { 'label': 'Fields', 'type': 'number', 'value': 'storage_countFields', 'template': '<a href=\x22' + get_MetaPublisher2_url() + '/fields_form?storage_id=%s\x22>%s Fields</a>', 'values': [ 'getId', 'storage_countFields', ], 'sortable': true, 'hidden': false, },
+    { 'label': 'Entries', 'type': 'number', 'value': 'storage_countEntries', 'template': '<a href=\x22' + get_MetaPublisher2_url() + '/entries_form?storage_id=%s\x22>%s Entries</a>', 'values': [ 'getId', 'storage_countEntries', ], 'sortable': true, 'hidden': false, },
     { 'label': 'Position', 'type': 'position', 'value': 'position', 'method': '''move_storage?storage_id=%(key)s&position=%(position)s''', 'sortable': true, 'hidden': false, },
     ]"
   rows="storage_values()"
@@ -45,6 +54,8 @@
 <dtml-var metapublisher2_table>
 </dtml-let>
 
+</dtml-comment>
+
 <dtml-else>
 <dtml-var no_storages_dialog>
 </dtml-if>
@@ -57,6 +68,11 @@
 <dtml-var no_plugins_dialog>
 </dtml-if>
 
-</form>
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

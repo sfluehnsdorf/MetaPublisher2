@@ -6,12 +6,20 @@
   help_topic="'publisher_frontends_add.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="<dtml-var get_MetaPublisher2_url>" method="post">
+
+
+
+
+
+
 
 <!-- !!! delete_frontends.dtml - implement -->
 
-<dtml-var not_available_dialog>
 
-</form>
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

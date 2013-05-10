@@ -6,7 +6,23 @@
   help_topic="'data_entries.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+
+
+
+
+
+
+<!--
+!!! entries.dtml - revise
+!!! entries.dtml - support primary fields
+!!! entries.dtml - implement ajax loading of entry_list formlet for batches, field selection, etc.
+!!! entries.dtml - multi form capability, i.e. after editing an entry should return to same list
+!!! entries.dtml - implement support for trees
+!!! entries.dtml - implement support for storages without id
+!!! entries.dtml - implement support for read-only storages
+!!! entries.dtml - implement support for write-only storages
+-->
 
 <dtml-if has_plugins>
 
@@ -32,11 +48,13 @@
 
 <dtml-if "has_entries( storage_id )">
 
+<dtml-comment>
+
 <dtml-let
   form_id="'entries_form'"
   form_uid="'entries_form|%s' % storage_id"
   columns="
-    [ { 'label': 'Id', 'type': 'string', 'value': 'id', 'template': '<a href=\x22edit_entry_form?entry_id=%s\x22>%s</a>', 'values': [ 'id', 'id' ], 'sortable': true }, ] +
+    [ { 'label': 'Id', 'type': 'string', 'value': 'id', 'template': '<a href=\x22' + get_MetaPublisher2_url() + '/edit_entry_form?entry_id=%s\x22>%s</a>', 'values': [ 'id', 'id' ], 'sortable': true }, ] +
     map( lambda field: { 'label': field[ 0 ], 'type': 'string', 'value': field[ 0 ], 'sortable': true, 'hidden': false }, field_items( storage_id ) ) +
     ( entriesSortable( storage_id ) and [ { 'label': 'Position', 'type': 'position', 'value': 'position', 'method': '''move_entry?storage_id=%s&entry_id=%%(key)s&position=%%(position)s''' % storage_id, 'sortable': true, 'hidden': false, }, ] or [] )
     "
@@ -54,6 +72,8 @@
   >
 <dtml-var metapublisher2_table>
 </dtml-let>
+
+</dtml-comment>
 
 <dtml-else>
 </div>
@@ -82,16 +102,12 @@
 <dtml-var no_plugins_dialog>
 </dtml-if>
 
-</form>
+
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>
-
-<!--
-!!! entries.dtml - support primary fields
-!!! entries.dtml - implement ajax loading of entry_list formlet for batches, field selection, etc.
-!!! entries.dtml - multi form capability, i.e. after editing an entry should return to same list
-!!! entries.dtml - implement support for trees
-!!! entries.dtml - implement support for storages without id
-!!! entries.dtml - implement support for read-only storages
-!!! entries.dtml - implement support for write-only storages
--->

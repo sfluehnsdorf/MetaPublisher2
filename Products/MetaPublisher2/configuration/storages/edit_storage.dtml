@@ -6,7 +6,19 @@
   help_topic="'configuration_storages_edit.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+
+
+
+
+
+
+
+<!--
+!!! edit_storage.dtml - reimplement
+!!! edit_storage.dtml - update to use new ui
+!!! edit_storage.dtml - integrate Storage's formlet transparently (allow to override with a form)
+-->
 
 <dtml-if has_plugins>
 
@@ -22,16 +34,6 @@
 </dtml-let>
 <dtml-var formlet_footer>
 
-
-
-<!--
-!!! edit_storage.dtml - reimplement
-!!! edit_storage.dtml - update to use new ui
-!!! edit_storage.dtml - integrate Storage's formlet transparently (allow to override with a form)
--->
-
-
-
   <table cellspacing="0" cellpadding="2" border="0">
     <tr>
       <td align="left" valign="top"><div class="form-optional">Title</div></td>
@@ -39,21 +41,17 @@
     </tr>
     <tr>
       <td align="left" valign="top"><div class="form-optional">Entries</div></td>
-      <td align="left" valign="top" width="100%"><a href="&dtml-get_MetaPublisher2_url;/entries_form?storage_id=&dtml-getId;"><dtml-var "storage_countEntries( storage_id )"> Entries</a></td>
+      <td align="left" valign="top" width="100%"><a href="<dtml-var get_MetaPublisher2_url>/entries_form?storage_id=<dtml-var getId>"><dtml-var "storage_countEntries( storage_id )"> Entries</a></td>
     </tr>
     <tr>
       <td align="left" valign="top"><div class="form-optional">Fields</div></td>
-      <td align="left" valign="top" width="100%"><a href="&dtml-get_MetaPublisher2_url;/fields_form?storage_id=&dtml-getId;"><dtml-var "storage_countFields( storage_id )"> Fields</a></td>
+      <td align="left" valign="top" width="100%"><a href="<dtml-var get_MetaPublisher2_url>/fields_form?storage_id=<dtml-var getId>"><dtml-var "storage_countFields( storage_id )"> Fields</a></td>
     </tr>
   </table>
 <div class="list-item">
-  <input type="submit" name="&dtml-getId;/manage_configureStorage:method" value="Save Changes" class="default" /> 
+  <input type="submit" name="<dtml-var getId>/manage_configureStorage:method" value="Save Changes" class="default" /> 
   <input type="submit" name="storages_form:method" value=" Cancel " /> 
 </div>
-
-
-
-
 
 <dtml-else>
 <dtml-var no_storages_dialog>
@@ -67,6 +65,11 @@
 <dtml-var no_plugins_dialog>
 </dtml-if>
 
-</form>
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

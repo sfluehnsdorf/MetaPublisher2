@@ -6,7 +6,12 @@
   help_topic="'publisher_frontends.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="<dtml-var get_MetaPublisher2_url>" method="post">
+
+
+
+
+
+
 
 <!-- !!! frontends.dtml - update to use new ui -->
 <!-- !!! frontends.dtml - implement frontend path formlet -->
@@ -64,18 +69,18 @@
 <dtml-if "hasattr( frontend_item, 'is_frontend_modified', None )">
 <dtml-if "frontend_item.is_frontend_modified() == None">
         <div class="list-item small">
-          <img src="ui_info.png"> Frontend was never rendered.
+          <span class="icon icon-status-info"></span> Frontend was never rendered.
         </div>
 <dtml-elif "frontend_item.is_frontend_modified() == True">
         <div class="list-item small">
-          <img src="ui_info.png"> Frontend was changed since last rendering.
+          <span class="icon icon-status-info"></span> Frontend was changed since last rendering.
         </div>
 </dtml-if>
 </dtml-if>
 <dtml-if "hasattr( frontend_item, 'is_frontend_renderable', None )">
 <dtml-unless "frontend_item.is_frontend_renderable()">
         <div class="list-item small">
-          <img src="error.png"> Frontend has errors: <dtml-var "', '.join( frontend.get_rendering_errors() )">
+          <span class="icon icon-status-error"></span> Frontend has errors: <dtml-var "', '.join( frontend.get_rendering_errors() )">
         </div>
 </dtml-unless>
 </dtml-if>
@@ -118,6 +123,11 @@
 <dtml-var no_frontendplugins_dialog>
 </dtml-if>
 
-</form>
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

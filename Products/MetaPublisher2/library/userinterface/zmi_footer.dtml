@@ -1,3 +1,7 @@
+<dtml-unless no_form>
+</form>
+</dtml-unless>
+
 <dtml-var "u' '">
-<script src="&dtml-get_MetaPublisher2_url;/manage_MetaPublisher2_js"></script>
+<script src="<dtml-var get_MetaPublisher2_url>/manage_MetaPublisher2_js"></script>
 <dtml-var manage_page_footer>

@@ -6,7 +6,14 @@
   help_topic="'data_entries_add.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post" enctype="multipart/form-data">
+
+
+
+
+
+
+
+<!-- !!! add_entry.dtml - revise -->
 
 <dtml-if has_plugins>
 
@@ -86,6 +93,11 @@
 <dtml-var no_plugins_dialog>
 </dtml-if>
 
-</form>
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

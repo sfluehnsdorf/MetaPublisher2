@@ -6,15 +6,22 @@
   help_topic="'configuration_fields_delete.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
 
-<dtml-var not_available_dialog>
-<!--
-!!! delete_fields.dtml - implement
-!!! delete_fields.dtml - should list all selected Fields and demand to reselect for confirmation (use field_list_formlet?)
-!!! delete_fields.dtml - should insert a formlet for each Field for specific delete options, i.e. also delete SQL definition in a database and not just in MetaPublisher 3
--->
 
-</form>
+
+
+
+
+
+<!-- !!! delete_fields.dtml - implement -->
+<!-- !!! delete_fields.dtml - should list all selected Fields and demand to reselect for confirmation (use field_list_formlet?) -->
+<!-- !!! delete_fields.dtml - should insert a formlet for each Field for specific delete options, i.e. also delete SQL definition in a database and not just in MetaPublisher 3 -->
+
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

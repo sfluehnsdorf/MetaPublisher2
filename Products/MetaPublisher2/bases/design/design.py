@@ -24,7 +24,7 @@ __doc__ = """Design Plugin Base
 
 !TXT! module info
 
-$Id: bases/design/design.py 3 2013-05-08 19:54:52Z sfluehnsdorf $
+$Id: bases/design/design.py 4 2013-05-09 22:21:05Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -62,3 +62,4 @@ InitializeClass(DesignPluginBase)
 
 # !!! bases/design/design.py - define api
 # !!! bases/design/design.py - implement backdrop/failsafe code
+# !!! bases/design/design.py - base on frontend

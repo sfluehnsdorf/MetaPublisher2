@@ -6,7 +6,18 @@
   help_topic="'configuration_fields_edit.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+
+
+
+
+
+
+<!--
+!!! edit_field.dtml - reimplement
+!!! edit_field.dtml - update to use new ui
+!!! edit_field.dtml - integrate Field's formlet transparently (allow to override with a form)
+-->
 
 <dtml-if has_plugins>
 
@@ -26,13 +37,7 @@
 </dtml-let>
 <dtml-var formlet_footer>
 
-<!--
-!!! edit_field.dtml - reimplement
-!!! edit_field.dtml - update to use new ui
-!!! edit_field.dtml - integrate Field's formlet transparently (allow to override with a form)
--->
-
-<input type="hidden" name="storage_id" value="&dtml-storage_id;">
+<input type="hidden" name="storage_id" value="<dtml-var storage_id>">
   <table cellspacing="0" cellpadding="2" border="0">
     <tr>
       <td align="left" valign="top"><div class="form-optional">Title</div></td>
@@ -43,10 +48,6 @@
   <input type="submit" name="edit_field:method" value="Save Changes" /> 
   <input type="submit" name="storages_form:method" value="Cancel" /> 
 </div>
-
-
-
-
 
 <dtml-else>
 
@@ -92,6 +93,11 @@
 <dtml-var no_plugins_dialog>
 </dtml-if>
 
-</form>
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

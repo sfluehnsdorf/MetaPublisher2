@@ -7,9 +7,20 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
+
+
+
+
+
+
+
 <!-- !!! edit_entries.dtml - implement -->
 
-<dtml-var not_available_dialog>
+
+
+
+
+
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

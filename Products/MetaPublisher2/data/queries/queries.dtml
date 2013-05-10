@@ -4,6 +4,7 @@
   management_view="'Queries'"
   help_product="'MetaPublisher2'"
   help_topic="'data_queries.stx'"
+  no_form="true"
   >
 <dtml-var manage_MetaPublisher2_header>
 

@@ -6,12 +6,17 @@
   help_topic="'system_plugins.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
 
-<dtml-if has_plugins>
+
+
+
+
+
 
 <!-- !!! plugins.dtml - update to use new ui -->
 <!-- !!! plugins.dtml - include type filter from old code -->
+
+<dtml-if has_plugins>
 
 <dtml-let
   form_id="'plugins_form'"
@@ -32,8 +37,6 @@
 <dtml-else>
 <dtml-var no_plugins_dialog>
 </dtml-if>
-
-
 
 <dtml-comment>
 
@@ -95,10 +98,10 @@
 
     <tr class="list-header">
       <th><div class="form-label">#</div></th>
-      <th><div class="form-label"><a href="plugins_form?plugins_sort=product&plugins_sort_re=<dtml-if "plugins_sort == 'product' and not plugins_sort_re">product</dtml-if>">Product</a></div></th>
-      <th><div class="form-label"><a href="plugins_form?plugins_sort=plugin&plugins_sort_re=<dtml-if "plugins_sort == 'plugin' and not plugins_sort_re">plugin</dtml-if>">Plugin</a></div></th>
-      <th><div class="form-label"><a href="plugins_form?plugins_sort=type&plugins_sort_re=<dtml-if "plugins_sort == 'type' and not plugins_sort_re">type</dtml-if>">Type</a></div></th>
-      <th><div class="form-label"><a href="plugins_form?plugins_sort=version&plugins_sort_re=<dtml-if "plugins_sort == 'version' and not plugins_sort_re">version</dtml-if>">Version</a></div></th>
+      <th><div class="form-label"><a href="<dtml-var get_MetaPublisher2_url>/plugins_form?plugins_sort=product&plugins_sort_re=<dtml-if "plugins_sort == 'product' and not plugins_sort_re">product</dtml-if>">Product</a></div></th>
+      <th><div class="form-label"><a href="<dtml-var get_MetaPublisher2_url>/plugins_form?plugins_sort=plugin&plugins_sort_re=<dtml-if "plugins_sort == 'plugin' and not plugins_sort_re">plugin</dtml-if>">Plugin</a></div></th>
+      <th><div class="form-label"><a href="<dtml-var get_MetaPublisher2_url>/plugins_form?plugins_sort=type&plugins_sort_re=<dtml-if "plugins_sort == 'type' and not plugins_sort_re">type</dtml-if>">Type</a></div></th>
+      <th><div class="form-label"><a href="<dtml-var get_MetaPublisher2_url>/plugins_form?plugins_sort=version&plugins_sort_re=<dtml-if "plugins_sort == 'version' and not plugins_sort_re">version</dtml-if>">Version</a></div></th>
     </tr>
 
 <dtml-in plugins prefix=plugin>
@@ -158,6 +161,9 @@
 
 
 
-</form>
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

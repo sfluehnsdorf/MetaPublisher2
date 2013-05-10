@@ -30,7 +30,7 @@ list of addresses, news items or the slides of a slideshow. Storages can be
 added, edited, renamed and deleted as well as retrieved, listed and tested for
 existence.
 
-$Id: configuration/storages/storages.py 23 2013-05-09 17:26:39Z sfluehnsdorf $
+$Id: configuration/storages/storages.py 24 2013-05-09 22:33:18Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -577,4 +577,4 @@ InitializeClass(Storages)
 # !!! storages.py - form/formlet handler for add_storage
 # !!! storages.py - form/formlet handler for edit_storage
 # TODO storages.py - support other storage types: sequential, tree, unordered
-# TODO storages.py - change_storage_type method
+# TODO storages.py - change_storage_type form & method

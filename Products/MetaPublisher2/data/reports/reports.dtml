@@ -7,6 +7,15 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
+
+
+
+
+
+
+<!-- !!! reports.dtml - display storage statistics -->
+<!-- !!! reports.dtml - display entryfields value counts -->
+
 <dtml-if has_storageplugins>
 
 <dtml-if has_storages>
@@ -15,11 +24,6 @@
 <dtml-var "storage_selection_formlet( form_id = 'reports_form' )">
 <dtml-var formlet_footer>
 
-<dtml-var not_available_dialog>
-
-<!-- !!! reports.dtml - display storage statistics -->
-<!-- !!! reports.dtml - display entryfields value counts -->
-
 <dtml-else>
 <dtml-var no_storages_dialog>
 </dtml-if>
@@ -27,6 +31,12 @@
 <dtml-else>
 <dtml-var no_storageplugins_dialog>
 </dtml-if>
+
+
+
+
+
+
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

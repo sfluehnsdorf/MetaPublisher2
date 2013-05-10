@@ -24,7 +24,7 @@ __doc__ = """Relations Component
 
 !TXT! module info
 
-$Id: configuration/relations/relations.py 5 2013-05-09 00:02:24Z sfluehnsdorf $
+$Id: configuration/relations/relations.py 6 2013-05-09 22:40:46Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -86,7 +86,7 @@ class Relations:
 
 InitializeClass(Relations)
 
-# TODO relations.py - implement
+# !!! relations.py - implement
 #     relation types (move to base?): unidirectional, bidirectional, weighted, conditional, 1:1, 1:m, m:1, m:n
 #     The heart of the database consists of these primary components: Items, Relations
 #     An Item consists of:

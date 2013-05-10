@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2 Formlets
 
 !TXT! module info
 
-$Id: library/userinterface/formlets.py 10 2013-05-08 23:21:14Z sfluehnsdorf $
+$Id: library/userinterface/formlets.py 11 2013-05-10 00:56:25Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -34,7 +34,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.library.application import permission_zmi
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, DTMLFile, InitializeClass
+from Products.MetaPublisher2.library.common import ClassSecurityInfo, DTMLFile, false, InitializeClass, true
 
 
 # ============================================================================
@@ -58,41 +58,43 @@ class Formlets:
 
     security.declareProtected(permission_zmi, 'formlet_header')
 
-    formlet_header = DTMLFile('dtml/formlet_header', globals())
+    formlet_header = DTMLFile('formlet_header', globals())
 
     security.declareProtected(permission_zmi, 'formlet_footer')
 
-    formlet_footer = DTMLFile('dtml/formlet_footer', globals())
+    formlet_footer = DTMLFile('formlet_footer', globals())
 
     # ------------------------------------------------------------------------
     # Selection Formlet
 
     security.declareProtected(permission_zmi, 'selection_formlet')
 
-    selection_formlet = DTMLFile('dtml/formlet_selection', globals())
+    selection_formlet = DTMLFile('formlet_selection', globals())
 
     # ------------------------------------------------------------------------
     # Data Table Formlet
 
     security.declareProtected(permission_zmi, 'frontend_path_formlet')
 
-    datatable_formlet = DTMLFile('dtml/formlet_datatable', globals())
+    datatable_formlet = DTMLFile('formlet_datatable', globals())
+
+    def get_datatable_value(self, row, column):
+        marker = []
+        try:
+            result = row.get(column, marker)
+        except:
+            pass
+        if result is marker:
+            result = getattr(row, column, marker)
+        if result is marker:
+            return '<span class="error">!TXT! Error retrieving value</span>'
+        else:
+            return callable(result) and str(result()) or str(result)
 
     def format_datatable_field(self, row, column):
         """!TXT! Display a row's columns's value."""
 
-        def get_value(self, row, column):
-            marker = []
-            try:
-                result = row.get(column, marker)
-            except:
-                pass
-            if result is marker:
-                result = getattr(row, column, marker)
-            if result is marker:
-                return '<span class="error">!TXT! Error retrieving value</span>'
-            else:
-                return callable(result) and str(result()) or str(result)
+        get_value = self.get_datatable_value
 
         return column.get('template', '%s') % tuple(map(lambda value: get_value(row, value), column.get('values', [column['value']])))
 
@@ -105,7 +107,7 @@ class Formlets:
 
         # number of rows and size of batches
         rows_len = len(rows)
-        default_batch_size = cookies.get(form_id + '_batch_size', self.default_batch_size)
+        default_batch_size = cookies.get(form_id + '_batch_size', self.get_setting('batches_default_size'))
         batch_size = int(correct_form and form.get('batch_size', default_batch_size) or default_batch_size)
 
         # first row to show (batch start)
@@ -173,10 +175,10 @@ class Formlets:
         }
 
         # store some inputs persistantly in cookies
-        self.setProfileSetting(form_id + '_batch_start', batch_start, 1)
-        self.setProfileSetting(form_id + '_batch_size', batch_size, self.default_batch_size)
-        self.setProfileSetting(form_id + '_show_columns', ','.join(selected_column_values), ','.join(default_select_column_values))
-        self.setProfileSetting(form_id + '_order_by', order_by, default_order_by)
+        # !!! self.setProfileSetting(form_id + '_batch_start', batch_start, 1)
+        # !!! self.setProfileSetting(form_id + '_batch_size', batch_size, self.default_batch_size)
+        # !!! self.setProfileSetting(form_id + '_show_columns', ','.join(selected_column_values), ','.join(default_select_column_values))
+        # !!! self.setProfileSetting(form_id + '_order_by', order_by, default_order_by)
 
         return result
 

@@ -27,7 +27,7 @@ images and the online help. The individual Product registrations are
 outsourced to the products directory. For backward compatibility renamed
 modules are mapped to their new names.
 
-$Id: __init__.py 19 2013-05-09 18:18:03Z sfluehnsdorf $
+$Id: __init__.py 23 2013-05-10 00:25:00Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -114,7 +114,7 @@ sys.modules['Products.MetaPublisher2.MetaPublisher2'] = products.metapublisher2.
 # ============================================================================
 
 # !!! PHASE 1 - global
-# !!! PHASE 2 - library (except jsondict, pluginregistry)
+# !!! PHASE 2 - library (remove xmldict & jsondict, skip pluginregistry)
 # !!! PHASE 3 - interfaces/__init__.py, interfaces/plugin/
 # !!! PHASE 4 - service/, system/ (except integrity)
 # !!! PHASE 5 - configuration/, bases/[field,identifier,storage], interfaces/[field,identifier,storage]
@@ -125,11 +125,9 @@ sys.modules['Products.MetaPublisher2.MetaPublisher2'] = products.metapublisher2.
 
 # ----------------------------------------------------------------------------
 
+# !!! global - verify all forms' setup tests (error dialogs)
+
 # !!! global - check all attribute retrieval if get_MetaPublisher2 needed
-# !!! global - check all href's if they start with get_MetaPublisher2_url
-# !!! global - either add <form> to all forms or include in header/footer
-# !!! global - replace <dtml-var ...>
-# !!! global - verify all forms' setup tests (error dialogs) and replace dialogs
 # !!! global - check all calls of get_storage if they should be get_storage_by_id, then rename get_storage to get_source and get_storage_by_id to get_storage
 # !!! global - clean up name usage of source, storage and storage_id
 # !!! global - replace ambiguos getId calls with specific for plugins

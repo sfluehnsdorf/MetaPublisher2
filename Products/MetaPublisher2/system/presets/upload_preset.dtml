@@ -6,7 +6,7 @@
   help_topic="'system_presets_upload.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-
+	
 <dtml-var not_available_dialog>
 
 <dtml-var manage_MetaPublisher2_footer>

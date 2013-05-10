@@ -1,3 +1,5 @@
+<dtml-comment>
+
 <dtml-let
   all_storage_ids="storage_ids()"
   default_storage_id="all_storage_ids[0]"
@@ -9,7 +11,7 @@
 <dtml-if buttons>
       <th>
 <dtml-in buttons prefix=button>
-        <input type="submit" name="&dtml-button_key;:method" value="&dtml-button_item;">
+        <input type="submit" name="<dtml-var button_key>:method" value="<dtml-var button_item>">
 </dtml-in>
       </th>
 </dtml-if>
@@ -17,21 +19,21 @@
         Storage:
 
 <dtml-if "storage_index > 0">
-        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ storage_index - 1 ]">"><img class="vab" src="batch_prev.png" border="0"></a>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ storage_index - 1 ]">"><span class="icon icon-batch-prev"></span></a>
 <dtml-else>
-        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ -1 ]">"><img class="vab" src="batch_prev.png" border="0"></a>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ -1 ]">"><span class="icon icon-batch-prev"></span></a>
 </dtml-if>
 
-        <select name="storage_id" onchange="location.href = '&dtml-form_id;?storage_id=' + this.options[ this.selectedIndex ].value">
+        <select name="storage_id" onchange="location.href = '<dtml-var form_id>?storage_id=' + this.options[ this.selectedIndex ].value">
 <dtml-in all_storage_ids prefix=storage>
-          <option value="&dtml-storage_item;"<dtml-if "storage_item == storage_id"> selected="selected"</dtml-if>>&dtml-storage_item;</optioN>
+          <option value="<dtml-var storage_item>"<dtml-if "storage_item == storage_id"> selected="selected"</dtml-if>><dtml-var storage_item></optioN>
 </dtml-in>
         </select>
 
 <dtml-if "storage_index < len( all_storage_ids ) - 1">
-        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ storage_index + 1 ]">"><img class="vab" src="batch_next.png" border="0"></a>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ storage_index + 1 ]">"><span class="icon icon-batch-next"></span></a>
 <dtml-else>
-        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ 0 ]">"><img class="vab" src="batch_next.png" border="0"></a>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?storage_id=<dtml-var "all_storage_ids[ 0 ]">"><span class="icon icon-batch-next"></span></a>
 </dtml-if>
 
         <input type="submit" name="edit_storage_form:method" value="Configuration">
@@ -41,8 +43,6 @@
     </tr>
   </table>
 </dtml-let>
-
-
 
 <dtml-let
   all_storage_ids="get_MetaPublisher2().storage_ids()"
@@ -56,3 +56,7 @@
 </dtml-unless>
 ...
 </dtml-let>
+
+</dtml-comment>
+
+<!-- !!! formlet_storage_selection.dtml - revise & fix -->

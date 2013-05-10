@@ -24,7 +24,7 @@ __doc__ = """Application Settings
 
 !TXT! module info
 
-$Id: library/application/settings.py 12 2013-05-08 23:09:52Z sfluehnsdorf $
+$Id: library/application/settings.py 13 2013-05-10 00:48:59Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -54,6 +54,7 @@ __all__ = [
 # Default Settings
 
 settings = {
+    'batches_default_size': 10,
     'data_access_entries_security': 'none',
     'data_create_entries_security': 'none',
     'data_change_entries_security': 'none',

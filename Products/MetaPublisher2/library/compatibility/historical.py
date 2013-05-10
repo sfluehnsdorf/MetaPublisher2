@@ -26,7 +26,7 @@ To ensure to continued operation of deprecated resources, this module provides
 wrappers and handlers for these outdated resources. It also provides an API for
 logging calls to deprecated resources.
 
-$Id: library/compatibility/historical.py 10 2013-05-09 17:09:47Z sfluehnsdorf $
+$Id: library/compatibility/historical.py 11 2013-05-09 22:54:03Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -147,8 +147,8 @@ class HistoricalCompatibility:
         params = ''
         for key in kw.keys():
             params = params + ' %s="%s"' % (key, kw[key])
-        tag = '<img src="%s/sp.gif" width="%s" height="%s" border="0" alt=""%s/>'
-        return tag % (self.absolute_url(), w, h, params)
+        tag = '<img src="p_/sp" width="%s" height="%s" border="0" alt=""%s/>'
+        return tag % (self.REQUEST.BASEPATH1, w, h, params)
 
     # ------------------------------------------------------------------------
     # Configuration Constraints

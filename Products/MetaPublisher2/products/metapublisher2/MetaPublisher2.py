@@ -43,7 +43,7 @@ The application can be managed through the Web by Zope's Management Interface,
 through an extensive API or, if desired through a user generated public
 interface.
 
-$Id: products/metapublisher2/MetaPublisher2.py 17 2013-05-09 17:11:32Z sfluehnsdorf $
+$Id: products/metapublisher2/MetaPublisher2.py 19 2013-05-10 00:45:13Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -54,7 +54,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 
 from Products.MetaPublisher2.configuration import Configuration
 from Products.MetaPublisher2.data import Data
-from Products.MetaPublisher2.library import ClassSecurityInfo, Compatibility, DTMLFile, Folder, InitializeClass, JSONDict, MultiTabs, quote_plus, UserInterface, XMLDict
+from Products.MetaPublisher2.library import ClassSecurityInfo, Compatibility, DTMLFile, false, Folder, InitializeClass, JSONDict, MultiTabs, quote_plus, true, UserInterface, XMLDict
 from Products.MetaPublisher2.publisher import Publisher
 from Products.MetaPublisher2.service import Service
 from Products.MetaPublisher2.system import System
@@ -93,7 +93,13 @@ class MetaPublisher2(Data, Configuration, Publisher, System, Service, DEV, JSOND
     # ------------------------------------------------------------------------
     # Application Attributes
 
-    default_batch_size = 10
+    security.declarePublic('false')
+
+    false = false
+
+    security.declarePublic('true')
+
+    true = true
 
     # --------------------------------------------------------------------------
     # ZMI Attributes
@@ -110,14 +116,6 @@ class MetaPublisher2(Data, Configuration, Publisher, System, Service, DEV, JSOND
         {'label': 'Service', 'action': '', 'sub': Service.manage_options, },
         {'label': 'Zope', 'action': '', 'sub': Folder.manage_options, },
         {'label': 'DEV', 'action': '', 'sub': DEV.manage_options, },
-    )
-
-    _properties = Folder._properties + (
-        {
-            'id': 'default_batch_size',
-            'type': 'int',
-            'label': 'Default Batch Size'
-        },
     )
 
     # --------------------------------------------------------------------------

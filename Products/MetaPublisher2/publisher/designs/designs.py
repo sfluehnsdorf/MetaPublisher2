@@ -24,7 +24,7 @@ __doc__ = """Designs Component
 
 !TXT! module info
 
-$Id: publisher/designs/designs.py 6 2013-05-09 00:25:05Z sfluehnsdorf $
+$Id: publisher/designs/designs.py 7 2013-05-09 22:25:44Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -204,6 +204,5 @@ InitializeClass(Designs)
 
 # !!! designs.py - implement
 # !!! designs.py - handle default designs and secondary designs
-# !!! designs.py - revise API and comments
-#     designs.py must manage designs in frontends and designsfolder
-#     either provide two sets of methods or handle in designsfolder if frontend_path is None
+# !!! designs.py - revise API and comments (designs.py must only manage designs in designsfolder)
+# !!! designs.py - extend api with add functions into frontends folder

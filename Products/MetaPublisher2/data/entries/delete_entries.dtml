@@ -7,12 +7,24 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
-<dtml-var not_available_dialog>
+
+
+
+
+
+
 <!--
 !!! delete_entries.dtml - implement
 !!! delete_entries.dtml - demand to confirm deletion and inform about finality
 !!! delete_entries.dtml - display amount of selected Entries (use list_entries formlet to display?)
 -->
+
+
+
+
+
+
+
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

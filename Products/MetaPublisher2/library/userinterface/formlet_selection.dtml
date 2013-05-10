@@ -9,21 +9,21 @@
   <tbody class="hover">
     <tr>
       <td class="w1 number">
-        <label for="selection_&dtml-selection_index;">
-          &dtml-selection_number;
+        <label for="selection_<dtml-var selection_index>">
+          <dtml-var selection_number>
         </label>
       </td>
       <td class="w1">
-        <input type="radio" id="selection_&dtml-selection_index;" name="&dtml-selection_id;" value="&dtml-id;"<dtml-if selection_first> checked="checked"</dtml-if>>
+        <input type="radio" id="selection_<dtml-var selection_index>" name="<dtml-var selection_id>" value="<dtml-var id>"<dtml-if selection_first> checked="checked"</dtml-if>>
       </td>
       <td class="nowrap">
-        <label for="selection_&dtml-selection_index;">
-          <dtml-if "selection_item.has_key( 'icon' )"><img src="&dtml-icon;"></dtml-if>
-          &dtml-label;
+        <label for="selection_<dtml-var selection_index>">
+          <dtml-if "selection_item.has_key( 'icon' )"><img src="<dtml-var icon>"></dtml-if>
+          <dtml-var label>
         </label>
       </td>
       <td class="minor vab">
-        <label for="selection_&dtml-selection_index;">
+        <label for="selection_<dtml-var selection_index>">
           <dtml-var description>
         </label>
       </td>
@@ -37,7 +37,7 @@
     <tr>
       <td>
 <dtml-in buttons prefix=button>
-        <input type="submit" name="&dtml-button_key;:method" value="&dtml-button_item;"<dtml-if button_start> autofocus</dtml-if>>
+        <input type="submit" name="<dtml-var button_key>:method" value="<dtml-var button_item>"<dtml-if button_start> autofocus</dtml-if>>
 </dtml-in>
       </td>
     </tr>

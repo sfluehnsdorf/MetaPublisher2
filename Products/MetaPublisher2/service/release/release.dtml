@@ -4,10 +4,15 @@
   management_view="'Release'"
   help_product="'MetaPublisher2'"
   help_topic="'service_release.stx'"
+  no_form="true"
   >
 <dtml-var manage_MetaPublisher2_header>
 
-<!-- !!! release.dtml - update to use new ui -->
+
+
+
+
+
 
 <table class="display">
   <tr>
@@ -49,6 +54,15 @@
     <td><pre><dtml-var get_release_license></pre></td>
   </tr>
 </table>
+
+<!-- !!! release.dtml - update to use new ui -->
+<!-- !!! release.dtml - include full release (including plugins) -->
+
+
+
+
+
+
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

@@ -7,10 +7,21 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
-<dtml-var not_available_dialog>
+
+
+
+
+
+
 <!--
 !!! rename_storages.dtml - implement
 -->
+
+
+
+
+
+
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

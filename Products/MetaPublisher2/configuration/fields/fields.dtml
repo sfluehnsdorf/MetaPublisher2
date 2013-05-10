@@ -6,7 +6,16 @@
   help_topic="'configuration_fields.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+
+
+
+
+
+
+
+<!-- !!! fields.dtml - revise (i.e. handle primary fields) -->
+<!-- TODO fields.dtml - should list all field groups as items and all its fields as items beneath, no matter what the sorting - like Mac Finder list view -->
 
 <dtml-if has_plugins>
 
@@ -24,6 +33,8 @@
 <dtml-var storage_selection_formlet>
 </dtml-let>
 
+<dtml-comment>
+
 <dtml-if "has_fieldplugins(storage_id = storage_id)">
 
 <dtml-if "has_fields(storage_id)">
@@ -32,7 +43,7 @@
   form_id="'fields_form'"
   form_uid="'fields_form|%s' % storage_id"
   columns="[
-    { 'label': 'Id', 'type': 'string', 'value': 'getId', 'template': '<a href=\x22edit_field_form?storage_id=%s\x22>%s</a>', 'values': ['getId', 'getId'], 'sortable': true, },
+    { 'label': 'Id', 'type': 'string', 'value': 'getId', 'template': '<a href=\x22' + get_MetaPublisher2_url() + '/edit_field_form?storage_id=%s\x22>%s</a>', 'values': ['getId', 'getId'], 'sortable': true, },
     { 'label': 'Title', 'type': 'string', 'value': 'title', 'sortable': true, 'hidden': false, },
     { 'label': 'Type', 'type': 'string', 'value': 'meta_type', 'template': '<img src=\x22%s\x22 width=\x2216\x22 height=\x2216\x22> %s', 'values': ['icon', 'meta_type',], 'sortable': true, 'hidden': false, },
     { 'label': 'Position', 'type': 'position', 'value': 'position', 'method': '''move_field?storage_id=%s&field_id=%%(key)s&position=%%(position)s''' % storage_id, 'sortable': true, 'hidden': false, },
@@ -58,6 +69,8 @@
 <dtml-var no_fieldplugins_dialog>
 </dtml-if>
 
+</dtml-comment>
+
 <dtml-else>
 <dtml-var no_storages_dialog>
 </dtml-if>
@@ -70,10 +83,11 @@
 <dtml-var no_plugins_dialog>
 </dtml-if>
 
-</form>
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>
-
-<!--
-TODO fields.dtml - should list all field groups as items and all its fields as items beneath, no matter what the sorting - like Mac Finder list view
--->

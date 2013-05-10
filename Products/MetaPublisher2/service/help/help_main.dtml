@@ -1,10 +1,12 @@
 <dtml-var manage_page_header>
-<link href="&dtml-get_MetaPublisher2_url;/metapublisher2_css" rel="stylesheet" type="text/css" />
+<link href="<dtml-var get_MetaPublisher2_url>/metapublisher2_css" rel="stylesheet" type="text/css" />
+<form action="<dtml-var get_MetaPublisher2_url>" method="post">
 
-<!-- !!! help_main.dtml - revise to use MP2 header & footer -->
 
 <dtml-var not_available_dialog>
 
 <dtml-var "u' '">
-<script src="metapublisher2_js"></script>
+<script src="<dtml-var get_MetaPublisher2_url>/manage_MetaPublisher2_js"></script>
 <dtml-var manage_page_footer>
+
+<!-- !!! help_main.dtml - revise to use MP2 header & footer -->

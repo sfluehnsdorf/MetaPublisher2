@@ -24,7 +24,7 @@ __doc__ = """Widgets Component
 
 !TXT! module info
 
-$Id: publisher/widgets/widgets.py 10 2013-05-09 00:25:22Z sfluehnsdorf $
+$Id: publisher/widgets/widgets.py 11 2013-05-09 22:20:18Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

@@ -7,11 +7,22 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
-<dtml-var not_available_dialog>
+
+
+
+
+
+
 <!--
 !!! rename_entries.dtml - ask to enter new ids, or leave blank for auto-generated
 !!! rename_entries.dtml - if id is invalid, should return to form and display error message
 -->
+
+
+
+
+
+
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

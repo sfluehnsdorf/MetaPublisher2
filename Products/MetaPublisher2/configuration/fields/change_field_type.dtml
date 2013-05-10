@@ -6,10 +6,8 @@
   help_topic="'configuration_fields_change_type.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
 
 <dtml-var not_available_dialog>
 
-</form>
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

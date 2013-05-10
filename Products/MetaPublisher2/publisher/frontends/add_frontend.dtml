@@ -6,7 +6,13 @@
   help_topic="'publisher_frontends_add.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="<dtml-var get_MetaPublisher2_url>" method="post">
+
+
+
+
+
+
+
 
 <!-- !!! add_frontend_form.dtml - revise -->
 
@@ -62,6 +68,11 @@
 
 </dtml-let>
 
-</form>
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

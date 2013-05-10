@@ -1,4 +1,5 @@
 <dtml-let
+  get_value="get_datatable_value"
   format_field="format_datatable_field"
   table_options="process_datatable_options( _.has_key( 'form_uid' ) and form_uid or form_id, columns, rows, REQUEST )"
   batch_end="table_options[ 'batch_end' ]"
@@ -25,9 +26,9 @@
 <dtml-in sortable_columns prefix=sort mapping>
 <dtml-if sort_start>
         Order by
-        <select name="order_by" onchange="location.href = '&dtml-form_id;?order_by=' + this.options[ this.selectedIndex ].value">
+        <select name="order_by" onchange="location.href = '<dtml-var form_id>?order_by=' + this.options[ this.selectedIndex ].value">
 </dtml-if>
-          <option value="&dtml-value;"<dtml-if "order_by == value"> selected="selected"</dtml-if>>&dtml-label;</option>
+          <option value="<dtml-var value>"<dtml-if "order_by == value"> selected="selected"</dtml-if>><dtml-var label></option>
 <dtml-if sort_end>
         </select>
 </dtml-if>
@@ -35,32 +36,32 @@
       </td>
       <td class="tac">
 <dtml-if "batch_end - batch_start + 1 == rows_len">
-        Showing all of &dtml-rows_len; rows.
+        Showing all of <dtml-var rows_len> rows.
 <dtml-else>
-        <a href="&dtml-form_id;?batch_start=first_batch"><span class="icon icon-first"></span></a>
-        <a href="&dtml-form_id;?batch_start=prev_batch"><span class="icon icon-prev"></span></a>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?batch_start=first_batch"><span class="icon icon-batch-first"></span></a>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?batch_start=prev_batch"><span class="icon icon-batch-prev"></span></a>
         Showing
-        <select name="batch_start" onchange="location.href = '&dtml-form_id;?batch_start=' + this.options[ this.selectedIndex ].value">
+        <select name="batch_start" onchange="location.href = '<dtml-var form_id>?batch_start=' + this.options[ this.selectedIndex ].value">
 <dtml-in "range( 1, rows_len + 1, batch_size )" prefix=start>
-          <option value="&dtml-start_item;"<dtml-if "start_item == batch_start"> selected</dtml-if>>&dtml-start_item; - <dtml-var "min( start_item + batch_size - 1, rows_len )"></option>
+          <option value="<dtml-var start_item>"<dtml-if "start_item == batch_start"> selected</dtml-if>><dtml-var start_item> - <dtml-var "min( start_item + batch_size - 1, rows_len )"></option>
 </dtml-in>
         </select>
-        of &dtml-rows_len; rows.
-        <a href="&dtml-form_id;?batch_start=next_batch"><span class="icon icon-next"></span></a>
-        <a href="&dtml-form_id;?batch_start=last_batch"><span class="icon icon-last"></span></a>
+        of <dtml-var rows_len> rows.
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?batch_start=next_batch"><span class="icon icon-batch-next"></span></a>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?batch_start=last_batch"><span class="icon icon-batch-last"></span></a>
 </dtml-if>
       </td>
       <td class="tar">
-        <select name="batch_size" onchange="location.href = '&dtml-form_id;?batch_size=' + this.options[ this.selectedIndex ].value">
+        <select name="batch_size" onchange="location.href = '<dtml-var form_id>?batch_size=' + this.options[ this.selectedIndex ].value">
 <dtml-in "range( 5, 50, 5 ) + range( 50, 100 + 1, 10 )" prefix=size>
-          <option value="&dtml-size_item;"<dtml-if "batch_size == size_item"> selected="selected"</dtml-if>>&dtml-size_item;</option>
+          <option value="<dtml-var size_item>"<dtml-if "batch_size == size_item"> selected="selected"</dtml-if>><dtml-var size_item></option>
 </dtml-in>
         </select>
         rows per page
       </td>
 <noscript>
       <td class="tar">
-        <input type="submit" name="&dtml-form_id;:method" value="Update">
+        <input type="submit" name="<dtml-var form_id>:method" value="Update">
       </td>
 </noscript>
     </tr>
@@ -74,56 +75,56 @@
     <th>&nbsp;</th>
 </dtml-if>
 <dtml-in major_columns prefix=column mapping>
-    <th class="&dtml-type;">
+    <th class="<dtml-var type>">
 <dtml-if "column_item[ 'value' ] in sortable_column_values">
-      <a href="&dtml-form_id;?order_by=<dtml-var "column_item[ 'value' ]">">&dtml-label;</a>
+      <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var form_id>?order_by=<dtml-var "column_item[ 'value' ]">"><dtml-var label></a>
 <dtml-else>
-      &dtml-label;
+      <dtml-var label>
 </dtml-if>
     </th>
 </dtml-in>
   </tr>
 <dtml-in rows start=batch_start size=batch_size prefix=row sort_expr=order_by mapping>
-<dtml-let row_id_value="metapublisher2_table_value( row_item, row_id )">
+<dtml-let row_id_value="get_value( row_item, row_id )">
   <tbody class="hover">
     <tr>
       <td class="w1 number"<dtml-if "minor_columns or _.has_key( 'buttons' )"> rowspan="<dtml-var "1 + minor_columns_len">"</dtml-if>>
-        <label for="id_&dtml-row_index;">
-          &dtml-row_number;
+        <label for="id_<dtml-var row_index>">
+          <dtml-var row_number>
         </label>
       </td>
 <dtml-if buttons>
       <td class="w1"<dtml-if "minor_columns or _.has_key( 'buttons' )"> rowspan="<dtml-var "1 + minor_columns_len">"</dtml-if>>
-        <input type="checkbox" id="id_&dtml-row_index;" name="ids:list" value="&dtml-row_id_value;"<dtml-if "not( request_form_id == 'None' ) and ( request_form_id == 'All' or ( request_form_id == 'Invert' and not( row_id_value in ids ) ) or ( not( request_form_id in [ 'All', 'None', 'Invert' ] ) and row_id_value in selected_ids ) )"> checked="checked"</dtml-if>>
+        <input type="checkbox" id="id_<dtml-var row_index>" name="ids:list" value="<dtml-var row_id_value>"<dtml-if "not( request_form_id == 'None' ) and ( request_form_id == 'All' or ( request_form_id == 'Invert' and not( row_id_value in ids ) ) or ( not( request_form_id in [ 'All', 'None', 'Invert' ] ) and row_id_value in selected_ids ) )"> checked="checked"</dtml-if>>
       </td>
 </dtml-if>
 <dtml-in major_columns prefix=column mapping>
-      <td class="&dtml-type;<dtml-if "column_item[ 'value' ] == order_by"> data_sorted</dtml-if>">
+      <td class="<dtml-var type><dtml-if "column_item[ 'value' ] == order_by"> data_sorted</dtml-if>">
 <dtml-if "type == 'position'">
 <dtml-if "column_item[ 'value' ] == order_by">
 <dtml-if "row_number == 1">
-        <span class="icon-disabled icon-top"></span>
-        <span class="icon-disabled icon-up"></span>
+        <span class="icon-disabled icon-move-top"></span>
+        <span class="icon-disabled icon-move-up"></span>
 <dtml-else>
-        <a href="<dtml-var "column_item[ 'method' ] % {'key': row_id_value, 'position': 0 }">"><span class="icon icon-top"></span></a>
-        <a href="<dtml-var "column_item[ 'method' ] % {'key': row_id_value, 'position': row_index - 1}">"><span class="icon icon-up"></span></a>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var "column_item[ 'method' ] % {'key': row_id_value, 'position': 0 }">"><span class="icon icon-move-top"></span></a>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var "column_item[ 'method' ] % {'key': row_id_value, 'position': row_index - 1}">"><span class="icon icon-move-up"></span></a>
 </dtml-if>
 <dtml-if "row_number == rows_len">
-        <span class="icon-disabled icon-down"></span>
-        <span class="icon-disabled icon-bottom"></span>
+        <span class="icon-disabled icon-move-down"></span>
+        <span class="icon-disabled icon-move-bottom"></span>
 <dtml-else>
-        <a href="<dtml-var "column_item[ 'method' ] % {'key': row_id_value, 'position': row_index + 1}">"><span class="icon icon-down"></span></a>
-        <a href="<dtml-var "column_item[ 'method' ] % {'key': row_id_value, 'position': rows_len - 1}">"><span class="icon icon-bottom"></span></a>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var "column_item[ 'method' ] % {'key': row_id_value, 'position': row_index + 1}">"><span class="icon icon-move-down"></span></a>
+        <a href="<dtml-var get_MetaPublisher2_url>/<dtml-var "column_item[ 'method' ] % {'key': row_id_value, 'position': rows_len - 1}">"><span class="icon icon-move-bottom"></span></a>
 </dtml-if>
 <dtml-else>
         <select onchange="location.href = '<dtml-var "column_item[ 'method' ] % { 'key': row_id_value, 'position':  '\' + this.options[ this.selectedIndex ].value + \'' }">'">
 <dtml-in "range( rows_len )" prefix=position>
-          <option value="&dtml-position_index;"<dtml-if "position_index == row_index"> selected="selected"</dtml-if>>&dtml-position_number;</option>
+          <option value="<dtml-var position_index>"<dtml-if "position_index == row_index"> selected="selected"</dtml-if>><dtml-var position_number></option>
 </dtml-in>
         </select>
 </dtml-if>
 <dtml-else>
-        <label for="id_&dtml-row_index;">
+        <label for="id_<dtml-var row_index>">
 <dtml-try>
 <dtml-var "format_field( row_item, column_item )">
 <dtml-except>
@@ -136,7 +137,7 @@
     </tr>
 <dtml-in minor_columns prefix=column mapping>
     <tr>
-      <td colspan="&dtml-major_columns_len;" class="minor<dtml-if "column_item[ 'value' ] == order_by"> data_sorted</dtml-if>">
+      <td colspan="<dtml-var major_columns_len>" class="minor<dtml-if "column_item[ 'value' ] == order_by"> data_sorted</dtml-if>">
         <b><dtml-var label></b>:
 <dtml-try>
 <dtml-var "format_field( row_item, column_item )">
@@ -158,14 +159,14 @@
     <tr class="head">
       <td class="tal">
 <dtml-in buttons prefix=button mapping>
-        <input type="submit" name="&dtml-name;:method" value="&dtml-label;"<dtml-if js> onclick="<dtml-var js>"</dtml-if>>
+        <input type="submit" name="<dtml-var name>:method" value="<dtml-var label>"<dtml-if js> onclick="<dtml-var js>"</dtml-if>>
 </dtml-in>
       </td>
       <td class="tar">
         Select
-        <input type="submit" name="&dtml-form_id;:method" value="All">
-        <input type="submit" name="&dtml-form_id;:method" value="None">
-        <input type="submit" name="&dtml-form_id;:method" value="Invert">
+        <input type="submit" name="<dtml-var form_id>:method" value="All">
+        <input type="submit" name="<dtml-var form_id>:method" value="None">
+        <input type="submit" name="<dtml-var form_id>:method" value="Invert">
       </td>
     </tr>
 </dtml-if>
@@ -174,15 +175,15 @@
       <td colspan="2">
         <p>
 <noscript>
-          <input type="submit" name="&dtml-form_id;:method" value="Update" class="flr">
+          <input type="submit" name="<dtml-var form_id>:method" value="Update" class="flr">
 </noscript>
           Click to choose which columns to display:
         </p>
-        <ul class="columns">
+        <ul class="blocks">
 <dtml-in hideable_columns prefix=column mapping>
           <li>
-            <input type="checkbox" id="show_column_&dtml-value;" name="show_columns:list" value="&dtml-value;" <dtml-if "value in revealed_column_values">onclick="location.href = '&dtml-form_id;?unset_show_column=&dtml-value;'" checked="checked"<dtml-else>onclick="location.href = '&dtml-form_id;?set_show_column=&dtml-value;'"</dtml-if> />
-            <label for="show_column_&dtml-value;">&dtml-label;</label>
+            <input type="checkbox" id="show_column_<dtml-var value>" name="show_columns:list" value="<dtml-var value>" <dtml-if "value in revealed_column_values">onclick="location.href = '<dtml-var form_id>?unset_show_column=<dtml-var value>'" checked="checked"<dtml-else>onclick="location.href = '<dtml-var form_id>?set_show_column=<dtml-var value>'"</dtml-if> />
+            <label for="show_column_<dtml-var value>"><dtml-var label></label>
           </li>
 </dtml-in>
         </ul>

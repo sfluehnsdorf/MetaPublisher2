@@ -6,9 +6,20 @@
   help_topic="'data_entries_edit.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
 
-<dtml-if has s>
+
+
+
+
+
+
+<!--
+!!! edit_entry.dtml - revise
+!!! edit_entry.dtml - allow to change the id, if Storage permits/demands renaming
+!!! edit_entry.dtml - allow to toggle Field infos and specs (ranges)
+-->
+
+<dtml-if has_plugins>
 
 <dtml-if has_storageplugins>
 
@@ -49,15 +60,15 @@
         <th>id</th>
         <td class="nowrap">Entry Id</td>
         <td class="w100">
-          <a href="edit_entry_form?entry_id=<dtml-var "all_entry_ids[0]">"><span class="icon icon-first"></span></a>
-          <a href="edit_entry_form?entry_id=<dtml-var "all_entry_ids[entry_id_index - 1]">"><span class="icon icon-prev"></span></a>
+          <a href="<dtml-var get_MetaPublisher2_url>/edit_entry_form?entry_id=<dtml-var "all_entry_ids[0]">"><span class="icon icon-batch-first"></span></a>
+          <a href="<dtml-var get_MetaPublisher2_url>/edit_entry_form?entry_id=<dtml-var "all_entry_ids[entry_id_index - 1]">"><span class="icon icon-batch-prev"></span></a>
           <select class="token" name="entry_id">
 <dtml-in all_entry_ids prefix=id>
-            <option value="&dtml-id_item;"<dtml-if "entry_id == id_item"> selected</dtml-if>>&dtml-id_item;</option>
+            <option value="<dtml-var id_item>"<dtml-if "entry_id == id_item"> selected</dtml-if>><dtml-var id_item></option>
 </dtml-in>
           </select>
-          <a href="edit_entry_form?entry_id=<dtml-var "all_entry_ids[entry_id_index + 1 < len(all_entry_ids) and (entry_id_index + 1) or 0]">"><span class="icon icon-next"></span></a>
-          <a href="edit_entry_form?entry_id=<dtml-var "all_entry_ids[-1]">"><span class="icon icon-last"></span></a>
+          <a href="<dtml-var get_MetaPublisher2_url>/edit_entry_form?entry_id=<dtml-var "all_entry_ids[entry_id_index + 1 < len(all_entry_ids) and (entry_id_index + 1) or 0]">"><span class="icon icon-batch-next"></span></a>
+          <a href="<dtml-var get_MetaPublisher2_url>/edit_entry_form?entry_id=<dtml-var "all_entry_ids[-1]">"><span class="icon icon-batch-last"></span></a>
         </td>
         <td>immutable</td>
       </tr>
@@ -104,11 +115,12 @@
 <dtml-var no_plugins_dialog>
 </dtml-if>
 
-</form>
+
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>
-
-<!--
-!!! edit_entry.dtml - allow to change the id, if Storage permits/demands renaming
-!!! edit_entry.dtml - allow to toggle Field infos and specs (ranges)
--->

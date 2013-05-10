@@ -7,6 +7,12 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
+
+
+
+
+
+
 <!-- !!! renderer.dtml - update to use new ui -->
 <!-- !!! renderer.dtml - reimplement renderer.dtml -->
 
@@ -52,7 +58,6 @@
 
 
 <dtml-comment>
-<form action="<dtml-var get_MetaPublisher2_url>" method="post">
 
 <dtml-if has_frontends>
 
@@ -193,13 +198,17 @@
 <dtml-var no_frontends_dialog>
 </dtml-if>
 
-</form>
 </dtml-comment>
 
 <dtml-else>
 <dtml-var no_frontends_dialog>
 </dtml-if>
 
-</form>
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

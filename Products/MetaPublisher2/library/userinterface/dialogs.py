@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2 Dialogs
 
 !TXT! module info
 
-$Id: library/userinterface/dialogs.py 9 2013-05-08 23:19:53Z sfluehnsdorf $
+$Id: library/userinterface/dialogs.py 10 2013-05-09 21:21:06Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -77,9 +77,9 @@ class Dialogs:
     designsfolder_warning_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''Warning!''',
-        message=u'''!TXT! You should not manage any objects stored in the MetaPublisher2 Designs Folder directly.\n\nPlease use the MetaPublisher2's <a href="../designs_form">Design management</a> instead.''',
+        message=u'''!TXT! You should not manage any objects stored in the MetaPublisher2 Designs Folder directly.\n\nPlease use the MetaPublisher2's Design management instead.''',
         buttons=[
-            {'name': u'../designs_form:method', 'label': u'Design Management'},
+            {'name': u'designs_form:method', 'label': u'Design Management'},
         ]
     )
 
@@ -88,9 +88,9 @@ class Dialogs:
     frontendsfolder_warning_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''Warning!''',
-        message=u'''!TXT! You should not manage any objects stored in the MetaPublisher2 Frontends Folder directly.\n\nPlease use the MetaPublisher2's <a href="../frontends_form">Frontend management</a> instead.''',
+        message=u'''!TXT! You should not manage any objects stored in the MetaPublisher2 Frontends Folder directly.\n\nPlease use the MetaPublisher2's Frontend management instead.''',
         buttons=[
-            {'name': u'../frontends_form:method', 'label': u'Frontend Management'},
+            {'name': u'frontends_form:method', 'label': u'Frontend Management'},
         ]
     )
 
@@ -99,9 +99,9 @@ class Dialogs:
     languagesfolder_warning_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''Warning!''',
-        message=u'''!TXT! You should not manage any objects stored in the MetaPublisher2 Languages Folder directly.\n\nPlease use the MetaPublisher2's <a href="../languages_form">Language management</a> instead.''',
+        message=u'''!TXT! You should not manage any objects stored in the MetaPublisher2 Languages Folder directly.\n\nPlease use the MetaPublisher2's Language management instead.''',
         buttons=[
-            {'name': u'../languages_form:method', 'label': u'Language Management'},
+            {'name': u'languages_form:method', 'label': u'Language Management'},
         ]
     )
 
@@ -110,9 +110,9 @@ class Dialogs:
     toolsfolder_warning_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''Warning!''',
-        message=u'''!TXT! You should not manage any objects stored in the MetaPublisher2 Tools Folder directly.\n\nPlease use the MetaPublisher2's <a href="../tools_form">Tool management</a> instead.''',
+        message=u'''!TXT! You should not manage any objects stored in the MetaPublisher2 Tools Folder directly.\n\nPlease use the MetaPublisher2's Tool management instead.''',
         buttons=[
-            {'name': u'../tools_form:method', 'label': u'Tool Management'},
+            {'name': u'tools_form:method', 'label': u'Tool Management'},
         ]
     )
 
@@ -121,9 +121,9 @@ class Dialogs:
     widgetsfolder_warning_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''Warning!''',
-        message=u'''!TXT! You should not manage any objects stored in the MetaPublisher2 Widgets Folder directly.\n\nPlease use the MetaPublisher2's <a href="../widgets_form">Widget management</a> instead.''',
+        message=u'''!TXT! You should not manage any objects stored in the MetaPublisher2 Widgets Folder directly.\n\nPlease use the MetaPublisher2's Widget management instead.''',
         buttons=[
-            {'name': u'../widgets_form:method', 'label': u'Widget Management'},
+            {'name': u'widgets_form:method', 'label': u'Widget Management'},
         ]
     )
 
@@ -135,7 +135,7 @@ class Dialogs:
     no_entries_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Entries Added Yet!''',
-        message=u'''!TXT! You must <a href="add_entry_form">add at least one Entry</a>, before you can proceed.''',
+        message=u'''!TXT! You must add at least one Entry, before you can proceed.''',
         buttons=[
             {'name': u'add_entry_form:method', 'label': u'Add Entry'},
         ]
@@ -149,7 +149,7 @@ class Dialogs:
     no_storages_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Storages Added Yet!''',
-        message=u'''!TXT! You must <a href="add_storage_form">add at least one Storage</a>, before you can proceed.''',
+        message=u'''!TXT! You must add at least one Storage, before you can proceed.''',
         buttons=[
             {'name': u'add_storage_form:method', 'label': u'Add Storage'},
         ]
@@ -160,7 +160,7 @@ class Dialogs:
     no_fields_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Fields Added Yet!''',
-        message=u'''!TXT! You must <a href="add_field_form">add at least one Field</a>, before you can proceed.''',
+        message=u'''!TXT! You must add at least one Field, before you can proceed.''',
         buttons=[
             {'name': u'add_field_form:method', 'label': u'Add Field'},
         ]
@@ -174,7 +174,7 @@ class Dialogs:
     no_frontends_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Frontends Added Yet!''',
-        message=u'''!TXT! You must <a href="add_frontend_form">add at least one Frontend</a>, before you can proceed.''',
+        message=u'''!TXT! You must add at least one Frontend, before you can proceed.''',
         buttons=[
             {'name': u'add_frontend_form:method', 'label': u'Add Frontend'},
         ]
@@ -185,7 +185,7 @@ class Dialogs:
     no_widgets_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Widgets Added Yet!''',
-        message=u'''!TXT! You must <a href="add_widget_form">add at least one Widget</a>, before you can proceed.''',
+        message=u'''!TXT! You must add at least one Widget, before you can proceed.''',
         buttons=[
             {'name': u'add_widget_form:method', 'label': u'Add Widget'},
         ]
@@ -196,7 +196,7 @@ class Dialogs:
     no_designs_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Designs Added Yet!''',
-        message=u'''!TXT! You must <a href="add_design_form">add at least one Design</a>, before you can proceed.''',
+        message=u'''!TXT! You must add at least one Design, before you can proceed.''',
         buttons=[
             {'name': u'add_design_form:method', 'label': u'Add Design'},
         ]
@@ -210,7 +210,7 @@ class Dialogs:
     no_plugins_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Plugins Installed!''',
-        message=u'''!TXT! You must <a href="plugins_form">install plugins</a> to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
+        message=u'''!TXT! You must install plugins to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
         buttons=[
             {'name': u'plugins_form:method', 'label': u'Plugin Management'},
         ]
@@ -221,7 +221,7 @@ class Dialogs:
     no_storageplugins_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Storage Plugins Installed!''',
-        message=u'''!TXT! You must <a href="plugins_form">install plugins</a> to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
+        message=u'''!TXT! You must install plugins to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
         buttons=[
             {'name': u'plugins_form:method', 'label': u'Plugin Management'},
         ]
@@ -232,7 +232,7 @@ class Dialogs:
     no_fieldplugins_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Field Plugins Installed!''',
-        message=u'''!TXT! You must <a href="plugins_form">install plugins</a> to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
+        message=u'''!TXT! You must install plugins to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
         buttons=[
             {'name': u'plugins_form:method', 'label': u'Plugin Management'},
         ]
@@ -243,7 +243,7 @@ class Dialogs:
     no_frontendplugins_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Frontend Plugins Installed!''',
-        message=u'''!TXT! You must <a href="plugins_form">install plugins</a> to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
+        message=u'''!TXT! You must install plugins to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
         buttons=[
             {'name': u'plugins_form:method', 'label': u'Plugin Management'},
         ]
@@ -254,7 +254,7 @@ class Dialogs:
     no_widgetplugins_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Widget Plugins Installed!''',
-        message=u'''!TXT! You must <a href="plugins_form">install plugins</a> to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
+        message=u'''!TXT! You must install plugins to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
         buttons=[
             {'name': u'plugins_form:method', 'label': u'Plugin Management'},
         ]
@@ -265,7 +265,7 @@ class Dialogs:
     no_designplugins_dialog = DTMLFile(
         'dialog', globals(),
         headline=u'''No Dialog Plugins Installed!''',
-        message=u'''!TXT! You must <a href="plugins_form">install plugins</a> to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
+        message=u'''!TXT! You must install plugins to work with MetaPublisher2.\n\nYou can <a href="http://metapublisher.org" target="_blank">download plugins from www.metapublisher.org</a>.''',
         buttons=[
             {'name': u'plugins_form:method', 'label': u'Plugin Management'},
         ]

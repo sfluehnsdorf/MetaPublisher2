@@ -6,7 +6,15 @@
   help_topic="'configuration_fields_add_type.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+
+
+
+
+
+
+<!-- !!! add_field.dtml - check / revise -->
+<!-- !!! add_field.dtml - integrate Fields' formlets transparently (allow to override with a form) -->
 
 <dtml-if has_storageplugins>
 
@@ -42,10 +50,6 @@
     </table>
   </div>
 
-<!--
-!!! add_field.dtml - integrate Fields' formlets transparently (allow to override with a form)
--->
-
 <dtml-let
   selections="map(
     lambda item: {
@@ -77,6 +81,11 @@
 <dtml-var no_storageplugins_dialog>
 </dtml-if>
 
-</form>
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

@@ -6,7 +6,14 @@
   help_topic="'configuration_storages_add_type.stx'"
   >
 <dtml-var manage_MetaPublisher2_header>
-<form action="&dtml-get_MetaPublisher2_url;" method="post">
+
+
+
+
+
+
+
+<!-- !!! add_storage.dtml - check / revise -->
 
   <div class="form">
     <table>
@@ -47,6 +54,11 @@
 <dtml-var metapublisher2_selection>
 </dtml-let>
 
-</form>
+
+
+
+
+
+
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>
