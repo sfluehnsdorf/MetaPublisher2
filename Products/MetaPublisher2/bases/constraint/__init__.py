@@ -20,11 +20,11 @@
 #
 # ============================================================================
 
-__doc__ = """Design Plugin Base
+__doc__ = """Constraint Base Initialisation
 
 !TXT! module info
 
-$Id: bases/design/design.py 4 2013-05-09 22:21:05Z sfluehnsdorf $
+$Id: bases/constraint/__init__.py 3 2013-05-10 23:46:42Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -33,33 +33,10 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.interfaces import IDesignPluginBase
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, implements, InitializeClass, true, false
+from condition import *
+from declaration import *
+from definition import *
+from existence import *
+from uniqueness import *
 
-
-# ============================================================================
-# Module Exports
-
-__all__ = [
-    'DesignPluginBase',
-]
-
-
-# ============================================================================
-# Design Plugin Base Class
-
-class DesignPluginBase:
-    """!TXT! Design Plugin Base Class"""
-
-    security = ClassSecurityInfo()
-
-    implements(IDesignPluginBase)
-
-# ----------------------------------------------------------------------------
-# initialize class security
-
-InitializeClass(DesignPluginBase)
-
-# !!! bases/design/design.py - define api
-# !!! bases/design/design.py - implement backdrop/failsafe code
-# !!! bases/design/design.py - base on frontend
+# !!! bases/constraint/__init__.py - define classes & api

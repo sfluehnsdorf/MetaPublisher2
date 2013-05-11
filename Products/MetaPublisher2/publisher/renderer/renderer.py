@@ -28,7 +28,7 @@ definition of the final public interface as such is not publically viewable.
 Users can choose the destination for the public interface, relative to the
 MetaPublisher 2 instance.
 
-$Id: publisher/renderer/renderer.py 11 2013-05-09 13:31:20Z sfluehnsdorf $
+$Id: publisher/renderer/renderer.py 13 2013-05-10 23:03:58Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -37,7 +37,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, manage_addPythonScript, permission_publish_frontends, true, false, RenderError
+from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, false, InitializeClass, manage_addPythonScript, permission_publish_frontends, RenderError, show_future, true
 
 
 # ============================================================================
@@ -59,9 +59,11 @@ class Renderer:
     # ------------------------------------------------------------------------
     # Renderer ZMI Forms
 
-    security.declareProtected(permission_publish_frontends, 'renderer_form')
+    if show_future:
 
-    renderer_form = DTMLFile('renderer', globals())
+        security.declareProtected(permission_publish_frontends, 'renderer_form')
+
+        renderer_form = DTMLFile('renderer', globals())
 
     # ------------------------------------------------------------------------
     # Renderer Retrieval API
@@ -255,5 +257,6 @@ class Renderer:
 
 InitializeClass(Renderer)
 
-# !!! renderer.py - revise api and make use of new api
-# !!! renderer.py - refactor and break up rendering method
+# !!! renderer.py - remove code to 2.4
+# TODO renderer.py - revise api and make use of new api
+# TODO renderer.py - refactor and break up rendering method

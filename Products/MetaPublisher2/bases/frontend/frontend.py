@@ -24,7 +24,7 @@ __doc__ = """Frontend Plugin Base
 
 !TXT! module info
 
-$Id: bases/frontend/frontend.py 5 2013-05-08 19:49:02Z sfluehnsdorf $
+$Id: bases/frontend/frontend.py 6 2013-05-10 23:40:31Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -62,7 +62,7 @@ class FrontendPluginBase(PluginBase, OrderedFolder):
 
     icon = 'misc_/MetaPublisher2/frontend.png'
 
-    # !!! bases/frontend/frontend.py - _properties
+    # TODO bases/frontend/frontend.py - _properties
     _properties = PluginBase._properties + (
         {'id': 'frontend_type', 'type': 'string', 'mode': ''},
     )
@@ -117,19 +117,19 @@ class FrontendPluginBase(PluginBase, OrderedFolder):
     # ------------------------------------------------------------------------
     # !TXT!
 
-    # !!! bases/frontend/frontend.py - check api requirements for get_rendering_ids, render_frontend, is_renderable, needs_rendering, get_last_rendering_datetime
+    # TODO bases/frontend/frontend.py - check api requirements for get_rendering_ids, render_frontend, is_renderable, needs_rendering, get_last_rendering_datetime
 
     # ------------------------------------------------------------------------
     # !TXT!
 
-    # !!! bases/frontend/frontend.py - check api requirements for add_widget_form, add_widget_formlet, add_widget, edit_widget_form, edit_widget_formlet, edit_widget, get_widget, delete_widget, delete_widgets, widget_ids, widget_items, widget_values, move_widget
+    # TODO bases/frontend/frontend.py - check api requirements for add_widget_form, add_widget_formlet, add_widget, edit_widget_form, edit_widget_formlet, edit_widget, get_widget, delete_widget, delete_widgets, widget_ids, widget_items, widget_values, move_widget
 
 # ----------------------------------------------------------------------------
 # initialize class security
 
 InitializeClass(FrontendPluginBase)
 
-# !!! bases/frontend/frontend.py - changed flag (reset on rendering)
-# !!! bases/frontend/frontend.py - flags: addable, editable, deletable, renderable, searchable, binary, unique
-# !!! bases/frontend/frontend.py - create widget_frontend.py
-# !!! bases/frontend/frontend.py - create designable_frontend.py
+# TODO bases/frontend/frontend.py - changed flag (reset on rendering)
+# TODO bases/frontend/frontend.py - flags: addable, editable, deletable, renderable, searchable, binary, unique
+# TODO bases/frontend/frontend.py - create widget_frontend.py
+# TODO bases/frontend/frontend.py - create designable_frontend.py

@@ -7,19 +7,7 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
-
-
-
-
-
-
-<!-- !!! widgets.dtml - implement widgets browser, requires add, edit, delete, rename, duplicate, preview and ordering -->
-
-
-
-
-
-
+<dtml-var not_available_dialog>
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

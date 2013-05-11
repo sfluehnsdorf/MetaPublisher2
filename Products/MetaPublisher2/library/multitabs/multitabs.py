@@ -260,6 +260,12 @@ class MultiTabs:
             if parent_key in mapped_options and not mapped_options[parent_key].get('action', ''):
                 mapped_options[parent_key]['action'] = mapped_options[key]['action']
 
+        # remove empty management trees
+
+        for key in keys:
+            if not(mapped_options[key].get('action', '')) and mapped_options[key].get('sub', []):
+                del mapped_options[key]
+
         # format and return result
 
         result = []

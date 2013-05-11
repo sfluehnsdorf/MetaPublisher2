@@ -24,7 +24,7 @@ __doc__ = """Widget Plugin Base
 
 !TXT! module info
 
-$Id: bases/widget/widget.py 7 2013-05-08 19:51:41Z sfluehnsdorf $
+$Id: bases/widget/widget.py 9 2013-05-10 23:39:52Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -140,8 +140,8 @@ class WidgetPluginBase(PluginBase, OrderedFolder):
 
 InitializeClass(WidgetPluginBase)
 
-# !!! bases/widget/widget.py - define api, including before_ and after_ handlers
-# !!! bases/widget/widget.py - define zmi (with developer notes regarding choice of form and formlet)
-# !!! bases/widget/widget.py - define frontend type and field type bindings
-# !!! bases/widget/widget.py - predefine css and style support
-# !!! bases/widget/widget.py - predefine rendering api and modes
+# TODO bases/widget/widget.py - define api, including before_ and after_ handlers
+# TODO bases/widget/widget.py - define zmi (with developer notes regarding choice of form and formlet)
+# TODO bases/widget/widget.py - define frontend type and field type bindings
+# TODO bases/widget/widget.py - predefine css and style support
+# TODO bases/widget/widget.py - predefine rendering api and modes

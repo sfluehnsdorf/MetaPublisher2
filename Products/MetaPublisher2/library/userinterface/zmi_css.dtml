@@ -6,6 +6,15 @@ button, dt, dd, input, li, option, p, select, textarea, th, td {
   font-family: verdana, helvetica, arial, sans-serif;
   font-size: 10pt; }
 
+body form > h3 {
+  color: #000;
+  font-size: 13.82pt;
+  font-weight: normal;
+  margin: 26px 6px 16px 6px; }
+
+body form > p {
+  margin: 16px 6px; }
+
 .w1 {
   width: 1% !important; }
 

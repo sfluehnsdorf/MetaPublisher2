@@ -24,7 +24,7 @@ __doc__ = """Settings Component
 
 !TXT! module info
 
-$Id: system/settings/settings.py 6 2013-05-09 17:20:46Z sfluehnsdorf $
+$Id: system/settings/settings.py 7 2013-05-11 00:50:43Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -66,6 +66,12 @@ class Settings:
 
     def list_settings(self):
         """!TXT! List all settings"""
+
+        result = []
+        for key, value in settings.items():
+            result.append({'key': key, 'value': value})
+        return result
+
 
         result = settings.items()
         result.sort()

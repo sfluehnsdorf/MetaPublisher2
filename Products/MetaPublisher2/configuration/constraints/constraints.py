@@ -24,7 +24,7 @@ __doc__ = """Constraints Component
 
 !TXT! module info
 
-$Id: configuration/constraints/constraints.py 4 2013-05-09 00:03:06Z sfluehnsdorf $
+$Id: configuration/constraints/constraints.py 5 2013-05-10 22:59:54Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -55,15 +55,13 @@ class Constraints:
     # --------------------------------------------------------------------------
     # Indexing ZMI
 
-    if show_future:
+    security.declareProtected(permission_access_configuration, 'constraints_form')
 
-        security.declareProtected(permission_access_configuration, 'constraints_form')
-
-        constraints_form = DTMLFile('constraints', globals())
+    constraints_form = DTMLFile('constraints', globals())
 
 # ------------------------------------------------------------------------------
 # Class Security
 
 InitializeClass(Constraints)
 
-# TODO constraints.py - implement
+# !!! constraints.py - implement

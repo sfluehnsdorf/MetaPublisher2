@@ -7,163 +7,47 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
-
-
-
-
-
-
-<!-- !!! plugins.dtml - update to use new ui -->
-<!-- !!! plugins.dtml - include type filter from old code -->
-
 <dtml-if has_plugins>
+
+<dtml-var formlet_header>
+
+<table>
+  <tr class="buttons">
+    <td>
+<!-- !!! plugins.dtml - properly handle select plugins_filter change (js & non-js) -->
+      <select name="plugins_filter">
+        <option value=""<dtml-if "REQUEST.get('plugins_filter', '') == ''"> selected</dtml-if>>all Plugins</option>
+<dtml-in list_plugin_types prefix=plugin_type>
+        <option value="<dtml-var plugin_type_item>"<dtml-if "REQUEST.get('plugins_filter', '') == 'plugin_type_item'"> selected</dtml-if>>only <dtml-var plugin_type_item> Plugins</option>
+</dtml-in>
+      </select>
+    </td>
+  </tr>
+</table>
 
 <dtml-let
   form_id="'plugins_form'"
   columns="[
     { 'label': 'Meta Type', 'type': 'string', 'value': 'name', 'template': '<img src=\x22%s\x22 width=\x2216\x22 height=\x2216\x22> %s', 'values': [ 'icon', 'name', ], 'sortable': true, },
     { 'label': 'Product Name', 'type': 'string', 'value': 'product', 'sortable': true, 'hidden': false, },
-    { 'label': 'Class Name', 'type': 'string', 'value': 'pluginName', 'sortable': true, 'hidden': false, },
-    { 'label': 'Version', 'type': 'string', 'value': 'pluginVersion', 'sortable': true, 'hidden': false, },
-    { 'label': 'Author', 'type': 'minor', 'value': 'pluginAuthor', 'sortable': true, 'hidden': true, 'minor': true, },
-    { 'label': 'Description', 'type': 'minor', 'value': 'pluginInfo', 'hidden': true, 'minor': true, },
+    { 'label': 'Class Name', 'type': 'string', 'value': 'plugin_name', 'sortable': true, 'hidden': false, },
+    { 'label': 'Version', 'type': 'string', 'value': 'plugin_version', 'sortable': true, 'hidden': false, },
+    { 'label': 'Author', 'type': 'minor', 'value': 'plugin_author', 'sortable': true, 'hidden': true, 'minor': true, },
+    { 'label': 'Vendor', 'type': 'minor', 'value': 'plugin_vendor', 'sortable': true, 'hidden': true, 'minor': true, },
+    { 'label': 'Description', 'type': 'minor', 'value': 'plugin_info', 'hidden': true, 'minor': true, },
+    { 'label': 'Homepage', 'type': 'minor', 'value': 'plugin_homepage', 'template': '<a href=\x22%s\x22>%s</a>', 'values': [ 'plugin_homepage', 'plugin_homepage', ], 'hidden': true, 'minor': true, },
     ]"
-  rows="plugin_values()"
+  rows="list_plugins()"
   row_id="'name'"
   >
 <dtml-var datatable_formlet>
 </dtml-let>
 
+<dtml-var formlet_footer>
+
 <dtml-else>
 <dtml-var no_plugins_dialog>
 </dtml-if>
-
-<dtml-comment>
-
-<!-- !!! plugins.dtml - check & remove old code -->
-
-<dtml-call "update_profile( REQUEST, (
-  ( 'plugins_filter',  '' ),
-  ( 'plugins_sort',    'product' ),
-  ( 'plugins_sort_re', '' ),
-  ( 'plugins_infos',   0 ),
-  ) )">
-
-<dtml-let
-  plugins="list_plugins( REQUEST[ 'plugins_filter' ], REQUEST[ 'plugins_sort' ], REQUEST[ 'plugins_sort' ] == REQUEST[ 'plugins_sort_re' ] )"
-  >
-
-  <table class="form" cellspacing="0" cellpadding="0" border="0">
-
-    <tr>
-      <th><div class="form-label">Filter</div></th>
-      <th><div class="form-label">Display</div></th>
-      <th><div class="form-label">&nbsp;</div></th>
-    </tr>
-
-    <tr>
-      <td>
-        <div class="form-element">
-          <select name="plugins_filter">
-            <option value=""<dtml-if "REQUEST[ 'plugins_filter' ] == ''"> selected</dtml-if>>all Plugins</option>
-            <option value="Storage"<dtml-if "REQUEST[ 'plugins_filter' ] == 'Storage'"> selected</dtml-if>>only Storage Plugins</option>
-            <option value="Field"<dtml-if "REQUEST[ 'plugins_filter' ] == 'Field'"> selected</dtml-if>>only Field Plugins</option>
-            <option value="Frontend"<dtml-if "REQUEST[ 'plugins_filter' ] == 'Frontend'"> selected</dtml-if>>only Frontend Plugins</option>
-            <option value="Widget"<dtml-if "REQUEST[ 'plugins_filter' ] == 'Widget'"> selected</dtml-if>>only Widget Plugins</option>
-          </select>
-        </div>
-      </td>
-      <td>
-        <div class="form-element">
-
-          <input type="radio" name="plugins_infos:int" id="plugins_infos_0" value="0"<dtml-unless plugins_infos> checked</dtml-unless>>
-          <label for="plugins_infos_0">Compact</label>
-
-          <input type="radio" name="plugins_infos:int" id="plugins_infos_1" value="1"<dtml-if plugins_infos> checked</dtml-if>>
-          <label for="plugins_infos_1">Extended</label>
-
-        </div>
-      </td>
-      <td>
-        <div class="form-element">
-          <input name="plugins_form:method" type="submit" value="Update">
-        </div>
-      </td>
-    </tr>
-
-  </table>
-
-<dtml-if plugins>
-  <table class="list" cellspacing="0" cellpadding="0" border="0">
-
-    <tr class="list-header">
-      <th><div class="form-label">#</div></th>
-      <th><div class="form-label"><a href="<dtml-var get_MetaPublisher2_url>/plugins_form?plugins_sort=product&plugins_sort_re=<dtml-if "plugins_sort == 'product' and not plugins_sort_re">product</dtml-if>">Product</a></div></th>
-      <th><div class="form-label"><a href="<dtml-var get_MetaPublisher2_url>/plugins_form?plugins_sort=plugin&plugins_sort_re=<dtml-if "plugins_sort == 'plugin' and not plugins_sort_re">plugin</dtml-if>">Plugin</a></div></th>
-      <th><div class="form-label"><a href="<dtml-var get_MetaPublisher2_url>/plugins_form?plugins_sort=type&plugins_sort_re=<dtml-if "plugins_sort == 'type' and not plugins_sort_re">type</dtml-if>">Type</a></div></th>
-      <th><div class="form-label"><a href="<dtml-var get_MetaPublisher2_url>/plugins_form?plugins_sort=version&plugins_sort_re=<dtml-if "plugins_sort == 'version' and not plugins_sort_re">version</dtml-if>">Version</a></div></th>
-    </tr>
-
-<dtml-in plugins prefix=plugin>
-<dtml-let plugin_details="plugin_item[ 'plugin_details' ]">
-    <tr class="row-<dtml-if plugin_odd>normal<dtml-else>hilite</dtml-if>">
-      <td<dtml-if plugins_infos> rowspan="5"</dtml-if>><div class="list-item"><dtml-var plugin_number></div></td>
-      <td><div class="list-item"><dtml-var "plugin_item[ 'product' ]"></div></td>
-      <td><div class="list-item"><dtml-var "plugin_item[ 'name' ]"></div></td>
-      <td><div class="list-item"><img src="<dtml-var "plugin_item[ 'instance' ].icon">"> <dtml-var "plugin_details[ 'plugin_type' ]"></div></td>
-      <td><div class="list-item"><dtml-var "plugin_details[ 'plugin_version' ]"></div></td>
-    </tr>
-
-<dtml-if plugins_infos>
-    <tr class="row-<dtml-if plugin_odd>normal<dtml-else>hilite</dtml-if>">
-      <td><div class="list-item small">Info:</div></td>
-      <td colspan="4"><div class="list-item small"><dtml-if "plugin_details[ 'plugin_info' ]"><dtml-var "plugin_details[ 'plugin_info' ]"><dtml-else><em>n/a</em></dtml-if></div></td>
-    </tr>
-
-    <tr class="row-<dtml-if plugin_odd>normal<dtml-else>hilite</dtml-if>">
-      <td><div class="list-item small">Vendor:</div></td>
-      <td colspan="4"><div class="list-item small"><dtml-if "plugin_details[ 'plugin_vendor' ]"><dtml-var "plugin_details[ 'plugin_vendor' ]"><dtml-else><em>n/a</em></dtml-if></div></td>
-    </tr>
-
-    <tr class="row-<dtml-if plugin_odd>normal<dtml-else>hilite</dtml-if>">
-      <td><div class="list-item small">Author:</div></td>
-      <td colspan="4"><div class="list-item small"><dtml-if "plugin_details[ 'plugin_author' ]"><dtml-var "plugin_details[ 'plugin_author' ]"><dtml-else><em>n/a</em></dtml-if></div></td>
-    </tr>
-
-    <tr class="row-<dtml-if plugin_odd>normal<dtml-else>hilite</dtml-if>">
-      <td><div class="list-item small">Homepage:</div></td>
-      <td colspan="4"><div class="list-item small"><dtml-if "plugin_details[ 'plugin_homepage' ]"><a href="<dtml-var "plugin_details[ 'plugin_url' ]">" target="_blank"><dtml-var "plugin_item[ 'instance' ].plugin_url"></a></div></td><dtml-else><em>n/a</em></dtml-if>
-    </tr>
-
-</dtml-if>
-</dtml-let>
-</dtml-in>
-  </table>
-
-<dtml-else>
-
-<dtml-if "REQUEST[ 'plugins_filter' ] == 'Storage'">
-<dtml-var no_storageplugins_dialog>
-<dtml-elif "REQUEST[ 'plugins_filter' ] == 'Field'">
-<dtml-var no_fieldplugins_dialog>
-<dtml-elif "REQUEST[ 'plugins_filter' ] == 'Frontend'">
-<dtml-var no_frontendplugins_dialog>
-<dtml-elif "REQUEST[ 'plugins_filter' ] == 'Widget'">
-<dtml-var no_widgetplugins_dialog>
-<dtml-else>
-<dtml-var no_plugins_dialog>
-</dtml-if>
-
-</dtml-if>
-</dtml-let>
-
-</dtml-comment>
-
-
-
-
-
-
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

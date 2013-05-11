@@ -24,7 +24,7 @@ __doc__ = """Legacy Widget Plugin Base
 
 !TXT! module info
 
-$Id: bases/widget/legacywidget.py 6 2013-05-08 19:51:34Z sfluehnsdorf $
+$Id: bases/widget/legacywidget.py 7 2013-05-10 23:38:43Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]

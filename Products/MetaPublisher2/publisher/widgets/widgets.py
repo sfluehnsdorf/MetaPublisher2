@@ -24,7 +24,7 @@ __doc__ = """Widgets Component
 
 !TXT! module info
 
-$Id: publisher/widgets/widgets.py 11 2013-05-09 22:20:18Z sfluehnsdorf $
+$Id: publisher/widgets/widgets.py 12 2013-05-10 22:47:57Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -143,7 +143,7 @@ class Widgets:
     def get_fields_for_widget(self, widget_type_id):
         """!TXT! Return a list of Fields appropriate for the specified Widget type."""
 
-        # !!! widgets.py - implement get_fields_for_widget
+        # TODO widgets.py - implement get_fields_for_widget
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'get_widgets_for_field')
@@ -207,7 +207,7 @@ class Widgets:
     def add_widget(self, frontend_path, widget_type_id, options={}, REQUEST=None, **args):
         """!TXT! Add a new Widget in the specified Frontend with specified type and configuration."""
 
-        # !!! widgets.py - implement add_widgets
+        # TODO widgets.py - implement add_widgets
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'edit_widget')
@@ -215,7 +215,7 @@ class Widgets:
     def edit_widget(self, frontend_path, widget_id, widget_type_id, options={}, REQUEST=None, **args):
         """!TXT! Change the specified Widget's configuration."""
 
-        # !!! widgets.py - implement edit_widget
+        # TODO widgets.py - implement edit_widget
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'delete_widget')
@@ -223,7 +223,7 @@ class Widgets:
     def delete_widget(self, frontend_path, widget_id, REQUEST=None):
         """!TXT! Delete the specified Widget in the specified Frontend."""
 
-        # !!! widgets.py - implement delete_widget
+        # TODO widgets.py - implement delete_widget
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'delete_widgets')
@@ -231,7 +231,7 @@ class Widgets:
     def delete_widgets(self, frontend_path, widget_ids=[], REQUEST=None):
         """!TXT! Delete the specified Widgets in the specified Frontend."""
 
-        # !!! widgets.py - implement delete_widgets
+        # TODO widgets.py - implement delete_widgets
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'duplicate_widget')
@@ -239,7 +239,7 @@ class Widgets:
     def duplicate_widget(self, frontend_path, widget_id, new_id, REQUEST=None):
         """!TXT! Duplicate the specified Widget in the specified Frontend."""
 
-        # !!! widgets.py - implement duplicate_widget
+        # TODO widgets.py - implement duplicate_widget
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'duplicate_widgets')
@@ -247,7 +247,7 @@ class Widgets:
     def duplicate_widgets(self, frontend_path, widget_ids, new_ids, REQUEST=None):
         """!TXT! Duplicate the specified Widgets in the specified Frontend."""
 
-        # !!! widgets.py - implement duplicate_widgets
+        # TODO widgets.py - implement duplicate_widgets
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'rename_widget')
@@ -255,7 +255,7 @@ class Widgets:
     def rename_widget(self, frontend_path, widget_id, new_id, REQUEST=None):
         """!TXT! Rename the specified Widget in the specified Frontend."""
 
-        # !!! widgets.py - implement rename_widget
+        # TODO widgets.py - implement rename_widget
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'rename_widgets')
@@ -263,7 +263,7 @@ class Widgets:
     def rename_widgets(self, frontend_path, widget_ids, new_ids, REQUEST=None):
         """!TXT! Rename the specified Widgets in the specified Frontend."""
 
-        # !!! widgets.py - implement rename_widgets
+        # TODO widgets.py - implement rename_widgets
         raise NotImplemented
 
     # ------------------------------------------------------------------------
@@ -274,7 +274,7 @@ class Widgets:
     def get_widget_position(self, frontend_path, widget_id):
         """!TXT! Return the position of a Widget"""
 
-        # !!! widgets.py - implement get_widget_position
+        # TODO widgets.py - implement get_widget_position
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'move_widget_to_position')
@@ -282,7 +282,7 @@ class Widgets:
     def move_widget_to_position(self, frontend_path, widget_id, position, REQUEST=None):
         """!TXT! Move a Widget to the specified position"""
 
-        # !!! widgets.py - implement move_widget_to_position
+        # TODO widgets.py - implement move_widget_to_position
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'move_widget_to_top')
@@ -290,7 +290,7 @@ class Widgets:
     def move_widget_to_top(self, frontend_path, widget_id, REQUEST=None):
         """!TXT! Move a Widget to the top"""
 
-        # !!! widgets.py - implement move_widget_top
+        # TODO widgets.py - implement move_widget_top
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'move_widget_up')
@@ -298,7 +298,7 @@ class Widgets:
     def move_widget_up(self, frontend_path, widget_id, REQUEST=None):
         """!TXT! Move a Widget up one position"""
 
-        # !!! widgets.py - implement move_widget_up
+        # TODO widgets.py - implement move_widget_up
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'move_widget_down')
@@ -306,7 +306,7 @@ class Widgets:
     def move_widget_down(self, frontend_path, widget_id, REQUEST=None):
         """!TXT! Move a Widget down one position"""
 
-        # !!! widgets.py - implement move_widget_down
+        # TODO widgets.py - implement move_widget_down
         raise NotImplemented
 
     security.declareProtected(permission_manage_frontends, 'move_widget_to_bottom')
@@ -314,7 +314,7 @@ class Widgets:
     def move_widget_to_bottom(self, frontend_path, widget_id):
         """!TXT! Move a Widget to the bottom"""
 
-        # !!! widgets.py - implement move_widget_to_bottom
+        # TODO widgets.py - implement move_widget_to_bottom
         raise NotImplemented
 
 # ----------------------------------------------------------------------------
@@ -322,14 +322,14 @@ class Widgets:
 
 InitializeClass(Widgets)
 
-# !!! widgets.py - form/formlet handler for add_widget
-# !!! widgets.py - form/formlet handler for edit_widget
-# !!! widgets.py - revise API and comments
-#     widgets.py must manage widgets in frontends and widgetsfolder
-#     either provide two sets of methods or handle in widgetsfolder if frontend_path is None
-# !!! widgets.py - missing add_widget.dtml
-# !!! widgets.py - missing delete_widgets.dtml
-# !!! widgets.py - missing duplicate_widgets.dtml
-# !!! widgets.py - missing edit_widget.dtml
-# !!! widgets.py - missing preview_widget.dtml
-# !!! widgets.py - missing rename_widgets.dtml
+# TODO widgets.py - form/formlet handler for add_widget
+# TODO widgets.py - form/formlet handler for edit_widget
+# TODO widgets.py - revise API and comments
+#      widgets.py must manage widgets in frontends and widgetsfolder
+#      either provide two sets of methods or handle in widgetsfolder if frontend_path is None
+# TODO widgets.py - missing add_widget.dtml
+# TODO widgets.py - missing delete_widgets.dtml
+# TODO widgets.py - missing duplicate_widgets.dtml
+# TODO widgets.py - missing edit_widget.dtml
+# TODO widgets.py - missing preview_widget.dtml
+# TODO widgets.py - missing rename_widgets.dtml

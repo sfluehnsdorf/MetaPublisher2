@@ -7,14 +7,19 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
+<dtml-var not_available_dialog>
 
 
 
 
 
 
-<!-- !!! renderer.dtml - update to use new ui -->
-<!-- !!! renderer.dtml - reimplement renderer.dtml -->
+
+<dtml-comment>
+
+<!-- !!! renderer.dtml - remove code to 2.4 -->
+<!-- TODO renderer.dtml - update to use new ui -->
+<!-- TODO renderer.dtml - reimplement renderer.dtml -->
 
 <dtml-if has_frontends>
 
@@ -56,8 +61,6 @@
 
 <dtml-var not_available_dialog>
 
-
-<dtml-comment>
 
 <dtml-if has_frontends>
 
@@ -198,11 +201,11 @@
 <dtml-var no_frontends_dialog>
 </dtml-if>
 
-</dtml-comment>
-
 <dtml-else>
 <dtml-var no_frontends_dialog>
 </dtml-if>
+
+</dtml-comment>
 
 
 

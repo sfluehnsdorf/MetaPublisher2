@@ -7,6 +7,12 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
+<dtml-if has_plugins>
+
+<dtml-if has_identifierplugins>
+
+<dtml-if has_identifiers>
+
 
 
 
@@ -20,6 +26,20 @@
 
 
 
+
+<dtml-var formlet_footer>
+
+<dtml-else>
+<dtml-var no_identifiers_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_identifierplugins_dialog>
+</dtml-if>
+
+<dtml-else>
+<dtml-var no_plugins_dialog>
+</dtml-if>
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

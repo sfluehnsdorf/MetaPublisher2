@@ -24,7 +24,7 @@ __doc__ = """Designs Component
 
 !TXT! module info
 
-$Id: publisher/designs/designs.py 7 2013-05-09 22:25:44Z sfluehnsdorf $
+$Id: publisher/designs/designs.py 8 2013-05-10 22:54:26Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -183,7 +183,7 @@ class Designs:
     def preview_design(self, design_id, options={}, REQUEST=None, **args):
         """!TXT! Preview a Design with the specified options."""
 
-        # !!! designs.py - implement preview_design
+        # TODO designs.py - implement preview_design
         raise NotImplemented
 
     # ------------------------------------------------------------------------
@@ -194,7 +194,7 @@ class Designs:
     def setup_design(self, frontend_parent_id, design_id, options={}, REQUEST=None, **args):
         """!TXT! Add a Design with the specified options to the Frontends."""
 
-        # !!! designs.py - implement setup_design
+        # TODO designs.py - implement setup_design
         raise NotImplemented
 
 # ----------------------------------------------------------------------------
@@ -202,7 +202,8 @@ class Designs:
 
 InitializeClass(Designs)
 
-# !!! designs.py - implement
-# !!! designs.py - handle default designs and secondary designs
-# !!! designs.py - revise API and comments (designs.py must only manage designs in designsfolder)
-# !!! designs.py - extend api with add functions into frontends folder
+# !!! designs.py - remove code to 2.4
+# TODO designs.py - implement
+# TODO designs.py - handle default designs and secondary designs
+# TODO designs.py - revise API and comments (designs.py must only manage designs in designsfolder)
+# TODO designs.py - extend api with add functions into frontends folder

@@ -25,7 +25,7 @@ __doc__ = """Search Component
 Keyword search for Entries in a Storage, allowing to define search conditions
 with a variety of conditions, provided by Field plugins.
 
-$Id: data/search/search.py 6 2013-05-08 23:54:10Z sfluehnsdorf $
+$Id: data/search/search.py 7 2013-05-10 22:57:46Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -56,15 +56,13 @@ class Search:
     # ------------------------------------------------------------------------
     # Search ZMI
 
-    if show_future:
+    security.declareProtected(permission_access_entries, 'search_form')
 
-        security.declareProtected(permission_access_entries, 'search_form')
-
-        search_form = DTMLFile('search', globals())
+    search_form = DTMLFile('search', globals())
 
 # ----------------------------------------------------------------------------
 # Class Security
 
 InitializeClass(Search)
 
-# TODO search.py - implement
+# !!! search.py - implement

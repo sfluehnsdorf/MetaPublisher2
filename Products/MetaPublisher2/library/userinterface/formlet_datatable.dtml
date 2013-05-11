@@ -66,7 +66,7 @@
 </noscript>
     </tr>
   </table>
-</div>
+<dtml-var formlet_footer>
 
 <table class="data">
   <tr>
@@ -153,7 +153,7 @@
 </table>
 
 <dtml-if "_.has_key( 'buttons' ) or hideable_columns">
-<div class="form">
+<dtml-var formlet_header>
   <table>
 <dtml-if buttons>
     <tr class="head">

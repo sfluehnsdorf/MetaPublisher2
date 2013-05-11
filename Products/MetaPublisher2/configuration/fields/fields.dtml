@@ -7,16 +7,6 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
-
-
-
-
-
-
-
-<!-- !!! fields.dtml - revise (i.e. handle primary fields) -->
-<!-- TODO fields.dtml - should list all field groups as items and all its fields as items beneath, no matter what the sorting - like Mac Finder list view -->
-
 <dtml-if has_plugins>
 
 <dtml-if has_storageplugins>
@@ -33,11 +23,20 @@
 <dtml-var storage_selection_formlet>
 </dtml-let>
 
-<dtml-comment>
-
 <dtml-if "has_fieldplugins(storage_id = storage_id)">
 
 <dtml-if "has_fields(storage_id)">
+
+
+
+
+
+
+
+<dtml-comment>
+
+<!-- !!! fields.dtml - revise (i.e. handle primary fields) -->
+<!-- TODO fields.dtml - should list all field groups as items and all its fields as items beneath, no matter what the sorting - like Mac Finder list view -->
 
 <dtml-let
   form_id="'fields_form'"
@@ -56,8 +55,17 @@
     { 'name': 'delete_fields_form', 'label': 'Delete' },
     ]"
   >
-<dtml-var metapublisher2_table>
+<dtml-var datatable_formlet>
 </dtml-let>
+</dtml-comment>
+
+
+
+
+
+
+
+<dtml-var formlet_footer>
 
 <dtml-else>
 <dtml-var formlet_footer>
@@ -68,8 +76,6 @@
 <dtml-var formlet_footer>
 <dtml-var no_fieldplugins_dialog>
 </dtml-if>
-
-</dtml-comment>
 
 <dtml-else>
 <dtml-var no_storages_dialog>
@@ -82,12 +88,6 @@
 <dtml-else>
 <dtml-var no_plugins_dialog>
 </dtml-if>
-
-
-
-
-
-
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

@@ -24,7 +24,7 @@ __doc__ = """Future Compatibility
 
 !TXT! module info
 
-$Id: library/compatibility/future.py 5 2013-05-08 20:23:05Z sfluehnsdorf $
+$Id: library/compatibility/future.py 6 2013-05-10 23:06:40Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -52,8 +52,8 @@ __all__ = [
 # revealed. This may enable unreleased functionalities but more likely will
 # only clutter the management interface with empty and inactive forms.
 
-#show_future = false
-show_future = true
+show_future = false
+#show_future = true
 
 
 # ============================================================================

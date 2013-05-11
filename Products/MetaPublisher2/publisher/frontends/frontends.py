@@ -28,7 +28,7 @@ provide a public interface to the functions of the MetaPublisher 2, such as
 Entry management. Frontends can be added, edited, deleted, renamed and moved as
 well as retrieved, listed and tested for existence.
 
-$Id: publisher/frontends/frontends.py 19 2013-05-09 17:08:33Z sfluehnsdorf $
+$Id: publisher/frontends/frontends.py 21 2013-05-10 23:04:08Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -38,7 +38,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.interfaces import IFrontendPluginBase
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, false, InitializeClass, permission_manage, permission_manage_frontends, true
+from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, false, InitializeClass, permission_manage, permission_manage_frontends, show_future, true
 
 
 # ============================================================================
@@ -60,33 +60,35 @@ class Frontends:
     # ------------------------------------------------------------------------
     # Frontend ZMI Forms
 
-    security.declareProtected(permission_manage_frontends, 'frontends_form')
+    if show_future:
 
-    frontends_form = DTMLFile('frontends', globals())
+        security.declareProtected(permission_manage_frontends, 'frontends_form')
 
-    security.declareProtected(permission_manage_frontends, 'add_frontend_form')
+        frontends_form = DTMLFile('frontends', globals())
 
-    add_frontend_form = DTMLFile('add_frontend', globals())
+        security.declareProtected(permission_manage_frontends, 'add_frontend_form')
 
-    security.declareProtected(permission_manage_frontends, 'duplicate_frontends_form')
+        add_frontend_form = DTMLFile('add_frontend', globals())
 
-    duplicate_frontends_form = DTMLFile('duplicate_frontends', globals())
+        security.declareProtected(permission_manage_frontends, 'duplicate_frontends_form')
 
-    security.declareProtected(permission_manage_frontends, 'delete_frontends_form')
+        duplicate_frontends_form = DTMLFile('duplicate_frontends', globals())
 
-    delete_frontends_form = DTMLFile('delete_frontends', globals())
+        security.declareProtected(permission_manage_frontends, 'delete_frontends_form')
 
-    security.declareProtected(permission_manage_frontends, 'edit_frontend_form')
+        delete_frontends_form = DTMLFile('delete_frontends', globals())
 
-    edit_frontend_form = DTMLFile('edit_frontend', globals())
+        security.declareProtected(permission_manage_frontends, 'edit_frontend_form')
 
-    security.declareProtected(permission_manage_frontends, 'move_frontends_form')
+        edit_frontend_form = DTMLFile('edit_frontend', globals())
 
-    move_frontends_form = DTMLFile('move_frontends', globals())
+        security.declareProtected(permission_manage_frontends, 'move_frontends_form')
 
-    security.declareProtected(permission_manage_frontends, 'rename_frontends_form')
+        move_frontends_form = DTMLFile('move_frontends', globals())
 
-    rename_frontends_form = DTMLFile('rename_frontends', globals())
+        security.declareProtected(permission_manage_frontends, 'rename_frontends_form')
+
+        rename_frontends_form = DTMLFile('rename_frontends', globals())
 
     # ------------------------------------------------------------------------
     # Frontend Plugins
@@ -266,7 +268,7 @@ class Frontends:
     def get_frontend_path(self, frontend):
         """!TXT! get frontend object's path"""
 
-        # !!! frontends.py - implement get_frontend_path
+        # TODO frontends.py - implement get_frontend_path
 
         raise NotImplemented
 
@@ -275,7 +277,7 @@ class Frontends:
     def get_frontend_parent(self, frontend):
         """!TXT! Return the specified Frontend's parent object. If object is a string, it will be normalized and the last path element removed."""
 
-        # !!! frontends.py - implement get_frontend_parent
+        # TODO frontends.py - implement get_frontend_parent
 
         raise NotImplemented
 
@@ -284,7 +286,7 @@ class Frontends:
     def get_frontend_parent_path(self, frontend):
         """!TXT! Return the specified Frontend's parent object. If object is a string, it will be normalized and the last path element removed."""
 
-        # !!! frontends.py - implement get_frontend_parent_path
+        # TODO frontends.py - implement get_frontend_parent_path
 
         raise NotImplemented
 
@@ -293,7 +295,7 @@ class Frontends:
     def get_frontend_parents(self, frontend):
         """!TXT! Return the specified Frontend's parent objects. If object is a string, it will be normalized and the last path element removed."""
 
-        # !!! frontends.py - implement get_frontend_parents
+        # TODO frontends.py - implement get_frontend_parents
 
         raise NotImplemented
 
@@ -310,8 +312,8 @@ class Frontends:
 
     security.declareProtected(permission_manage_frontends, 'add_frontend_type')
 
-    # !!! frontends.py - update add_frontend_type to new mechanism
-    # !!! frontends.py - check add_frontend_type if add factory can redirect properly to frontends_form
+    # TODO frontends.py - update add_frontend_type to new mechanism
+    # TODO frontends.py - check add_frontend_type if add factory can redirect properly to frontends_form
 
     def add_frontend_type(self, REQUEST=None):
         """!TXT! Add a new Frontend in the specified path with specified id and configuration."""
@@ -339,7 +341,7 @@ class Frontends:
 
     security.declareProtected(permission_manage_frontends, 'add_frontend')
 
-    # !!! frontends.py - implement add_frontend
+    # TODO frontends.py - implement add_frontend
 
     def add_frontend(self, path, frontend_path, frontend_type_id, options={}, REQUEST=None, **args):
         """!TXT! Add a new Frontend in the specified path with specified id and configuration."""
@@ -427,7 +429,7 @@ class Frontends:
 
     security.declareProtected(permission_manage_frontends, 'edit_frontend')
 
-    # !!! frontends.py - implement edit_frontend
+    # TODO frontends.py - implement edit_frontend
 
     def edit_frontend(self, frontend_path, options={}, REQUEST=None, **args):
         """!TXT! Change the specified Frontend's configuration."""
@@ -436,7 +438,7 @@ class Frontends:
 
     security.declareProtected(permission_manage_frontends, 'move_frontend')
 
-    # !!! frontends.py - implement move_frontend
+    # TODO frontends.py - implement move_frontend
 
     def move_frontend(self, frontend_path, destination_path, REQUEST=None):
         """!TXT! Move the specified Frontend to a new container."""
@@ -445,7 +447,7 @@ class Frontends:
 
     security.declareProtected(permission_manage_frontends, 'move_frontends')
 
-    # !!! frontends.py - implement move_frontends
+    # TODO frontends.py - implement move_frontends
 
     def move_frontends(self, frontend_paths, destination_path, REQUEST=None):
         """!TXT! Move the specified Frontends to a new container."""
@@ -495,6 +497,7 @@ class Frontends:
 
 InitializeClass(Frontends)
 
-# !!! frontends.py - form/formlet handler for add_frontend
-# !!! frontends.py - form/formlet handler for edit_frontend
+# !!! frontends.py - remove code to 2.4
+# TODO frontends.py - form/formlet handler for add_frontend
+# TODO frontends.py - form/formlet handler for edit_frontend
 # TODO frontends.py - implement frontend preview

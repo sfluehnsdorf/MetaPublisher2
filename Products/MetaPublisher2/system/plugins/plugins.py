@@ -26,7 +26,7 @@ Plugin service, providing access to all installed Product classess based on
 the MetaPublisher2's Plugin base class. Retrieval can be limited to one or
 more Plugin interfaces.
 
-$Id: system/plugins/plugins.py 14 2013-05-08 22:53:41Z sfluehnsdorf $
+$Id: system/plugins/plugins.py 15 2013-05-11 00:18:05Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -84,38 +84,26 @@ class Plugins:
 
     security.declareProtected(permission_manage, 'list_plugins')
 
-    def list_plugins(self, plugin_type, order_by, reverse_order):
-        """!TXT! Return a filtered and sorted plugin list for the ZMI form."""
+    def list_plugins(self, plugin_type=None):
+        """!TXT! Return a filtered list of plugins for the ZMI form."""
 
-        if plugin_type:
-            result = []
-            for id, data in self.plugin_items():
-                if data['plugin_details']['plugin_type'] == plugin_type:
-                    result.append((id, data))
-            return result
-        else:
-            result = self.plugin_items()
+        result = []
+        for plugin in not(plugin_type) and self.plugin_values() or filter(lambda plugin: plugin['plugin_details']['plugin_type'] == plugin_type, self.plugin_values()):
+            plugin.update(plugin['plugin_details'])
+            plugin['icon'] = plugin['instance'].icon
+            result.append(plugin)
+        return result
 
-        if order_by == 'plugin':
-            def sort_items(x, y):
-                return cmp(x[1]['name'], y[1]['name'])
-            result.sort(sort_items)
-        elif order_by == 'type':
-            def sort_items(x, y):
-                return cmp(x[1]['plugin_details']['plugin_type'], y[1]['plugin_details']['plugin_type'])
-            result.sort(sort_items)
-        elif order_by == 'version':
-            def sort_items(x, y):
-                return cmp(x[1]['plugin_details']['plugin_version'], y[1]['plugin_details']['plugin_version'])
-            result.sort(sort_items)
-        else:
-            def sort_items(x, y):
-                return cmp((x[1]['product'], x[1]['name']), (y[1]['product'], y[1]['name']))
-            result.sort(sort_items)
+    security.declareProtected(permission_manage, 'list_plugin_types')
 
-        if reverse_order:
-            result.reverse()
+    def list_plugin_types(self):
+        """!TXT! Return a filtered list of plugins for the ZMI form."""
 
+        result = []
+        for plugin in self.plugin_values():
+            plugin_type = plugin['plugin_details']['plugin_type']
+            if not plugin_type in result:
+                result.append(plugin_type)
         return result
 
     security.declareProtected(permission_manage, 'plugin_ids')

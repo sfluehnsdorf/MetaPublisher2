@@ -7,22 +7,13 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
-
-
-
-
-
-
-<!-- !!! storages.dtml - check / revise -->
-
 <dtml-if has_plugins>
 
 <dtml-if has_storageplugins>
 
-<dtml-if has_storages>
+<dtml-var formlet_header>
 
-<div class="form">
-  <table class="form_continues">
+  <table>
     <tr class="buttons">
       <td>
         <input type="submit" name="manage_storagesNewForm:method" value="Add Storage">
@@ -30,7 +21,19 @@
     </tr>
   </table>
 
+<dtml-if has_storages>
+
+
+
+
+
+
+
+
+
 <dtml-comment>
+
+<!-- !!! storages.dtml - check / revise -->
 
 <dtml-let
   form_continued="true"
@@ -51,12 +54,22 @@
     { 'name': 'delete_storages_form', 'label': 'Delete' },
     ]"
   >
-<dtml-var metapublisher2_table>
+<dtml-var datatable_formlet>
 </dtml-let>
-
 </dtml-comment>
 
+
+
+
+
+
+
+
+
+<dtml-var formlet_footer>
+
 <dtml-else>
+<dtml-var formlet_footer>
 <dtml-var no_storages_dialog>
 </dtml-if>
 
@@ -67,12 +80,6 @@
 <dtml-else>
 <dtml-var no_plugins_dialog>
 </dtml-if>
-
-
-
-
-
-
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

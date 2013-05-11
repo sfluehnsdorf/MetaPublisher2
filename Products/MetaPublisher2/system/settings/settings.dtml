@@ -7,33 +7,21 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
+<dtml-var formlet_header>
 
+<dtml-let
+  form_id="'settings_form'"
+  columns="[
+    { 'label': 'Key', 'type': 'string', 'value': 'key', 'sortable': true },
+    { 'label': 'Value', 'type': 'string', 'value': 'value', 'sortable': true },
+    ]"
+  rows="list_settings()"
+  row_id="'key'"
+  >
+<dtml-var datatable_formlet>
+</dtml-let>
 
-
-
-<!-- !!! settings.dtml - update to use new ui -->
-
-  <table class="list" cellspacing="0" cellpadding="0" border="0">
-
-    <tr class="list-header">
-      <th><div class="list-item">#</div></th>
-      <th><div class="list-item">Key</div></th>
-      <th><div class="list-item">Value</div></th>
-    </tr>
-
-<dtml-in list_settings prefix=setting>
-    <tr class="row-<dtml-if setting_odd>normal<dtml-else>hilite</dtml-if>">
-      <td nowrap><div class="list-item"><dtml-var setting_number></td>
-      <td nowrap><div class="list-item"><dtml-var setting_key></td>
-      <td class="fw"><div class="list-item"><dtml-var setting_item></div></td>
-    </tr>
-</dtml-in>
-
-  </table>
-
-
-
-
+<dtml-var formlet_footer>
 
 <dtml-var manage_MetaPublisher2_footer>
 </dtml-let>

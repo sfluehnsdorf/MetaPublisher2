@@ -27,7 +27,7 @@ images and the online help. The individual Product registrations are
 outsourced to the products directory. For backward compatibility renamed
 modules are mapped to their new names.
 
-$Id: __init__.py 23 2013-05-10 00:25:00Z sfluehnsdorf $
+$Id: __init__.py 24 2013-05-10 22:46:41Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -119,9 +119,8 @@ sys.modules['Products.MetaPublisher2.MetaPublisher2'] = products.metapublisher2.
 # !!! PHASE 4 - service/, system/ (except integrity)
 # !!! PHASE 5 - configuration/, bases/[field,identifier,storage], interfaces/[field,identifier,storage]
 # !!! PHASE 6 - data/, bases/[entry,entrycontainer,entryfield,entryset], interfaces/[entry,entrycontainer,entryfield,entryset]
-# !!! PHASE 7 - frontends/, bases/[design,frontend,widget], interfaces/[design,frontend,widget]
-# !!! PHASE 8 - inline error messages, integrity tests, jsondict, onexit handlers, pluginregistry, review all forms, settings.conf, tests
-# !!! PHASE 9 - online services, pep8, remove DEV, test zope release compatability
+# !!! PHASE 7 - inline error messages, integrity tests, jsondict, onexit handlers, pluginregistry, review all forms, settings.conf, tests
+# !!! PHASE 8 - online services, pep8, remove DEV, test zope release compatability
 
 # ----------------------------------------------------------------------------
 

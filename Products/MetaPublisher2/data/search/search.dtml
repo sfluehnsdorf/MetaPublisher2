@@ -12,10 +12,22 @@
 <dtml-if has_storages>
 
 <dtml-var formlet_header>
-<dtml-var "storage_selection_formlet( form_id = 'exports_form' )">
+<dtml-var "storage_selection_formlet( form_id = 'search_form' )">
 <dtml-var formlet_footer>
 
-<dtml-var not_available_dialog>
+
+
+
+
+
+
+<!-- !!! search.dtml - implement -->
+
+
+
+
+
+
 
 <dtml-else>
 <dtml-var no_storages_dialog>

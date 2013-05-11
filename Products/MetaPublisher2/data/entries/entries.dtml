@@ -13,6 +13,8 @@
 
 
 
+<dtml-comment>
+
 <!--
 !!! entries.dtml - revise
 !!! entries.dtml - support primary fields
@@ -102,6 +104,7 @@
 <dtml-var no_plugins_dialog>
 </dtml-if>
 
+</dtml-comment>
 
 
 

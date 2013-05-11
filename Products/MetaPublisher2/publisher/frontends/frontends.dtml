@@ -7,15 +7,20 @@
   >
 <dtml-var manage_MetaPublisher2_header>
 
+<dtml-var not_available_dialog>
 
 
 
 
 
 
-<!-- !!! frontends.dtml - update to use new ui -->
-<!-- !!! frontends.dtml - implement frontend path formlet -->
-<!-- !!! frontends.dtml - implement handle paths/trees properly -->
+
+<dtml-comment>
+
+<!-- !!! frontends.dtml - remove code to 2.4 -->
+<!-- TODO frontends.dtml - update to use new ui -->
+<!-- TODO frontends.dtml - implement frontend path formlet -->
+<!-- TODO frontends.dtml - implement handle paths/trees properly -->
 
 <dtml-if has_frontendplugins>
 
@@ -50,7 +55,7 @@
       <td valign="top"><div class="list-item"><dtml-var "frontend_item.title"></div></td>
       <td valign="top" nowrap><div class="list-item"><dtml-if "getattr( frontend_item, plugin_name, None )"><dtml-var "frontend_item.plugin_name"><dtml-else><dtml-var "frontend_item.meta_type"></dtml-if></div></td>
       <td valign="top" nowrap><div class="list-item"><em>
-        !!! frontends.dtml - design info
+        TODO frontends.dtml - design info
       </em></div></td>
     </tr>
 
@@ -122,6 +127,8 @@
 <dtml-else>
 <dtml-var no_frontendplugins_dialog>
 </dtml-if>
+
+</dtml-comment>
 
 
 
