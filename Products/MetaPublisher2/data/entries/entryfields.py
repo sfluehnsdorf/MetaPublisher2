@@ -24,7 +24,7 @@ __doc__ = """Entry Fields Component
 
 !TXT! module info
 
-$Id: data/entries/entryfields.py 14 2013-05-08 21:41:06Z sfluehnsdorf $
+$Id: data/entries/entryfields.py 15 2013-05-12 18:25:43Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -154,3 +154,7 @@ class EntryFields:
 # Class Security
 
 InitializeClass(EntryFields)
+
+# !!! entryfields.py - max, min, mean, mediate, avg, sum
+# !!! entryfields.py - like, startswith, endswith, contains, between
+# !!! entryfields.py - is_null, not_null

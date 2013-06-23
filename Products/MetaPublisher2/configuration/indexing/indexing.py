@@ -27,7 +27,7 @@ Indexer per Storage and can index one or more Fields of the Storage. An Indexer
 can be a Zope based ZCatalog or a Storage specific indexing mechanism. If the
 Indexer requires special calls, these are also handled by the Storage.
 
-$Id: configuration/indexing/indexing.py 8 2013-05-09 00:02:46Z sfluehnsdorf $
+$Id: configuration/indexing/indexing.py 9 2013-05-12 21:41:06Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -141,6 +141,11 @@ class Indexing:
         #storage = self.get_storage(storage_id)
         #storage.edit_indexer(options)
 
+    # !!! duplicate_indexer
+    # !!! duplicate_indexers
+    # !!! rename_indexer
+    # !!! rename_indexers
+
     # ------------------------------------------------------------------------
     # Index Retrieval API
 
@@ -207,6 +212,11 @@ class Indexing:
         storage = self.get_storage(storage_id)
         storage.edit_index(field_id, options)
 
+    # !!! duplicate_index
+    # !!! duplicate_indexes
+    # !!! rename_index
+    # !!! rename_indexes
+
     # ------------------------------------------------------------------------
     # Entry Indexing API
 
@@ -271,4 +281,4 @@ class Indexing:
 
 InitializeClass(Indexing)
 
-# TODO indexing.py - implement
+# !!! indexing.py - implement

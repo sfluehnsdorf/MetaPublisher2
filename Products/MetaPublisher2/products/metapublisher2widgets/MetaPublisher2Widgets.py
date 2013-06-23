@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2Widgets Product
 
 !TXT! module info
 
-$Id: products/metapublisher2widgets/MetaPublisher2Widgets.py 5 2013-05-09 17:11:38Z sfluehnsdorf $
+$Id: products/metapublisher2widgets/MetaPublisher2Widgets.py 6 2013-05-14 22:16:58Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -124,7 +124,7 @@ def add_MetaPublisher2Widgets(self, id, title='Widgets Folder', REQUEST=None):
             url = self.DestinationURL()
         except:
             url = REQUEST['URL1']
-        url = '%s/%s?update_menu=1&manage_tabs_message=%s' % (
+        url = '%s/manage_main?update_menu=1&manage_tabs_message=%s' % (
             url,
             quote_plus('!TXT! New MetaPublisher2Widgets "%s" created.' % id)
         )

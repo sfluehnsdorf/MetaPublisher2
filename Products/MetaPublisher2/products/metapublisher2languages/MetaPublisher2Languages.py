@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2Languages Product
 
 !TXT! module info
 
-$Id: products/metapublisher2languages/MetaPublisher2Languages.py 9 2013-05-09 17:11:54Z sfluehnsdorf $
+$Id: products/metapublisher2languages/MetaPublisher2Languages.py 10 2013-05-14 22:16:41Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -124,7 +124,7 @@ def add_MetaPublisher2Languages(self, id, title='Languages Folder', REQUEST=None
             url = self.DestinationURL()
         except:
             url = REQUEST['URL1']
-        url = '%s/%s?update_menu=1&manage_tabs_message=%s' % (
+        url = '%s/manage_main?update_menu=1&manage_tabs_message=%s' % (
             url,
             quote_plus('!TXT! New MetaPublisher2Languages "%s" created.' % id)
         )

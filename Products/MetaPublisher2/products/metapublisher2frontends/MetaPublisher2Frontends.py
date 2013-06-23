@@ -24,7 +24,7 @@ __doc__ = """MetaPublisher2Frontends Product
 
 !TXT! module info
 
-$Id: products/metapublisher2frontends/MetaPublisher2Frontends.py 9 2013-05-09 17:12:03Z sfluehnsdorf $
+$Id: products/metapublisher2frontends/MetaPublisher2Frontends.py 10 2013-05-14 22:16:32Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -124,7 +124,7 @@ def add_MetaPublisher2Frontends(self, id, title='Frontends Folder', REQUEST=None
             url = self.DestinationURL()
         except:
             url = REQUEST['URL1']
-        url = '%s/%s?update_menu=1&manage_tabs_message=%s' % (
+        url = '%s/manage_main?update_menu=1&manage_tabs_message=%s' % (
             url,
             quote_plus('!TXT! New MetaPublisher2Frontends "%s" created.' % id)
         )

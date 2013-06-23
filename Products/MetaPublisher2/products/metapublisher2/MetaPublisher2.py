@@ -43,7 +43,7 @@ The application can be managed through the Web by Zope's Management Interface,
 through an extensive API or, if desired through a user generated public
 interface.
 
-$Id: products/metapublisher2/MetaPublisher2.py 19 2013-05-10 00:45:13Z sfluehnsdorf $
+$Id: products/metapublisher2/MetaPublisher2.py 20 2013-06-23 12:02:19Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -213,7 +213,7 @@ def add_MetaPublisher2(self, id, title='', presets=[], REQUEST=None):
             url = self.DestinationURL()
         except:
             url = REQUEST['URL1']
-        url = '%s/%s?update_menu=1&manage_tabs_message=%s' % (
+        url = '%s/manage_main?update_menu=1&manage_tabs_message=%s' % (
             url,
             quote_plus('!TXT! New MetaPublisher2 "%s" created.' % id)
         )
