@@ -34,7 +34,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.interfaces import IEntryField
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, implements, InitializeClass, true, false
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, implements, InitializeClass)
 
 
 # ============================================================================
@@ -55,10 +56,13 @@ class EntryField:
 
     implements(IEntryField)
 
+
 # ----------------------------------------------------------------------------
 # initialize class security
 
+
 InitializeClass(EntryField)
+
 
 # !!! bases/entryfield/entryfield.py - define api
 # !!! bases/entryfield/entryfield.py - implement backdrop/failsafe code

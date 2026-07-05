@@ -33,7 +33,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, InitializeClass, permission_access_entries, permission_change_entries, permission_create_entries, false, true, quote_plus
+from Products.MetaPublisher2.library import ClassSecurityInfo, InitializeClass
 
 
 # ============================================================================
@@ -57,71 +57,59 @@ class EntryStats:
 
     def stat_entry(self, source, entry_id):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     def stat_entries(self, source, entry_ids=None, conditions=None):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_size(self, source, entry_id):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_ctime(self, source, entry_id):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_cuser(self, source, entry_id):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_mtime(self, source, entry_id):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_muser(self, source, entry_id):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_atime(self, source, entry_id):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_auser(self, source, entry_id):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Stats Retrieval
 
     def touch_entry(self, source, entry_id):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     def touch_entries(self, source, entry_ids=None, conditions=None):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     def access_entry(self, source, entry_id):
         """!TXT!"""
-
-        raise NotImplemented
+        raise NotImplementedError
 
     def access_entries(self, source, entry_ids=None, conditions=None):
         """!TXT!"""
+        raise NotImplementedError
 
-        raise NotImplemented
 
 # ----------------------------------------------------------------------------
 # Class Security

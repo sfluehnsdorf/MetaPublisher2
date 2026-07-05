@@ -33,4 +33,12 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from entryfield import *
+from entryfield import EntryField
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'EntryField',
+]

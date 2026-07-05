@@ -23,10 +23,24 @@
 __doc__ = """Constant Expression Base Initialisation
 
 !TXT! module info
-
-$Id: bases/expression/constant/__init__.py 2 2013-05-10 23:29:59Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
 
-# TODO: bases/expression/constant - acceleration, action, area, capacitance, density, dynamic_viscosity, electric_charge, electric_current, electric_dipole, electrical_resistance, electromotive_force, energy, flow, force, frequency, illuminance, inductance, information_entropy, kinematic_viscosity, length, luminance, luminous_flux, luminous_intensity, magnetic_flux, magnetic_flux_density, mass, mathematics, plane_angle, power, pressure, radiation_absorbed_dose, radiation_equivalent_dose, radiation_exposure, radiation_source_activity, solid_angle, temperature, time, torque, velocity, volume
+# TODO: bases/expression/constant - acceleration, action, area, capacitance,
+#       density, dynamic_viscosity, electric_charge, electric_current,
+#       electric_dipole, electrical_resistance, electromotive_force, energy,
+#       flow, force, frequency, illuminance, inductance, information_entropy,
+#       kinematic_viscosity, length, luminance, luminous_flux,
+#       luminous_intensity, magnetic_flux, magnetic_flux_density, mass,
+#       mathematics, plane_angle, power, pressure, radiation_absorbed_dose,
+#       radiation_equivalent_dose, radiation_exposure,
+#       radiation_source_activity, solid_angle, temperature, time, torque,
+#       velocity, volume
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+]

@@ -23,8 +23,6 @@
 __doc__ = """Transfers Component
 
 !TXT! module info
-
-$Id: data/transfers/transfers.py 5 2013-05-08 23:54:18Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -33,7 +31,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries,
+    show_future)
 
 
 # ============================================================================
@@ -61,9 +61,12 @@ class Transfers:
 
         transfers_form = DTMLFile('transfers', globals())
 
+
 # ----------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Transfers)
+
 
 # TODO transfers.py - implement

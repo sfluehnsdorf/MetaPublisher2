@@ -23,8 +23,6 @@
 __doc__ = """Inheritance Component Inititalisation
 
 !TXT! module info
-
-$Id: configuration/inheritance/__init__.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -33,4 +31,13 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ==============================================================================
 # Module Imports
 
+
 from inheritance import Inheritance
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'Inheritance',
+]

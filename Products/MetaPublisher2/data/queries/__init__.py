@@ -34,3 +34,11 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from queries import Queries
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'Queries',
+]

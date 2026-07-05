@@ -34,7 +34,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import basepath, ClassSecurityInfo, DTMLFile, exists, false, InitializeClass, join, permission_release_check, permission_zmi, split, true
+from Products.MetaPublisher2.library import (
+    basepath, ClassSecurityInfo, DTMLFile, exists, false, InitializeClass,
+    join, permission_release_check, permission_zmi, split, true)
 
 
 # ============================================================================
@@ -65,7 +67,6 @@ class Release:
 
     def _read_release_file(self, filename):
         """!TXT!"""
-
         filename = join(basepath, split(filename)[1])
         if exists(filename):
             filehandle = open(filename)
@@ -112,16 +113,20 @@ class Release:
     security.declareProtected(permission_zmi, 'may_check_release')
 
     def may_check_release(self, REQUEST):
-        """!TXT! Return true if user may use the online release check service"""
+        """!TXT! Return true if user may use the online release check
+        service"""
 
-        return REQUEST.AUTHENTICATED_USER.has_permission(permission_release_check, self) and true or false
+        return REQUEST.AUTHENTICATED_USER.has_permission(
+            permission_release_check, self) and true or false
 
-    security.declareProtected(permission_release_check, 'get_release_check_url')
+    security.declareProtected(
+        permission_release_check, 'get_release_check_url')
 
     def get_release_check_url(self):
         """!TXT! Return the URL for the online release check service"""
 
         return self.get_setting('service_release_check_url')
+
 
 # ----------------------------------------------------------------------------
 # Class Security

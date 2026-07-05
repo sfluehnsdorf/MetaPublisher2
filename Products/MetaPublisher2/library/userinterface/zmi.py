@@ -23,8 +23,6 @@
 __doc__ = """MetaPublisher2 ZMI
 
 !TXT! module info
-
-$Id: library/userinterface/zmi.py 4 2013-05-08 20:29:56Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -33,12 +31,15 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
+
 from Products.MetaPublisher2.library.application import permission_zmi
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, DTMLFile, InitializeClass
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, InitializeClass)
 
 
 # ============================================================================
 # Module Exports
+
 
 __all__ = [
     'ZMI',
@@ -72,7 +73,9 @@ class ZMI:
 
     manage_MetaPublisher2_js = DTMLFile('zmi_js', globals())
 
+
 # ----------------------------------------------------------------------------
 # Class Security
+
 
 InitializeClass(ZMI)

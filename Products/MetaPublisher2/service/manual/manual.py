@@ -35,8 +35,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile,\
-    InitializeClass, permission_zmi, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_zmi, show_future)
 
 
 # ============================================================================
@@ -77,6 +77,7 @@ class Manual:
         """!TXT! Return the URL for the online manual service"""
 
         return self.get_setting('service_manual_url')
+
 
 # ----------------------------------------------------------------------------
 # initialize class security

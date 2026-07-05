@@ -23,8 +23,6 @@
 __doc__ = """Entry Container Base
 
 !TXT! module info
-
-$Id: bases/entrycontainer/entrycontainer.py 3 2013-05-08 19:54:13Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -34,7 +32,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.interfaces import IEntryContainer
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, implements, InitializeClass, true, false
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, implements, InitializeClass, true, false)
 
 
 # ============================================================================
@@ -61,155 +60,216 @@ class EntryContainer:
     def extract_entry_data(self, mapping, failsafe=true):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def extract_entryfield_data(self, field_id, mapping, failsafe=true):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Single Entry Retrieval API
 
-    def get_entry(self, parent_entry_id=None, entry_id=None, entry_position=None, field_ids=None, failsafe=false, bound=true):
+    def get_entry(
+        self, parent_entry_id=None, entry_id=None, entry_position=None,
+        field_ids=None, failsafe=false, bound=true
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Multiple Entry Retrieval API
 
-    def entry_ids(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None, bound=None):
+    def entry_ids(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None, order_by=None, offset=None, limit=None, bound=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def entry_items(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, field_ids=None, order_by=None, offset=None, limit=None, bound=None):
+    def entry_items(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None, field_ids=None, order_by=None, offset=None,
+        limit=None, bound=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def entry_values(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, field_ids=None, order_by=None, offset=None, limit=None, bound=None):
+    def entry_values(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None, field_ids=None, order_by=None, offset=None,
+        limit=None, bound=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # --------------------------------------------------------------------------
     # Entry Statistics Retrieval API
 
-    def count_entries(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def count_entries(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # --------------------------------------------------------------------------
     # Entry Existence Retrieval API
 
-    def has_all_entries(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def has_all_entries(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def has_any_entries(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def has_any_entries(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def has_entry(self, parent_entry_id=None, entry_id=None, entry_position=None):
+    def has_entry(
+        self, parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Creation Mutation API
 
-    def add_entry(self, parent_entry_id=None, entry_id=None, entry_position=None, data={}, **args):
+    def add_entry(
+        self, parent_entry_id=None, entry_id=None, entry_position=None,
+        data={}, **args
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def add_entry_to_top(self, parent_entry_id=None, entry_id=None, data={}, **args):
+    def add_entry_to_top(
+        self, parent_entry_id=None, entry_id=None, data={}, **args
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def add_entry_to_bottom(self, parent_entry_id=None, entry_id=None, data={}, **args):
+    def add_entry_to_bottom(
+        self, parent_entry_id=None, entry_id=None, data={}, **args
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def add_entry_somewhere(self, parent_entry_id=None, entry_id=None, data={}, **args):
+    def add_entry_somewhere(
+        self, parent_entry_id=None, entry_id=None, data={}, **args
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def add_entries(self, entries, parent_entry_id=None):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def add_entries_to_top(self, entries, parent_entry_id=None):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def add_entries_to_bottom(self, entries, parent_entry_id=None):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def add_entries_somewhere(self, entries, parent_entry_id=None):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def duplicate_entry(self, parent_entry_id=None, entry_id=None, entry_position=None, new_id=None):
+    def duplicate_entry(
+        self, parent_entry_id=None, entry_id=None, entry_position=None,
+        new_id=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def duplicate_entries(self, parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, new_ids=None):
+    def duplicate_entries(
+        self, parent_entry_id=None, entry_ids=[], entry_positions=[],
+        conditions=None, new_ids=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def set_entry(self, parent_entry_id=None, entry_id=None, entry_position=None, data={}, **args):
+    def set_entry(
+        self, parent_entry_id=None, entry_id=None, entry_position=None,
+        data={}, **args
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Modification Mutation API
 
-    def edit_entry(self, parent_entry_id=None, entry_id=None, entry_position=None, data={}, **args):
+    def edit_entry(
+        self, parent_entry_id=None, entry_id=None, entry_position=None,
+        data={}, **args
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def edit_entries(self, parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, data={}, **args):
+    def edit_entries(
+        self, parent_entry_id=None, entry_ids=[], entry_positions=[],
+        conditions=None, data={}, **args
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def rename_entry(self, parent_entry_id=None, entry_id=None, entry_position=None, new_id=None):
+    def rename_entry(
+        self, parent_entry_id=None, entry_id=None, entry_position=None,
+        new_id=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def rename_entries(self, parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, new_ids=None):
+    def rename_entries(
+        self, parent_entry_id=None, entry_ids=[], entry_positions=[],
+        conditions=None, new_ids=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def reset_entry(self, parent_entry_id=None, entry_id=None, entry_position=None, field_ids=None):
+    def reset_entry(
+        self, parent_entry_id=None, entry_id=None, entry_position=None,
+        field_ids=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def reset_entries(self, parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, field_ids=None):
+    def reset_entries(
+        self, parent_entry_id=None, entry_ids=[], entry_positions=[],
+        conditions=None, field_ids=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Deletion Mutation API
@@ -217,112 +277,166 @@ class EntryContainer:
     def clear_entries(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def delete_entry(self, parent_entry_id=None, entry_id=None, entry_position=None, failsafe=false):
+    def delete_entry(
+        self, parent_entry_id=None, entry_id=None, entry_position=None,
+        failsafe=false
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def delete_entries(self, parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, failsafe=false):
+    def delete_entries(
+        self, parent_entry_id=None, entry_ids=[], entry_positions=[],
+        conditions=None, failsafe=false
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def pop_first_entry(self, parent_entry_id=None, conditions=None):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def pop_last_entry(self, parent_entry_id=None, conditions=None):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def pop_random_entry(self, parent_entry_id=None, conditions=None):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # EntryField Retrieval API
 
-    def get_entryfield(self, field_id, default=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def get_entryfield(
+        self, field_id, default=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def count_entryfields(self, field_id, value, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def count_entryfields(
+        self, field_id, value, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def count_unique_entryfields(self, field_id, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def count_unique_entryfields(
+        self, field_id, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def has_any_entryfields(self, field_id, value, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def has_any_entryfields(
+        self, field_id, value, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def has_all_entryfields(self, field_id, value, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def has_all_entryfields(
+        self, field_id, value, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def has_entryfield(self, field_id, entry_id):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def get_unique_entryfields(self, field_id, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def get_unique_entryfields(
+        self, field_id, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # EntryField Mutation API
 
-    def reset_entryfield(self, field_id, parent_entry_id=None, entry_id=None, entry_position=None):
+    def reset_entryfield(
+        self, field_id, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def reset_entryfields(self, field_id, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def reset_entryfields(
+        self, field_id, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def set_entryfield(self, field_id, value, parent_entry_id=None, entry_id=None, entry_position=None):
+    def set_entryfield(
+        self, field_id, value, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def set_entryfields(self, field_id, value, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def set_entryfields(
+        self, field_id, value, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # EntrySet Creation API
 
-    def get_entryset(self, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None, bound=true, lazy=true, live=false):
+    def get_entryset(
+        self, field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, order_by=None, offset=None,
+        limit=None, bound=true, lazy=true, live=false
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def join_entries(self, right_source, join_type='inner', join_conditions=None, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None, left_field_ids=None, left_parent_entry_id=None, left_entry_ids=[], left_entry_positions=[], left_conditions=None, left_order_by=None, left_offset=None, left_limit=None, right_field_ids=None, right_parent_entry_id=None, right_entry_ids=[], right_entry_positions=[], right_conditions=None, right_order_by=None, right_offset=None, right_limit=None, bound=true, lazy=true, live=True):
+    def join_entries(
+        self, right_source, join_type='inner', join_conditions=None,
+        field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, order_by=None, offset=None,
+        limit=None, left_field_ids=None, left_parent_entry_id=None,
+        left_entry_ids=[], left_entry_positions=[], left_conditions=None,
+        left_order_by=None, left_offset=None, left_limit=None,
+        right_field_ids=None, right_parent_entry_id=None, right_entry_ids=[],
+        right_entry_positions=[], right_conditions=None, right_order_by=None,
+        right_offset=None, right_limit=None, bound=true, lazy=true, live=True
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    # !!! bases/entrycontainer/entrycontainer.py - review/revise API for select_entries
-    def select_entries(self, fields=None, joins=None, conditions=None, order_by=None, offset=None, limit=None, bound=true, live=True):
+    # !!! bases/entrycontainer/entrycontainer.py - review/revise API for
+    # select_entries
+    def select_entries(
+        self, fields=None, joins=None, conditions=None, order_by=None,
+        offset=None, limit=None, bound=true, live=True
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # EntrySet Retrieval API
@@ -330,32 +444,32 @@ class EntryContainer:
     def is_entryset(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def is_entryset_live(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def is_entryset_lazy(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def is_entryset_bound(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def is_source_storage(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_source_storages(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # EntrySet Mutation API
@@ -363,73 +477,123 @@ class EntryContainer:
     def commit_entryset(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def reload_entryset(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def refresh_entryset(self, field_ids, entry_ids=None, entry_positions=None, conditions=None):
+    def refresh_entryset(
+        self, field_ids, entry_ids=None, entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Set Theory Retrieval API
 
-    def is_member(self, entry, fields=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def is_member(
+        self, entry, fields=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def is_disjoint(self, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=None, other_entry_positions=None, other_conditions=None):
+    def is_disjoint(
+        self, other_source, field_ids=None, parent_entry_id=None,
+        entry_ids=None, entry_positions=None, conditions=None,
+        other_field_ids=None, other_parent_entry_id=None, other_entry_ids=None,
+        other_entry_positions=None, other_conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def is_subset(self, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=None, other_entry_positions=None, other_conditions=None):
+    def is_subset(
+        self, other_source, field_ids=None, parent_entry_id=None,
+        entry_ids=None, entry_positions=None, conditions=None,
+        other_field_ids=None, other_parent_entry_id=None, other_entry_ids=None,
+        other_entry_positions=None, other_conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def is_true_subset(self, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def is_true_subset(
+        self, other_source, field_ids=None, parent_entry_id=None,
+        entry_ids=None, entry_positions=None, conditions=None,
+        other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def is_superset(self, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def is_superset(
+        self, other_source, field_ids=None, parent_entry_id=None,
+        entry_ids=None, entry_positions=None, conditions=None,
+        other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def is_true_superset(self, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def is_true_superset(
+        self, other_source, field_ids=None, parent_entry_id=None,
+        entry_ids=None, entry_positions=None, conditions=None,
+        other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Set Theory Mutation API
 
-    def intersection(self, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def intersection(
+        self, other_source, field_ids=None, parent_entry_id=None,
+        entry_ids=None, entry_positions=None, conditions=None,
+        other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def difference(self, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def difference(
+        self, other_source, field_ids=None, parent_entry_id=None,
+        entry_ids=None, entry_positions=None, conditions=None,
+        other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def symmetric_difference(self, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def symmetric_difference(
+        self, other_source, field_ids=None, parent_entry_id=None,
+        entry_ids=None, entry_positions=None, conditions=None,
+        other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def union(self, other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def union(
+        self, other_source, field_ids=None, parent_entry_id=None,
+        entry_ids=None, entry_positions=None, conditions=None,
+        other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Order Retrieval API
@@ -437,365 +601,544 @@ class EntryContainer:
     def get_entry_position(self, entry_id, parent_entry_id=None):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def get_entry_positions(self, parent_entry_id=None, entry_ids=None, conditions=None, order_by=None, offset=None, limit=None):
+    def get_entry_positions(
+        self, parent_entry_id=None, entry_ids=None, conditions=None,
+        order_by=None, offset=None, limit=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Order Mutation API
 
-    def rotate_entries(self, steps, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def rotate_entries(
+        self, steps, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def order_entries(self, order_by, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def order_entries(
+        self, order_by, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def shuffle_entries(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def shuffle_entries(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def reverse_entries(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def reverse_entries(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def move_entry(self, position, parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry(
+        self, position, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def move_entry_to_top(self, parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry_to_top(
+        self, parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def move_entry_up(self, parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry_up(
+        self, parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def move_entry_down(self, parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry_down(
+        self, parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def move_entry_to_bottom(self, parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry_to_bottom(
+        self, parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def move_entries(self, position, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entries(
+        self, position, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def move_entries_to_top(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entries_to_top(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def move_entries_up(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entries_up(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def move_entries_down(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entries_down(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def move_entries_to_bottom(self, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entries_to_bottom(
+        self, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Single Root Entry Retrieval API
 
-    def is_root_entry(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def is_root_entry(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def root_entry_id(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def root_entry_item(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def root_entry_value(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Multiple Root Entry Retrieval API
 
-    def is_top_entry(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def is_top_entry(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def top_entry_ids(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def top_entry_items(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def top_entry_values(self):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Node Type Retrieval API
 
-    def is_entry_branch(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def is_entry_branch(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def is_entry_leaf(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def is_entry_leaf(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def are_entries_branches(self, tree_field_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def are_entries_branches(
+        self, tree_field_id=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def are_entries_leaves(self, tree_field_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def are_entries_leaves(
+        self, tree_field_id=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def entry_branch_ids(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, conditions=None, max_levels=None):
+    def entry_branch_ids(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, conditions=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def entry_branch_items(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, conditions=None, max_levels=None):
+    def entry_branch_items(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, conditions=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def entry_branch_values(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, conditions=None, max_levels=None):
+    def entry_branch_values(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, conditions=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def entry_leaf_id(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, conditions=None, max_levels=None):
+    def entry_leaf_id(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, conditions=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def entry_leaf_items(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def entry_leaf_items(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def entry_leaf_values(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def entry_leaf_values(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Relationship Retrieval API
 
-    def is_ancestor(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, other_parent_entry_id=None, other_entry_id=None, other_entry_position=None, of_level=None, max_levels=None):
+    def is_ancestor(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, other_parent_entry_id=None, other_entry_id=None,
+        other_entry_position=None, of_level=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def is_parent(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, other_parent_entry_id=None, other_entry_id=None, other_entry_position=None):
+    def is_parent(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, other_parent_entry_id=None, other_entry_id=None,
+        other_entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def is_sibling(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, other_parent_entry_id=None, other_entry_id=None, other_entry_position=None):
+    def is_sibling(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, other_parent_entry_id=None, other_entry_id=None,
+        other_entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def is_child(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, other_parent_entry_id=None, other_entry_id=None, other_entry_position=None):
+    def is_child(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, other_parent_entry_id=None, other_entry_id=None,
+        other_entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def is_descendant(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, other_parent_entry_id=None, other_entry_id=None, other_entry_position=None, of_level=None, max_levels=None):
+    def is_descendant(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, other_parent_entry_id=None, other_entry_id=None,
+        other_entry_position=None, of_level=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Ancestor Retrieval API
 
-    def count_ancestor_entries(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None, include_ancestor_siblings=false):
+    def count_ancestor_entries(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None, include_ancestor_siblings=false
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def ancestor_entry_ids(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None, include_ancestor_siblings=false):
+    def ancestor_entry_ids(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None, include_ancestor_siblings=false
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def ancestor_entry_items(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None, include_ancestor_siblings=false):
+    def ancestor_entry_items(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None, include_ancestor_siblings=false
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def ancestor_entry_values(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None, include_ancestor_siblings=false):
+    def ancestor_entry_values(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None, include_ancestor_siblings=false
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Parent Retrieval API
 
-    def get_parent_entry(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def get_parent_entry(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def get_parent_entry_id(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def get_parent_entry_id(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def get_parent_entry_item(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def get_parent_entry_item(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Sibling Retrieval API
 
-    def count_sibling_entries(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def count_sibling_entries(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def has_sibling_entries(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def has_sibling_entries(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def sibling_entry_ids(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def sibling_entry_ids(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def sibling_entry_items(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def sibling_entry_items(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def sibling_entry_values(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def sibling_entry_values(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Child Retrieval API
 
-    def count_children_entries(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def count_children_entries(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def has_children_entries(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def has_children_entries(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def children_entry_ids(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def children_entry_ids(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def children_entry_items(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def children_entry_items(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def children_entry_values(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def children_entry_values(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Descendant Retrieval API
 
-    def count_descendant_entries(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def count_descendant_entries(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def descendant_entry_ids(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def descendant_entry_ids(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def descendant_entry_items(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def descendant_entry_items(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def descendant_entry_values(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def descendant_entry_values(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Tree Mutation API
 
-    def move_entry_branch(self, tree_field_id=None, destination_entry_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry_branch(
+        self, tree_field_id=None, destination_entry_id=None,
+        parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def move_entry_branches(self, tree_field_id=None, destination_entry_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entry_branches(
+        self, tree_field_id=None, destination_entry_id=None,
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def flatten_entry_branch(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def flatten_entry_branch(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def flatten_entry_branches(self, tree_field_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, max_levels=None):
+    def flatten_entry_branches(
+        self, tree_field_id=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, max_levels=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def crop_entry_branch(self, tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def crop_entry_branch(
+        self, tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    def crop_entry_branches(self, tree_field_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def crop_entry_branches(
+        self, tree_field_id=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Stats Retrieval
@@ -803,47 +1146,47 @@ class EntryContainer:
     def stat_entry(self, entry_id):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def stat_entries(self, entry_ids=None, conditions=None):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_size(self, entry_id):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_ctime(self, entry_id):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_cuser(self, entry_id):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_mtime(self, entry_id):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_muser(self, entry_id):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_atime(self, entry_id):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def get_entry_stat_auser(self, entry_id):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Entry Stats Retrieval
@@ -851,22 +1194,23 @@ class EntryContainer:
     def touch_entry(self, entry_id):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def touch_entries(self, entry_ids=None, conditions=None):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def access_entry(self, entry_id):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     def access_entries(self, entry_ids=None, conditions=None):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
+
 
 # ----------------------------------------------------------------------------
 # initialize class security

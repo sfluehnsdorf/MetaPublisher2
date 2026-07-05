@@ -1,5 +1,5 @@
 # -*- coding: iso-8859-15 -*-
-# ============================================================================
+# =============================================================================
 #
 #                         M e t a  P u b l i s h e r  2
 #
@@ -18,26 +18,25 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE
 #
-# ============================================================================
+# =============================================================================
 
 __doc__ = """Search Component
 
 Keyword search for Entries in a Storage, allowing to define search conditions
 with a variety of conditions, provided by Field plugins.
-
-$Id: data/search/search.py 7 2013-05-10 22:57:46Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
 
 
-# ============================================================================
+# =============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries)
 
 
-# ============================================================================
+# =============================================================================
 # Module Exports
 
 __all__ = [
@@ -45,7 +44,7 @@ __all__ = [
 ]
 
 
-# ============================================================================
+# =============================================================================
 # Search Component Mix-In Class
 
 class Search:
@@ -53,16 +52,19 @@ class Search:
 
     security = ClassSecurityInfo()
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Search ZMI
 
     security.declareProtected(permission_access_entries, 'search_form')
 
     search_form = DTMLFile('search', globals())
 
-# ----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Search)
+
 
 # !!! search.py - implement

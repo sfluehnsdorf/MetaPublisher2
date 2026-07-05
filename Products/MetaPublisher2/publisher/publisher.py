@@ -34,7 +34,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass
+from Products.MetaPublisher2.library import ClassSecurityInfo, InitializeClass
 
 from audit import Audit
 from caching import Caching
@@ -56,7 +56,9 @@ __all__ = [
 # ============================================================================
 # Publisher Section Mix-In Class
 
-class Publisher(Frontends, Widgets, Designs, Languages, Caching, Audit, Renderer):
+class Publisher(
+    Frontends, Widgets, Designs, Languages, Caching, Audit, Renderer
+):
     """Publisher Section Mix-In Class"""
 
     security = ClassSecurityInfo()
@@ -73,6 +75,7 @@ class Publisher(Frontends, Widgets, Designs, Languages, Caching, Audit, Renderer
         {'label': 'Audit', 'action': 'audit_form'},
         {'label': 'Renderer', 'action': 'renderer_form'},
     )
+
 
 # ----------------------------------------------------------------------------
 # Class Security

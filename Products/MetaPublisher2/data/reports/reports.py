@@ -23,8 +23,6 @@
 __doc__ = """Reports Component
 
 !TXT! module info
-
-$Id: data/reports/reports.py 3 2013-05-08 19:34:04Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -33,7 +31,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries)
 
 
 # ============================================================================
@@ -59,7 +58,9 @@ class Reports:
 
     reports_form = DTMLFile('reports', globals())
 
+
 # ----------------------------------------------------------------------------
 # Class Security
+
 
 InitializeClass(Reports)

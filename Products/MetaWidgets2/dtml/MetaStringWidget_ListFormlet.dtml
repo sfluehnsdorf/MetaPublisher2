@@ -1,0 +1,40 @@
+<input type="hidden" name="&dtml-prefix;_formTypeId" value="List">
+
+<table cellspacing="1" cellpadding="4" border="0">
+
+<tr>
+<th valign="top" nowrap>Display Mode</th>
+<td>
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode1" value="defaultMode"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'defaultMode'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode1">Show value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode2" value="showDefault"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'showDefault'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode2">Show default value</label>
+</td>
+</tr>
+
+<tr>
+<th valign="top" nowrap>Max Characters</th>
+<td>
+  <input type="checkbox" name="&dtml-prefix;_maxChars" id="&dtml-prefix;_maxChars" value="1"<dtml-if "int( REQUEST.get( prefix + '_maxChars', 0 ) )"> checked</dtml-if>> <label for="&dtml-prefix;_maxChars">If checked, text will be clipped after specified number of characters</label><br />
+  <label for="&dtml-prefix;_maxCharsCount">Maximum number of characters to display:</label> <input type="text" name="&dtml-prefix;_maxCharsCount" id="&dtml-prefix;_maxCharsCount" value="<dtml-var "REQUEST.form.get( prefix + '_maxCharsCount', _[ prefix + '_maxCharsCount' ] )">" style="width: 40px; text-align: right;">
+</td>
+</tr>
+
+<tr>
+<th valign="top">Case</th>
+<td>
+  <input type="radio" name="&dtml-prefix;_case" id="&dtml-prefix;_case1" value="normal"<dtml-if "REQUEST.get( prefix + '_case', 'normal' ) == 'normal'"> checked</dtml-if>> <label for="&dtml-prefix;_case1">Leave unchanged</label><br />
+  <input type="radio" name="&dtml-prefix;_case" id="&dtml-prefix;_case2" value="lower"<dtml-if "REQUEST.get( prefix + '_case', 'normal' ) == 'lower'"> checked</dtml-if>> <label for="&dtml-prefix;_case2">Modify to lower case</label><br />
+  <input type="radio" name="&dtml-prefix;_case" id="&dtml-prefix;_case3" value="upper"<dtml-if "REQUEST.get( prefix + '_case', 'normal' ) == 'upper'"> checked</dtml-if>> <label for="&dtml-prefix;_case3">Modify to upper case</label><br />
+  <input type="radio" name="&dtml-prefix;_case" id="&dtml-prefix;_case4" value="capitalize"<dtml-if "REQUEST.get( prefix + '_case', 'normal' ) == 'capitalize'"> checked</dtml-if>> <label for="&dtml-prefix;_case4">Capitalize</label>
+</td>
+</tr>
+
+<tr>
+<th valign="top">Quote</th>
+<td>
+  <input type="radio" name="&dtml-prefix;_quote" id="&dtml-prefix;_quote1" value="normal"    <dtml-if "REQUEST.get( prefix + '_quote', 'normal' ) == 'normal'"> checked</dtml-if>> <label for="&dtml-prefix;_quote1">Leave unchanged</label><br />
+  <input type="radio" name="&dtml-prefix;_quote" id="&dtml-prefix;_quote2" value="html_quote"<dtml-if "REQUEST.get( prefix + '_quote', 'normal' ) == 'html_quote'"> checked</dtml-if>> <label for="&dtml-prefix;_quote2">Modify for HTML</label><br />
+  <input type="radio" name="&dtml-prefix;_quote" id="&dtml-prefix;_quote3" value="url_quote" <dtml-if "REQUEST.get( prefix + '_quote', 'normal' ) == 'url_quote'"> checked</dtml-if>> <label for="&dtml-prefix;_quote3">Modify for URL</label>
+</td>
+</tr>
+
+</table>

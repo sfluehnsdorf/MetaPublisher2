@@ -36,6 +36,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
+from collections import Mapping
 from os import listdir
 from os.path import exists, isdir, join, normpath, sep, split, splitext
 from urllib import quote_plus
@@ -49,18 +50,19 @@ from Globals import DTMLFile, ImageFile, InitializeClass
 from OFS.Folder import Folder
 from OFS.ObjectManager import BeforeDeleteException
 from OFS.PropertyManager import PropertyManager
-from OFS.SimpleItem import Item as ItemBase, Item_w__name__ as NamedItem, SimpleItem
+from OFS.SimpleItem import (
+    Item as ItemBase, Item_w__name__ as NamedItem, SimpleItem)
 from Products.PythonScripts.PythonScript import manage_addPythonScript
 from zope.interface import implements
 
 try:
     from OFS.OrderedFolder import OrderedFolder
-except:
+except Exception:
     OrderedFolder = Folder
 
 try:
     from collections import Counter
-except:
+except Exception:
 
     class Counter(dict):
         """!TXT! Simplified Counter class"""
@@ -91,6 +93,44 @@ except:
 
 
 # ============================================================================
+# Module Exports
+
+__all__ = [
+    'BeforeDeleteException',
+    'ClassSecurityInfo',
+    'ComputedAttribute',
+    'Counter',
+    'DTMLFile',
+    'Folder',
+    'ImageFile',
+    'Implicit',
+    'InitializeClass',
+    'ItemBase',
+    'NamedItem',
+    'OrderedFolder',
+    'Products',
+    'PropertyManager',
+    'RoleManager',
+    'SimpleItem',
+    'exists',
+    'false',
+    'implements',
+    'isdir',
+    'join',
+    'listdir',
+    'manage_addPythonScript',
+    'normpath',
+    'quote_plus',
+    'sep',
+    'split',
+    'split_paths',
+    'splitext',
+    'true',
+    'uuid4',
+]
+
+
+# ============================================================================
 # Path Splitter
 
 def split_paths(path):
@@ -105,7 +145,7 @@ def split_paths(path):
 try:
     true = True
     false = False
-except:
+except Exception:
     true = 1
     false = 0
 
@@ -115,13 +155,19 @@ except:
 
 try:
     from uuid import uuid4
-except:
+except Exception:
 
     from random import randrange
 
     def uuid4():
         """!TXT! generate uuid4"""
 
-        return '%x%x%x%x%x%x%x%x-%x%x%x%x-%x%x%x%x-%x%x%x%x-%x%x%x%x%x%x%x%x%x%x%x%x' % map(lambda index: randrange(16), range(32))
+        return (
+            '%x%x%x%x%x%x%x%x-%x%x%x%x-%x%x%x%x-%x%x%x%x-'
+            '%x%x%x%x%x%x%x%x%x%x%x%x' % map(
+                lambda index: randrange(16),
+                range(32)
+            )
+        )
 
 # !!! common.py - insert module exports

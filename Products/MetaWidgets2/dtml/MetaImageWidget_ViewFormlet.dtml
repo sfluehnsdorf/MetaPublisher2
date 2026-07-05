@@ -1,0 +1,23 @@
+<input type="hidden" name="&dtml-prefix;_formTypeId" value="View">
+
+<table cellspacing="1" cellpadding="4" border="0">
+
+<tr>
+<th valign="top" nowrap>Display Mode</th>
+<td>
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode1" value="defaultMode"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'defaultMode'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode1">Show linked thumbnail</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode2" value="showImage"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'showImage'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode2">Show image</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode3" value="showInfo"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'showInfo'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode3">Show "View Image" link</label>
+</td>
+</tr>
+
+<tr>
+<th valign="top" nowrap>Display Options</th>
+<td>
+  <input type="checkbox" name="&dtml-prefix;_showImageName" id="&dtml-prefix;_showImageName" value="1"<dtml-if "int( REQUEST.get( prefix + '_showImageName', 0 ) )"> checked</dtml-if>> <label for="&dtml-prefix;_showImageName">If checked, the filename will be included instead of the word "Download"</label><br />
+  <input type="checkbox" name="&dtml-prefix;_showImageSize" id="&dtml-prefix;_showImageSize" value="1"<dtml-if "int( REQUEST.get( prefix + '_showImageSize', 0 ) )"> checked</dtml-if>> <label for="&dtml-prefix;_showImageSize">If checked, the file's size will be displayed</label><br />
+  <input type="checkbox" name="&dtml-prefix;_showImageType" id="&dtml-prefix;_showImageType" value="1"<dtml-if "int( REQUEST.get( prefix + '_showImageType', 0 ) )"> checked</dtml-if>> <label for="&dtml-prefix;_showImageType">If checked, the file's content type will be displayed</label><br />
+</td>
+</tr>
+
+</table>

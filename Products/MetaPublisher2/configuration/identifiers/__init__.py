@@ -23,8 +23,6 @@
 __doc__ = """Identifiers Component Inititalisation
 
 !TXT! module info
-
-$Id: configuration/identifiers/__init__.py 2 2013-05-05 18:01:53Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -34,3 +32,11 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from identifiers import Identifiers
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'Identifiers',
+]

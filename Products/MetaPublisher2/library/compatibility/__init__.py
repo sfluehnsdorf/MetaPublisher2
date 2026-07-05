@@ -36,4 +36,24 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from compatibility import *
+from compatibility import (
+    Compatibility, FutureCompatibility, HistoricalCompatibility,
+    InterfacesFolder, TestError, deprecated_form, deprecated_method,
+    show_future, standard_form_footer, standard_form_header)
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'Compatibility',
+    'FutureCompatibility',
+    'HistoricalCompatibility',
+    'InterfacesFolder',
+    'TestError',
+    'deprecated_form',
+    'deprecated_method',
+    'show_future',
+    'standard_form_footer',
+    'standard_form_header',
+]

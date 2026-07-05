@@ -33,5 +33,14 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from frontend import *
-from legacyfrontend import *
+from frontend import FrontendPluginBase
+from legacyfrontend import LegacyFrontendPlugin
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'FrontendPluginBase',
+    'LegacyFrontendPlugin',
+]

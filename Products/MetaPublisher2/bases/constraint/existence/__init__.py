@@ -23,8 +23,13 @@
 __doc__ = """Existence Constraint Base Initialisation
 
 !TXT! module info
-
-$Id: bases/constraint/existence/__init__.py 2 2013-05-10 23:27:33Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+]

@@ -1,12 +1,12 @@
 # -*- coding: iso-8859-15 -*-
-# ============================================================================
+# =============================================================================
 #
 #                         M e t a  P u b l i s h e r  2
 #
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
 # For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 #
 # This software is subject to the provisions of the Zope Public License,
 # Version 2.1 (ZPL).
@@ -18,26 +18,28 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE
 #
-# ============================================================================
+# =============================================================================
 
 __doc__ = """!TXT! Type Identification
 
 !TXT! module info
 Resources for type identification of variables.
-
-$Id: library/common/typeid.py 7 2013-05-08 23:10:07Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
 
 
-# ============================================================================
+# =============================================================================
 # Module Imports
 
-from types import StringTypes, BooleanType, ComplexType, DictType, FloatType, IntType, ListType, LongType, StringType, TupleType, UnicodeType
+from types import (
+    BooleanType, ComplexType, DictType, FloatType, IntType, ListType, LongType,
+    StringType, TupleType, UnicodeType)
+
+from common import false, true
 
 
-# ============================================================================
+# =============================================================================
 # Module Exports
 
 __all__ = [
@@ -46,11 +48,11 @@ __all__ = [
 ]
 
 
-# ============================================================================
+# =============================================================================
 # Object Type Identification
 
 
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # !TXT!
 
 object_types = {
@@ -67,11 +69,11 @@ object_types = {
 
 try:
     object_types[UnicodeType] = ('string', 'unicodestring')
-except:
+except Exception:
     pass
 
 
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # !TXT!
 
 def identify_type(unidentified):
@@ -84,11 +86,11 @@ def identify_type(unidentified):
         return ('string', None)
 
 
-# ============================================================================
+# =============================================================================
 # Boolean String Values
 
 
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # !TXT!
 
 true_values = ('true', 'yes', 'on', '1', )
@@ -96,7 +98,7 @@ false_values = ('false', 'no', 'off', '0', '', )
 null_values = ('null', 'none', 'undefined', )
 
 
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # !TXT!
 
 def is_true_value(value):
@@ -107,7 +109,7 @@ def is_true_value(value):
     return false
 
 
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # !TXT!
 
 def is_false_value(value):
@@ -118,7 +120,7 @@ def is_false_value(value):
     return false
 
 
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # !TXT!
 
 def is_null_value(value):
@@ -129,7 +131,7 @@ def is_null_value(value):
     return false
 
 
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # !TXT!
 
 def is_not_null_value(value):
@@ -140,11 +142,12 @@ def is_not_null_value(value):
     return true
 
 
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # !TXT!
 
 def get_boolean_value(value):
-    """!TXT! return true if value matches a true, false if value matches a false value, raise value error otherwise"""
+    """!TXT! return true if value matches a true, false if value matches a
+    false value, raise value error otherwise"""
 
     if is_true_value(value):
         return true
@@ -153,22 +156,25 @@ def get_boolean_value(value):
     raise ValueError('Invalid boolean value "%s"' % value)
 
 
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # !TXT!
 
 def get_nullableboolean_value(value):
-    """!TXT! return true if value matches a true, false if value matches a false value, null if value matches a null value, raise value error otherwise"""
+    """!TXT! return true if value matches a true, false if value matches a
+    false value, null if value matches a null value, raise value error
+    otherwise"""
 
     if is_null_value(value):
         return None
     return get_boolean_value(value)
 
 
-# ============================================================================
+# =============================================================================
 # String Evaluation
 
 def eval_valuestring(value, reference):
-    """!TXT! determine type of value and cast it based on type of reference value"""
+    """!TXT! determine type of value and cast it based on type of reference
+    value"""
 
     reference_typegroup, reference_type = identify_type(reference)
     if reference_type == 'boolean':
@@ -186,7 +192,10 @@ def eval_valuestring(value, reference):
             return value
     elif reference_typegroup == 'sequence':
         value_typegroup, value_type = identify_type(reference)
-        if (reference_typegroup, reference_type) == (value_typegroup, value_type):
+        if (
+            (reference_typegroup, reference_type) ==
+            (value_typegroup, value_type)
+        ):
             return value
         elif reference_type == 'list':
             if value_typegroup == 'string':
@@ -196,6 +205,7 @@ def eval_valuestring(value, reference):
             if value_typegroup == 'string':
                 return (value, )
             return tuple(value)
-    raise ValueError("!TXT! Can't identify and evaluate value %s %s" % (repr(value), repr((reference_typegroup, reference_type))))
+    raise ValueError("!TXT! Can't identify and evaluate value %s %s" % (
+        repr(value), repr((reference_typegroup, reference_type))))
 
 # !!! typeid.py - check if all methods are needed and must be exported

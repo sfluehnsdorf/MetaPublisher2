@@ -37,8 +37,11 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.interfaces import IFrontendPluginBase
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, false, InitializeClass, permission_manage, permission_manage_frontends, show_future, true
+from Products.MetaPublisher2.interfaces import (
+    IFrontendPluginBase, IPluginBase, IWidgetPluginBase)
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, false, InitializeClass, permission_manage,
+    permission_manage_frontends, show_future, true)
 
 
 # ============================================================================
@@ -62,31 +65,38 @@ class Frontends:
 
     if show_future:
 
-        security.declareProtected(permission_manage_frontends, 'frontends_form')
+        security.declareProtected(
+            permission_manage_frontends, 'frontends_form')
 
         frontends_form = DTMLFile('frontends', globals())
 
-        security.declareProtected(permission_manage_frontends, 'add_frontend_form')
+        security.declareProtected(
+            permission_manage_frontends, 'add_frontend_form')
 
         add_frontend_form = DTMLFile('add_frontend', globals())
 
-        security.declareProtected(permission_manage_frontends, 'duplicate_frontends_form')
+        security.declareProtected(
+            permission_manage_frontends, 'duplicate_frontends_form')
 
         duplicate_frontends_form = DTMLFile('duplicate_frontends', globals())
 
-        security.declareProtected(permission_manage_frontends, 'delete_frontends_form')
+        security.declareProtected(
+            permission_manage_frontends, 'delete_frontends_form')
 
         delete_frontends_form = DTMLFile('delete_frontends', globals())
 
-        security.declareProtected(permission_manage_frontends, 'edit_frontend_form')
+        security.declareProtected(
+            permission_manage_frontends, 'edit_frontend_form')
 
         edit_frontend_form = DTMLFile('edit_frontend', globals())
 
-        security.declareProtected(permission_manage_frontends, 'move_frontends_form')
+        security.declareProtected(
+            permission_manage_frontends, 'move_frontends_form')
 
         move_frontends_form = DTMLFile('move_frontends', globals())
 
-        security.declareProtected(permission_manage_frontends, 'rename_frontends_form')
+        security.declareProtected(
+            permission_manage_frontends, 'rename_frontends_form')
 
         rename_frontends_form = DTMLFile('rename_frontends', globals())
 
@@ -117,14 +127,16 @@ class Frontends:
     security.declareProtected(permission_manage, 'frontendplugin_items')
 
     def frontendplugin_items(self):
-        """!TXT! Return tuples of id, value of installed MetaPublisher2 Frontend plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2
+        Frontend plugins"""
 
         return self.plugin_items(IFrontendPluginBase)
 
     security.declareProtected(permission_manage, 'frontendplugin_values')
 
     def frontendplugin_values(self):
-        """!TXT! Return tuples of id, value of installed MetaPublisher2 Frontend plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2
+        Frontend plugins"""
 
         return self.plugin_values(IFrontendPluginBase)
 
@@ -136,7 +148,7 @@ class Frontends:
     def get_frontendflags(self, frontend_path):
         """!TXT! Return tuples of id, boolean states of all Plugin flags"""
 
-        frontend = get_frontend(self, frontend_path)
+        frontend = self.get_frontend(self, frontend_path)
         return frontend.get_frontendflags()
 
     security.declareProtected(permission_manage, 'get_frontendflag_ids')
@@ -144,15 +156,16 @@ class Frontends:
     def get_frontendflag_ids(self, frontend_path):
         """!TXT! Return the ids of all Plugin flags"""
 
-        frontend = get_frontend(self, frontend_path)
+        frontend = self.get_frontend(self, frontend_path)
         return frontend.get_frontendflag_ids()
 
     security.declareProtected(permission_manage, 'get_frontendflag')
 
     def get_frontendflag(self, frontend_path, pluginflag_id):
-        """!TXT! Return the boolean state of the specified Frontend flag if it exists, raises KeyError otherwise"""
+        """!TXT! Return the boolean state of the specified Frontend flag if it
+        exists, raises KeyError otherwise"""
 
-        frontend = get_frontend(self, frontend_path)
+        frontend = self.get_frontend(self, frontend_path)
         return frontend.get_pluginflag(pluginflag_id)
 
     security.declareProtected(permission_manage, 'has_frontendflag')
@@ -160,7 +173,7 @@ class Frontends:
     def has_frontendflag(self, frontend_path, pluginflag_id):
         """!TXT! Return True if the Frontend flag exists, False otherwise"""
 
-        frontend = get_frontend(self, frontend_path)
+        frontend = self.get_frontend(self, frontend_path)
         return frontend.has_pluginflag(pluginflag_id)
 
     # -------------------------------------------------------------
@@ -190,17 +203,19 @@ class Frontends:
         try:
             self._traverse_frontend_path(path)
             return true
-        except:
+        except Exception:
             return false
 
-    security.declareProtected(permission_manage_frontends, 'frontendpath_paths')
+    security.declareProtected(
+        permission_manage_frontends, 'frontendpath_paths')
 
     def frontendpath_paths(self):
         """!TXT!"""
 
         return map(lambda item: item[0], self.frontendpath_items())
 
-    security.declareProtected(permission_manage_frontends, 'frontendpath_items')
+    security.declareProtected(
+        permission_manage_frontends, 'frontendpath_items')
 
     def frontendpath_items(self):
         """!TXT!"""
@@ -208,11 +223,15 @@ class Frontends:
         paths = []
         paths_append = paths.append
         for path, frontend in self.frontend_items():
-            if getattr(frontend, 'isPrincipiaFolderish', None) and not IPluginBase.providedBy(frontend):
+            if (
+                getattr(frontend, 'isPrincipiaFolderish', None) and
+                not IPluginBase.providedBy(frontend)
+            ):
                 paths_append((path, frontend))
         return paths
 
-    security.declareProtected(permission_manage_frontends, 'frontendpath_values')
+    security.declareProtected(
+        permission_manage_frontends, 'frontendpath_values')
 
     def frontendpath_values(self):
         """!TXT!"""
@@ -236,7 +255,6 @@ class Frontends:
 
         result = []
         result_append = result.append
-        base = self._traverse_frontend_path(path)
         top = self.frontends
         prefix_len = len(top.absolute_url()) + 1
         frontends = top.objectValues()
@@ -270,39 +288,47 @@ class Frontends:
 
         # TODO frontends.py - implement get_frontend_path
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    security.declareProtected(permission_manage_frontends, 'get_frontend_parent')
+    security.declareProtected(
+        permission_manage_frontends, 'get_frontend_parent')
 
     def get_frontend_parent(self, frontend):
-        """!TXT! Return the specified Frontend's parent object. If object is a string, it will be normalized and the last path element removed."""
+        """!TXT! Return the specified Frontend's parent object. If object is a
+        string, it will be normalized and the last path element removed."""
 
         # TODO frontends.py - implement get_frontend_parent
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    security.declareProtected(permission_manage_frontends, 'get_frontend_parent_path')
+    security.declareProtected(
+        permission_manage_frontends, 'get_frontend_parent_path')
 
     def get_frontend_parent_path(self, frontend):
-        """!TXT! Return the specified Frontend's parent object. If object is a string, it will be normalized and the last path element removed."""
+        """!TXT! Return the specified Frontend's parent object. If object is a
+        string, it will be normalized and the last path element removed."""
 
         # TODO frontends.py - implement get_frontend_parent_path
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    security.declareProtected(permission_manage_frontends, 'get_frontend_parents')
+    security.declareProtected(
+        permission_manage_frontends, 'get_frontend_parents')
 
     def get_frontend_parents(self, frontend):
-        """!TXT! Return the specified Frontend's parent objects. If object is a string, it will be normalized and the last path element removed."""
+        """!TXT! Return the specified Frontend's parent objects. If object is a
+        string, it will be normalized and the last path element removed."""
 
         # TODO frontends.py - implement get_frontend_parents
 
-        raise NotImplemented
+        raise NotImplementedError
 
-    security.declareProtected(permission_manage_frontends, 'get_frontend_rendering_ids')
+    security.declareProtected(
+        permission_manage_frontends, 'get_frontend_rendering_ids')
 
     def get_frontend_rendering_ids(self, path):
-        """!TXT! Return a list of all ids generated by rendering the specified Frontend."""
+        """!TXT! Return a list of all ids generated by rendering the specified
+        Frontend."""
 
         frontend = self.get_frontend(path)
         return frontend.get_frontend_rendering_ids()
@@ -313,10 +339,12 @@ class Frontends:
     security.declareProtected(permission_manage_frontends, 'add_frontend_type')
 
     # TODO frontends.py - update add_frontend_type to new mechanism
-    # TODO frontends.py - check add_frontend_type if add factory can redirect properly to frontends_form
+    # TODO frontends.py - check add_frontend_type if add factory can redirect
+    #     properly to frontends_form
 
     def add_frontend_type(self, REQUEST=None):
-        """!TXT! Add a new Frontend in the specified path with specified id and configuration."""
+        """!TXT! Add a new Frontend in the specified path with specified id and
+        configuration."""
 
         path = 'frontends' + REQUEST.get('path', '')
         frontend_type = REQUEST.get('frontend_type', '')
@@ -332,7 +360,7 @@ class Frontends:
                     REQUEST,
                     path + frontendplugin['action']
                 )
-            except:
+            except Exception:
                 self.redirect(
                     REQUEST,
                     'frontends_form',
@@ -343,23 +371,26 @@ class Frontends:
 
     # TODO frontends.py - implement add_frontend
 
-    def add_frontend(self, path, frontend_path, frontend_type_id, options={}, REQUEST=None, **args):
-        """!TXT! Add a new Frontend in the specified path with specified id and configuration."""
-
-        raise NotImplemented
+    def add_frontend(
+        self, path, frontend_path, frontend_type_id, options={}, REQUEST=None,
+        **args
+    ):
+        """!TXT! Add a new Frontend in the specified path with specified id and
+        configuration."""
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'delete_frontend')
 
     def delete_frontend(self, path, REQUEST=None):
         """!TXT!"""
-
         path, frontend_id = path.rsplit('/', 1)
         base = self.get_frontend_parent(path)
         base.manage_delObjects(frontend_id)
         self.redirect(
             REQUEST,
             'frontends_form',
-            message='!TXT! Frontend "%s" at "%s" deleted.' % (frontend_id, path, new_id),
+            message='!TXT! Frontend "%s" at "%s" deleted.' % (
+                frontend_id, path),
             update_menu=true,
         )
 
@@ -367,7 +398,6 @@ class Frontends:
 
     def delete_frontends(self, paths=[], REQUEST=None):
         """!TXT!"""
-
         if not paths:
             raise ValueError('!TXT! No Frontends specified')
         delete_frontend = self.delete_frontend
@@ -380,13 +410,14 @@ class Frontends:
             update_menu=true,
         )
 
-    security.declareProtected(permission_manage_frontends, 'duplicate_frontend')
+    security.declareProtected(
+        permission_manage_frontends, 'duplicate_frontend')
 
     def duplicate_frontend(self, path, new_id=None, REQUEST=None):
         """!TXT!"""
 
         path, frontend_id = path.rsplit('/', 1)
-        base = _traverse_frontend_path(path)
+        base = self._traverse_frontend_path(path)
         if not new_id:
             ids = base.objectIds()
             new_id = 'copy_of_%s' % frontend_id
@@ -398,12 +429,14 @@ class Frontends:
         self.redirect(
             REQUEST,
             'frontends_form',
-            message='!TXT! Frontend "%s" at "%s" duplicated as "%s"' % (frontend_id, path, new_id),
+            message='!TXT! Frontend "%s" at "%s" duplicated as "%s"' % (
+                frontend_id, path, new_id),
             update_menu=true,
         )
         return new_id
 
-    security.declareProtected(permission_manage_frontends, 'duplicate_frontends')
+    security.declareProtected(
+        permission_manage_frontends, 'duplicate_frontends')
 
     def duplicate_frontends(self, paths, new_ids=[], REQUEST=None):
         """!TXT!"""
@@ -413,9 +446,11 @@ class Frontends:
         elif not new_ids:
             new_ids = [None] * len(paths)
         elif len(paths) != len(new_ids):
-            raise ValueError("!TXT! Number of old and new ids for duplicating Frontends mismatch.")
+            raise ValueError(
+                "!TXT! Number of old and new ids for duplicating Frontends "
+                "mismatch.")
         result_ids = []
-        result_ids_append = result.append
+        result_ids_append = result_ids.append
         duplicate_frontend = self.duplicate_frontend
         for index in range(len(paths)):
             result_ids_append(duplicate_frontend(paths[index], new_ids[index]))
@@ -434,7 +469,7 @@ class Frontends:
     def edit_frontend(self, frontend_path, options={}, REQUEST=None, **args):
         """!TXT! Change the specified Frontend's configuration."""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'move_frontend')
 
@@ -443,7 +478,7 @@ class Frontends:
     def move_frontend(self, frontend_path, destination_path, REQUEST=None):
         """!TXT! Move the specified Frontend to a new container."""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'move_frontends')
 
@@ -452,7 +487,7 @@ class Frontends:
     def move_frontends(self, frontend_paths, destination_path, REQUEST=None):
         """!TXT! Move the specified Frontends to a new container."""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'rename_frontend')
 
@@ -460,12 +495,13 @@ class Frontends:
         """!TXT! Rename the specified Frontend."""
 
         path, frontend_id = path.rsplit('/', 1)
-        base = _traverse_frontend_path(path)
+        base = self._traverse_frontend_path(path)
         base.manage_renameObject(frontend_id, new_id)
         self.redirect(
             REQUEST,
             'frontends_form',
-            message='!TXT! Frontend "%s" at "%s" renamed to "%s".' % (frontend_id, path, new_id),
+            message='!TXT! Frontend "%s" at "%s" renamed to "%s".' % (
+                frontend_id, path, new_id),
             update_menu=true,
         )
         return new_id
@@ -473,24 +509,28 @@ class Frontends:
     security.declareProtected(permission_manage_frontends, 'rename_frontends')
 
     def rename_frontends(self, paths, new_ids, REQUEST=None):
-        """!TXT! Rename the specified Frontends. Both id lists must have the same length or ValueError is raised."""
+        """!TXT! Rename the specified Frontends. Both id lists must have the
+        same length or ValueError is raised."""
 
         if not paths:
             raise ValueError('!TXT! No Frontends specified')
         elif len(paths) != len(new_ids):
-            raise ValueError("!TXT! Number of old and new ids for renaming Frontends mismatch.")
+            raise ValueError(
+                "!TXT! Number of old and new ids for renaming Frontends "
+                "mismatch.")
         result_ids = []
-        result_ids_append = result.append
+        result_ids_append = result_ids.append
         rename_frontend = self.rename_frontend
         for index in range(len(paths)):
             result_ids_append(rename_frontend(paths[index], new_ids[index]))
         self.redirect(
             REQUEST,
             'frontends_form',
-            message='!TXT! %d Frontends renamed.' % len(frontend_ids),
+            message='!TXT! %d Frontends renamed.' % len(paths),
             update_menu=true,
         )
         return result_ids
+
 
 # ----------------------------------------------------------------------------
 # Class Security

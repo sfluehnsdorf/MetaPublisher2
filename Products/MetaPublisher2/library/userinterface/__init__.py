@@ -33,4 +33,12 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from userinterface import *
+from userinterface import UserInterface
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'UserInterface',
+]

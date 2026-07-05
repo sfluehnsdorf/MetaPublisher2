@@ -1,0 +1,42 @@
+<dtml-var manage_page_header>
+<dtml-var manage_tabs>
+
+<form action="&dtml-zmp2URL;" method="post">
+<input type="hidden" name="storageId" value="&dtml-getStorageId;">
+
+
+<h2 class="pagetitle">Change DateField</h2>
+
+
+  <table cellspacing="0" cellpadding="2" border="0">
+
+  <tr>
+  <td align="left" valign="top"><div class="form-optional">Title</div></td>
+  <td align="left" valign="top" width="100%"><input type="text" name="title" size="60" class="fw" value="<dtml-var title>" /></td>
+  </tr>
+
+  <tr>
+  <td align="left" valign="top"><div class="form-optional">Default</div></td>
+  <td align="left" valign="top">
+<dtml-let now="ZopeTime( default )">
+    <select name="default_year"><dtml-in "range( 1901, 2100 )" prefix=year><option value="&dtml-year_item;"<dtml-if "now.year() == year_item"> selected</dtml-if>>&dtml-year_item;</option></dtml-in></select>
+    <select name="default_month"><dtml-in "range( 1, 13 )" prefix=month><option value="<dtml-var "'%02d' % month_item">"<dtml-if "now.month() == month_item"> selected</dtml-if>>&dtml-month_item;</option></dtml-in></select>
+    <select name="default_day"><dtml-in "range( 1, 32 )" prefix=day><option value="<dtml-var "'%02d' % day_item">"<dtml-if "now.day() == day_item"> selected</dtml-if>>&dtml-day_item;</option></dtml-in></select>
+    &nbsp;
+    <select name="default_hour"><dtml-in "range( 0, 24 )" prefix=hour><option value="<dtml-var "'%02d' % hour_item">"<dtml-if "now.hour() == hour_item"> selected</dtml-if>>&dtml-hour_item;</option></dtml-in></select>
+    <select name="default_minute"><dtml-in "range( 0, 60 )" prefix=minute><option value="<dtml-var "'%02d' % minute_item">"<dtml-if "now.minute() == minute_item"> selected</dtml-if>>&dtml-minute_item;</option></dtml-in></select>
+    <select name="default_second"><dtml-in "range( 0, 60 )" prefix=second><option value="<dtml-var "'%02d' % second_item">"<dtml-if "int( now.second() ) == second_item"> selected</dtml-if>>&dtml-second_item;</option></dtml-in></select>
+</dtml-let>
+  </td>
+  </tr>
+
+  </table>
+
+
+  <input type="submit" name="&dtml-getStorageId;/&dtml-getId;/manage_configureField:method" value=" Save Changes " class="default" /> 
+  <input type="submit" name="manage_storagesBrowserForm:method" value=" Cancel " /> 
+
+
+</form>
+
+<dtml-var manage_page_footer>

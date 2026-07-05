@@ -23,10 +23,16 @@
 __doc__ = """Condition Expression Base Initialisation
 
 !TXT! module info
-
-$Id: bases/expression/condition/__init__.py 2 2013-05-10 23:29:59Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
 
-# TODO: bases/expression/condition - between, contains, declared, defined, eq, gt, gte, like, lt, lte, neq, unique
+# TODO: bases/expression/condition - between, contains, declared, defined, eq,
+#       gt, gte, like, lt, lte, neq, unique
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+]

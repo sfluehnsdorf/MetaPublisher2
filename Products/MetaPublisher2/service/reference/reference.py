@@ -33,8 +33,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile,\
-    InitializeClass, permission_zmi, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_zmi, show_future)
 
 
 # ============================================================================
@@ -64,7 +64,8 @@ class Reference:
 
         security.declareProtected(permission_zmi, 'reference_top_form')
 
-        reference_top_form = DTMLFile('reference_top', globals(), target='_parent')
+        reference_top_form = DTMLFile(
+            'reference_top', globals(), target='_parent')
 
     # ------------------------------------------------------------------------
     # Manual Retrieval API
@@ -73,8 +74,8 @@ class Reference:
 
     def get_reference_url(self):
         """!TXT! Return the URL for the online reference service"""
-
         return self.get_setting('service_reference_url')
+
 
 # ----------------------------------------------------------------------------
 # Class Security

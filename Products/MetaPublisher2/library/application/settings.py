@@ -88,12 +88,16 @@ parser.read(join(basepath, 'settings.conf'))
 for section in parser.sections():
     for option, value in parser.items(section):
         key = '%s_%s' % (section, option)
-        if not key in settings:
-            raise ConfigurationError('!TXT! Unknown configuration option "%s" in section "%s"' % (option, section))
+        if key not in settings:
+            raise ConfigurationError(
+                '!TXT! Unknown configuration option "%s" in section "%s"' % (
+                    option, section))
         if option.endswith('_security'):
             value = parser.get(section, option)
-            if not value in ['protected', 'private', 'none']:
-                raise ConfigurationError('!TXT! Invalid value "%s" for security option "%s" in section "%s"' % (value, option, section))
+            if value not in ['protected', 'private', 'none']:
+                raise ConfigurationError(
+                    '!TXT! Invalid value "%s" for security option "%s" in '
+                    'section "%s"' % (value, option, section))
         elif settings[key] in [true, false]:
             value = parser.getboolean(section, option)
         elif isinstance(settings[key], IntType):

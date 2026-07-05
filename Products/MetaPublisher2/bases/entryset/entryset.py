@@ -35,7 +35,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 
 from Products.MetaPublisher2.bases.entrycontainer import EntryContainer
 from Products.MetaPublisher2.interfaces import IEntrySet
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, implements, InitializeClass, true, false
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, implements, InitializeClass)
 
 
 # ============================================================================
@@ -56,10 +57,13 @@ class EntrySet(EntryContainer):
 
     implements(IEntrySet)
 
+
 # ----------------------------------------------------------------------------
 # initialize class security
 
+
 InitializeClass(EntrySet)
+
 
 # !!! bases/entryset/entryset.py - define api
 # !!! bases/entryset/entryset.py - implement source/storage handling

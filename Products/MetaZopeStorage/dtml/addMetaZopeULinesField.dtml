@@ -1,0 +1,40 @@
+<dtml-var manage_page_header>
+<dtml-var manage_tabs>
+
+<form action="&dtml-zmp2URL;" method="post">
+<input type="hidden" name="storageId" value="&dtml-getStorageId;">
+
+
+<h2 class="pagetitle">Add New UnicodeLinesField</h2>
+
+
+  <table cellspacing="0" cellpadding="2" border="0">
+
+  <tr>
+  <td align="left" valign="top"><div class="form-label">Id</div></td>
+  <td align="left" valign="top" width="100%"><input type="text" name="id" size="25" /></td>
+  </tr>
+
+  <tr>
+  <td align="left" valign="top"><div class="form-optional">Title</div></td>
+  <td align="left" valign="top"><input type="text" name="title" size="60" class="fw" /></td>
+  </tr>
+
+  <tr>
+  <td align="left" valign="top"><div class="form-optional">Default</div></td>
+  <td align="left" valign="top"><div class="form-element"><textarea name="default:utf8:ulines" cols="60" rows="5" class="fw"></textarea><br /><span class="label">One Entry per Line</span></div></td>
+  </tr>
+
+  </table>
+
+
+  <input type="submit" name="&dtml-getStorageId;/manage_addProduct/MetaZopeStorage/manage_addMetaZopeULinesField:method" value=" Add Field " class="default" /> 
+  <input type="submit" name="manage_fieldsBrowserForm:method" value=" Cancel " /> 
+
+
+</form>
+
+<dtml-var manage_page_footer>
+
+
+

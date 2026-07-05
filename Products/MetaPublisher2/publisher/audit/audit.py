@@ -33,7 +33,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage_frontends, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage_frontends,
+    show_future)
 
 
 # ============================================================================
@@ -61,11 +63,13 @@ class Audit:
 
         audit_form = DTMLFile('audit', globals())
 
+
 # ------------------------------------------------------------------------------
 # Class Audit
 
 InitializeClass(Audit)
 
 # TODO audit.py - implement
-#      The Audit displays a summary of Permission settings to help find security problems), security map, permissions, roles, ownership, ...
+#      The Audit displays a summary of Permission settings to help find
+#      security problems), security map, permissions, roles, ownership, ...
 #      owners, permissions, proxies, roles, users

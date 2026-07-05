@@ -33,8 +33,10 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
+import Products
 from Products.MetaPublisher2.bases.plugin.legacyplugin import LegacyPluginBase
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, DTMLFile, InitializeClass
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, InitializeClass)
 
 from frontend import FrontendPluginBase
 
@@ -75,13 +77,16 @@ class LegacyFrontendPlugin(LegacyPluginBase, FrontendPluginBase):
     # !TXT!
 
     def get_immutable_pluginflag_ids(self):
-        """Return list of Plugin flag ids, which are either constants or set by an external source and may not be altered by MetaPublisher2 or its users"""
+        """Return list of Plugin flag ids, which are either constants or set by
+        an external source and may not be altered by MetaPublisher2 or its
+        users"""
 
         # !!! bases/frontend/legacyfrontend.py -  get_immutable_pluginflag_ids
         return []
 
     def get_mutable_pluginflag_ids(self):
-        """Return list of Plugin flag ids, which may be altered by MetaPublisher2 and its users"""
+        """Return list of Plugin flag ids, which may be altered by
+        MetaPublisher2 and its users"""
 
         # !!! bases/frontend/legacyfrontend.py -  get_immutable_pluginflag_ids
         return []
@@ -93,7 +98,10 @@ class LegacyFrontendPlugin(LegacyPluginBase, FrontendPluginBase):
 
         result = FrontendPluginBase.all_meta_types(interfaces)
         for product in Products.meta_types:
-            if product.get('visibility', None) == 'ZMP2WidgetPlugin' and not(product in result):
+            if (
+                product.get('visibility', None) == 'ZMP2WidgetPlugin' and
+                not (product in result)
+            ):
                 result.append(product)
         return result
 
@@ -117,6 +125,7 @@ class LegacyFrontendPlugin(LegacyPluginBase, FrontendPluginBase):
         """Render the Interface"""
 
         raise NotImplementedError
+
 
 # ----------------------------------------------------------------------------
 # initialize class security

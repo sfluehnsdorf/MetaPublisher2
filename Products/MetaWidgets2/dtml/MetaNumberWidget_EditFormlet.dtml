@@ -1,0 +1,38 @@
+<input type="hidden" name="&dtml-prefix;_formTypeId" value="Edit">
+
+<table cellspacing="1" cellpadding="4" border="0">
+
+<tr>
+<th valign="top" nowrap>Display Mode</th>
+<td>
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode1" onclick="document.getElementById( '&dtml-prefix;_inputOptions' ).style.display = 'block';" value="defaultMode"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'defaultMode'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode1">Input field with current value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode2" onclick="document.getElementById( '&dtml-prefix;_inputOptions' ).style.display = 'block';" value="inputDefault"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'inputDefault'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode2">Input field with default value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode3" onclick="document.getElementById( '&dtml-prefix;_inputOptions' ).style.display = 'block';" value="inputEmpty"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'inputEmpty'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode3">Input field with 0</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode4" onclick="document.getElementById( '&dtml-prefix;_inputOptions' ).style.display = 'block';" value="inputEmpty"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'inputEmpty'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode4">Empty input field</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode5" onclick="document.getElementById( '&dtml-prefix;_inputOptions' ).style.display = 'none';" value="showValue"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'showValue'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode5">Pass and show current value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode6" onclick="document.getElementById( '&dtml-prefix;_inputOptions' ).style.display = 'none';" value="hiddenValue"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'hiddenValue'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode6">Pass current value hidden</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode7" onclick="document.getElementById( '&dtml-prefix;_inputOptions' ).style.display = 'none';" value="showDefault"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'showDefault'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode7">Pass and show default value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode8" onclick="document.getElementById( '&dtml-prefix;_inputOptions' ).style.display = 'none';" value="hiddenDefault"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'hiddenDefault'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode8">Pass default value hidden</label>
+</td>
+</tr>
+
+</table>
+
+<table cellspacing="1" cellpadding="4" border="0" id="&dtml-prefix;_inputOptions"<dtml-unless "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) in [ 'defaultMode', 'inputEmpty' ]"> style="display: none;"</dtml-unless>>
+
+<tr>
+<th valign="top" nowrap>Input Size</th>
+<td>
+  <label for="&dtml-prefix;_inputSize">Size of input field:</label> <input type="text" name="&dtml-prefix;_inputSize" id="&dtml-prefix;_inputSize" value="<dtml-var "REQUEST.form.get( prefix + '_inputSize', _[ prefix + '_inputSize' ] )">" style="width: 40px; text-align: right;">
+</td>
+</tr>
+
+<tr>
+<th valign="top">CSS</th>
+<td>
+  <label for="&dtml-prefix;_inputClass">Class Name:</label> <input type="text" name="&dtml-prefix;_inputClass" id="&dtml-prefix;_inputClass" value="<dtml-var "REQUEST.form.get( prefix + '_inputClass', _[ prefix + '_inputClass' ] )">"><br />
+  <label for="&dtml-prefix;_inputStyle">Style Definition:</label> <input type="text" name="&dtml-prefix;_inputStyle" id="&dtml-prefix;_inputStyle" value="<dtml-var "REQUEST.form.get( prefix + '_inputStyle', _[ prefix + '_inputStyle' ] )">">
+</td>
+</tr>
+
+</table>

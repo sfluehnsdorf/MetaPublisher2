@@ -34,7 +34,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.bases.plugin.legacyplugin import LegacyPluginBase
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, ComputedAttribute, InitializeClass
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, ComputedAttribute, InitializeClass)
 
 from widget import WidgetPluginBase
 
@@ -87,13 +88,16 @@ class LegacyWidgetPlugin(LegacyPluginBase, WidgetPluginBase):
     # !TXT!
 
     def get_immutable_pluginflag_ids(self):
-        """!TXT! Return list of Plugin flag ids, which are either constants or set by an external source and may not be altered by MetaPublisher2 or its users"""
+        """!TXT! Return list of Plugin flag ids, which are either constants or
+        set by an external source and may not be altered by MetaPublisher2 or
+        its users"""
 
         # !!! bases/widget/legacywidget.py -  get_immutable_pluginflag_ids
         return []
 
     def get_mutable_pluginflag_ids(self):
-        """!TXT! Return list of Plugin flag ids, which may be altered by MetaPublisher2 and its users"""
+        """!TXT! Return list of Plugin flag ids, which may be altered by
+        MetaPublisher2 and its users"""
 
         # !!! bases/widget/legacywidget.py -  get_mutable_pluginflag_ids
         return []
@@ -111,9 +115,12 @@ class LegacyWidgetPlugin(LegacyPluginBase, WidgetPluginBase):
 
         raise NotImplementedError
 
+
 # ------------------------------------------------------------------------------
 # initialize class security
 
+
 InitializeClass(LegacyWidgetPlugin)
+
 
 # !!! bases/widget/legacywidget.py - revise and update legacy api

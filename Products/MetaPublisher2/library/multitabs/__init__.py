@@ -34,3 +34,11 @@ __version__ = '$Revision: 1.3 $'[11:-2]
 # Module Imports
 
 from multitabs import MultiTabs
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'MultiTabs',
+]

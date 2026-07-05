@@ -58,7 +58,9 @@ logger = getLogger('MetaPublisher2')
 def deprecated_form(form_name):
     """!TXT!"""
 
-    message = 'The "%s" form is deprecated and will be removed in a future release!' % form_name
+    message = (
+        'The "%s" form is deprecated and will be removed in a future '
+        'release!' % form_name)
 
     logger.info(message)
     warn(message, category=DeprecationWarning, stacklevel=2)
@@ -70,7 +72,9 @@ def deprecated_form(form_name):
 def deprecated_method(method_name):
     """!TXT!"""
 
-    message = 'The "%s" method is deprecated and will be removed in a future release!' % method_name
+    message = (
+        'The "%s" method is deprecated and will be removed in a future '
+        'release!' % method_name)
 
     logger.info(message)
     warn(message, category=DeprecationWarning, stacklevel=2)

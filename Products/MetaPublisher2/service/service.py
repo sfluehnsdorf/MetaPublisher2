@@ -56,7 +56,9 @@ __all__ = [
 # ============================================================================
 # Service Section Mix-In Class
 
-class Service(Assistant, Release, Community, Manual, Help, Reference, Feedback):
+class Service(
+    Assistant, Release, Community, Manual, Help, Reference, Feedback
+):
     """Service Section Mix-In Class"""
 
     security = ClassSecurityInfo()
@@ -73,6 +75,7 @@ class Service(Assistant, Release, Community, Manual, Help, Reference, Feedback):
         {'label': 'Reference', 'action': 'reference_form'},
         {'label': 'Feedback', 'action': 'feedback_form'},
     )
+
 
 # ----------------------------------------------------------------------------
 # Class Security

@@ -1,5 +1,5 @@
 # -*- coding: iso-8859-15 -*-
-# ============================================================================
+# ============================================================================)
 #
 #                         M e t a  P u b l i s h e r  2
 #
@@ -18,26 +18,25 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE
 #
-# ============================================================================
+# ============================================================================)
 
 __doc__ = """MetaPublisher2Languages Product
 
 !TXT! module info
-
-$Id: products/metapublisher2languages/MetaPublisher2Languages.py 10 2013-05-14 22:16:41Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
 
 
-# ============================================================================
+# ============================================================================)
 # Module Imports
 
 from Products.MetaPublisher2.interfaces import ILanguagePluginBase
-from Products.MetaPublisher2.library import BeforeDeleteException, ClassSecurityInfo, DTMLFile, Folder, InitializeClass, UserInterface, true, quote_plus
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, Folder, InitializeClass, true, quote_plus)
 
 
-# ============================================================================
+# ============================================================================)
 # Module Exports
 
 __all__ = [
@@ -45,7 +44,7 @@ __all__ = [
 ]
 
 
-# ==============================================================================
+# =============================================================================
 # MetaPublisher2Languages Product Class
 
 class MetaPublisher2Languages(Folder):
@@ -73,7 +72,11 @@ class MetaPublisher2Languages(Folder):
     def all_meta_types(self, interfaces=None):
         """!TXT! Return list of containable object types"""
 
-        interfaces = (interfaces and list(interfaces) or []) + [ILanguagePluginBase, ]
+        interfaces = (
+            interfaces and
+            list(interfaces) or
+            []
+        ) + [ILanguagePluginBase]
         return Folder.all_meta_types(self, interfaces)
 
     # ------------------------------------------------------------------------
@@ -93,23 +96,28 @@ class MetaPublisher2Languages(Folder):
 
         return self.absolute_url()
 
+
 # ------------------------------------------------------------------------------
 # initialize class security
 
 InitializeClass(MetaPublisher2Languages)
 
 
-# ==============================================================================
+# =============================================================================
 # MetaPublisher2Languages ZMI Constructor
 
 add_MetaPublisher2Languages_form = DTMLFile('add', globals())
 
 
-def add_MetaPublisher2Languages(self, id, title='Languages Folder', REQUEST=None):
+def add_MetaPublisher2Languages(
+    self, id, title='Languages Folder', REQUEST=None
+):
     """!TXT! ZMI constructor for MetaPublisher2Languages"""
 
     if not container_filter(self.this()):
-        raise TypeError("!TXT! Can't add a MetaPublisher2Languages Folder outside of a MetaPublisher2")
+        raise TypeError(
+            "!TXT! Can't add a MetaPublisher2Languages Folder outside of a "
+            "MetaPublisher2")
 
     id = str(id)
     title = str(title)
@@ -122,7 +130,7 @@ def add_MetaPublisher2Languages(self, id, title='Languages Folder', REQUEST=None
     if REQUEST:
         try:
             url = self.DestinationURL()
-        except:
+        except Exception:
             url = REQUEST['URL1']
         url = '%s/manage_main?update_menu=1&manage_tabs_message=%s' % (
             url,
@@ -131,7 +139,7 @@ def add_MetaPublisher2Languages(self, id, title='Languages Folder', REQUEST=None
         REQUEST.RESPONSE.redirect(url)
 
 
-# ==============================================================================
+# =============================================================================
 # MetaPublisher2 Languages Content Filter
 
 def container_filter(folder):
@@ -141,7 +149,7 @@ def container_filter(folder):
         return true
 
 
-# ==============================================================================
+# =============================================================================
 # MetaPublisher2 Languages Registration
 
 def register_MetaPublisher2Languages(context):
@@ -151,18 +159,22 @@ def register_MetaPublisher2Languages(context):
         context.registerClass(
             MetaPublisher2Languages,
             constructors=(
-                ('add_MetaPublisher2Languages_form', add_MetaPublisher2Languages_form),
+                (
+                    'add_MetaPublisher2Languages_form',
+                    add_MetaPublisher2Languages_form),
                 ('add_MetaPublisher2Languages', add_MetaPublisher2Languages),
             ),
             icon='resources/icon/MetaPublisher2Folder.gif',
             container_filter=container_filter
         )
 
-    except:
+    except Exception:
         context.registerClass(
             MetaPublisher2Languages,
             constructors=(
-                ('add_MetaPublisher2Languages_form', add_MetaPublisher2Languages_form),
+                (
+                    'add_MetaPublisher2Languages_form',
+                    add_MetaPublisher2Languages_form),
                 ('add_MetaPublisher2Languages', add_MetaPublisher2Languages),
             ),
             icon='resources/icon/MetaPublisher2Folder.gif'

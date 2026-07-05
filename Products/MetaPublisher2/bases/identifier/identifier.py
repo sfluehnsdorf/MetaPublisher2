@@ -23,8 +23,6 @@
 __doc__ = """Identifier Plugin Base
 
 !TXT! module info
-
-$Id: bases/identifier/identifier.py 4 2013-05-08 22:53:37Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -35,7 +33,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 
 from Products.MetaPublisher2.bases.plugin import PluginBase
 from Products.MetaPublisher2.interfaces import IIdentifierPluginBase
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, DTMLFile, implements, InitializeClass, true, false
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, implements, InitializeClass)
 
 
 # ============================================================================
@@ -101,7 +100,6 @@ class IdentifierPluginBase(PluginBase):
 
     def entryIdPattern_test(self, errors, entryIdPatternType, entryIdPattern):
         """!TXT!"""
-
         if entryIdPatternType != 'custom':
             if entryIdPatternType == 'sequence':
                 entryIdPattern = '%(storageId)s_%(sequence)04d'
@@ -110,21 +108,33 @@ class IdentifierPluginBase(PluginBase):
             elif entryIdPatternType == 'uid':
                 entryIdPattern = '%(storageId)s_%(uid)s'
             else:
-                errors['entryIdPattern'] = u'!TXT! The specified Entry Id pattern type is unknown!'
-        if not 'entryId' in errors:
+                errors['entryIdPattern'] = (
+                    u'!TXT! The specified Entry Id pattern type is unknown!')
+        if 'entryId' not in errors:
             entryIdPattern = str(entryIdPattern)
             try:
-                test_id = entryIdPattern % {'mp2Id': 'test', 'storageId': 'test', 'sequence': 1, 'random': 1, 'uid': 'abcdef'}
-            except Exception, e:
-                errors['entryIdPattern'] = u'!TXT! The specified Entry Id pattern has errors (%s)!' % e
+                entryIdPattern % {
+                    'mp2Id': 'test',
+                    'storageId': 'test',
+                    'sequence': 1,
+                    'random': 1,
+                    'uid': 'abcdef'}
+            except Exception as e:
+                errors['entryIdPattern'] = (
+                    u'!TXT! The specified Entry Id pattern has errors '
+                    u'(%s)!' % e)
 
         return errors, entryIdPattern
+
 
 # ----------------------------------------------------------------------------
 # initialize class security
 
+
 InitializeClass(IdentifierPluginBase)
+
 
 # !!! bases/identifier/identifier.py - define api
 # !!! bases/identifier/identifier.py - implement backdrop/failsafe code
-# !!! bases/identifier/identifier.py - handle identifier detached from storages (i.e. on storage level, with "redirect" in storage)
+# !!! bases/identifier/identifier.py - handle identifier detached from storages
+#     (i.e. on storage level, with "redirect" in storage)

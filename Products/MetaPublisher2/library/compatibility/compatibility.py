@@ -25,8 +25,6 @@ __doc__ = """Compatibility Library
 To ensure to continued operation of deprecated resources, this module provides
 wrappers and handlers for these outdated resources. It also provides an API
 for logging calls to deprecated resources.
-
-$Id: library/compatibility/compatibility.py 9 2013-05-08 23:34:35Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -35,20 +33,31 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, InitializeClass
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, InitializeClass)
 
-import historical
-from deprecation import *
-from future import *
-from historical import *
+from deprecation import deprecated_form, deprecated_method
+from future import FutureCompatibility, show_future
+from historical import (
+    HistoricalCompatibility, InterfacesFolder, standard_form_footer,
+    standard_form_header, TestError)
 
 
 # ============================================================================
 # Module Exports
 
+
 __all__ = [
     'Compatibility',
+    'FutureCompatibility',
+    'HistoricalCompatibility',
+    'InterfacesFolder',
+    'TestError',
+    'deprecated_form',
+    'deprecated_method',
     'show_future',
+    'standard_form_footer',
+    'standard_form_header',
 ]
 
 
@@ -60,7 +69,9 @@ class Compatibility(FutureCompatibility, HistoricalCompatibility):
 
     security = ClassSecurityInfo()
 
+
 # ----------------------------------------------------------------------------
 # Class Security
+
 
 InitializeClass(Compatibility)

@@ -34,3 +34,11 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from integrity import Integrity
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'Integrity',
+]

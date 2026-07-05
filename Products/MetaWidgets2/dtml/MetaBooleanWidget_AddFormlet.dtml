@@ -1,0 +1,30 @@
+<input type="hidden" name="&dtml-prefix;_formTypeId" value="Add">
+
+<table cellspacing="1" cellpadding="4" border="0">
+
+<tr>
+<th valign="top" nowrap>Display Mode</th>
+<td>
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode1" value="defaultMode"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'defaultMode'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode1">Input field with default value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode2" value="inputTrue"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'inputTrue'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode2">Input field with true value set</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode3" value="inputFalse"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'inputFalse'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode3">Input field with false value set</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode4" value="showDefault"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'showDefault'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode4">Pass and show default value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode5" value="hiddenDefault"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'hiddenDefault'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode5">Pass default value hidden</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode6" value="showTrue"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'showTrue'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode6">Pass and show true value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode7" value="hiddenTrue"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'hiddenTrue'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode7">Pass default true hidden</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode8" value="showFalse"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'showFalse'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode8">Pass and show false value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode9" value="hiddenFalse"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'hiddenFalse'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode9">Pass default false hidden</label>
+</td>
+</tr>
+
+<tr>
+<th valign="top" nowrap>True Values</th>
+<td><label for="&dtml-prefix;_labelTrue">Label for true values:</label> <input type="text" name="&dtml-prefix;_labelTrue" id="&dtml-prefix;_labelTrue" value="<dtml-var "REQUEST.form.get( prefix + '_labelTrue', _[ prefix + '_labelTrue' ] ) or getField( storageId, fieldId ).labelTrue">"></td>
+</tr>
+
+<tr>
+<th valign="top" nowrap>False Values</th>
+<td><label for="&dtml-prefix;_labelFalse">Label for false values:</label> <input type="text" name="&dtml-prefix;_labelFalse" id="&dtml-prefix;_labelFalse" value="<dtml-var "REQUEST.form.get( prefix + '_labelFalse', _[ prefix + '_labelFalse' ] ) or getField( storageId, fieldId ).labelFalse">"></td>
+</tr>
+
+</table>

@@ -33,6 +33,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
+
 from Products.MetaPublisher2.library import ClassSecurityInfo, InitializeClass
 
 
@@ -52,9 +53,12 @@ class Sorters:
 
     security = ClassSecurityInfo()
 
+
 # ----------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Sorters)
+
 
 # TODO sorters.py - implement

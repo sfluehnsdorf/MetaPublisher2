@@ -34,7 +34,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass
+from Products.MetaPublisher2.library import ClassSecurityInfo, InitializeClass
 
 from entries import Entries
 from exports import Exports
@@ -57,7 +57,9 @@ __all__ = [
 # ============================================================================
 # Data Section Mix-In Class
 
-class Data(Entries, Expressions, Reports, Search, Queries, Imports, Exports, Transfers):
+class Data(
+    Entries, Expressions, Reports, Search, Queries, Imports, Exports, Transfers
+):
     """Data Section Mix-In Class"""
 
     security = ClassSecurityInfo()
@@ -74,6 +76,7 @@ class Data(Entries, Expressions, Reports, Search, Queries, Imports, Exports, Tra
         {'label': 'Exports', 'action': 'exports_form'},
         {'label': 'Transfers', 'action': 'transfers_form'},
     )
+
 
 # ----------------------------------------------------------------------------
 # Class Security

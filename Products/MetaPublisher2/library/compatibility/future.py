@@ -33,7 +33,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, false, InitializeClass, true
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, false, InitializeClass, true)
 
 
 # ============================================================================
@@ -53,7 +54,10 @@ __all__ = [
 # only clutter the management interface with empty and inactive forms.
 
 show_future = false
-#show_future = true
+# show_future = true
+
+assert false
+assert true
 
 
 # ============================================================================
@@ -64,7 +68,9 @@ class FutureCompatibility:
 
     security = ClassSecurityInfo()
 
+
 # ----------------------------------------------------------------------------
 # Class Security
+
 
 InitializeClass(FutureCompatibility)

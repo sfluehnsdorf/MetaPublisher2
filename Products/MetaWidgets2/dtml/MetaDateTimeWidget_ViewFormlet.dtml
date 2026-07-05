@@ -1,0 +1,40 @@
+<dtml-let languages="manage_MetaDateTimeWidget_getLanguages()">
+<dtml-unless "REQUEST.get( prefix + '_language', None )"><dtml-call "REQUEST.set( prefix + '_language', languages[ 0 ] )"></dtml-unless>
+
+<input type="hidden" name="&dtml-prefix;_formTypeId" value="List">
+
+<table cellspacing="1" cellpadding="4" border="0">
+
+<tr>
+<th valign="top" nowrap>Display Mode</th>
+<td>
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode1" value="defaultMode"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'defaultMode'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode1">Show value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode2" value="showDefault"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'showDefault'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode2">Show default value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode3" value="showNow"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'showNow'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode3">Show current date & time</label>
+</td>
+</tr>
+
+<tr>
+<th valign="top" nowrap>Language</th>
+<td>
+  <select name="&dtml-prefix;_language" onchange="if( this.options[ this.selectedIndex ] != '' ) { updateWidgets(); } else { return false; }">
+<dtml-in languages prefix=language>
+  <option value="&dtml-language_item;"<dtml-if "REQUEST.get( prefix + '_language', '' ) == language_item"> selected</dtml-if>>&dtml-language_item;</option>
+</dtml-in>
+  </select>
+</td>
+</tr>
+
+<tr>
+<th valign="top" nowrap>Format</th>
+<td>
+  <select name="&dtml-prefix;_format">
+<dtml-in "manage_MetaDateTimeWidget_getFormats( languageId = REQUEST[ prefix + '_language' ] )" prefix=format>
+  <option value="&dtml-format_key;"<dtml-if "REQUEST.get( prefix + '_format', '' ) == format_key"> selected</dtml-if>><dtml-var format_item></option>
+</dtml-in>
+  </select>
+</td>
+</tr>
+
+</table>
+</dtml-let>

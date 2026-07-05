@@ -49,11 +49,11 @@ class JSONDict:
     def encode_JSONDict(self, mapping):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError
 
     # !!! jsondict.py - implement decode_JSONDict
 
     def decode_JSONDict(self, json):
         """!TXT!"""
 
-        raise NotImplemented
+        raise NotImplementedError

@@ -33,7 +33,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage_designs, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage_designs,
+    show_future)
 
 
 # ============================================================================
@@ -60,6 +62,7 @@ class Languages:
         security.declareProtected(permission_manage_designs, 'languages_form')
 
         languages_form = DTMLFile('languages', globals())
+
 
 # ----------------------------------------------------------------------------
 # Class Security

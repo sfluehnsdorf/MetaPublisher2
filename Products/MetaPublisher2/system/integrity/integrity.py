@@ -35,7 +35,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage)
 
 
 # ============================================================================
@@ -107,19 +108,22 @@ class Integrity:
     def _test_designs_integrity(self):
         """!TXT! Perform integrity tests on all Designs."""
 
-        # TODO integrity.py - _test_designs_integrity - implement designs integrity tests
+        # TODO integrity.py - _test_designs_integrity - implement designs
+        # integrity tests
 
         return []
 
     def _test_entries_integrity(self, storage_id):
-        """!TXT! Perform integrity tests on all Entries in the specified Storage."""
+        """!TXT! Perform integrity tests on all Entries in the specified
+        Storage."""
 
         # !!! integrity.py - implement entries integrity tests
 
         return []
 
     def _test_fields_integrity(self, storage_id):
-        """!TXT! Perform integrity tests on all Fields in the specified Storage."""
+        """!TXT! Perform integrity tests on all Fields in the specified
+        Storage."""
 
         # !!! integrity.py - implement fields integrity tests
 
@@ -128,14 +132,16 @@ class Integrity:
     def _test_frontends_integrity(self):
         """!TXT! Perform integrity tests on all Frontends."""
 
-        # TODO integrity.py - _test_frontends_integrity - implement frontends integrity tests
+        # TODO integrity.py - _test_frontends_integrity - implement frontends
+        # integrity tests
 
         return []
 
     def _test_indexing_integrity(self):
         """!TXT! Perform integrity tests on all Indexes."""
 
-        # TODO integrity.py - _test_indexing_integrity - implement indexing integrity tests
+        # TODO integrity.py - _test_indexing_integrity - implement indexing
+        # integrity tests
 
         return []
 
@@ -143,23 +149,28 @@ class Integrity:
         """!TXT! Perform integrity tests on all Plugins."""
 
         result = []
-        if not(self.has_storageplugins()):
+        if not self.has_storageplugins():
             result.append(('info', 'Plugins', 'No Storage Plugins installed.'))
-        if not(self.has_fieldplugins()):
+        if not self.has_fieldplugins():
             result.append(('info', 'Plugins', 'No Field Plugins installed.'))
-        if not(self.has_frontendplugins()):
-            result.append(('info', 'Plugins', 'No Frontend Plugins installed.'))
-        if not(self.has_widgetplugins()):
+        if not self.has_frontendplugins():
+            result.append((
+                'info', 'Plugins', 'No Frontend Plugins installed.'))
+        if not self.has_widgetplugins():
             result.append(('info', 'Plugins', 'No Widget Plugins installed.'))
         for plugin_id, plugin in self.plugin_items():
             if hasattr(plugin['instance'], 'pluginName'):
-                result.append(('info', 'Plugins', '!TXT! Legacy Plugin "%s" is based on deprecated API which will be removed in a future version.' % plugin_id))
+                result.append((
+                    'info', 'Plugins',
+                    '!TXT! Legacy Plugin "%s" is based on deprecated API '
+                    'which will be removed in a future version.' % plugin_id))
         return result
 
     def _test_presets_integrity(self):
         """!TXT! Perform integrity tests on all Presets."""
 
-        # TODO integrity.py - _test_presets_integrity - implement presets integrity tests
+        # TODO integrity.py - _test_presets_integrity - implement presets
+        # integrity tests
 
         return []
 
@@ -180,9 +191,11 @@ class Integrity:
     def _test_widgets_integrity(self):
         """!TXT! Perform integrity tests on all Widgets."""
 
-        # TODO integrity.py - _test_widgets_integrity - implement widgets integrity tests
+        # TODO integrity.py - _test_widgets_integrity - implement widgets
+        # integrity tests
 
         return []
+
 
 # ------------------------------------------------------------------------------
 # Class Security

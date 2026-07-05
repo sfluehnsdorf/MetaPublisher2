@@ -23,8 +23,6 @@
 __doc__ = """MetaPublisher2 Resources
 
 !TXT! module info
-
-$Id: library/userinterface/resources.py 4 2013-05-08 20:29:56Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -34,11 +32,14 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.library.application import basepath
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, DTMLFile, ImageFile, InitializeClass, isdir, join, listdir, sep, splitext
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, ImageFile, InitializeClass, isdir, join,
+    listdir, sep, splitext)
 
 
 # ============================================================================
 # Module Exports
+
 
 __all__ = [
     'Resources',
@@ -48,18 +49,23 @@ __all__ = [
 # ============================================================================
 # MetaPublisher2 Resources Mix-In Class
 
+
 class Resources:
     """!TXT! MetaPublisher2 Resources Mix-In Class"""
 
     security = ClassSecurityInfo()
 
+
 # ------------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Resources)
+
 
 # ------------------------------------------------------------------------------
 # Resources Image Loader
+
 
 resourcespath = join(basepath, 'resources')
 todo = listdir(resourcespath)
@@ -75,5 +81,7 @@ while todo:
             setattr(Resources, attribute, ImageFile(filepath, globals()))
             setattr(Resources, '%s__roles__' % attribute, None)
         elif extension == '.dtml':
-            setattr(Resources, attribute[: -5], DTMLFile(filepath[: -5], globals()))
+            setattr(
+                Resources, attribute[: -5],
+                DTMLFile(filepath[: -5], globals()))
             setattr(Resources, '%s__roles__' % attribute[: -5], None)

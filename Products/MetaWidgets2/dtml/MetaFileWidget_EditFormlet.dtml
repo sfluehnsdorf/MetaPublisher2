@@ -1,0 +1,30 @@
+<input type="hidden" name="&dtml-prefix;_formTypeId" value="Edit">
+<input type="hidden" name="&dtml-prefix;_displayMode" value="defaultMode">
+
+<table cellspacing="1" cellpadding="4" border="0">
+
+<tr>
+<th valign="top" nowrap>Display Options</th>
+<td>
+  <input type="checkbox" name="&dtml-prefix;_showFileName" id="&dtml-prefix;_showFileName" value="1"<dtml-if "int( REQUEST.get( prefix + '_showFileName', 0 ) )"> checked</dtml-if>> <label for="&dtml-prefix;_showFileName">If checked, the filename will be included instead of the word "Download"</label><br />
+  <input type="checkbox" name="&dtml-prefix;_showFileSize" id="&dtml-prefix;_showFileSize" value="1"<dtml-if "int( REQUEST.get( prefix + '_showFileSize', 0 ) )"> checked</dtml-if>> <label for="&dtml-prefix;_showFileSize">If checked, the file's size will be displayed</label><br />
+  <input type="checkbox" name="&dtml-prefix;_showFileType" id="&dtml-prefix;_showFileType" value="1"<dtml-if "int( REQUEST.get( prefix + '_showFileType', 0 ) )"> checked</dtml-if>> <label for="&dtml-prefix;_showFileType">If checked, the file's content type will be displayed</label><br />
+</td>
+</tr>
+
+<tr>
+<th valign="top" nowrap>Input Size</th>
+<td>
+  <label for="&dtml-prefix;_inputSize">Size of input field:</label> <input type="text" name="&dtml-prefix;_inputSize" id="&dtml-prefix;_inputSize" value="<dtml-var "REQUEST.form.get( prefix + '_inputSize', _[ prefix + '_inputSize' ] )">" style="width: 40px; text-align: right;">
+</td>
+</tr>
+
+<tr>
+<th valign="top">CSS</th>
+<td>
+  <label for="&dtml-prefix;_inputClass">Class Name:</label> <input type="text" name="&dtml-prefix;_inputClass" id="&dtml-prefix;_inputClass" value="<dtml-var "REQUEST.form.get( prefix + '_inputClass', _[ prefix + '_inputClass' ] )">"><br />
+  <label for="&dtml-prefix;_inputStyle">Style Definition:</label> <input type="text" name="&dtml-prefix;_inputStyle" id="&dtml-prefix;_inputStyle" value="<dtml-var "REQUEST.form.get( prefix + '_inputStyle', _[ prefix + '_inputStyle' ] )">">
+</td>
+</tr>
+
+</table>

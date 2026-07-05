@@ -23,7 +23,8 @@
 __doc__ = """Configuration Section
 
 !TXT! module info
-Module providing a mix-in class for the MetaPublisher 2's Configuration section.
+Module providing a mix-in class for the MetaPublisher 2's Configuration
+section.
 
 $Id: configuration/configuration.py 7 2013-05-05 18:04:45Z sfluehnsdorf $
 """
@@ -34,7 +35,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass
+from Products.MetaPublisher2.library import ClassSecurityInfo, InitializeClass
 
 from constraints import Constraints
 from fields import Fields
@@ -57,7 +58,10 @@ __all__ = [
 # ============================================================================
 # Configuration Section Mix-In Class
 
-class Configuration(Storages, Fields, Identifiers, Constraints, Relations, Triggers, Inheritance, Indexing):
+class Configuration(
+    Storages, Fields, Identifiers, Constraints, Relations, Triggers,
+    Inheritance, Indexing
+):
     """Configuration Section Mix-In Class"""
 
     security = ClassSecurityInfo()
@@ -75,6 +79,7 @@ class Configuration(Storages, Fields, Identifiers, Constraints, Relations, Trigg
         {'label': 'Inheritance', 'action': 'inheritance_form'},
         {'label': 'Indexing', 'action': 'indexing_form'},
     )
+
 
 # ----------------------------------------------------------------------------
 # Class Security

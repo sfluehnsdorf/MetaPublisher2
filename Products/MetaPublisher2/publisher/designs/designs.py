@@ -34,7 +34,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.interfaces import IDesignPluginBase
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage, permission_manage_designs, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage,
+    permission_manage_designs, show_future)
 
 
 # ============================================================================
@@ -62,17 +64,21 @@ class Designs:
 
         designs_form = DTMLFile('designs', globals())
 
-        security.declareProtected(permission_manage_designs, 'setup_design_form')
+        security.declareProtected(
+            permission_manage_designs, 'setup_design_form')
 
         setup_design_form = DTMLFile('setup_design', globals())
 
-        security.declareProtected(permission_manage_designs, 'preview_design_form')
+        security.declareProtected(
+            permission_manage_designs, 'preview_design_form')
 
         preview_design_form = DTMLFile('preview_design', globals())
 
-        security.declareProtected(permission_manage_designs, 'preview_design_top_form')
+        security.declareProtected(
+            permission_manage_designs, 'preview_design_top_form')
 
-        preview_design_top_form = DTMLFile('preview_design_top', globals(), target='_parent')
+        preview_design_top_form = DTMLFile(
+            'preview_design_top', globals(), target='_parent')
 
     # ------------------------------------------------------------------------
     # Design Plugin API
@@ -101,14 +107,16 @@ class Designs:
     security.declareProtected(permission_manage, 'designplugin_items')
 
     def designplugin_items(self):
-        """!TXT! Return tuples of id, value of installed MetaPublisher2 Design plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2
+        Design plugins"""
 
         return self.plugin_items(IDesignPluginBase)
 
     security.declareProtected(permission_manage, 'designplugin_values')
 
     def designplugin_values(self):
-        """!TXT! Return tuples of id, value of installed MetaPublisher2 Design plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2
+        Design plugins"""
 
         return self.plugin_values(IDesignPluginBase)
 
@@ -120,7 +128,7 @@ class Designs:
     def get_designflags(self, design_id):
         """!TXT! Return tuples of id, boolean states of all Plugin flags"""
 
-        design = get_design(self, design_id)
+        design = self.get_design(self, design_id)
         return design.get_designflags()
 
     security.declareProtected(permission_manage_designs, 'get_designflag_ids')
@@ -128,15 +136,16 @@ class Designs:
     def get_designflag_ids(self, design_id):
         """!TXT! Return the ids of all Plugin flags"""
 
-        design = get_design(self, design_id)
+        design = self.get_design(self, design_id)
         return design.get_designflag_ids()
 
     security.declareProtected(permission_manage_designs, 'get_designflag')
 
     def get_designflag(self, design_id, pluginflag_id):
-        """!TXT! Return the boolean state of the specified Design flag if it exists, raises KeyError otherwise"""
+        """!TXT! Return the boolean state of the specified Design flag if it
+        exists, raises KeyError otherwise"""
 
-        design = get_design(self, design_id)
+        design = self.get_design(self, design_id)
         return design.get_pluginflag(pluginflag_id)
 
     security.declareProtected(permission_manage_designs, 'has_designflag')
@@ -144,7 +153,7 @@ class Designs:
     def has_designflag(self, design_id, pluginflag_id):
         """!TXT! Return True if the Design flag exists, False otherwise"""
 
-        design = get_design(self, design_id)
+        design = self.get_design(self, design_id)
         return design.has_pluginflag(pluginflag_id)
 
     # ------------------------------------------------------------------------
@@ -184,18 +193,21 @@ class Designs:
         """!TXT! Preview a Design with the specified options."""
 
         # TODO designs.py - implement preview_design
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Design Mutation API
 
     security.declareProtected(permission_manage_designs, 'setup_design')
 
-    def setup_design(self, frontend_parent_id, design_id, options={}, REQUEST=None, **args):
+    def setup_design(
+        self, frontend_parent_id, design_id, options={}, REQUEST=None, **args
+    ):
         """!TXT! Add a Design with the specified options to the Frontends."""
 
         # TODO designs.py - implement setup_design
-        raise NotImplemented
+        raise NotImplementedError
+
 
 # ----------------------------------------------------------------------------
 # Class Security
@@ -205,5 +217,6 @@ InitializeClass(Designs)
 # !!! designs.py - remove code to 2.4
 # TODO designs.py - implement
 # TODO designs.py - handle default designs and secondary designs
-# TODO designs.py - revise API and comments (designs.py must only manage designs in designsfolder)
+# TODO designs.py - revise API and comments (designs.py must only manage
+#   designs in designsfolder)
 # TODO designs.py - extend api with add functions into frontends folder

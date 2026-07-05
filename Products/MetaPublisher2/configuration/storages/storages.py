@@ -1,12 +1,12 @@
 # -*- coding: iso-8859-15 -*-
-# ============================================================================
+# =============================================================================
 #
 #                         M e t a  P u b l i s h e r  2
 #
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
 # For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 #
 # This software is subject to the provisions of the Zope Public License,
 # Version 2.1 (ZPL).
@@ -18,7 +18,7 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE
 #
-# ============================================================================
+# =============================================================================
 
 __doc__ = """Storages Component
 
@@ -36,61 +36,73 @@ $Id: configuration/storages/storages.py 24 2013-05-09 22:33:18Z sfluehnsdorf $
 __version__ = '$Revision: 2.3 $'[11:-2]
 
 
-# ============================================================================
+# =============================================================================
 # Module Imports
 
+
 from Products.MetaPublisher2.interfaces import IEntrySet, IStoragePluginBase
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_configuration, permission_change_configuration, permission_manage, true, false
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass,
+    permission_access_configuration, permission_change_configuration,
+    permission_manage, true, false)
 
 
-# ============================================================================
+# =============================================================================
 # Module Exports
+
 
 __all__ = [
     'Storages',
 ]
 
 
-# ============================================================================
+# =============================================================================
 # Storages Component Mix-In Class
+
 
 class Storages:
     """!TXT! Storages Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Storage ZMI Forms
 
     security.declareProtected(permission_access_configuration, 'storages_form')
 
     storages_form = DTMLFile('storages', globals())
 
-    security.declareProtected(permission_change_configuration, 'add_storage_form')
+    security.declareProtected(
+        permission_change_configuration, 'add_storage_form')
 
     add_storage_form = DTMLFile('add_storage', globals())
 
-    security.declareProtected(permission_change_configuration, 'duplicate_storages_form')
+    security.declareProtected(
+        permission_change_configuration, 'duplicate_storages_form')
 
     duplicate_storages_form = DTMLFile('duplicate_storages', globals())
 
-    security.declareProtected(permission_change_configuration, 'delete_storages_form')
+    security.declareProtected(
+        permission_change_configuration, 'delete_storages_form')
 
     delete_storages_form = DTMLFile('delete_storages', globals())
 
-    security.declareProtected(permission_change_configuration, 'change_storage_type_form')
+    security.declareProtected(
+        permission_change_configuration, 'change_storage_type_form')
 
     change_storage_type_form = DTMLFile('change_storage_type', globals())
 
-    security.declareProtected(permission_change_configuration, 'edit_storage_form')
+    security.declareProtected(
+        permission_change_configuration, 'edit_storage_form')
 
     edit_storage_form = DTMLFile('edit_storage', globals())
 
-    security.declareProtected(permission_change_configuration, 'rename_storages_form')
+    security.declareProtected(
+        permission_change_configuration, 'rename_storages_form')
 
     rename_storages_form = DTMLFile('rename_storages', globals())
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Storage Plugins
 
     security.declareProtected(permission_manage, 'has_storageplugins')
@@ -117,18 +129,20 @@ class Storages:
     security.declareProtected(permission_manage, 'storageplugin_items')
 
     def storageplugin_items(self):
-        """!TXT! Return tuples of id, value of installed MetaPublisher2 Storage plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2 Storage
+        plugins"""
 
         return self.plugin_items(IStoragePluginBase)
 
     security.declareProtected(permission_manage, 'storageplugin_values')
 
     def storageplugin_values(self):
-        """!TXT! Return tuples of id, value of installed MetaPublisher2 Storage plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2 Storage
+        plugins"""
 
-        return self.plugin_values(IStoragePluginBases)
+        return self.plugin_values(IStoragePluginBase)
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Storage Flag Retrieval
 
     security.declareProtected(permission_manage, 'get_storageflags')
@@ -136,7 +150,7 @@ class Storages:
     def get_storageflags(self, storage_id):
         """!TXT! Return tuples of id, boolean states of all Plugin flags"""
 
-        storage = get_storage(self, storage_id)
+        storage = self.get_storage(self, storage_id)
         return storage.get_pluginflag()
 
     security.declareProtected(permission_manage, 'get_storageflag_ids')
@@ -144,15 +158,16 @@ class Storages:
     def get_storageflag_ids(self, storage_id):
         """!TXT! Return the ids of all Plugin flags"""
 
-        storage = get_storage(self, storage_id)
+        storage = self.get_storage(self, storage_id)
         return storage.get_pluginflag_ids()
 
     security.declareProtected(permission_manage, 'get_storageflag')
 
     def get_storageflag(self, storage_id, pluginflag_id):
-        """!TXT! Return the boolean state of the specified Storage flag if it exists, raises KeyError otherwise"""
+        """!TXT! Return the boolean state of the specified Storage flag if it
+        exists, raises KeyError otherwise"""
 
-        storage = get_storage(self, storage_id)
+        storage = self.get_storage(self, storage_id)
         return storage.get_pluginflag(pluginflag_id)
 
     security.declareProtected(permission_manage, 'has_storageflag')
@@ -160,13 +175,14 @@ class Storages:
     def has_storageflag(self, storage_id, pluginflag_id):
         """!TXT! Return True if the Storage flag exists, False otherwise"""
 
-        storage = get_storage(self, storage_id)
+        storage = self.get_storage(self, storage_id)
         return storage.has_pluginflag(pluginflag_id)
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Storage Retrieval API
 
-    security.declareProtected(permission_access_configuration, 'count_storages')
+    security.declareProtected(
+        permission_access_configuration, 'count_storages')
 
     def count_storages(self):
         """!TXT! Return the number of Storages."""
@@ -176,13 +192,19 @@ class Storages:
     security.declareProtected(permission_access_configuration, 'get_storage')
 
     def get_storage(self, source):
-        """!TXT! Return the specified Storage. Source is either a Storage's id, a Storage or an EntrySet. Raises KeyError if no Storage can be returned."""
+        """!TXT! Return the specified Storage. Source is either a Storage's id,
+        a Storage or an EntrySet. Raises KeyError if no Storage can be
+        returned."""
 
-        if IStoragePluginBase.providedBy(source) or IEntrySet.providedBy(source):
+        if (
+            IStoragePluginBase.providedBy(source) or
+            IEntrySet.providedBy(source)
+        ):
             return source
         return self.get_storage_by_id(source)
 
-    security.declareProtected(permission_access_configuration, 'get_storage_by_id')
+    security.declareProtected(
+        permission_access_configuration, 'get_storage_by_id')
 
     def get_storage_by_id(self, storage_id):
         """!TXT! Return the specified Storage, raise KeyError otherwise."""
@@ -206,10 +228,13 @@ class Storages:
 
         return self.storage_ids() and true or false
 
-    security.declareProtected(permission_access_configuration, 'has_all_storages')
+    security.declareProtected(
+        permission_access_configuration, 'has_all_storages')
 
     def has_all_storages(self, storage_ids=None, storage_types=None):
-        """!TXT! Return True if all of the specified Storages exist, limited to Storage Types if specified. If no Storages are specified, checks if all Storages are of the specified Storage Types."""
+        """!TXT! Return True if all of the specified Storages exist, limited to
+        Storage Types if specified. If no Storages are specified, checks if all
+        Storages are of the specified Storage Types."""
 
         if storage_types is None:
 
@@ -230,25 +255,32 @@ class Storages:
             # check if all of the storages are of the specified types
             if storage_ids is None:
                 for storage in self.storage_values():
-                    if not storage.meta_type in storage_types:
+                    if storage.meta_type not in storage_types:
                         return false
                 return true
 
-            # check if all of the storages exist, limited to the specified types
+            # check if all of the storages exist, limited to the specified
+            # types
             else:
                 has_storage = self.has_storage
                 get_storage = self.get_storage
                 for storage_id in storage_ids:
-                    if not(has_storage(storage_id) and get_storage(storage_id).meta_type in storage_types):
+                    if not (
+                        has_storage(storage_id) and
+                        get_storage(storage_id).meta_type in storage_types
+                    ):
                         return false
                 return true
 
         return false
 
-    security.declareProtected(permission_access_configuration, 'has_any_storages')
+    security.declareProtected(
+        permission_access_configuration, 'has_any_storages')
 
     def has_any_storages(self, storage_ids=None, storage_types=None):
-        """!TXT! Return True if any of the specified Storages exist, limited to Storage Types if specified. If no Storages are specified, checks if any Storages are of the specified Storage Types."""
+        """!TXT! Return True if any of the specified Storages exist, limited to
+        Storage Types if specified. If no Storages are specified, checks if any
+        Storages are of the specified Storage Types."""
 
         if storage_types is None:
 
@@ -271,12 +303,16 @@ class Storages:
                     if storage.meta_type in storage_types:
                         return true
 
-            # check if any of the storages exist, limited to the specified types
+            # check if any of the storages exist, limited to the specified
+            # types
             else:
                 has_storage = self.has_storage
                 get_storage = self.get_storage
                 for storage_id in storage_ids:
-                    if has_storage(storage_id) and get_storage(storage_id).meta_type in storage_types:
+                    if (
+                        has_storage(storage_id) and
+                        get_storage(storage_id).meta_type in storage_types
+                    ):
                         return true
 
         return false
@@ -299,17 +335,19 @@ class Storages:
                 result.append((id, object))
         return result
 
-    security.declareProtected(permission_access_configuration, 'storage_values')
+    security.declareProtected(
+        permission_access_configuration, 'storage_values')
 
     def storage_values(self):
         """!TXT! Return values of Storages"""
 
         return map(lambda item: item[1], self.storage_items())
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Storage Mutation API
 
-    security.declareProtected(permission_change_configuration, 'add_storage_type')
+    security.declareProtected(
+        permission_change_configuration, 'add_storage_type')
 
     def add_storage_type(self, storage_type, REQUEST=None):
         """!TXT! add_storage_type"""
@@ -320,16 +358,20 @@ class Storages:
                 REQUEST,
                 storageplugin['action']
             )
-        except:
+        except Exception:
             self.redirect(
                 REQUEST,
                 'storages_form',
-                message='!TXT! Storage type "%s" is invalid.' % REQUEST['storageType']
+                message='!TXT! Storage type "%s" is invalid.' % (
+                    REQUEST['storageType'])
             )
 
-    security.declareProtected(permission_change_configuration, 'add_storage')
+    security.declareProtected(
+        permission_change_configuration, 'add_storage')
 
-    def add_storage(self, storage_id, storage_type_id, options={}, REQUEST=None, **args):
+    def add_storage(
+        self, storage_id, storage_type_id, options={}, REQUEST=None, **args
+    ):
         """!TXT! Add a new Storage with specified id and configuration."""
 
         options.update(args)
@@ -350,7 +392,8 @@ class Storages:
             message='!TXT! Storage "%s" added.' % storage_id
         )
 
-    security.declareProtected(permission_change_configuration, 'delete_storage')
+    security.declareProtected(
+        permission_change_configuration, 'delete_storage')
 
     def delete_storage(self, storage_id, REQUEST=None):
         """!TXT! Delete the specified Storage."""
@@ -366,7 +409,8 @@ class Storages:
             message='!TXT! Storage "%s" deleted.' % storage_id
         )
 
-    security.declareProtected(permission_change_configuration, 'delete_storages')
+    security.declareProtected(
+        permission_change_configuration, 'delete_storages')
 
     def delete_storages(self, storage_ids=[], REQUEST=None):
         """!TXT! Delete the specified Storages."""
@@ -381,10 +425,11 @@ class Storages:
         self.redirect(
             REQUEST,
             'storages_form',
-            message='!TXT! %d Storages deleted.' % len(ids)
+            message='!TXT! %d Storages deleted.' % len(storage_ids)
         )
 
-    security.declareProtected(permission_change_configuration, 'duplicate_storage')
+    security.declareProtected(
+        permission_change_configuration, 'duplicate_storage')
 
     def duplicate_storage(self, storage_id, new_id, REQUEST=None):
         """!TXT! Duplicate the specified Storage."""
@@ -400,13 +445,16 @@ class Storages:
         self.redirect(
             REQUEST,
             'storages_form',
-            message='!TXT! Storage "%s" duplicated as "%s".' % (storage_id, new_id)
+            message='!TXT! Storage "%s" duplicated as "%s".' % (
+                storage_id, new_id)
         )
 
-    security.declareProtected(permission_change_configuration, 'duplicate_storages')
+    security.declareProtected(
+        permission_change_configuration, 'duplicate_storages')
 
     def duplicate_storages(self, storage_ids, new_ids, REQUEST=None):
-        """!TXT! Duplicate the specified Storages. Both id lists must have the same length or ValueError is raised."""
+        """!TXT! Duplicate the specified Storages. Both id lists must have the
+        same length or ValueError is raised."""
 
         if len(storage_ids) != len(new_ids):
             raise ValueError("Unmatched ids and new ids lists")
@@ -416,7 +464,8 @@ class Storages:
             storage.before_duplicate(storage_ids[index], new_ids[index])
 
         for index in len(range(storage_ids)):
-            self.manage_duplicate(self._getOb(storage_ids[index]), new_ids[index])
+            self.manage_duplicate(
+                self._getOb(storage_ids[index]), new_ids[index])
 
         for index in len(range(new_ids)):
             storage = self.get_storage(new_ids[index])
@@ -425,10 +474,11 @@ class Storages:
         self.redirect(
             REQUEST,
             'storages_form',
-            message='!TXT! %d Storages duplicated.' % len(ids)
+            message='!TXT! %d Storages duplicated.' % len(storage_ids)
         )
 
-    security.declareProtected(permission_change_configuration, 'edit_storage')
+    security.declareProtected(
+        permission_change_configuration, 'edit_storage')
 
     def edit_storage(self, storage_id, options={}, REQUEST=None, **args):
         """!TXT! Change the specified Storage's configuration."""
@@ -445,7 +495,8 @@ class Storages:
             message='!TXT! Storage "%s" edited.' % storage_id
         )
 
-    security.declareProtected(permission_change_configuration, 'rename_storage')
+    security.declareProtected(
+        permission_change_configuration, 'rename_storage')
 
     def rename_storage(self, storage_id, new_id, REQUEST=None):
         """!TXT! Rename the specified Storage."""
@@ -461,13 +512,16 @@ class Storages:
         self.redirect(
             REQUEST,
             'storages_form',
-            message='!TXT! Storage "%s" renamed to "%s".' % (storage_id, new_id)
+            message='!TXT! Storage "%s" renamed to "%s".' % (
+                storage_id, new_id)
         )
 
-    security.declareProtected(permission_change_configuration, 'rename_storages')
+    security.declareProtected(
+        permission_change_configuration, 'rename_storages')
 
     def rename_storages(self, storage_ids, new_ids, REQUEST=None):
-        """!TXT! Rename the specified Storages. Both id lists must have the same length or ValueError is raised."""
+        """!TXT! Rename the specified Storages. Both id lists must have the
+        same length or ValueError is raised."""
 
         if len(storage_ids) != len(new_ids):
             raise ValueError("Unmatched ids and new ids lists")
@@ -486,13 +540,14 @@ class Storages:
         self.redirect(
             REQUEST,
             'storages_form',
-            message='!TXT! %d Storages renamed.' % len(ids)
+            message='!TXT! %d Storages renamed.' % len(storage_ids)
         )
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Storage Ordering API
 
-    security.declareProtected(permission_access_configuration, 'get_storage_position')
+    security.declareProtected(
+        permission_access_configuration, 'get_storage_position')
 
     def get_storage_position(self, storage_id):
         """!TXT! Return the position of the specified Storage"""
@@ -511,11 +566,13 @@ class Storages:
         self.redirect(
             REQUEST,
             'storages_form',
-            message='!TXT! Storage "%s" moved to position %d' % (storage_id, position + 1),
+            message='!TXT! Storage "%s" moved to position %d' % (
+                storage_id, position + 1),
             update_menu=True,
         )
 
-    security.declareProtected(permission_change_configuration, 'move_storage_to_top')
+    security.declareProtected(
+        permission_change_configuration, 'move_storage_to_top')
 
     def move_storage_to_top(self, storage_id, REQUEST=None):
         """!TXT! Move the specified Storage to the top"""
@@ -528,12 +585,14 @@ class Storages:
             update_menu=True,
         )
 
-    security.declareProtected(permission_change_configuration, 'move_storage_up')
+    security.declareProtected(
+        permission_change_configuration, 'move_storage_up')
 
     def move_storage_up(self, storage_id, REQUEST=None):
         """!TXT! Move the specified Storage up one position"""
 
-        self.move_storage(storage_id, self.get_storage_position(storage_id) - 1)
+        self.move_storage(
+            storage_id, self.get_storage_position(storage_id) - 1)
         self.redirect(
             REQUEST,
             'storages_form',
@@ -541,12 +600,14 @@ class Storages:
             update_menu=True,
         )
 
-    security.declareProtected(permission_change_configuration, 'move_storage_down')
+    security.declareProtected(
+        permission_change_configuration, 'move_storage_down')
 
     def move_storage_down(self, storage_id, REQUEST=None):
         """!TXT! Move the specified Storage down one position"""
 
-        self.move_storage(storage_id, self.get_storage_position(storage_id) + 1)
+        self.move_storage(
+            storage_id, self.get_storage_position(storage_id) + 1)
         self.redirect(
             REQUEST,
             'storages_form',
@@ -554,7 +615,8 @@ class Storages:
             update_menu=True,
         )
 
-    security.declareProtected(permission_change_configuration, 'move_storage_to_bottom')
+    security.declareProtected(
+        permission_change_configuration, 'move_storage_to_bottom')
 
     def move_storage_to_bottom(self, storage_id, REQUEST=None):
         """!TXT! Move the specified Storage to the bottom"""
@@ -569,10 +631,13 @@ class Storages:
 
     # !!! storages.py - implement move_storages_* methods
 
-# ----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Storages)
+
 
 # !!! storages.py - form/formlet handler for add_storage
 # !!! storages.py - form/formlet handler for edit_storage

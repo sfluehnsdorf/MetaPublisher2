@@ -33,7 +33,9 @@ __version__ = '$Revision: 1.2 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from types import BooleanType, ComplexType, DictType, FloatType, IntType, ListType, LongType, NoneType, StringType, TupleType, UnicodeType
+from types import (
+    BooleanType, ComplexType, DictType, FloatType, IntType, ListType, LongType,
+    NoneType, StringType, TupleType, UnicodeType)
 try:
     from elementtree.ElementTree import Element, tostring, fromstring
 except ImportError:
@@ -54,7 +56,7 @@ __all__ = [
 try:
     true = True
     false = False
-except:
+except Exception:
     true = 1
     false = 0
 
@@ -88,7 +90,10 @@ class XMLDict:
             elif isinstance(value, LongType):
                 element.attrib['type'] = 'long'
                 element.attrib['value'] = repr(value)
-            elif isinstance(value, StringType) or isinstance(value, UnicodeType):
+            elif (
+                isinstance(value, StringType) or
+                isinstance(value, UnicodeType)
+            ):
                 element.attrib['type'] = 'cdata'
                 element.text = u"<![CDATA[%s]]>" % value
             elif isinstance(value, DictType):
@@ -104,7 +109,9 @@ class XMLDict:
                 for subvalue in value:
                     element.append(encode('value', subvalue))
             else:
-                raise TypeError("Encoding of %s not supported (Key: %s)" % (repr(value), key))
+                raise TypeError(
+                    "Encoding of %s not supported (Key: %s)" % (
+                        repr(value), key))
             return element
 
         root = Element("data")
@@ -123,7 +130,9 @@ class XMLDict:
             elif element_type == 'bool':
                 value = element.get('value') == 'true' and true or false
             elif element_type == 'complex':
-                value = complex(float(element.get('re')), float(element.get('im')))
+                value = complex(
+                    float(element.get('re')),
+                    float(element.get('im')))
             elif element_type == 'float':
                 value = float(element.get('value'))
             elif element_type == 'int':
@@ -151,7 +160,9 @@ class XMLDict:
                     value.append(subvalue)
                 value = tuple(value)
             else:
-                raise TypeError('Decoding of type "%s" not supported (Source: %s)' % (element_type, element))
+                raise TypeError(
+                    'Decoding of type "%s" not supported (Source: %s)' % (
+                        element_type, element))
             return element.tag, value
 
         result = {}

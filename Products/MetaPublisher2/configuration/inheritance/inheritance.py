@@ -23,8 +23,6 @@
 __doc__ = """Inheritance Component
 
 !TXT! module info
-
-$Id: configuration/inheritance/inheritance.py 4 2013-05-09 00:02:34Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -33,7 +31,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ==============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_configuration, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass,
+    permission_access_configuration, show_future)
 
 
 # ============================================================================
@@ -57,13 +57,17 @@ class Inheritance:
 
     if show_future:
 
-        security.declareProtected(permission_access_configuration, 'inheritance_form')
+        security.declareProtected(
+            permission_access_configuration, 'inheritance_form')
 
         inheritance_form = DTMLFile('inheritance', globals())
+
 
 # ------------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Inheritance)
+
 
 # TODO inheritance.py - implement

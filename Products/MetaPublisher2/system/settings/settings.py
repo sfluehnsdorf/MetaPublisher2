@@ -33,7 +33,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage, settings
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage, settings)
 
 
 # ============================================================================
@@ -72,7 +73,6 @@ class Settings:
             result.append({'key': key, 'value': value})
         return result
 
-
         result = settings.items()
         result.sort()
         return settings.items()
@@ -83,6 +83,7 @@ class Settings:
         """!TXT! Return the value for the specified setting"""
 
         return settings[key]
+
 
 # ----------------------------------------------------------------------------
 # Class Security

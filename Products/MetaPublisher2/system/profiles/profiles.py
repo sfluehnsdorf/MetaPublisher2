@@ -37,7 +37,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, eval_valuestring, false, DTMLFile, identify_type, InitializeClass, permission_manage, permission_zmi, true
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, eval_valuestring, false, DTMLFile, identify_type,
+    InitializeClass, permission_manage, permission_zmi, true)
 
 
 # ============================================================================
@@ -75,12 +77,14 @@ class Profiles:
     def _get_profile_id(self, user):
         """!TXT! Return the Profile id based on the user object."""
 
-        return '%s/%s' % ('/'.join(user.aq_parent.getPhysicalPath()), user.getUserName())
+        return '%s/%s' % (
+            '/'.join(user.aq_parent.getPhysicalPath()), user.getUserName())
 
     security.declareProtected(permission_manage, 'get_profile_variable')
 
     def get_profile_variable(self, request, key, default=None):
-        """!TXT! Return the value of the specified variable from the user's profile."""
+        """!TXT! Return the value of the specified variable from the user's
+        profile."""
 
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
@@ -106,8 +110,7 @@ class Profiles:
 
     def save_profile_changes(self, REQUEST):
         """!TXT! Save changes to the user's profile."""
-
-        profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
+        profile_id = self._get_profile_id(REQUEST.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
 
         for formkey in REQUEST.form.keys():
@@ -134,8 +137,7 @@ class Profiles:
 
     def delete_own_profile(self, REQUEST):
         """!TXT! Delete the user's Profile."""
-
-        profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
+        profile_id = self._get_profile_id(REQUEST.AUTHENTICATED_USER)
         profiles = self.__profiles
         profiles[profile_id] = {}
         self.__profiles = profiles
@@ -163,13 +165,14 @@ class Profiles:
                 user = object.getUser(key_parts[-1])
                 if user is None:
                     raise
-            except:
+            except Exception:
                 del profiles[key]
                 counter = counter + 1
 
         if counter:
             self.__profiles = profiles
-            message = '!TXT! Found and purged %d unused profile%s.' % (counter, counter > 1 and 's' or '')
+            message = '!TXT! Found and purged %d unused profile%s.' % (
+                counter, counter > 1 and 's' or '')
         else:
             message = '!TXT! No unused profiles found.'
 
@@ -182,7 +185,8 @@ class Profiles:
     security.declareProtected(permission_manage, 'set_profile_variable')
 
     def set_profile_variable(self, request, key, value):
-        """!TXT! Set the value of the specified variable in the User's profile."""
+        """!TXT! Set the value of the specified variable in the User's
+        profile."""
 
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
@@ -199,16 +203,17 @@ class Profiles:
     security.declareProtected(permission_zmi, 'update_profile')
 
     def update_profile(self, request, variables):
-        """!TXT! Set the value of the specified variable in the User's profile."""
+        """!TXT! Set the value of the specified variable in the User's
+        profile."""
 
         form = request.form
-        form_has_key = form.has_key
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
         settings_changed = false
 
         for key, default in variables:
-            value = eval_valuestring(form.get(key, settings.get(key, default)), default)
+            value = eval_valuestring(
+                form.get(key, settings.get(key, default)), default)
             if value is not None:
                 request.set(key, value)
                 if value != settings.get(key, None):
@@ -220,32 +225,36 @@ class Profiles:
             profiles[profile_id] = settings
             self.__profiles = profiles
 
+
 # ------------------------------------------------------------------------------
 # Class Security
 
 InitializeClass(Profiles)
 
+
 # !!! profiles.py - review api use and implementation
 
 # !!! profiles.py - refactor getProfileSetting -> get_profile_variable
 
-    #def getProfileSetting(self, key, default=None):
-    #    """!TXT!"""
+'''
+    def getProfileSetting(self, key, default=None):
+        """!TXT!"""
 
-    #    request = self.REQUEST
-    #    default_value = request.cookies.get(key, default)
-    #    value = request.form.get(key, default_value)
-    #    if value != default_value:
-    #        request.RESPONSE.setCookie(key, value, path='/', expires=0)
-    #    request.set(key, value)
-    #    return value
+        request = self.REQUEST
+        default_value = request.cookies.get(key, default)
+        value = request.form.get(key, default_value)
+        if value != default_value:
+            request.RESPONSE.setCookie(key, value, path='/', expires=0)
+        request.set(key, value)
+        return value
 
 # !!! profiles.py - refactor setProfileSetting -> set_profile_variable
 
-    #def setProfileSetting(self, key, value, default=None):
-    #    """!TXT!"""
+    def setProfileSetting(self, key, value, default=None):
+        """!TXT!"""
 
-    #    request = self.REQUEST
-    #    if value != request.cookies.get(key, default):
-    #        request.RESPONSE.setCookie(key, value, path='/', expires=0)
-    #    return value
+        request = self.REQUEST
+        if value != request.cookies.get(key, default):
+            request.RESPONSE.setCookie(key, value, path='/', expires=0)
+        return value
+'''

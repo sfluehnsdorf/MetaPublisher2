@@ -1,12 +1,12 @@
 # -*- coding: iso-8859-15 -*-
-# ============================================================================
+# =============================================================================
 #
 #                         M e t a  P u b l i s h e r  2
 #
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
 # For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 #
 # This software is subject to the provisions of the Zope Public License,
 # Version 2.1 (ZPL).
@@ -18,24 +18,25 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE
 #
-# ============================================================================
+# =============================================================================
 
 __doc__ = """Entries Component
 
-API for retrieval, mutation and ordering of Entries. An Entry is a singular unit
-of data stored. Entries are stored in Storages and are defined by the Storage's
-Fields and in EntrySets, which store the result of methods on Entries.
-
-$Id: data/entries/entries.py 9 2013-05-08 23:59:58Z sfluehnsdorf $
+API for retrieval, mutation and ordering of Entries. An Entry is a singular
+unit of data stored. Entries are stored in Storages and are defined by the
+Storage's Fields and in EntrySets, which store the result of methods on
+Entries.
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
 
 
-# ============================================================================
+# =============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries, permission_create_entries, permission_change_entries, quote_plus, true
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries,
+    permission_create_entries, permission_change_entries, true)
 
 from entry import Entry
 from entryfields import EntryFields
@@ -46,7 +47,7 @@ from entrysets import EntrySets
 from entrystats import EntryStats
 
 
-# ============================================================================
+# =============================================================================
 # Module Exports
 
 __all__ = [
@@ -54,10 +55,13 @@ __all__ = [
 ]
 
 
-# ============================================================================
+# =============================================================================
 # Entries Component Mix-In Class
 
-class Entries(Entry, EntryFields, EntrySets, EntryOrder, EntryTrees, EntryGraphs, EntryStats):
+class Entries(
+    Entry, EntryFields, EntrySets, EntryOrder, EntryTrees, EntryGraphs,
+    EntryStats
+):
     """Entries Component Mix-In Class"""
 
     security = ClassSecurityInfo()
@@ -85,7 +89,8 @@ class Entries(Entry, EntryFields, EntrySets, EntryOrder, EntryTrees, EntryGraphs
 
     edit_entries_form = DTMLFile('edit_entries', globals())
 
-    security.declareProtected(permission_change_entries, 'duplicate_entries_form')
+    security.declareProtected(
+        permission_change_entries, 'duplicate_entries_form')
 
     duplicate_entries_form = DTMLFile('duplicate_entries', globals())
 
@@ -101,29 +106,37 @@ class Entries(Entry, EntryFields, EntrySets, EntryOrder, EntryTrees, EntryGraphs
 
     reset_entries_form = DTMLFile('reset_entries', globals())
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Entry Data Processing Helpers
 
     security.declareProtected(permission_access_entries, 'extract_entry_data')
 
     def extract_entry_data(self, source, mapping, failsafe=true):
-        """!TXT! Extract the values of the Fields of the specified source from the specified mapping."""
+        """!TXT! Extract the values of the Fields of the specified source from
+        the specified mapping."""
 
         source = self.get_storage(source)
         return source.extract_entry_data(mapping, failsafe)
 
-    security.declareProtected(permission_access_entries, 'extract_entryfield_data')
+    security.declareProtected(
+        permission_access_entries, 'extract_entryfield_data')
 
-    def extract_entryfield_data(self, source, field_id, mapping, failsafe=true):
-        """!TXT! Extract the value of the specified Field of the specified source from the specified mapping"""
+    def extract_entryfield_data(
+        self, source, field_id, mapping, failsafe=true
+    ):
+        """!TXT! Extract the value of the specified Field of the specified
+        source from the specified mapping"""
 
         source = self.get_storage(source)
         return source.extract_entryfield_data(field_id, mapping, failsafe)
 
-# ----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Entries)
+
 
 # TODO entries.py - support multi column per field
 # TODO entries.py - specify/implement api for entries without id

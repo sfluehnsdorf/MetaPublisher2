@@ -33,7 +33,18 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from field import *
-from legacyfield import *
+from field import FieldPluginBase
+from legacyfield import LegacyFieldPlugin
 
-# !!! bases/field/__init__.py - import all field type bases and register their autoregistries
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'FieldPluginBase',
+    'LegacyFieldPlugin',
+]
+
+
+# !!! bases/field/__init__.py - import all field type bases and register
+#     their autoregistries

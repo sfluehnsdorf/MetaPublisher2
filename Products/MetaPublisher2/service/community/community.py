@@ -35,8 +35,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile,\
-    InitializeClass, permission_zmi, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_zmi, show_future)
 
 
 # ============================================================================
@@ -66,7 +66,8 @@ class Community:
 
         security.declareProtected(permission_zmi, 'community_top_form')
 
-        community_top_form = DTMLFile('community_top', globals(), target='_parent')
+        community_top_form = DTMLFile(
+            'community_top', globals(), target='_parent')
 
     # ------------------------------------------------------------------------
     # Community Retrieval API
@@ -77,6 +78,7 @@ class Community:
         """!TXT! Return the URL for the online community service"""
 
         return self.get_setting('service_community_url')
+
 
 # ----------------------------------------------------------------------------
 # initialize class security

@@ -35,8 +35,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile,\
-    InitializeClass, permission_zmi
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_zmi)
 
 
 # ============================================================================
@@ -71,6 +71,7 @@ class Feedback:
         """!TXT! Return the URL for the online feedback service"""
 
         return self.get_setting('service_feedback_url')
+
 
 # ----------------------------------------------------------------------------
 # Class Security

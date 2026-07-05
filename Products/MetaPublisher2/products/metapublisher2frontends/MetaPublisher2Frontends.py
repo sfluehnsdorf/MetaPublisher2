@@ -23,8 +23,6 @@
 __doc__ = """MetaPublisher2Frontends Product
 
 !TXT! module info
-
-$Id: products/metapublisher2frontends/MetaPublisher2Frontends.py 10 2013-05-14 22:16:32Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -34,7 +32,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.interfaces import IFrontendPluginBase
-from Products.MetaPublisher2.library import BeforeDeleteException, ClassSecurityInfo, DTMLFile, Folder, InitializeClass, UserInterface, true, quote_plus
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, Folder, InitializeClass, true, quote_plus)
 
 
 # ============================================================================
@@ -73,7 +72,11 @@ class MetaPublisher2Frontends(Folder):
     def all_meta_types(self, interfaces=None):
         """!TXT! Return list of containable object types"""
 
-        interfaces = (interfaces and list(interfaces) or []) + [IFrontendPluginBase, ]
+        interfaces = (
+            interfaces and
+            list(interfaces) or
+            []
+        ) + [IFrontendPluginBase]
         return Folder.all_meta_types(self, interfaces)
 
     # ------------------------------------------------------------------------
@@ -93,8 +96,10 @@ class MetaPublisher2Frontends(Folder):
 
         return self.absolute_url()
 
+
 # ------------------------------------------------------------------------------
 # initialize class security
+
 
 InitializeClass(MetaPublisher2Frontends)
 
@@ -105,11 +110,15 @@ InitializeClass(MetaPublisher2Frontends)
 add_MetaPublisher2Frontends_form = DTMLFile('add', globals())
 
 
-def add_MetaPublisher2Frontends(self, id, title='Frontends Folder', REQUEST=None):
+def add_MetaPublisher2Frontends(
+    self, id, title='Frontends Folder', REQUEST=None
+):
     """!TXT! ZMI constructor for MetaPublisher2Frontends"""
 
     if not container_filter(self.this()):
-        raise TypeError("!TXT! Can't add a MetaPublisher2Frontends Folder outside of a MetaPublisher2")
+        raise TypeError(
+            "!TXT! Can't add a MetaPublisher2Frontends Folder outside of a "
+            "MetaPublisher2")
 
     id = str(id)
     title = str(title)
@@ -122,7 +131,7 @@ def add_MetaPublisher2Frontends(self, id, title='Frontends Folder', REQUEST=None
     if REQUEST:
         try:
             url = self.DestinationURL()
-        except:
+        except Exception:
             url = REQUEST['URL1']
         url = '%s/manage_main?update_menu=1&manage_tabs_message=%s' % (
             url,
@@ -151,18 +160,22 @@ def register_MetaPublisher2Frontends(context):
         context.registerClass(
             MetaPublisher2Frontends,
             constructors=(
-                ('add_MetaPublisher2Frontends_form', add_MetaPublisher2Frontends_form),
+                (
+                    'add_MetaPublisher2Frontends_form',
+                    add_MetaPublisher2Frontends_form),
                 ('add_MetaPublisher2Frontends', add_MetaPublisher2Frontends),
             ),
             icon='resources/icon/MetaPublisher2Folder.gif',
             container_filter=container_filter
         )
 
-    except:
+    except Exception:
         context.registerClass(
             MetaPublisher2Frontends,
             constructors=(
-                ('add_MetaPublisher2Frontends_form', add_MetaPublisher2Frontends_form),
+                (
+                    'add_MetaPublisher2Frontends_form',
+                    add_MetaPublisher2Frontends_form),
                 ('add_MetaPublisher2Frontends', add_MetaPublisher2Frontends),
             ),
             icon='resources/icon/MetaPublisher2Folder.gif'

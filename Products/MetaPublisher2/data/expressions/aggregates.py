@@ -33,11 +33,13 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
+
 from Products.MetaPublisher2.library import ClassSecurityInfo, InitializeClass
 
 
 # ============================================================================
 # Module Exports
+
 
 __all__ = [
     'Aggregates',
@@ -47,14 +49,18 @@ __all__ = [
 # ============================================================================
 # Aggregates Component Mix-In Class
 
+
 class Aggregates:
     """!TXT! Aggregates Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
+
 # ----------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Aggregates)
+
 
 # TODO aggregates.py - implement

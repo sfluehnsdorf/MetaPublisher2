@@ -23,10 +23,15 @@
 __doc__ = """Sorter Expression Base Initialisation
 
 !TXT! module info
-
-$Id: bases/expression/sorter/__init__.py 2 2013-05-10 23:29:59Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
 
 # TODO: bases/expression/sorter - forward, reverse, shuffle
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+]

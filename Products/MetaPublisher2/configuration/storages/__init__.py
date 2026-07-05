@@ -34,3 +34,11 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from storages import Storages
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'Storages',
+]

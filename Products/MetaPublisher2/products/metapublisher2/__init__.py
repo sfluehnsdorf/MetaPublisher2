@@ -35,3 +35,12 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 
 import MetaPublisher2
 from MetaPublisher2 import register_MetaPublisher2
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'MetaPublisher2',
+    'register_MetaPublisher2',
+]

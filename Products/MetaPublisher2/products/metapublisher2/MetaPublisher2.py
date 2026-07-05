@@ -42,8 +42,6 @@ with components including...
 The application can be managed through the Web by Zope's Management Interface,
 through an extensive API or, if desired through a user generated public
 interface.
-
-$Id: products/metapublisher2/MetaPublisher2.py 20 2013-06-23 12:02:19Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -54,7 +52,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 
 from Products.MetaPublisher2.configuration import Configuration
 from Products.MetaPublisher2.data import Data
-from Products.MetaPublisher2.library import ClassSecurityInfo, Compatibility, DTMLFile, false, Folder, InitializeClass, JSONDict, MultiTabs, quote_plus, true, UserInterface, XMLDict
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, Compatibility, DTMLFile, false, Folder, InitializeClass,
+    JSONDict, MultiTabs, quote_plus, true, UserInterface, XMLDict)
 from Products.MetaPublisher2.publisher import Publisher
 from Products.MetaPublisher2.service import Service
 from Products.MetaPublisher2.system import System
@@ -62,15 +62,14 @@ from Products.MetaPublisher2.system import System
 # !!! MetaPublisher2.py - remove DEV before release
 try:
     from Products.MetaPublisher2.DEV import DEV
-except:
+except Exception:
     class DEV:
         manage_options = ()
 
-from Products.MetaPublisher2.products.metapublisher2designs.MetaPublisher2Designs import add_MetaPublisher2Designs
-from Products.MetaPublisher2.products.metapublisher2frontends.MetaPublisher2Frontends import add_MetaPublisher2Frontends
-from Products.MetaPublisher2.products.metapublisher2languages.MetaPublisher2Languages import add_MetaPublisher2Languages
-from Products.MetaPublisher2.products.metapublisher2tools.MetaPublisher2Tools import add_MetaPublisher2Tools
-from Products.MetaPublisher2.products.metapublisher2widgets.MetaPublisher2Widgets import add_MetaPublisher2Widgets
+from Products.MetaPublisher2.products import (
+    add_MetaPublisher2Designs, add_MetaPublisher2Frontends,
+    add_MetaPublisher2Languages, add_MetaPublisher2Tools,
+    add_MetaPublisher2Widgets)
 
 
 # ============================================================================
@@ -85,7 +84,10 @@ __all__ = [
 # MetaPublisher2 Product Class
 
 # !!! MetaPublisher2.py - remove DEV before release
-class MetaPublisher2(Data, Configuration, Publisher, System, Service, DEV, JSONDict, XMLDict, Compatibility, UserInterface, MultiTabs, Folder):
+class MetaPublisher2(
+    Data, Configuration, Publisher, System, Service, DEV, JSONDict, XMLDict,
+    Compatibility, UserInterface, MultiTabs, Folder
+):
     """!TXT! MetaPublisher2 Product Class"""
 
     security = ClassSecurityInfo()
@@ -109,13 +111,15 @@ class MetaPublisher2(Data, Configuration, Publisher, System, Service, DEV, JSOND
     # !!! MetaPublisher2.py - remove DEV before release
 
     manage_options = (
-        {'label': 'Data', 'action': '', 'sub': Data.manage_options, },
-        {'label': 'Configuration', 'action': '', 'sub': Configuration.manage_options, },
-        {'label': 'Publisher', 'action': '', 'sub': Publisher.manage_options, },
-        {'label': 'System', 'action': '', 'sub': System.manage_options, },
-        {'label': 'Service', 'action': '', 'sub': Service.manage_options, },
-        {'label': 'Zope', 'action': '', 'sub': Folder.manage_options, },
-        {'label': 'DEV', 'action': '', 'sub': DEV.manage_options, },
+        {'label': 'Data', 'action': '', 'sub': Data.manage_options},
+        {
+            'label': 'Configuration',
+            'action': '', 'sub': Configuration.manage_options},
+        {'label': 'Publisher', 'action': '', 'sub': Publisher.manage_options},
+        {'label': 'System', 'action': '', 'sub': System.manage_options},
+        {'label': 'Service', 'action': '', 'sub': Service.manage_options},
+        {'label': 'Zope', 'action': '', 'sub': Folder.manage_options},
+        {'label': 'DEV', 'action': '', 'sub': DEV.manage_options},
     )
 
     # --------------------------------------------------------------------------
@@ -138,25 +142,29 @@ class MetaPublisher2(Data, Configuration, Publisher, System, Service, DEV, JSOND
 
         # create missing new folders
         ids = self.objectIds()
-        if not 'designs' in ids:
+        if 'designs' not in ids:
             add_MetaPublisher2Designs(self, 'designs')
-        if not 'frontends' in ids:
+        if 'frontends' not in ids:
             add_MetaPublisher2Frontends(self, 'frontends')
-        if not 'languages' in ids:
+        if 'languages' not in ids:
             add_MetaPublisher2Languages(self, 'languages')
-        if not 'tools' in ids:
+        if 'tools' not in ids:
             add_MetaPublisher2Tools(self, 'tools')
-        if not 'widgets' in ids:
+        if 'widgets' not in ids:
             add_MetaPublisher2Widgets(self, 'widgets')
 
         # move frontends from legacy location into frontends folder
-        if 'interfaces' in ids and self.interfaces.meta_type == 'InterfacesFolder':
+        if (
+            'interfaces' in ids and
+            self.interfaces.meta_type == 'InterfacesFolder'
+        ):
             try:
                 if self.interfaces.objectIds():
-                    clipboard = self.interfaces.manage_copyObjects(self.interfaces.objectIds())
+                    clipboard = self.interfaces.manage_copyObjects(
+                        self.interfaces.objectIds())
                     self.frontends.manage_pasteObjects(clipboard)
                 self.manage_delObjects('interfaces')
-            except:
+            except Exception:
                 pass
 
     # ------------------------------------------------------------------------
@@ -175,6 +183,7 @@ class MetaPublisher2(Data, Configuration, Publisher, System, Service, DEV, JSOND
         """!TXT! Return this instance's absolute url"""
 
         return self.absolute_url()
+
 
 # ----------------------------------------------------------------------------
 # Class Security
@@ -206,12 +215,13 @@ def add_MetaPublisher2(self, id, title='', presets=[], REQUEST=None):
     add_MetaPublisher2Widgets(metapublisher2, 'widgets')
 
     if presets:
-        raise NotImplemented("!TXT! Preset initialization not yet implemented!")
+        raise NotImplementedError(
+            "!TXT! Preset initialization not yet implemented!")
 
     if REQUEST is not None:
         try:
             url = self.DestinationURL()
-        except:
+        except Exception:
             url = REQUEST['URL1']
         url = '%s/manage_main?update_menu=1&manage_tabs_message=%s' % (
             url,

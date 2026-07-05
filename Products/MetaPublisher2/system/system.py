@@ -74,6 +74,7 @@ class System(Tools, Integrity, Presets, Events, Profiles, Settings, Plugins):
         {'label': 'Plugins', 'action': 'plugins_form'},
     )
 
+
 # ----------------------------------------------------------------------------
 # Class Security
 

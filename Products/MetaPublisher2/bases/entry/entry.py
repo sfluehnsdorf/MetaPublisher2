@@ -34,7 +34,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.interfaces import IEntry
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, implements, InitializeClass, true, false
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, implements, InitializeClass)
 
 
 # ============================================================================
@@ -54,6 +55,7 @@ class Entry:
     security = ClassSecurityInfo()
 
     implements(IEntry)
+
 
 # ----------------------------------------------------------------------------
 # initialize class security

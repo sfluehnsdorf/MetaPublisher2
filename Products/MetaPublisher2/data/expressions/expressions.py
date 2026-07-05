@@ -33,6 +33,7 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
+
 from Products.MetaPublisher2.library import ClassSecurityInfo, InitializeClass
 
 from aggregates import Aggregates
@@ -46,6 +47,7 @@ from sorters import Sorters
 # ============================================================================
 # Module Exports
 
+
 __all__ = [
     'Expressions',
 ]
@@ -54,14 +56,20 @@ __all__ = [
 # ============================================================================
 # Expressions Component Mix-In Class
 
-class Expressions(Aggregates, Conditions, Constants, Functions, Groupers, Sorters):
+
+class Expressions(
+    Aggregates, Conditions, Constants, Functions, Groupers, Sorters
+):
     """!TXT! Expressions Component Mix-In Class"""
 
     security = ClassSecurityInfo()
 
+
 # ----------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Expressions)
+
 
 # TODO expressions.py - implement

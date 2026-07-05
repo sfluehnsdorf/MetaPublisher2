@@ -82,27 +82,33 @@ class IPluginBase(Interface):
 
     plugin_info = Text(
         title=u"Plugin Info",
-        description=u"!TXT! Description of the Plugin realised with this PluginBase.",
+        description=(
+            u"!TXT! Description of the Plugin realised with this PluginBase."),
     )
 
     plugin_version = TextLine(
         title=u"Plugin Version",
-        description=u"!TXT! Version of the Plugin realised with this PluginBase.",
+        description=(
+            u"!TXT! Version of the Plugin realised with this PluginBase."),
     )
 
     plugin_vendor = TextLine(
         title=u"Plugin Vendor",
-        description=u"!TXT! Vendor of the Plugin realised with this PluginBase.",
+        description=(
+            u"!TXT! Vendor of the Plugin realised with this PluginBase."),
     )
 
     plugin_author = TextLine(
         title=u"Plugin Author",
-        description=u"!TXT! Author of the Plugin realised with this PluginBase.",
+        description=(
+            u"!TXT! Author of the Plugin realised with this PluginBase."),
     )
 
     plugin_homepage = URI(
         title=u"Plugin URL",
-        description=u"!TXT! URL of the homepage of the Plugin realised with this PluginBase",
+        description=(
+            u"!TXT! URL of the homepage of the Plugin realised with this "
+            u"PluginBase"),
     )
 
     plugin_flags = List(
@@ -126,13 +132,17 @@ class IPluginBase(Interface):
         """!TXT! Return the boolean states of all Plugin flags"""
 
     def get_available_immutable_pluginflags(self):
-        """!TXT! Return list of Plugin flag ids, which are either constants or set by an external source and may not be altered by MetaPublisher3 or its users"""
+        """!TXT! Return list of Plugin flag ids, which are either constants or
+        set by an external source and may not be altered by MetaPublisher3 or
+        its users"""
 
     def get_available_mutable_pluginflags(self):
-        """!TXT! Return list of Plugin flag ids, which may be altered by MetaPublisher3 and its users"""
+        """!TXT! Return list of Plugin flag ids, which may be altered by
+        MetaPublisher3 and its users"""
 
     def get_pluginflag(self, pluginflag_id, failsafe=None):
-        """!TXT! Return the boolean state of the specified Plugin flag if it exists, raises KeyError otherwise"""
+        """!TXT! Return the boolean state of the specified Plugin flag if it
+        exists, raises KeyError otherwise"""
 
     def get_plugin_specification(self):
         """!TXT! Return a dictionary describing this Plugin"""
@@ -144,18 +154,28 @@ class IPluginBase(Interface):
     # Plugin Detail Mutation
 
     def define_pluginflags(self, pluginflag_ids):
-        """!TXT! Clear all mutable Plugin flags and set the specified Plugin flags, raises ImmutableError if the Plugin flag is not mutable or raises KeyError if the Plugin flag is not undefined"""
+        """!TXT! Clear all mutable Plugin flags and set the specified Plugin
+        flags, raises ImmutableError if the Plugin flag is not mutable or
+        raises KeyError if the Plugin flag is not undefined"""
 
     def set_pluginflag(self, pluginflag_id):
-        """!TXT! Set the specified Plugin flag if it is mutable, raises ImmutableError if the Plugin flag is not mutable or raises KeyError if the Plugin flag is not undefined"""
+        """!TXT! Set the specified Plugin flag if it is mutable, raises
+        ImmutableError if the Plugin flag is not mutable or raises KeyError
+        if the Plugin flag is not undefined"""
 
     def set_pluginflags(self, pluginflag_ids):
-        """!TXT! Set the specified mutable Plugin flags, raises ImmutableError if a Plugin flag is not mutable or raises KeyError if a Plugin flag is not undefined"""
+        """!TXT! Set the specified mutable Plugin flags, raises ImmutableError
+        if a Plugin flag is not mutable or raises KeyError if a Plugin flag is
+        not undefined"""
 
     def unset_pluginflag(self, pluginflag_id):
-        """!TXT! Set the specified Plugin flag if it is mutable, raises ImmutableError if the Plugin flag is not mutable or raises KeyError if the Plugin flag is not undefined"""
+        """!TXT! Set the specified Plugin flag if it is mutable, raises
+        ImmutableError if the Plugin flag is not mutable or raises KeyError if
+        the Plugin flag is not undefined"""
 
     def unset_pluginflags(self, pluginflag_ids):
-        """!TXT! Unset the specified mutable Plugin flags, raises ImmutableError if a Plugin flag is not mutable or raises KeyError if a Plugin flag is not undefined"""
+        """!TXT! Unset the specified mutable Plugin flags, raises
+        ImmutableError if a Plugin flag is not mutable or raises KeyError if a
+        Plugin flag is not undefined"""
 
 # !!! interfaces/plugin.py - review api

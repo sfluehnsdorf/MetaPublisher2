@@ -33,7 +33,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage_frontends, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage_frontends,
+    show_future)
 
 
 # ============================================================================
@@ -60,6 +62,7 @@ class Caching:
         security.declareProtected(permission_manage_frontends, 'caching_form')
 
         caching_form = DTMLFile('caching', globals())
+
 
 # ----------------------------------------------------------------------------
 # Class Security

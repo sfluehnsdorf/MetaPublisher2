@@ -22,11 +22,9 @@
 
 __doc__ = """Exports Component
 
-Export service for Entries into various types of files either for the filesystem
-or download. Users can choose the Storage and match the Fields in the Storage to
-data slots in the file.
-
-$Id: data/exports/exports.py 5 2013-05-08 23:55:43Z sfluehnsdorf $
+Export service for Entries into various types of files either for the
+filesystem or download. Users can choose the Storage and match the Fields in
+the Storage to data slots in the file.
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -35,7 +33,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_export_entries, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_export_entries,
+    show_future)
 
 
 # ============================================================================
@@ -63,9 +63,12 @@ class Exports:
 
         exports_form = DTMLFile('exports', globals())
 
+
 # ----------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Exports)
+
 
 # TODO exports.py - implement

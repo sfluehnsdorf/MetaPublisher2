@@ -33,8 +33,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile,\
-    InitializeClass, permission_manage, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage,
+    show_future)
 
 
 # ============================================================================
@@ -61,6 +62,7 @@ class Events:
         security.declareProtected(permission_manage, 'events_form')
 
         events_form = DTMLFile('events', globals())
+
 
 # ----------------------------------------------------------------------------
 # Class Security

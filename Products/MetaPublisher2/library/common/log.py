@@ -51,7 +51,7 @@ try:
 
         logger.info(message)
 
-except:
+except Exception:
 
     from zLOG import LOG, INFO
 

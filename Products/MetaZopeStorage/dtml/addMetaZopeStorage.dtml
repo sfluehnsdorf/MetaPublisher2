@@ -1,0 +1,32 @@
+<dtml-let
+  page_title="'Add New MetaZopeStorage'"
+  page_info="'!!!'"
+  >
+<dtml-var manage_page_header>
+
+<form action="&dtml-zmp2URL;" method="post">
+  <div class="form">
+    <table>
+      <tr>
+        <th>Id</th>
+        <td class="w100"><input class="token" type="text" name="id" size="25" required="required" /></td>
+        <td>required</td>
+      </tr>
+      <tr>
+        <th>Title</th>
+        <td><input class="string" type="text" name="title" size="60" /></td>
+        <td>optional</td>
+      </tr>
+      <tr>
+        <th></th>
+        <td>
+          <input type="submit" name="manage_addProduct/MetaZopeStorage/manage_addMetaZopeStorage:method" value="Add Storage" /> 
+          <input type="submit" name="manage_storagesBrowserForm:method" value="Cancel" /> 
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+
+<dtml-var manage_page_footer>
+</dtml-let>

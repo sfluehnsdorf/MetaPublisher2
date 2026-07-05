@@ -34,7 +34,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.interfaces import IWidgetPluginBase
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage, permission_manage_frontends, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage,
+    permission_manage_frontends, show_future)
 
 
 # ============================================================================
@@ -89,14 +91,16 @@ class Widgets:
     security.declareProtected(permission_manage, 'widgetplugin_items')
 
     def widgetplugin_items(self):
-        """!TXT! Return tuples of id, value of installed MetaPublisher2 Widget plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2 Widget
+        plugins"""
 
         return self.plugin_items(IWidgetPluginBase)
 
     security.declareProtected(permission_manage, 'widgetplugin_values')
 
     def widgetplugin_values(self):
-        """!TXT! Return tuples of id, value of installed MetaPublisher2 Widget plugins"""
+        """!TXT! Return tuples of id, value of installed MetaPublisher2 Widget
+        plugins"""
 
         return self.plugin_values(IWidgetPluginBase)
 
@@ -107,8 +111,7 @@ class Widgets:
 
     def get_widgetflags(self, frontend_path, widget_id):
         """!TXT! Return tuples of id, boolean states of all Plugin flags"""
-
-        widget = get_widget(self, frontend_path, widget_id)
+        widget = self.get_widget(self, frontend_path, widget_id)
         return widget.get_widgetflags()
 
     security.declareProtected(permission_manage, 'get_widgetflag_ids')
@@ -116,15 +119,16 @@ class Widgets:
     def get_widgetflag_ids(self, frontend_path, widget_id):
         """!TXT! Return the ids of all Plugin flags"""
 
-        widget = get_widget(self, frontend_path, widget_id)
+        widget = self.get_widget(self, frontend_path, widget_id)
         return widget.get_widgetflag_ids()
 
     security.declareProtected(permission_manage, 'get_widgetflag')
 
     def get_widgetflag(self, frontend_path, widget_id, pluginflag_id):
-        """!TXT! Return the boolean state of the specified Widget flag if it exists, raises KeyError otherwise"""
+        """!TXT! Return the boolean state of the specified Widget flag if it
+        exists, raises KeyError otherwise"""
 
-        widget = get_widget(self, frontend_path, widget_id)
+        widget = self.get_widget(self, frontend_path, widget_id)
         return widget.get_pluginflag(pluginflag_id)
 
     security.declareProtected(permission_manage, 'has_widgetflag')
@@ -132,24 +136,28 @@ class Widgets:
     def has_widgetflag(self, frontend_path, widget_id, pluginflag_id):
         """!TXT! Return True if the Widget flag exists, False otherwise"""
 
-        widget = get_widget(self, frontend_path, widget_id)
+        widget = self.get_widget(self, frontend_path, widget_id)
         return widget.has_pluginflag(pluginflag_id)
 
     # ------------------------------------------------------------------------
     # Widget Matching API
 
-    security.declareProtected(permission_manage_frontends, 'get_fields_for_widget')
+    security.declareProtected(
+        permission_manage_frontends, 'get_fields_for_widget')
 
     def get_fields_for_widget(self, widget_type_id):
-        """!TXT! Return a list of Fields appropriate for the specified Widget type."""
+        """!TXT! Return a list of Fields appropriate for the specified Widget
+        type."""
 
         # TODO widgets.py - implement get_fields_for_widget
-        raise NotImplemented
+        raise NotImplementedError
 
-    security.declareProtected(permission_manage_frontends, 'get_widgets_for_field')
+    security.declareProtected(
+        permission_manage_frontends, 'get_widgets_for_field')
 
     def get_widgets_for_field(self, frontend_type_id, field_type_id):
-        """!TXT! Return a list of Widgets appropriate for the passed Field type"""
+        """!TXT! Return a list of Widgets appropriate for the passed Field
+        type"""
 
         def sort_widgets(x, y):
             return cmp(x[0], y[0])
@@ -158,7 +166,10 @@ class Widgets:
         for id, plugin in self.widgetplugin_items():
             frontend_type_ids = plugin['instance'].frontend_types
             field_type_ids = plugin['instance'].field_types
-            if frontend_type_id in frontend_type_ids and field_type_id in field_type_ids:
+            if (
+                frontend_type_id in frontend_type_ids and
+                field_type_id in field_type_ids
+            ):
                 rating = field_type_ids.index(field_type_id)
                 result.append((rating, (id, plugin)))
         result.sort(sort_widgets)
@@ -186,7 +197,8 @@ class Widgets:
     security.declareProtected(permission_manage_frontends, 'widget_items')
 
     def widget_items(self, frontend_path):
-        """!TXT! Return tuples of id, object of the specified Frontend's Widgets."""
+        """!TXT! Return tuples of id, object of the specified Frontend's
+        Widgets."""
 
         frontend = self.get_frontend(frontend_path)
         return frontend.widget_items()
@@ -204,19 +216,25 @@ class Widgets:
 
     security.declareProtected(permission_manage_frontends, 'add_widget')
 
-    def add_widget(self, frontend_path, widget_type_id, options={}, REQUEST=None, **args):
-        """!TXT! Add a new Widget in the specified Frontend with specified type and configuration."""
+    def add_widget(
+        self, frontend_path, widget_type_id, options={}, REQUEST=None, **args
+    ):
+        """!TXT! Add a new Widget in the specified Frontend with specified
+        type and configuration."""
 
         # TODO widgets.py - implement add_widgets
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'edit_widget')
 
-    def edit_widget(self, frontend_path, widget_id, widget_type_id, options={}, REQUEST=None, **args):
+    def edit_widget(
+        self, frontend_path, widget_id, widget_type_id, options={},
+        REQUEST=None, **args
+    ):
         """!TXT! Change the specified Widget's configuration."""
 
         # TODO widgets.py - implement edit_widget
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'delete_widget')
 
@@ -224,7 +242,7 @@ class Widgets:
         """!TXT! Delete the specified Widget in the specified Frontend."""
 
         # TODO widgets.py - implement delete_widget
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'delete_widgets')
 
@@ -232,7 +250,7 @@ class Widgets:
         """!TXT! Delete the specified Widgets in the specified Frontend."""
 
         # TODO widgets.py - implement delete_widgets
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'duplicate_widget')
 
@@ -240,15 +258,17 @@ class Widgets:
         """!TXT! Duplicate the specified Widget in the specified Frontend."""
 
         # TODO widgets.py - implement duplicate_widget
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'duplicate_widgets')
 
-    def duplicate_widgets(self, frontend_path, widget_ids, new_ids, REQUEST=None):
+    def duplicate_widgets(
+        self, frontend_path, widget_ids, new_ids, REQUEST=None
+    ):
         """!TXT! Duplicate the specified Widgets in the specified Frontend."""
 
         # TODO widgets.py - implement duplicate_widgets
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'rename_widget')
 
@@ -256,7 +276,7 @@ class Widgets:
         """!TXT! Rename the specified Widget in the specified Frontend."""
 
         # TODO widgets.py - implement rename_widget
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'rename_widgets')
 
@@ -264,34 +284,39 @@ class Widgets:
         """!TXT! Rename the specified Widgets in the specified Frontend."""
 
         # TODO widgets.py - implement rename_widgets
-        raise NotImplemented
+        raise NotImplementedError
 
     # ------------------------------------------------------------------------
     # Widget Ordering API
 
-    security.declareProtected(permission_manage_frontends, 'get_widget_position')
+    security.declareProtected(
+        permission_manage_frontends, 'get_widget_position')
 
     def get_widget_position(self, frontend_path, widget_id):
         """!TXT! Return the position of a Widget"""
 
         # TODO widgets.py - implement get_widget_position
-        raise NotImplemented
+        raise NotImplementedError
 
-    security.declareProtected(permission_manage_frontends, 'move_widget_to_position')
+    security.declareProtected(
+        permission_manage_frontends, 'move_widget_to_position')
 
-    def move_widget_to_position(self, frontend_path, widget_id, position, REQUEST=None):
+    def move_widget_to_position(
+        self, frontend_path, widget_id, position, REQUEST=None
+    ):
         """!TXT! Move a Widget to the specified position"""
 
         # TODO widgets.py - implement move_widget_to_position
-        raise NotImplemented
+        raise NotImplementedError
 
-    security.declareProtected(permission_manage_frontends, 'move_widget_to_top')
+    security.declareProtected(
+        permission_manage_frontends, 'move_widget_to_top')
 
     def move_widget_to_top(self, frontend_path, widget_id, REQUEST=None):
         """!TXT! Move a Widget to the top"""
 
         # TODO widgets.py - implement move_widget_top
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'move_widget_up')
 
@@ -299,7 +324,7 @@ class Widgets:
         """!TXT! Move a Widget up one position"""
 
         # TODO widgets.py - implement move_widget_up
-        raise NotImplemented
+        raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'move_widget_down')
 
@@ -307,15 +332,17 @@ class Widgets:
         """!TXT! Move a Widget down one position"""
 
         # TODO widgets.py - implement move_widget_down
-        raise NotImplemented
+        raise NotImplementedError
 
-    security.declareProtected(permission_manage_frontends, 'move_widget_to_bottom')
+    security.declareProtected(
+        permission_manage_frontends, 'move_widget_to_bottom')
 
     def move_widget_to_bottom(self, frontend_path, widget_id):
         """!TXT! Move a Widget to the bottom"""
 
         # TODO widgets.py - implement move_widget_to_bottom
-        raise NotImplemented
+        raise NotImplementedError
+
 
 # ----------------------------------------------------------------------------
 # Class Security
@@ -326,7 +353,8 @@ InitializeClass(Widgets)
 # TODO widgets.py - form/formlet handler for edit_widget
 # TODO widgets.py - revise API and comments
 #      widgets.py must manage widgets in frontends and widgetsfolder
-#      either provide two sets of methods or handle in widgetsfolder if frontend_path is None
+#      either provide two sets of methods or handle in widgetsfolder if
+#      frontend_path is None
 # TODO widgets.py - missing add_widget.dtml
 # TODO widgets.py - missing delete_widgets.dtml
 # TODO widgets.py - missing duplicate_widgets.dtml

@@ -36,7 +36,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.interfaces import IPluginBase
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, false, InitializeClass, permission_manage, Products, true
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, false, InitializeClass, permission_manage,
+    Products, true)
 
 
 # ============================================================================
@@ -68,8 +70,8 @@ class Plugins:
     security.declareProtected(permission_manage, 'get_plugin')
 
     def get_plugin(self, plugin_id, interfaces=[]):
-        """!TXT! Return the registry mapping of the specified MetaPublisher2 plugin"""
-
+        """!TXT! Return the registry mapping of the specified MetaPublisher2
+        plugin"""
         for id, plugin in self.plugin_items(interfaces):
             if id == plugin_id:
                 return plugin
@@ -79,16 +81,21 @@ class Plugins:
 
     def has_plugins(self, interfaces=[]):
         """!TXT! Return True if any MetaPublisher2 plugins are installed"""
-
         return self.plugin_ids(interfaces) and true or false
 
     security.declareProtected(permission_manage, 'list_plugins')
 
     def list_plugins(self, plugin_type=None):
         """!TXT! Return a filtered list of plugins for the ZMI form."""
-
         result = []
-        for plugin in not(plugin_type) and self.plugin_values() or filter(lambda plugin: plugin['plugin_details']['plugin_type'] == plugin_type, self.plugin_values()):
+        for plugin in (
+            not plugin_type and
+            self.plugin_values() or
+            filter(
+                lambda plugin: (
+                    plugin['plugin_details']['plugin_type'] == plugin_type),
+                self.plugin_values())
+        ):
             plugin.update(plugin['plugin_details'])
             plugin['icon'] = plugin['instance'].icon
             result.append(plugin)
@@ -98,11 +105,10 @@ class Plugins:
 
     def list_plugin_types(self):
         """!TXT! Return a filtered list of plugins for the ZMI form."""
-
         result = []
         for plugin in self.plugin_values():
             plugin_type = plugin['plugin_details']['plugin_type']
-            if not plugin_type in result:
+            if plugin_type not in result:
                 result.append(plugin_type)
         return result
 
@@ -110,15 +116,14 @@ class Plugins:
 
     def plugin_ids(self, interfaces=[]):
         """!TXT! Return the ids of installed MetaPublisher2 plugins"""
-
         return map(lambda item: item[0], self.plugin_items(interfaces))
 
     security.declareProtected(permission_manage, 'plugin_items')
 
     def plugin_items(self, interfaces=[]):
-        """!TXT! Return tuples of id, registry mapping of installed MetaPublisher2 plugins"""
-
-        if not(interfaces):
+        """!TXT! Return tuples of id, registry mapping of installed
+        MetaPublisher2 plugins"""
+        if not interfaces:
             interfaces = [IPluginBase, ]
         if not isinstance(interfaces, list):
             interfaces = [interfaces, ]
@@ -127,21 +132,27 @@ class Plugins:
         for item in Products.meta_types:
             for item_interface in item.get('interfaces', None):
                 for interface in interfaces:
-                    if interface is item_interface or item_interface.extends(interface):
+                    if (
+                        interface is item_interface or
+                        item_interface.extends(interface)
+                    ):
                         instance = item['instance']('dummy')
                         data = item.copy()
-                        data['plugin_details'] = instance.get_plugin_specification()
-                        candidate = (item['product'] + '.' + item['name'], data)
-                        if not(candidate in result):
+                        data['plugin_details'] = (
+                            instance.get_plugin_specification())
+                        candidate = (
+                            item['product'] + '.' + item['name'], data)
+                        if candidate not in result:
                             result.append(candidate)
         return result
 
     security.declareProtected(permission_manage, 'plugin_values')
 
     def plugin_values(self, interfaces=[]):
-        """!TXT! Return the registry mapping of installed MetaPublisher2 plugins"""
-
+        """!TXT! Return the registry mapping of installed MetaPublisher2
+        plugins"""
         return map(lambda item: item[1], self.plugin_items(interfaces))
+
 
 # ------------------------------------------------------------------------------
 # Class Security

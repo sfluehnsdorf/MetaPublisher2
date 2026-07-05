@@ -35,8 +35,10 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 
 from Products.MetaPublisher2.bases.plugin import PluginBase
 from Products.MetaPublisher2.interfaces import IWidgetPluginBase
-from Products.MetaPublisher2.library.application import permission_manage_frontends
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, DTMLFile, implements, InitializeClass, OrderedFolder
+from Products.MetaPublisher2.library.application import (
+    permission_manage_frontends)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, implements, InitializeClass, OrderedFolder)
 
 
 # ============================================================================
@@ -85,7 +87,8 @@ class WidgetPluginBase(PluginBase, OrderedFolder):
     # ------------------------------------------------------------------------
     # Widget Specification
 
-    security.declareProtected(permission_manage_frontends, 'get_plugin_specification')
+    security.declareProtected(
+        permission_manage_frontends, 'get_plugin_specification')
 
     def get_plugin_specification(self):
         """!TXT! Return a dictionary describing this Widget"""
@@ -102,7 +105,8 @@ class WidgetPluginBase(PluginBase, OrderedFolder):
     # ------------------------------------------------------------------------
     # Widget Identity API
 
-    security.declareProtected(permission_manage_frontends, 'get_widget_instance')
+    security.declareProtected(
+        permission_manage_frontends, 'get_widget_instance')
 
     get_widget_instance = PluginBase.get_plugin_instance
 
@@ -117,11 +121,13 @@ class WidgetPluginBase(PluginBase, OrderedFolder):
     # ------------------------------------------------------------------------
     # Widget ZMI
 
-    security.declareProtected(permission_manage_frontends, 'add_widget_formlet')
+    security.declareProtected(
+        permission_manage_frontends, 'add_widget_formlet')
 
     add_widget_formlet = DTMLFile('widgetplugin_add', globals())
 
-    security.declareProtected(permission_manage_frontends, 'edit_widget_formlet')
+    security.declareProtected(
+        permission_manage_frontends, 'edit_widget_formlet')
 
     edit_widget_formlet = DTMLFile('widgetplugin_edit', globals())
 
@@ -135,13 +141,18 @@ class WidgetPluginBase(PluginBase, OrderedFolder):
 
         raise NotImplementedError
 
+
 # ----------------------------------------------------------------------------
 # initialize class security
 
+
 InitializeClass(WidgetPluginBase)
 
-# TODO bases/widget/widget.py - define api, including before_ and after_ handlers
-# TODO bases/widget/widget.py - define zmi (with developer notes regarding choice of form and formlet)
+
+# TODO bases/widget/widget.py - define api, including before_ and after_
+#      handlers
+# TODO bases/widget/widget.py - define zmi (with developer notes regarding
+#      choice of form and formlet)
 # TODO bases/widget/widget.py - define frontend type and field type bindings
 # TODO bases/widget/widget.py - predefine css and style support
 # TODO bases/widget/widget.py - predefine rendering api and modes

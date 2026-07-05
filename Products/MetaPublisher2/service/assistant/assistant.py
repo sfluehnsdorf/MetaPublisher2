@@ -36,8 +36,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile,\
-    InitializeClass, permission_manage, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage,
+    show_future)
 
 
 # ============================================================================
@@ -64,6 +65,7 @@ class Assistant:
         security.declareProtected(permission_manage, 'assistant_form')
 
         assistant_form = DTMLFile('assistant', globals())
+
 
 # ----------------------------------------------------------------------------
 # Class Security

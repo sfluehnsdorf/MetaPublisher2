@@ -1,0 +1,23 @@
+<input type="hidden" name="&dtml-prefix;_formTypeId" value="View">
+
+<table cellspacing="1" cellpadding="4" border="0">
+
+<tr>
+<th valign="top" nowrap>Display Mode</th>
+<td>
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode1" value="defaultMode"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'defaultMode'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode1">Show value</label><br />
+  <input type="radio" name="&dtml-prefix;_displayMode" id="&dtml-prefix;_displayMode2" value="showDefault"<dtml-if "REQUEST.get( prefix + '_displayMode', 'defaultMode' ) == 'showDefault'"> checked</dtml-if>> <label for="&dtml-prefix;_displayMode2">Show default value</label>
+</td>
+</tr>
+
+<tr>
+<th valign="top" nowrap>True Values</th>
+<td><label for="&dtml-prefix;_labelTrue">Label for true values:</label> <input type="text" name="&dtml-prefix;_labelTrue" id="&dtml-prefix;_labelTrue" value="<dtml-var "REQUEST.form.get( prefix + '_labelTrue', _[ prefix + '_labelTrue' ] ) or getField( storageId, fieldId ).labelTrue">"></td>
+</tr>
+
+<tr>
+<th valign="top" nowrap>False Values</th>
+<td><label for="&dtml-prefix;_labelFalse">Label for false values:</label> <input type="text" name="&dtml-prefix;_labelFalse" id="&dtml-prefix;_labelFalse" value="<dtml-var "REQUEST.form.get( prefix + '_labelFalse', _[ prefix + '_labelFalse' ] ) or getField( storageId, fieldId ).labelFalse">"></td>
+</tr>
+
+</table>

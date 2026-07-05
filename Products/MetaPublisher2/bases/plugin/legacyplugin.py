@@ -38,7 +38,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, ComputedAttribute, InitializeClass
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, ComputedAttribute, InitializeClass)
 
 
 # ==============================================================================
@@ -52,7 +53,9 @@ __all__ = [
 # ============================================================================
 # Legacy Plugin Identifiers
 
-all_plugintypes = ['ZMP2StoragePlugin', 'ZMP2FieldPlugin', 'ZMP2InterfacePlugin', 'ZMP2WidgetPlugin']
+all_plugintypes = [
+    'ZMP2StoragePlugin', 'ZMP2FieldPlugin', 'ZMP2InterfacePlugin',
+    'ZMP2WidgetPlugin']
 
 
 # ============================================================================
@@ -90,7 +93,9 @@ class LegacyPluginBase:
 
     plugin_info = ComputedAttribute(lambda self: self.pluginInfo)
 
+
 # ----------------------------------------------------------------------------
 # initialize class security
+
 
 InitializeClass(LegacyPluginBase)

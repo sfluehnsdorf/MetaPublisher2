@@ -33,4 +33,12 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from identifier import *
+from identifier import IdentifierPluginBase
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'IdentifierPluginBase',
+]

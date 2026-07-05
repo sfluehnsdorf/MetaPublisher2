@@ -33,5 +33,14 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from legacystorage import *
-from storage import *
+from legacystorage import LegacyStoragePlugin
+from storage import StoragePluginBase
+
+
+# ==============================================================================
+# Module Exports
+
+__all__ = [
+    'LegacyStoragePlugin',
+    'StoragePluginBase',
+]

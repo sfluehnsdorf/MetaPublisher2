@@ -35,8 +35,10 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 
 from Products.MetaPublisher2.bases.plugin import PluginBase
 from Products.MetaPublisher2.interfaces import IFrontendPluginBase
-from Products.MetaPublisher2.library.application import permission_manage_frontends
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, DTMLFile, implements, InitializeClass, OrderedFolder
+from Products.MetaPublisher2.library.application import (
+    permission_manage_frontends)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, implements, InitializeClass, OrderedFolder)
 
 
 # ============================================================================
@@ -77,7 +79,8 @@ class FrontendPluginBase(PluginBase, OrderedFolder):
     # ------------------------------------------------------------------------
     # Frontend Specification
 
-    security.declareProtected(permission_manage_frontends, 'get_plugin_specification')
+    security.declareProtected(
+        permission_manage_frontends, 'get_plugin_specification')
 
     def get_plugin_specification(self):
         """!TXT! Return a dictionary describing this Frontend"""
@@ -91,45 +94,59 @@ class FrontendPluginBase(PluginBase, OrderedFolder):
     # ------------------------------------------------------------------------
     # Frontend Identity API
 
-    security.declareProtected(permission_manage_frontends, 'get_frontend_instance')
+    security.declareProtected(
+        permission_manage_frontends, 'get_frontend_instance')
 
     get_frontend_instance = PluginBase.get_plugin_instance
 
-    security.declareProtected(permission_manage_frontends, 'get_frontend_id')
+    security.declareProtected(
+        permission_manage_frontends, 'get_frontend_id')
 
     get_frontend_id = PluginBase.get_plugin_id
 
-    security.declareProtected(permission_manage_frontends, 'get_frontend_url')
+    security.declareProtected(
+        permission_manage_frontends, 'get_frontend_url')
 
     get_frontend_url = PluginBase.get_plugin_url
 
     # ------------------------------------------------------------------------
     # Frontend ZMI
 
-    security.declareProtected(permission_manage_frontends, 'add_frontend_formlet')
+    security.declareProtected(
+        permission_manage_frontends, 'add_frontend_formlet')
 
     add_frontend_formlet = DTMLFile('frontendplugin_add', globals())
 
-    security.declareProtected(permission_manage_frontends, 'edit_frontend_formlet')
+    security.declareProtected(
+        permission_manage_frontends, 'edit_frontend_formlet')
 
     edit_frontend_formlet = DTMLFile('frontendplugin_edit', globals())
 
     # ------------------------------------------------------------------------
     # !TXT!
 
-    # TODO bases/frontend/frontend.py - check api requirements for get_rendering_ids, render_frontend, is_renderable, needs_rendering, get_last_rendering_datetime
+    # TODO bases/frontend/frontend.py - check api requirements for
+    #   get_rendering_ids, render_frontend, is_renderable, needs_rendering,
+    #   get_last_rendering_datetime
 
     # ------------------------------------------------------------------------
     # !TXT!
 
-    # TODO bases/frontend/frontend.py - check api requirements for add_widget_form, add_widget_formlet, add_widget, edit_widget_form, edit_widget_formlet, edit_widget, get_widget, delete_widget, delete_widgets, widget_ids, widget_items, widget_values, move_widget
+    # TODO bases/frontend/frontend.py - check api requirements for
+    #   add_widget_form, add_widget_formlet, add_widget, edit_widget_form,
+    #   edit_widget_formlet, edit_widget, get_widget, delete_widget,
+    #   delete_widgets, widget_ids, widget_items, widget_values, move_widget
+
 
 # ----------------------------------------------------------------------------
 # initialize class security
 
+
 InitializeClass(FrontendPluginBase)
 
+
 # TODO bases/frontend/frontend.py - changed flag (reset on rendering)
-# TODO bases/frontend/frontend.py - flags: addable, editable, deletable, renderable, searchable, binary, unique
+# TODO bases/frontend/frontend.py - flags: addable, editable, deletable,
+#   renderable, searchable, binary, unique
 # TODO bases/frontend/frontend.py - create widget_frontend.py
 # TODO bases/frontend/frontend.py - create designable_frontend.py

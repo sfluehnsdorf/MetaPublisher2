@@ -33,11 +33,15 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ==============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_configuration, show_future
+
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass,
+    permission_access_configuration, show_future)
 
 
 # ============================================================================
 # Module Exports
+
 
 __all__ = [
     'Triggers',
@@ -57,13 +61,17 @@ class Triggers:
 
     if show_future:
 
-        security.declareProtected(permission_access_configuration, 'triggers_form')
+        security.declareProtected(
+            permission_access_configuration, 'triggers_form')
 
         triggers_form = DTMLFile('triggers', globals())
+
 
 # ------------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Triggers)
+
 
 # TODO triggers.py - implement

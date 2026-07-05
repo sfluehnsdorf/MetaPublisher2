@@ -23,8 +23,6 @@
 __doc__ = """MetaPublisher2Widgets Product
 
 !TXT! module info
-
-$Id: products/metapublisher2widgets/MetaPublisher2Widgets.py 6 2013-05-14 22:16:58Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -34,7 +32,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from Products.MetaPublisher2.interfaces import IWidgetPluginBase
-from Products.MetaPublisher2.library import BeforeDeleteException, ClassSecurityInfo, DTMLFile, Folder, InitializeClass, UserInterface, true, quote_plus
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, Folder, InitializeClass, true, quote_plus)
 
 
 # ============================================================================
@@ -73,7 +72,11 @@ class MetaPublisher2Widgets(Folder):
     def all_meta_types(self, interfaces=None):
         """!TXT! Return list of containable object types"""
 
-        interfaces = (interfaces and list(interfaces) or []) + [IWidgetPluginBase, ]
+        interfaces = (
+            interfaces and
+            list(interfaces) or
+            []
+        ) + [IWidgetPluginBase,]
         return Folder.all_meta_types(self, interfaces)
 
     # ------------------------------------------------------------------------
@@ -93,6 +96,7 @@ class MetaPublisher2Widgets(Folder):
 
         return self.absolute_url()
 
+
 # ------------------------------------------------------------------------------
 # initialize class security
 
@@ -109,7 +113,9 @@ def add_MetaPublisher2Widgets(self, id, title='Widgets Folder', REQUEST=None):
     """!TXT! ZMI constructor for MetaPublisher2Widgets"""
 
     if not container_filter(self.this()):
-        raise TypeError("!TXT! Can't add a MetaPublisher2Widgets Folder outside of a MetaPublisher2")
+        raise TypeError(
+            "!TXT! Can't add a MetaPublisher2Widgets Folder outside of a "
+            "MetaPublisher2")
 
     id = str(id)
     title = str(title)
@@ -122,7 +128,7 @@ def add_MetaPublisher2Widgets(self, id, title='Widgets Folder', REQUEST=None):
     if REQUEST:
         try:
             url = self.DestinationURL()
-        except:
+        except Exception:
             url = REQUEST['URL1']
         url = '%s/manage_main?update_menu=1&manage_tabs_message=%s' % (
             url,
@@ -151,18 +157,22 @@ def register_MetaPublisher2Widgets(context):
         context.registerClass(
             MetaPublisher2Widgets,
             constructors=(
-                ('add_MetaPublisher2Widgets_form', add_MetaPublisher2Widgets_form),
+                (
+                    'add_MetaPublisher2Widgets_form',
+                    add_MetaPublisher2Widgets_form),
                 ('add_MetaPublisher2Widgets', add_MetaPublisher2Widgets),
             ),
             icon='resources/icon/MetaPublisher2Folder.gif',
             container_filter=container_filter
         )
 
-    except:
+    except Exception:
         context.registerClass(
             MetaPublisher2Widgets,
             constructors=(
-                ('add_MetaPublisher2Widgets_form', add_MetaPublisher2Widgets_form),
+                (
+                    'add_MetaPublisher2Widgets_form',
+                    add_MetaPublisher2Widgets_form),
                 ('add_MetaPublisher2Widgets', add_MetaPublisher2Widgets),
             ),
             icon='resources/icon/MetaPublisher2Folder.gif'

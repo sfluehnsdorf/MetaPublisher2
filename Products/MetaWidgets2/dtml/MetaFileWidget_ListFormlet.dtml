@@ -1,0 +1,15 @@
+<input type="hidden" name="&dtml-prefix;_formTypeId" value="List">
+<input type="hidden" name="&dtml-prefix;_displayMode" value="defaultMode">
+
+<table cellspacing="1" cellpadding="4" border="0">
+
+<tr>
+<th valign="top" nowrap>Display Options</th>
+<td>
+  <input type="checkbox" name="&dtml-prefix;_showFileName" id="&dtml-prefix;_showFileName" value="1"<dtml-if "int( REQUEST.get( prefix + '_showFileName', 0 ) )"> checked</dtml-if>> <label for="&dtml-prefix;_showFileName">If checked, the filename will be included instead of the word "Download"</label><br />
+  <input type="checkbox" name="&dtml-prefix;_showFileSize" id="&dtml-prefix;_showFileSize" value="1"<dtml-if "int( REQUEST.get( prefix + '_showFileSize', 0 ) )"> checked</dtml-if>> <label for="&dtml-prefix;_showFileSize">If checked, the file's size will be displayed</label><br />
+  <input type="checkbox" name="&dtml-prefix;_showFileType" id="&dtml-prefix;_showFileType" value="1"<dtml-if "int( REQUEST.get( prefix + '_showFileType', 0 ) )"> checked</dtml-if>> <label for="&dtml-prefix;_showFileType">If checked, the file's content type will be displayed</label><br />
+</td>
+</tr>
+
+</table>

@@ -1,0 +1,108 @@
+<dtml-var manage_page_header>
+<link rel="stylesheet" type="text/css" href="&dtml-zmp2URL;/manage_zmp2_css" />
+
+<dtml-if storageIds>
+<form action="&dtml-zmp2URL;" method="post">
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<table cellspacing="0" cellpadding="0" border="0" class="pad">
+
+<tr class="black"><td colspan="3"><dtml-var "sp( h = 2 )"></td></tr>
+
+<tr class="interfaces">
+<td><dtml-var "sp( 10 )"></td>
+<td width="100%" align="left"><h2 class="pagetitle">Add New MetaAddInterface</h2></td>
+<td><dtml-var "sp( 10 )"></td>
+</tr>
+
+<tr class="light"><td colspan="3"><dtml-var "sp( h = 10 )"></td></tr>
+
+<tr class="light">
+<td><dtml-var "sp( 10 )"></td>
+<td>
+  <table cellspacing="0" cellpadding="2" border="0">
+
+  <tr>
+  <td align="left" valign="top"><div class="form-label">Id</div></td>
+  <td align="left" valign="top" width="100%"><input type="text" name="id" size="25" value="admin" /></td>
+  </tr>
+
+  <tr>
+  <td align="left" valign="top"><div class="form-optional">Title</div></td>
+  <td align="left" valign="top"><input type="text" name="title" size="60" class="fw" value="Admin Interface" /></td>
+  </tr>
+
+  <tr><td><dtml-var "sp( h = 10 )"></td></tr>
+
+  <tr>
+  <td align="left" valign="top"><div class="form-label">Storage</div></td>
+  <td align="left" valign="top">
+    <select name="storageId">
+<dtml-in storageItems prefix=storage>
+    <option value="&dtml-storage_key;"<dtml-if "storage_start"> selected</dtml-if>><dtml-var "storage_item.getId()"><dtml-if "storage_item.title"> - <dtml-var "storage_item.title"></dtml-if></option>
+</dtml-in>
+    </select>
+  </td>
+  </tr>
+
+  <tr><td><dtml-var "sp( h = 10 )"></td></tr>
+
+  <tr>
+  <td align="left" valign="top"><div class="form-optional">Prefix</div></td>
+  <td align="left" valign="top"><input type="text" name="idPrefix" size="25" value="" /></td>
+  </tr>
+
+  <tr>
+  <td align="left" valign="top"><div class="form-optional">Folder</div></td>
+  <td align="left" valign="top">
+    <p><b>Create a Folder for the Interfaces</b></p>
+    <p><input type="checkbox" name="createFolder" id="createFolder" value="1"> <label for="createFolder">If checked, all Objects will be created in their own Folder</label></p>
+    <p>
+      <table cellspacing="0" cellpadding="0" border="0" class="pad">
+
+      <tr>
+      <td nowrap><b>Folder Id:</b></td>
+      <td><dtml-var "sp( 10 )"></td>
+      <td width="100%"><input type="text" name="createFolderId" value="" size="25"></td>
+      </tr>
+
+      </table>
+    </p>
+  </td>
+  </tr>
+
+  </table>
+</td>
+<td><dtml-var "sp( 10 )"></td>
+</tr>
+
+<tr class="light"><td colspan="3"><dtml-var "sp( h = 10 )"></td></tr>
+<tr class="medium"><td colspan="3"><dtml-var "sp( h = 10 )"></td></tr>
+
+<tr class="medium">
+<td><dtml-var "sp( 10 )"></td>
+<td align="right"><div class="list-item">
+  <input type="submit" name="<dtml-var "URL3[ len( zmp2URL() ): ]">/manage_addProduct/MetaAdminInterface2/manage_addMetaAdminInterface:method" value=" Add Interface " class="default" /> 
+  <input type="submit" name="manage_interfacesBrowserForm:method" value=" Cancel " /> 
+</div></td>
+<td><dtml-var "sp( 10 )"></td>
+</tr>
+
+<tr class="medium">
+<td width="10" align="left" valign="bottom"><img src="medium_bl.gif"></td>
+<td><dtml-var "sp( h = 10 )"></td>
+<td width="10" align="right" valign="bottom"><img src="medium_br.gif"></td>
+</tr>
+
+</table>
+</form>
+<dtml-else>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 class="dialogtitle">No Storages Added Yet!</h2>
+<p>&nbsp;</p>
+<p class="dialoginfo">You must add at least one Storage and define</p>
+<p class="dialoginfo">Fields for it, before you can add an AddInterface</p>
+</dtml-if>
+
+<dtml-var manage_page_footer>

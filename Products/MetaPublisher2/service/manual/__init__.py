@@ -34,3 +34,11 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # Module Imports
 
 from manual import Manual
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'Manual',
+]

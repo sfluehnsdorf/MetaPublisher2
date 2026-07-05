@@ -64,34 +64,57 @@ class IEntryContainer(Interface):
     # ------------------------------------------------------------------------
     # Single Entry Retrieval API
 
-    def get_entry(parent_entry_id=None, entry_id=None, entry_position=None, field_ids=None, failsafe=false, bound=true):
+    def get_entry(
+        parent_entry_id=None, entry_id=None, entry_position=None,
+        field_ids=None, failsafe=false, bound=true
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Multiple Entry Retrieval API
 
-    def entry_ids(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None, bound=true):
+    def entry_ids(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None, order_by=None, offset=None, limit=None, bound=true
+    ):
         """!TXT!"""
 
-    def entry_items(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, field_ids=None, order_by=None, offset=None, limit=None, bound=true):
+    def entry_items(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None, field_ids=None, order_by=None, offset=None,
+        limit=None, bound=true
+    ):
         """!TXT!"""
 
-    def entry_values(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, field_ids=None, order_by=None, offset=None, limit=None, bound=true):
+    def entry_values(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None, field_ids=None, order_by=None, offset=None,
+        limit=None, bound=true
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Entry Statistics Retrieval API
 
-    def count_entries(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def count_entries(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Entry Existence Retrieval API
 
-    def has_all_entries(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def has_all_entries(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-    def has_any_entries(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def has_any_entries(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
     def has_entry(parent_entry_id=None, entry_id=None, entry_position=None):
@@ -100,16 +123,23 @@ class IEntryContainer(Interface):
     # ------------------------------------------------------------------------
     # Entry Creation Mutation API
 
-    def add_entry(parent_entry_id=None, entry_id=None, entry_position=None, data={}, **args):
+    def add_entry(
+        parent_entry_id=None, entry_id=None, entry_position=None, data={},
+        **args
+    ):
         """!TXT!"""
 
     def add_entry_to_top(parent_entry_id=None, entry_id=None, data={}, **args):
         """!TXT!"""
 
-    def add_entry_to_bottom(parent_entry_id=None, entry_id=None, data={}, **args):
+    def add_entry_to_bottom(
+        parent_entry_id=None, entry_id=None, data={}, **args
+    ):
         """!TXT!"""
 
-    def add_entry_somewhere(parent_entry_id=None, entry_id=None, data={}, **args):
+    def add_entry_somewhere(
+        parent_entry_id=None, entry_id=None, data={}, **args
+    ):
         """!TXT!"""
 
     def add_entries(entries, parent_entry_id=None):
@@ -124,34 +154,59 @@ class IEntryContainer(Interface):
     def add_entries_somewhere(entries, parent_entry_id=None):
         """!TXT!"""
 
-    def duplicate_entry(parent_entry_id=None, entry_id=None, entry_position=None, new_id=None):
+    def duplicate_entry(
+        parent_entry_id=None, entry_id=None, entry_position=None, new_id=None
+    ):
         """!TXT!"""
 
-    def duplicate_entries(parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, new_ids=None):
+    def duplicate_entries(
+        parent_entry_id=None, entry_ids=[], entry_positions=[],
+        conditions=None, new_ids=None
+    ):
         """!TXT!"""
 
-    def set_entry(parent_entry_id=None, entry_id=None, entry_position=None, data={}, **args):
+    def set_entry(
+        parent_entry_id=None, entry_id=None, entry_position=None, data={},
+        **args
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Entry Modification Mutation API
 
-    def edit_entry(parent_entry_id=None, entry_id=None, entry_position=None, data={}, **args):
+    def edit_entry(
+        parent_entry_id=None, entry_id=None, entry_position=None, data={},
+        **args
+    ):
         """!TXT!"""
 
-    def edit_entries(parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, data={}, **args):
+    def edit_entries(
+        parent_entry_id=None, entry_ids=[], entry_positions=[],
+        conditions=None, data={}, **args
+    ):
         """!TXT!"""
 
-    def rename_entry(parent_entry_id=None, entry_id=None, entry_position=None, new_id=None):
+    def rename_entry(
+        parent_entry_id=None, entry_id=None, entry_position=None, new_id=None
+    ):
         """!TXT!"""
 
-    def rename_entries(parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, new_ids=None):
+    def rename_entries(
+        parent_entry_id=None, entry_ids=[], entry_positions=[],
+        conditions=None, new_ids=None
+    ):
         """!TXT!"""
 
-    def reset_entry(parent_entry_id=None, entry_id=None, entry_position=None, field_ids=None):
+    def reset_entry(
+        parent_entry_id=None, entry_id=None, entry_position=None,
+        field_ids=None
+    ):
         """!TXT!"""
 
-    def reset_entries(parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, field_ids=None):
+    def reset_entries(
+        parent_entry_id=None, entry_ids=[], entry_positions=[],
+        conditions=None, field_ids=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
@@ -160,10 +215,16 @@ class IEntryContainer(Interface):
     def clear_entries():
         """!TXT!"""
 
-    def delete_entry(parent_entry_id=None, entry_id=None, entry_position=None, failsafe=false):
+    def delete_entry(
+        parent_entry_id=None, entry_id=None, entry_position=None,
+        failsafe=false
+    ):
         """!TXT!"""
 
-    def delete_entries(parent_entry_id=None, entry_ids=[], entry_positions=[], conditions=None, failsafe=false):
+    def delete_entries(
+        parent_entry_id=None, entry_ids=[], entry_positions=[],
+        conditions=None, failsafe=false
+    ):
         """!TXT!"""
 
     def pop_first_entry(parent_entry_id=None, conditions=None):
@@ -178,53 +239,99 @@ class IEntryContainer(Interface):
     # ------------------------------------------------------------------------
     # EntryField Retrieval API
 
-    def get_entryfield(field_id, default=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def get_entryfield(
+        field_id, default=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def count_entryfields(field_id, value, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def count_entryfields(
+        field_id, value, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-    def count_unique_entryfields(field_id, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def count_unique_entryfields(
+        field_id, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-    def has_any_entryfields(field_id, value, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def has_any_entryfields(
+        field_id, value, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-    def has_all_entryfields(field_id, value, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def has_all_entryfields(
+        field_id, value, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
     def has_entryfield(field_id, entry_id):
         """!TXT!"""
 
-    def get_unique_entryfields(field_id, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def get_unique_entryfields(
+        field_id, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # EntryField Mutation API
 
-    def reset_entryfield(field_id, parent_entry_id=None, entry_id=None, entry_position=None):
+    def reset_entryfield(
+        field_id, parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-    def reset_entryfields(field_id, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def reset_entryfields(
+        field_id, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-    def set_entryfield(field_id, value, parent_entry_id=None, entry_id=None, entry_position=None):
+    def set_entryfield(
+        field_id, value, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def set_entryfields(field_id, value, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def set_entryfields(
+        field_id, value, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # EntrySet Creation API
 
-    def get_entryset(field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None, bound=true, lazy=true, live=false):
+    def get_entryset(
+        field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, order_by=None, offset=None,
+        limit=None, bound=true, lazy=true, live=false
+    ):
         """!TXT!"""
 
-    def join_entries(right_source, join_type='inner', join_conditions=None, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, order_by=None, offset=None, limit=None, left_field_ids=None, left_parent_entry_id=None, left_entry_ids=[], left_entry_positions=[], left_conditions=None, left_order_by=None, left_offset=None, left_limit=None, right_field_ids=None, right_parent_entry_id=None, right_entry_ids=[], right_entry_positions=[], right_conditions=None, right_order_by=None, right_offset=None, right_limit=None, bound=true, lazy=true, live=True):
+    def join_entries(
+        right_source, join_type='inner', join_conditions=None, field_ids=None,
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None, order_by=None, offset=None, limit=None,
+        left_field_ids=None, left_parent_entry_id=None, left_entry_ids=[],
+        left_entry_positions=[], left_conditions=None, left_order_by=None,
+        left_offset=None, left_limit=None, right_field_ids=None,
+        right_parent_entry_id=None, right_entry_ids=[],
+        right_entry_positions=[], right_conditions=None, right_order_by=None,
+        right_offset=None, right_limit=None, bound=true, lazy=true, live=True
+    ):
         """!TXT!"""
 
     # !!! interfaces/entrycontainer.py - check API of select_entries
-    def select_entries(fields=None, joins=None, conditions=None, order_by=None, offset=None, limit=None, bound=true, live=True):
+    def select_entries(
+        fields=None, joins=None, conditions=None, order_by=None, offset=None,
+        limit=None, bound=true, live=True
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
@@ -257,43 +364,93 @@ class IEntryContainer(Interface):
     def reload_entryset():
         """!TXT!"""
 
-    def refresh_entryset(field_ids, entry_ids=None, entry_positions=None, conditions=None):
+    def refresh_entryset(
+        field_ids, entry_ids=None, entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Set Theory Retrieval API
 
-    def is_member(entry, fields=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def is_member(
+        entry, fields=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-    def is_disjoint(other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=None, other_entry_positions=None, other_conditions=None):
+    def is_disjoint(
+        other_source, field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, other_field_ids=None,
+        other_parent_entry_id=None, other_entry_ids=None,
+        other_entry_positions=None, other_conditions=None
+    ):
         """!TXT!"""
 
-    def is_subset(other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=None, other_entry_positions=None, other_conditions=None):
+    def is_subset(
+        other_source, field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, other_field_ids=None,
+        other_parent_entry_id=None, other_entry_ids=None,
+        other_entry_positions=None, other_conditions=None
+    ):
         """!TXT!"""
 
-    def is_true_subset(other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def is_true_subset(
+        other_source, field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, other_field_ids=None,
+        other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-    def is_superset(other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def is_superset(
+        other_source, field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, other_field_ids=None,
+        other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-    def is_true_superset(other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def is_true_superset(
+        other_source, field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, other_field_ids=None,
+        other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Set Theory Mutation API
 
-    def intersection(other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def intersection(
+        other_source, field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, other_field_ids=None,
+        other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-    def difference(other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def difference(
+        other_source, field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, other_field_ids=None,
+        other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-    def symmetric_difference(other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def symmetric_difference(
+        other_source, field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, other_field_ids=None,
+        other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
-    def union(other_source, field_ids=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[], other_entry_positions=[], other_conditions=None):
+    def union(
+        other_source, field_ids=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, other_field_ids=None,
+        other_parent_entry_id=None, other_entry_ids=[],
+        other_entry_positions=[], other_conditions=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
@@ -302,58 +459,101 @@ class IEntryContainer(Interface):
     def get_entry_position(entry_id, parent_entry_id=None):
         """!TXT!"""
 
-    def get_entry_positions(parent_entry_id=None, entry_ids=None, conditions=None, order_by=None, offset=None, limit=None):
+    def get_entry_positions(
+        parent_entry_id=None, entry_ids=None, conditions=None, order_by=None,
+        offset=None, limit=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Entry Order Mutation API
 
-    def rotate_entries(steps, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def rotate_entries(
+        steps, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-    def order_entries(order_by, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def order_entries(
+        order_by, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-    def shuffle_entries(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def shuffle_entries(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-    def reverse_entries(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def reverse_entries(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-    def move_entry(position, parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry(
+        position, parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-    def move_entry_to_top(parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry_to_top(
+        parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-    def move_entry_up(parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry_up(
+        parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-    def move_entry_down(parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry_down(
+        parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-    def move_entry_to_bottom(parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry_to_bottom(
+        parent_entry_id=None, entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-    def move_entries(position, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entries(
+        position, parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-    def move_entries_to_top(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entries_to_top(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-    def move_entries_up(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entries_up(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-    def move_entries_down(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entries_down(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
-    def move_entries_to_bottom(parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entries_to_bottom(
+        parent_entry_id=None, entry_ids=None, entry_positions=None,
+        conditions=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Single Root Entry Retrieval API
 
-    def is_root_entry(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def is_root_entry(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
     def root_entry_id():
@@ -368,7 +568,10 @@ class IEntryContainer(Interface):
     # ------------------------------------------------------------------------
     # Multiple Root Entry Retrieval API
 
-    def is_top_entry(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def is_top_entry(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
     def top_entry_ids():
@@ -383,151 +586,282 @@ class IEntryContainer(Interface):
     # ------------------------------------------------------------------------
     # Node Type Retrieval API
 
-    def is_entry_branch(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def is_entry_branch(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def is_entry_leaf(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def is_entry_leaf(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def are_entries_branches(tree_field_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def are_entries_branches(
+        tree_field_id=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-    def are_entries_leaves(tree_field_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def are_entries_leaves(
+        tree_field_id=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-    def entry_branch_ids(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, conditions=None, max_levels=None):
+    def entry_branch_ids(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, conditions=None, max_levels=None
+    ):
         """!TXT!"""
 
-    def entry_branch_items(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, conditions=None, max_levels=None):
+    def entry_branch_items(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, conditions=None, max_levels=None
+    ):
         """!TXT!"""
 
-    def entry_branch_values(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, conditions=None, max_levels=None):
+    def entry_branch_values(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, conditions=None, max_levels=None
+    ):
         """!TXT!"""
 
-    def entry_leaf_id(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, conditions=None, max_levels=None):
+    def entry_leaf_id(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, conditions=None, max_levels=None
+    ):
         """!TXT!"""
 
-    def entry_leaf_items(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def entry_leaf_items(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-    def entry_leaf_values(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def entry_leaf_values(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Entry Relationship Retrieval API
 
-    def is_ancestor(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, other_parent_entry_id=None, other_entry_id=None, other_entry_position=None, of_level=None, max_levels=None):
+    def is_ancestor(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, other_parent_entry_id=None, other_entry_id=None,
+        other_entry_position=None, of_level=None, max_levels=None
+    ):
         """!TXT!"""
 
-    def is_parent(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, other_parent_entry_id=None, other_entry_id=None, other_entry_position=None):
+    def is_parent(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, other_parent_entry_id=None, other_entry_id=None,
+        other_entry_position=None
+    ):
         """!TXT!"""
 
-    def is_sibling(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, other_parent_entry_id=None, other_entry_id=None, other_entry_position=None):
+    def is_sibling(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, other_parent_entry_id=None, other_entry_id=None,
+        other_entry_position=None
+    ):
         """!TXT!"""
 
-    def is_child(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, other_parent_entry_id=None, other_entry_id=None, other_entry_position=None):
+    def is_child(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, other_parent_entry_id=None, other_entry_id=None,
+        other_entry_position=None
+    ):
         """!TXT!"""
 
-    def is_descendant(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, other_parent_entry_id=None, other_entry_id=None, other_entry_position=None, of_level=None, max_levels=None):
+    def is_descendant(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, other_parent_entry_id=None, other_entry_id=None,
+        other_entry_position=None, of_level=None, max_levels=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Entry Ancestor Retrieval API
 
-    def count_ancestor_entries(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None, include_ancestor_siblings=false):
+    def count_ancestor_entries(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None, include_ancestor_siblings=false
+    ):
         """!TXT!"""
 
-    def ancestor_entry_ids(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None, include_ancestor_siblings=false):
+    def ancestor_entry_ids(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None, include_ancestor_siblings=false
+    ):
         """!TXT!"""
 
-    def ancestor_entry_items(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None, include_ancestor_siblings=false):
+    def ancestor_entry_items(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None, include_ancestor_siblings=false
+    ):
         """!TXT!"""
 
-    def ancestor_entry_values(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None, include_ancestor_siblings=false):
+    def ancestor_entry_values(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None, include_ancestor_siblings=false
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Entry Parent Retrieval API
 
-    def get_parent_entry(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def get_parent_entry(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def get_parent_entry_id(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def get_parent_entry_id(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def get_parent_entry_item(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def get_parent_entry_item(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Entry Sibling Retrieval API
 
-    def count_sibling_entries(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def count_sibling_entries(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def has_sibling_entries(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def has_sibling_entries(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def sibling_entry_ids(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def sibling_entry_ids(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def sibling_entry_items(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def sibling_entry_items(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def sibling_entry_values(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def sibling_entry_values(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Entry Child Retrieval API
 
-    def count_children_entries(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def count_children_entries(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def has_children_entries(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def has_children_entries(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def children_entry_ids(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def children_entry_ids(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def children_entry_items(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def children_entry_items(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def children_entry_values(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def children_entry_values(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Entry Descendant Retrieval API
 
-    def count_descendant_entries(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def count_descendant_entries(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-    def descendant_entry_ids(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def descendant_entry_ids(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-    def descendant_entry_items(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def descendant_entry_items(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-    def descendant_entry_values(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def descendant_entry_values(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------
     # Entry Tree Mutation API
 
-    def move_entry_branch(tree_field_id=None, destination_entry_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def move_entry_branch(
+        tree_field_id=None, destination_entry_id=None, parent_entry_id=None,
+        entry_id=None, entry_position=None
+    ):
         """!TXT!"""
 
-    def move_entry_branches(tree_field_id=None, destination_entry_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def move_entry_branches(
+        tree_field_id=None, destination_entry_id=None, parent_entry_id=None,
+        entry_ids=None, entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
-    def flatten_entry_branch(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None, max_levels=None):
+    def flatten_entry_branch(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None, max_levels=None
+    ):
         """!TXT!"""
 
-    def flatten_entry_branches(tree_field_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None, max_levels=None):
+    def flatten_entry_branches(
+        tree_field_id=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None, max_levels=None
+    ):
         """!TXT!"""
 
-    def crop_entry_branch(tree_field_id=None, parent_entry_id=None, entry_id=None, entry_position=None):
+    def crop_entry_branch(
+        tree_field_id=None, parent_entry_id=None, entry_id=None,
+        entry_position=None
+    ):
         """!TXT!"""
 
-    def crop_entry_branches(tree_field_id=None, parent_entry_id=None, entry_ids=None, entry_positions=None, conditions=None):
+    def crop_entry_branches(
+        tree_field_id=None, parent_entry_id=None, entry_ids=None,
+        entry_positions=None, conditions=None
+    ):
         """!TXT!"""
 
     # ------------------------------------------------------------------------

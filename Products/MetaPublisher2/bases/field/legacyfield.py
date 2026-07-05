@@ -23,8 +23,6 @@
 __doc__ = """Legacy Field Plugin Base
 
 !TXT! module info
-
-$Id: bases/field/legacyfield.py 10 2013-05-09 17:22:57Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -33,8 +31,10 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
+import sys
 from Products.MetaPublisher2.bases.plugin.legacyplugin import LegacyPluginBase
-from Products.MetaPublisher2.library.common import ClassSecurityInfo, DTMLFile, InitializeClass
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, TestError)
 
 from field import FieldPluginBase
 
@@ -55,12 +55,12 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
 
     security = ClassSecurityInfo()
 
-    # --------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Field Attributes
 
     isZMP2FieldPlugin = 1
 
-    # --------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Field Identity API
 
     getFieldObject = FieldPluginBase.get_plugin_instance
@@ -69,21 +69,24 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
 
     getFieldURL = FieldPluginBase.get_plugin_url
 
-    # --------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
 
     def get_immutable_pluginflag_ids(self):
-        """!TXT! Return list of Plugin flag ids, which are either constants or set by an external source and may not be altered by MetaPublisher2 or its users"""
+        """!TXT! Return list of Plugin flag ids, which are either constants or
+        set by an external source and may not be altered by MetaPublisher2 or
+        its users"""
 
         # !!! bases/field/legacyfield.py - get_immutable_pluginflag_ids
         return []
 
     def get_mutable_pluginflag_ids(self):
-        """!TXT! Return list of Plugin flag ids, which may be altered by MetaPublisher2 and its users"""
+        """!TXT! Return list of Plugin flag ids, which may be altered by
+        MetaPublisher2 and its users"""
 
         # !!! bases/field/legacyfield.py - get_mutable_pluginflag_ids
         return []
 
-    # --------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Field Specification
 
     def getFieldInfo(self):
@@ -96,7 +99,7 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
 
         return self.getFieldInfo()
 
-    # --------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Field ZMI
 
     manage_configureFieldForm = DTMLFile('fieldplugin_edit', globals())
@@ -128,7 +131,7 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
 
         raise NotImplementedError
 
-    # --------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Field Retrieval API
 
     def _getValue(self, entryId, default):
@@ -142,7 +145,8 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
         return self._getValue(entryId, default)
 
     def _hasValue(self, entry_id):
-        """!TXT! Return 1 if the Entry has a value stored for this Field, 0 otherwise"""
+        """!TXT! Return 1 if the Entry has a value stored for this Field, 0
+        otherwise"""
 
         raise NotImplementedError
 
@@ -158,13 +162,12 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
 
     def testValue(self, value, **options):
         """!TXT! Wrapper for testing a value's validity"""
-
         try:
             return self._testValue(value, options)
-        except:
+        except Exception:
             raise TestError(errorType=sys.exc_type, errorValue=sys.exc_value)
 
-    # --------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Field Mutation API
 
     def _setValue(self, entry_id, value):
@@ -184,16 +187,15 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
 
     def setValue(self, entry_id, value):
         """!TXT! Wapper for storing a value in an entry"""
+        result = self.testValue(value)
+        self._setValue(entry_id, result)
 
-        try:
-            result = self.testValue(value)
-            self._setValue(entry_id, result)
-        except TestError, error:
-            raise error.errorType, error.errorValue
 
 # ------------------------------------------------------------------------------
 # initialize class security
 
+
 InitializeClass(LegacyFieldPlugin)
+
 
 # !!! bases/field/legacyfield.py - revise and update legacy api

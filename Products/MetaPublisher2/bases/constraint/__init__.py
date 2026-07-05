@@ -33,10 +33,17 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from condition import *
-from declaration import *
-from definition import *
-from existence import *
-from uniqueness import *
+# from condition import *
+# from declaration import *
+# from definition import *
+# from existence import *
+# from uniqueness import *
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+]
 
 # !!! bases/constraint/__init__.py - define classes & api

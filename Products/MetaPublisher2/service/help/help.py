@@ -41,8 +41,8 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile,\
-    InitializeClass, permission_zmi, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_zmi, show_future)
 
 
 # ============================================================================
@@ -77,6 +77,7 @@ class Help:
         security.declareProtected(permission_zmi, 'help_top_form')
 
         help_top_form = DTMLFile('help_top', globals(), target='_parent')
+
 
 # ----------------------------------------------------------------------------
 # Class Security

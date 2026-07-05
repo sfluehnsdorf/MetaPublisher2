@@ -1,12 +1,12 @@
 # -*- coding: iso-8859-15 -*-
-# ============================================================================
+# =============================================================================
 #
 #                         M e t a  P u b l i s h e r  2
 #
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 # Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
 # For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
 #
 # This software is subject to the provisions of the Zope Public License,
 # Version 2.1 (ZPL).
@@ -18,25 +18,25 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE
 #
-# ============================================================================
+# =============================================================================
 
 __doc__ = """Queries Component
 
 !TXT! module info
-
-$Id: data/queries/queries.py 7 2013-05-08 23:54:34Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
 
 
-# ============================================================================
+# =============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries,
+    show_future)
 
 
-# ============================================================================
+# =============================================================================
 # Module Exports
 
 __all__ = [
@@ -44,7 +44,7 @@ __all__ = [
 ]
 
 
-# ============================================================================
+# =============================================================================
 # Queries Component Mix-In Class
 
 class Queries:
@@ -52,7 +52,7 @@ class Queries:
 
     security = ClassSecurityInfo()
 
-    # -----------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Query Form ZMI
 
     if show_future:
@@ -61,18 +61,18 @@ class Queries:
 
         queries_form = DTMLFile('queries', globals())
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Queries Parser API
 
     security.declareProtected(permission_access_entries, 'parse_query')
 
     def parse_query(self):
         """!TXT!"""
-
-        result = u''
         request = self.REQUEST
         input = request.form['input'].replace('  ', ' ').strip()
-        self.set_profile_variable(request, 'queries_history', self.get_profile_variable(request, 'queries_history', default=[]) + [input, ])
+        self.set_profile_variable(
+            request, 'queries_history', self.get_profile_variable(
+                request, 'queries_history', default=[]) + [input, ])
         if input == 'clear':
             return u'*clear#'
         elif input == 'help':
@@ -95,14 +95,24 @@ class Queries:
             topic = topic.strip()
             return self._format_query_lines(
                 self._format_query_bright(u'Queries'),
-                self._format_query_error(u'!TXT! This feature is not yet available...'),
-                self._format_query_normal(u'!TXT! In an upcoming release you can use an SQL-like query language to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2, making it possible to automatise various tasks.'),
+                self._format_query_error(
+                    u'!TXT! This feature is not yet available...'),
+                self._format_query_normal(
+                    u'!TXT! In an upcoming release you can use an SQL-like '
+                    u'query language to retrieve or manipulate Storages, '
+                    u'Fields and Entries contained in a MetaPublisher2, '
+                    u'making it possible to automatise various tasks.'),
             )
         else:
             return self._format_query_lines(
                 self._format_query_bright(u'Queries'),
-                self._format_query_error(u'!TXT! This feature is not yet available...'),
-                self._format_query_normal(u'!TXT! In an upcoming release you can use an SQL-like query language to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2, making it possible to automatise various tasks.'),
+                self._format_query_error(
+                    u'!TXT! This feature is not yet available...'),
+                self._format_query_normal(
+                    u'!TXT! In an upcoming release you can use an SQL-like '
+                    u'query language to retrieve or manipulate Storages, '
+                    u'Fields and Entries contained in a MetaPublisher2, '
+                    u'making it possible to automatise various tasks.'),
             )
 
     security.declareProtected(permission_access_entries, 'query_history_clear')
@@ -127,7 +137,9 @@ class Queries:
             counter = 1
             lines = []
             for line in history:
-                lines.append(self._format_query_dim(u'%3d. ' % counter) + self._format_query_normal(line))
+                lines.append(
+                    self._format_query_dim(u'%3d. ' % counter) +
+                    self._format_query_normal(line))
                 counter = counter + 1
             return self._format_query_lines(
                 self._format_query_bright(u'Command history'),
@@ -146,7 +158,7 @@ class Queries:
 
         return ''
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Queries Output API
 
     # !!! change this crap (maybe this could be part of settings.conf)
@@ -166,7 +178,7 @@ class Queries:
     def _format_query_error(self, text):
         return u'<span class="terminal_error">%s</span>' % text
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Queries Interpreter API
 
     security.declareProtected(permission_access_entries, 'query_interpreter')
@@ -176,14 +188,22 @@ class Queries:
 
         return self._format_query_lines(
             self._format_query_bright(u'Queries'),
-            self._format_query_error(u'!TXT! This feature is not yet available...'),
-            self._format_query_normal(u'!TXT! In an upcoming release you can use an SQL-like query language to retrieve or manipulate Storages, Fields and Entries contained in a MetaPublisher2, making it possible to automatise various tasks.'),
+            self._format_query_error(
+                u'!TXT! This feature is not yet available...'),
+            self._format_query_normal(
+                u'!TXT! In an upcoming release you can use an SQL-like query '
+                u'language to retrieve or manipulate Storages, Fields and '
+                u'Entries contained in a MetaPublisher2, making it possible '
+                u'to automatise various tasks.'),
         )
 
-# ----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Queries)
+
 
 # TODO queries.py - implement
 # TODO queries.py - revise command Interpreter

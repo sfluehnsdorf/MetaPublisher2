@@ -23,8 +23,6 @@
 __doc__ = """Constraints Component
 
 !TXT! module info
-
-$Id: configuration/constraints/constraints.py 5 2013-05-10 22:59:54Z sfluehnsdorf $
 """
 
 __version__ = '$Revision: 2.3 $'[11:-2]
@@ -33,7 +31,9 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ==============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_configuration, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass,
+    permission_access_configuration)
 
 
 # ============================================================================
@@ -55,13 +55,17 @@ class Constraints:
     # --------------------------------------------------------------------------
     # Indexing ZMI
 
-    security.declareProtected(permission_access_configuration, 'constraints_form')
+    security.declareProtected(
+        permission_access_configuration, 'constraints_form')
 
     constraints_form = DTMLFile('constraints', globals())
+
 
 # ------------------------------------------------------------------------------
 # Class Security
 
+
 InitializeClass(Constraints)
+
 
 # !!! constraints.py - implement

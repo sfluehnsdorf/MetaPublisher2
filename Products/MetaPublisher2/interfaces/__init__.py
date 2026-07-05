@@ -33,28 +33,57 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from cache import *
-from constraint import *
-from design import *
-from entry import *
-from entrycontainer import *
-from entryfield import *
-from entryset import *
-from event import *
-from exporter import *
-from expression import *
-from field import *
-from frontend import *
-from identifier import *
-from importer import *
-from indexer import *
-from language import *
-from plugin import *
-from preset import *
-from storage import *
-from tool import *
-from trigger import *
-from widget import *
+from cache import ICachePluginBase
+from constraint import IConstraintPluginBase
+from design import IDesignPluginBase
+from entry import IEntry
+from entrycontainer import IEntryContainer
+from entryfield import IEntryField
+from entryset import IEntrySet
+from event import IEventPluginBase
+from exporter import IExporterPluginBase
+from expression import IExpressionPluginBase
+from field import IFieldPluginBase
+from frontend import IFrontendPluginBase
+from identifier import IIdentifierPluginBase
+from importer import IImporterPluginBase
+from indexer import IIndexerPluginBase
+from language import ILanguagePluginBase
+from plugin import IPluginBase
+from preset import IPresetPluginBase
+from storage import IStoragePluginBase
+from tool import IToolPluginBase
+from trigger import ITriggerPluginBase
+from widget import IWidgetPluginBase
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'ICachePluginBase',
+    'IConstraintPluginBase',
+    'IDesignPluginBase',
+    'IEntry',
+    'IEntryContainer',
+    'IEntryField',
+    'IEntrySet',
+    'IEventPluginBase',
+    'IExporterPluginBase',
+    'IExpressionPluginBase',
+    'IFieldPluginBase',
+    'IFrontendPluginBase',
+    'IIdentifierPluginBase',
+    'IImporterPluginBase',
+    'IIndexerPluginBase',
+    'ILanguagePluginBase',
+    'IPluginBase',
+    'IPresetPluginBase',
+    'IStoragePluginBase',
+    'IToolPluginBase',
+    'ITriggerPluginBase',
+    'IWidgetPluginBase',
+]
 
 
 # !!! interfaces/ - from zope.interface import Attribute

@@ -37,9 +37,10 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from Products.MetaPublisher2.library import ClassSecurityInfo, DTMLFile,\
-    InitializeClass, permission_load_presets, permission_manage_presets,\
-    permission_save_presets, permission_upload_presets, show_future
+from Products.MetaPublisher2.library import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, permission_load_presets,
+    permission_manage_presets, permission_save_presets,
+    permission_upload_presets, show_future)
 
 
 # ============================================================================
@@ -67,15 +68,18 @@ class Presets:
 
         presets_form = DTMLFile('presets', globals())
 
-        security.declareProtected(permission_manage_presets, 'duplicate_presets_form')
+        security.declareProtected(
+            permission_manage_presets, 'duplicate_presets_form')
 
         duplicate_presets_form = DTMLFile('duplicate_presets', globals())
 
-        security.declareProtected(permission_manage_presets, 'delete_presets_form')
+        security.declareProtected(
+            permission_manage_presets, 'delete_presets_form')
 
         delete_presets_form = DTMLFile('delete_presets', globals())
 
-        security.declareProtected(permission_manage_presets, 'download_preset_form')
+        security.declareProtected(
+            permission_manage_presets, 'download_preset_form')
 
         download_preset_form = DTMLFile('download_preset', globals())
 
@@ -83,15 +87,18 @@ class Presets:
 
         load_preset_form = DTMLFile('load_preset', globals())
 
-        security.declareProtected(permission_load_presets, 'load_preset_options_form')
+        security.declareProtected(
+            permission_load_presets, 'load_preset_options_form')
 
         load_preset_options_form = DTMLFile('load_preset_options', globals())
 
-        security.declareProtected(permission_manage_presets, 'preview_preset_form')
+        security.declareProtected(
+            permission_manage_presets, 'preview_preset_form')
 
         preview_preset_form = DTMLFile('preview_preset', globals())
 
-        security.declareProtected(permission_manage_presets, 'rename_presets_form')
+        security.declareProtected(
+            permission_manage_presets, 'rename_presets_form')
 
         rename_presets_form = DTMLFile('rename_presets', globals())
 
@@ -99,11 +106,13 @@ class Presets:
 
         save_preset_form = DTMLFile('save_preset', globals())
 
-        security.declareProtected(permission_save_presets, 'save_preset_options_form')
+        security.declareProtected(
+            permission_save_presets, 'save_preset_options_form')
 
         save_preset_options_form = DTMLFile('save_preset_options', globals())
 
-        security.declareProtected(permission_upload_presets, 'upload_preset_form')
+        security.declareProtected(
+            permission_upload_presets, 'upload_preset_form')
 
         upload_preset_form = DTMLFile('upload_preset', globals())
 
@@ -125,7 +134,8 @@ class Presets:
     security.declareProtected(permission_manage_presets, 'download_preset')
 
     def download_preset(self, url, REQUEST=None):
-        """!TXT! Download a Preset file from the online repository and save locally."""
+        """!TXT! Download a Preset file from the online repository and save
+        locally."""
 
         raise NotImplementedError
 
@@ -153,18 +163,22 @@ class Presets:
     security.declareProtected(permission_load_presets, 'include_preset')
 
     def include_preset(self, filename, options, REQUEST=None):
-        """!TXT! Load a Preset file from a local file, extending existing defintions."""
+        """!TXT! Load a Preset file from a local file, extending existing
+        defintions."""
 
-        # TODO presets.py - include_preset - specify options parameter to map plugins, fields, etc.
+        # TODO presets.py - include_preset - specify options parameter to map
+        # plugins, fields, etc.
 
         raise NotImplementedError
 
     security.declareProtected(permission_load_presets, 'load_preset')
 
     def load_preset(self, filename, options, REQUEST=None):
-        """Load a Preset file from a local file, replacing existing defintions."""
+        """Load a Preset file from a local file, replacing existing
+        defintions."""
 
-        # TODO presets.py - load_preset - specify options parameter to map plugins, fields, etc.
+        # TODO presets.py - load_preset - specify options parameter to map
+        # plugins, fields, etc.
 
         raise NotImplementedError
 
@@ -207,7 +221,8 @@ class Presets:
     security.declareProtected(permission_manage_presets, 'duplicate_presets')
 
     def duplicate_presets(self, preset_ids, new_ids, REQUEST=None):
-        """!TXT! Duplicate the specified Preset files. Both id lists must have the same length or ValueError is raised."""
+        """!TXT! Duplicate the specified Preset files. Both id lists must have
+        the same length or ValueError is raised."""
 
         raise NotImplementedError
 
@@ -235,7 +250,8 @@ class Presets:
     security.declareProtected(permission_manage_presets, 'rename_presets')
 
     def rename_presets(self, preset_ids, new_ids, REQUEST=None):
-        """!TXT! Rename the specified Preset files. Both id lists must have the same length or ValueError is raised."""
+        """!TXT! Rename the specified Preset files. Both id lists must have the
+        same length or ValueError is raised."""
 
         raise NotImplementedError
 
@@ -244,26 +260,32 @@ class Presets:
     def save_preset(self, filename, options, REQUEST=None):
         """!TXT! Save a Preset file to a local file."""
 
-        # TODO presets.py - save_preset - specify options parameter to specify which entries, configuration, frontends, etc. to include
+        # TODO presets.py - save_preset - specify options parameter to specify
+        # which entries, configuration, frontends, etc. to include
 
         raise NotImplementedError
 
     security.declareProtected(permission_upload_presets, 'upload_preset')
 
-    def upload_preset(self, filename, title, description, version, author, REQUEST=None):
+    def upload_preset(
+        self, filename, title, description, version, author, REQUEST=None
+    ):
         """!TXT! Upload a Preset file to the online Preset repository."""
 
         # TODO presets.py - upload_preset -  specify how to authenticate
 
         raise NotImplementedError
 
+
 # ------------------------------------------------------------------------------
 # Class Security
 
 InitializeClass(Presets)
 
+
 # TODO presets.py - implement
 # TODO presets.py - realize backup system
 # TODO presets.py - define file format
-#      Title,Type,Author,Version,Vendor,Description,Homepage,File Name,Created,Last Modified
+#      Title,Type,Author,Version,Vendor,Description,Homepage,File Name,Created,
+#      Last Modified
 #      store attributes in profile for reusability?

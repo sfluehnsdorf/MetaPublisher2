@@ -33,5 +33,14 @@ __version__ = '$Revision: 2.3 $'[11:-2]
 # ============================================================================
 # Module Imports
 
-from legacywidget import *
-from widget import *
+from legacywidget import LegacyWidgetPlugin
+from widget import WidgetPluginBase
+
+
+# ============================================================================
+# Module Exports
+
+__all__ = [
+    'LegacyWidgetPlugin',
+    'WidgetPluginBase',
+]

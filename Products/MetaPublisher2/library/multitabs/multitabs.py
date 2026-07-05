@@ -74,17 +74,16 @@ __version__ = '$Revision: 1.3 $'[11:-2]
 # Module Imports
 
 from AccessControl import ClassSecurityInfo
-from AccessControl.Permissions import view_management_screens
 from Globals import DTMLFile, InitializeClass
 
 try:
     from zExceptions import Unauthorized
-except:
+except Exception:
     Unauthorized = 'Unauthorized'
 
 try:
     from zExceptions import Redirect
-except:
+except Exception:
     Redirect = 'Redirect'
 
 
@@ -102,7 +101,7 @@ __all__ = [
 try:
     true = True
     false = False
-except:
+except Exception:
     true = 1
     false = 0
 
@@ -155,7 +154,7 @@ class MultiTabs:
 
         try:
             options = tuple(self.manage_options)
-        except:
+        except Exception:
             options = tuple(self.manage_options())
 
         management_view_path = REQUEST.get(
@@ -206,7 +205,11 @@ class MultiTabs:
         active_id = None
         for key in keys:
             option = mapped_options[key]
-            if option.get('path', option.get('action', '')) == management_view_path or option.get('label', '') == management_view:
+            if (
+                option.get('path', option.get('action', '')) ==
+                management_view_path or
+                option.get('label', '') == management_view
+            ):
                 active_id = key
 
         if not active_id:
@@ -257,13 +260,20 @@ class MultiTabs:
 
         for key in keys:
             parent_key = '_'.join(key.split('_')[: -1])
-            if parent_key in mapped_options and not mapped_options[parent_key].get('action', ''):
-                mapped_options[parent_key]['action'] = mapped_options[key]['action']
+            if (
+                parent_key in mapped_options and
+                not mapped_options[parent_key].get('action', '')
+            ):
+                mapped_options[parent_key]['action'] = (
+                    mapped_options[key]['action'])
 
         # remove empty management trees
 
         for key in keys:
-            if not(mapped_options[key].get('action', '')) and mapped_options[key].get('sub', []):
+            if (
+                not (mapped_options[key].get('action', '')) and
+                mapped_options[key].get('sub', [])
+            ):
                 del mapped_options[key]
 
         # format and return result
@@ -277,7 +287,10 @@ class MultiTabs:
             level_parent_id = '_'.join(active_id_parts[: index])
             level_id = '_'.join(active_id_parts[: index + 1])
             for key in keys:
-                if len(key.split('_')) == index + 1 and key.startswith(level_parent_id):
+                if (
+                    len(key.split('_')) == index + 1 and
+                    key.startswith(level_parent_id)
+                ):
                     if key == level_id:
                         mapped_options[key]['active'] = true
                     else:
@@ -286,7 +299,9 @@ class MultiTabs:
             result.append(level_options)
         return result
 
+
 # ------------------------------------------------------------------------------
 # initialize class security
+
 
 InitializeClass(MultiTabs)
