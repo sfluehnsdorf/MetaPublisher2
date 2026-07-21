@@ -1,46 +1,15 @@
-# -*- coding: iso-8859-15 -*-
-# =============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# =============================================================================
-
-__doc__ = """Storage Plugin Base
-
-!TXT! module info
-
-$Id: bases/storage/storage.py 6 2013-05-08 19:51:13Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# =============================================================================
-# Module Imports
+"""MetaPublisher2 - Storage Plugin Base."""
 
 
 from Products.MetaPublisher2.bases.entrycontainer import EntryContainer
 from Products.MetaPublisher2.bases.plugin import PluginBase
 from Products.MetaPublisher2.interfaces import IStoragePluginBase
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, DTMLFile, InitializeClass, OrderedFolder, UserInterface,
-    implements, permission_access_configuration,
-    permission_change_configuration, true)
+from Products.MetaPublisher2.library.application import (
+    permission_access_configuration, permission_change_configuration)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, OrderedFolder, implements,
+    true)
+from Products.MetaPublisher2.library.userinterface import UserInterface
 
 
 # ==============================================================================
@@ -58,7 +27,7 @@ __all__ = [
 class StoragePluginBase(
     EntryContainer, UserInterface, PluginBase, OrderedFolder
 ):
-    """!TXT! Storage Plugin Base Class"""
+    """Storage Plugin Base Class."""
 
     security = ClassSecurityInfo()
 
@@ -87,8 +56,7 @@ class StoragePluginBase(
         permission_access_configuration, 'get_plugin_specification')
 
     def get_plugin_specification(self):
-        """!TXT! Return a dictionary describing this Storage"""
-
+        """Return a dictionary describing this Storage."""
         options = PluginBase.get_plugin_specification(self)
         options.update({
             'storage_type': self.storage_type,
@@ -130,205 +98,203 @@ class StoragePluginBase(
     # Storage Retrieval API
 
     def get_status(self):
-        """!TXT!"""
-        # DEVELOPER: IMPORTANT - get_status !TXT!
+        """TODO: Docstring for get_status."""
+        # TODO: IMPORTANT - get_status !TXT!
         pass
 
     # -------------------------------------------------------------------------
     # Storage Mutation API
 
     def add_storage(self, options):
-        """!TXT!"""
-        # DEVELOPER: IMPORTANT - add_storage !TXT! maybe auto set properties
+        """TODO: Docstring for add_storage."""
+        # TODO: IMPORTANT - add_storage !TXT! maybe auto set properties
         #   as placeholder
         pass
 
     def edit_storage(self, options):
-        """!TXT!"""
-        # DEVELOPER: IMPORTANT - edit_storage !TXT! maybe auto set properties
+        """TODO: Docstring for edit_storage."""
+        # TODO: IMPORTANT - edit_storage !TXT! maybe auto set properties
         #   as placeholder
         pass
 
     def before_duplicate(self, new_id):
-        """!TXT!"""
-        # DEVELOPER: OPTIONAL - before_duplicate !TXT!
+        """TODO: Docstring for before_duplicate."""
+        # TODO: OPTIONAL - before_duplicate !TXT!
         pass
 
     def after_duplicate(self, old_id):
-        """!TXT!"""
-        # DEVELOPER: OPTIONAL - after_duplicate !TXT!
+        """TODO: Docstring for after_duplicate."""
+        # TODO: OPTIONAL - after_duplicate !TXT!
         pass
 
     def before_rename(self, new_id):
-        """!TXT!"""
-        # DEVELOPER: OPTIONAL - before_rename !TXT!
+        """TODO: Docstring for before_rename."""
+        # TODO: OPTIONAL - before_rename !TXT!
         pass
 
     def after_rename(self, old_id):
-        """!TXT!"""
-        # DEVELOPER: OPTIONAL - after_rename !TXT!
+        """TODO: Docstring for after_rename."""
+        # TODO: OPTIONAL - after_rename !TXT!
         pass
 
     def before_delete(self):
-        """!TXT!"""
-        # DEVELOPER: OPTIONAL - before_delete !TXT!
+        """TODO: Docstring for before_delete."""
+        # TODO: OPTIONAL - before_delete !TXT!
         pass
 
     def is_source_storage(self):
-        """!TXT!"""
+        """TODO: Docstring for is_source_storage."""
         return true
 
     def get_source_storages(self):
-        """!TXT!"""
-
+        """TODO: Docstring for get_source_storages."""
         return []
 
     # -------------------------------------------------------------------------
     # Identifiers Retrieval API
 
     def last_entry_id(self):
-        """!TXT! read last entry id from property"""
+        """Read last entry id from property."""
         pass
 
     def new_entry_id(self):
-        """!TXT! create temporary solution (code exists), store in property
-        for last_entry_id"""
+        """TODO: Docstring for new_entry_id."""
         pass
 
     # -------------------------------------------------------------------------
     # Fields Retrieval API
 
     def count_fields(self):
-        """!TXT!"""
+        """Docstring for count_fields."""
         pass
 
     def field_ids(self):
-        """!TXT!"""
+        """Docstring for field_ids."""
         pass
 
     def field_items(self):
-        """!TXT!"""
+        """Docstring for field_items."""
         pass
 
     def field_values(self):
-        """!TXT!"""
+        """Docstring for field_values."""
         pass
 
     def get_field(self, field_id):
-        """!TXT!"""
+        """Docstring for get_field."""
         pass
 
     def get_field_default(self, field_id):
-        """!TXT!"""
+        """Docstring for get_field_default."""
         pass
 
     def has_all_fields(self, field_ids=None, field_types=None):
-        """!TXT!"""
+        """Docstring for has_all_fields."""
         pass
 
     def has_any_fields(self, field_ids=None, field_types=None):
-        """!TXT!"""
+        """Docstring for has_any_fields."""
         pass
 
     def has_field(self, field_id):
-        """!TXT!"""
+        """Docstring for has_field."""
         pass
 
     # -------------------------------------------------------------------------
     # Fields Mutation API
 
     def before_add_field(self, field_id, field_type_id, options):
-        """!TXT!"""
+        """Docstring for before_add_field."""
         pass
 
     def after_add_field(self, field_id, field_type_id, options):
-        """!TXT!"""
+        """Docstring for after_add_field."""
         pass
 
     def delete_field(self, field_id):
-        """!TXT!"""
+        """Docstring for delete_field."""
         pass
 
     def delete_fields(self, field_ids):
-        """!TXT!"""
+        """Docstring for delete_fields."""
         pass
 
     def duplicate_field(self, field_id, new_id):
-        """!TXT!"""
+        """Docstring for duplicate_field."""
         pass
 
     def duplicate_fields(self, field_ids, new_ids):
-        """!TXT!"""
+        """Docstring for duplicate_fields."""
         pass
 
     def edit_field(self, field_id, options):
-        """!TXT!"""
+        """Docstring for edit_field."""
         pass
 
     def rename_field(self, field_id, new_id):
-        """!TXT!"""
+        """Docstring for rename_field."""
         pass
 
     def rename_fields(self, field_ids, new_ids):
-        """!TXT!"""
+        """Docstring for rename_fields."""
         pass
 
     def set_field_default(self, field_id, value):
-        """!TXT!"""
+        """Docstring for set_field_default."""
         pass
 
     # -------------------------------------------------------------------------
     # Primary Field API
 
     def is_primary_field(self, field_id):
-        """!TXT!"""
+        """Docstring for is_primary_field."""
         pass
 
     def primary_field_ids(self):
-        """!TXT!"""
+        """Docstring for primary_field_ids."""
         pass
 
     def primary_field_items(self):
-        """!TXT!"""
+        """Docstring for primary_field_items."""
         pass
 
     def primary_field_values(self):
-        """!TXT!"""
+        """Docstring for primary_field_values."""
         pass
 
     def set_primary_field(self, field_id):
-        """!TXT!"""
+        """Docstring for set_primary_field."""
         pass
 
     def unset_primary_field(self, field_id):
-        """!TXT!"""
+        """Docstring for unset_primary_field."""
         pass
 
     # -------------------------------------------------------------------------
     # Field Ordering API
 
     def get_field_position(self, field_id):
-        """!TXT!"""
+        """Docstring for get_field_position."""
         pass
 
     def move_field_to_position(self, field_id, position):
-        """!TXT!"""
+        """Docstring for move_field_to_position."""
         pass
 
     def move_field_to_top(self, field_id):
-        """!TXT!"""
+        """Docstring for move_field_to_top."""
         pass
 
     def move_field_up(self, field_id):
-        """!TXT!"""
+        """Docstring for move_field_up."""
         pass
 
     def move_field_down(self, field_id):
-        """!TXT!"""
+        """Docstring for move_field_down."""
         pass
 
     def move_field_to_bottom(self, field_id):
-        """!TXT!"""
+        """Docstring for move_field_to_bottom."""
         pass
 
 

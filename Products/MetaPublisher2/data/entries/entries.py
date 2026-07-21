@@ -1,26 +1,4 @@
-# -*- coding: iso-8859-15 -*-
-# =============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# -----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# -----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# =============================================================================
-
-__doc__ = """Entries Component
+"""MetaPublisher2 - Entries Component.
 
 API for retrieval, mutation and ordering of Entries. An Entry is a singular
 unit of data stored. Entries are stored in Storages and are defined by the
@@ -28,15 +6,12 @@ Storage's Fields and in EntrySets, which store the result of methods on
 Entries.
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
 
-
-# =============================================================================
-# Module Imports
-
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries,
-    permission_create_entries, permission_change_entries, true)
+from Products.MetaPublisher2.library.application import (
+    permission_access_entries, permission_create_entries,
+    permission_change_entries)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, true)
 
 from entry import Entry
 from entryfields import EntryFields
@@ -62,7 +37,7 @@ class Entries(
     Entry, EntryFields, EntrySets, EntryOrder, EntryTrees, EntryGraphs,
     EntryStats
 ):
-    """Entries Component Mix-In Class"""
+    """Entries Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -112,9 +87,7 @@ class Entries(
     security.declareProtected(permission_access_entries, 'extract_entry_data')
 
     def extract_entry_data(self, source, mapping, failsafe=true):
-        """!TXT! Extract the values of the Fields of the specified source from
-        the specified mapping."""
-
+        """Extract values of Fields of specified source from the mapping."""
         source = self.get_storage(source)
         return source.extract_entry_data(mapping, failsafe)
 
@@ -124,9 +97,7 @@ class Entries(
     def extract_entryfield_data(
         self, source, field_id, mapping, failsafe=true
     ):
-        """!TXT! Extract the value of the specified Field of the specified
-        source from the specified mapping"""
-
+        """Extract value of the Field of the source from the mapping."""
         source = self.get_storage(source)
         return source.extract_entryfield_data(field_id, mapping, failsafe)
 

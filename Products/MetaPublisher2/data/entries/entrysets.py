@@ -1,39 +1,10 @@
-# -*- coding: iso-8859-15 -*-
-# =============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# -----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# -----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# =============================================================================
-
-__doc__ = """Entry Sets Component
-
-!TXT! module info
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
+"""MetaPublisher2 - Entry Sets Component."""
 
 
-# =============================================================================
-# Module Imports
-
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, InitializeClass, permission_access_entries,
-    permission_change_entries, true, false)
+from Products.MetaPublisher2.library.application import (
+    permission_access_entries, permission_change_entries)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, InitializeClass, true, false)
 
 
 # =============================================================================
@@ -48,7 +19,7 @@ __all__ = [
 # Entry Sets Component Mix-In Class
 
 class EntrySets:
-    """!TXT! Entry Sets Component Mix-In Class"""
+    """Entry Sets Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -62,10 +33,9 @@ class EntrySets:
         entry_positions=None, conditions=None, order_by=None, offset=None,
         limit=None, bound=true, lazy=true, live=false
     ):
-        """
-        !TXT! Retrieve Entries from a source
+        """Retrieve Entries from a source.
 
-        Return an EntrySet with the Entries of the specified source, ordered by
+        Return EntrySet with the Entries of the specified source, ordered by
         a specific EntryField's value and limited to the Entries specified by
         ids or positions and matching conditions if defined.
 
@@ -119,7 +89,6 @@ class EntrySets:
             if True, the returned EntrySet is live and all changes to it affect
             the source's Entries immediately.
         """
-
         source = self.get_storage(source)
         return source.get_entryset(
             field_ids, parent_entry_id, entry_ids, entry_positions, conditions,
@@ -140,9 +109,9 @@ class EntrySets:
         lazy=true, live=True
     ):
         """
-        !TXT! Join the Entries of two sources
+        Join the Entries of two sources.
 
-        Return an EntrySet with the Entries resulting from the join of the two
+        Return EntrySet with the Entries resulting from the join of the two
         specified sources, using the specified join type and matching the
         specified conditions if defined and .
 
@@ -165,8 +134,6 @@ class EntrySets:
             the Field with the first item and specifies an alias for it with
             the second item. If undefined or 'primary' string will return all
             primary Fields. If '*' string will return all Fields.
-
-            !TXT!
 
             To avoid ambiguities, a Field id can be prefixed with a source
             Storage's id or the 'left' and 'right' identifier, seperated from
@@ -214,7 +181,6 @@ class EntrySets:
             if True, the returned EntrySet is live and all changes to it affect
             the source's Entries immediately.
         """
-
         source = self.get_storage(left_source)
         return source.join_entries(
             right_source, join_type, join_conditions, field_ids,
@@ -234,9 +200,9 @@ class EntrySets:
         offset=None, limit=None, bound=true, live=True
     ):
         """
-        !TXT! Retrieve Entries from one or more sources
+        Retrieve Entries from one or more sources.
 
-        Return an EntrySet with the Entries from the specified source, joined
+        Return EntrySet with the Entries from the specified source, joined
         with the specified sources matching optional conditions, ordered by a
         specific EntryField's value.
 
@@ -255,12 +221,12 @@ class EntrySets:
         index in the list of sources, seperated from the Field's by a period,
         for example 'mystorage.id' or '0.id'
 
-        !TXT! seperate storage from field with '.' ??? - may be used in some
+        TODO: seperate storage from field with '.' ??? - may be used in some
         storage types, space might be better OR tuple (but how to diff from
         alias?)
 
             If undefined or the '*' string, will return all primary Fields. If
-            the list of Fields is ambiguous a !TXT! error is raised.
+            the list of Fields is ambiguous a (TODO) error is raised.
 
         joins
             list of strings or 2-tuples identifying the types of joins to apply
@@ -268,7 +234,6 @@ class EntrySets:
             'left', 'right' and 'outer'. The default join type for two sources
             is an inner join.
         """
-
         source = self.get_storage(source)
         return source.select_entries(
           fields, joins, conditions, order_by, offset, limit, bound, live)
@@ -279,55 +244,56 @@ class EntrySets:
     security.declareProtected(permission_access_entries, 'is_entryset')
 
     def is_entryset(self, source):
-        """!TXT! Return true, if the specified source is an EntrySet."""
-
+        """Return true, if the specified source is an EntrySet."""
         source = self.get_storage(source)
         return source.is_entryset()
 
     security.declareProtected(permission_access_entries, 'is_entryset_live')
 
     def is_entryset_live(self, source):
-        """!TXT! Return true, if all changes to the EntrySet affect the Storage
-        immediately (non transactional/no commit needed) - this may be
-        ambigious if bound to more than one Storage."""
+        """Return true, if changes to EntrySet affect Storage immediately.
 
+        This is true for non transactional Storages (no commit needed). This
+        may be ambigious if bound to more than one Storage.
+        """
         source = self.get_storage(source)
         return source.is_entryset_live()
 
     security.declareProtected(permission_access_entries, 'is_entryset_lazy')
 
     def is_entryset_lazy(self, source):
-        """!TXT! Return true, if all Entries and EntryFields are loaded from
-        the source as needed, False otherwise. This implies that the source is
-        bound to a Storage."""
+        """Return true, if Entries and EntryFields are loaded as needed.
 
+        This implies that the source is bound to a Storage.
+        """
         source = self.get_storage(source)
         return source.is_entryset_lazy()
 
     security.declareProtected(permission_access_entries, 'is_entryset_bound')
 
     def is_entryset_bound(self, source):
-        """!TXT! Return True if the specified source is bound to one or more
-        Storages, meaning that the EntrySet indicates the sources (Storages)
-        for Fields and their values, False otherwise."""
+        """Return True if specified source is bound to one or more Storages.
 
+        This means that the EntrySet indicates the sources (Storages) for
+        Fields and their values, False otherwise.
+        """
         source = self.get_storage(source)
         return source.is_entryset_bound()
 
     security.declareProtected(permission_access_entries, 'is_source_storage')
 
     def is_source_storage(self, source):
-        """!TXT!"""
-
+        """TODO: Docstring for is_source_storage."""
         source = self.get_storage(source)
         return source.is_source_storage()
 
     security.declareProtected(permission_access_entries, 'get_source_storages')
 
     def get_source_storages(self, source):
-        """!TXT! Return the list of all Storages, the specified source is bound
-        to. If the source is unbound or a Storage, the result is None."""
+        """Return the list of all Storages, the specified source is bound to.
 
+        If the source is unbound, the result is None.
+        """
         source = self.get_storage(source)
         return source.get_source_storages()
 
@@ -337,22 +303,24 @@ class EntrySets:
     security.declareProtected(permission_change_entries, 'commit_entryset')
 
     def commit_entryset(self, source):
-        """!TXT! Save all changes made to the specified source. If the source
-        is an EntrySet changed are saved to the bound Storages. If the source
-        is a transactional Storage, it will commit changes to the connected
-        storage engine."""
+        """Save all changes made to the specified source.
 
+        If the source is an EntrySet changed are saved to the bound Storages.
+        If the source is a transactional Storage, it will commit changes to the
+        connected storage engine.
+        """
         source = self.get_storage(source)
         return source.commit_entryset()
 
     security.declareProtected(permission_change_entries, 'reload_entryset')
 
     def reload_entryset(self, source):
-        """!TXT! Remove and reload all Entries of the EntrySet from the bound
-        Storages, by calling the conditions used to populate the EntrySet
-        again. If no method to reload the EntrySet exists, an !TXT! exception
-        is raised."""
+        """Remove and reload all Entries of the EntrySet from bound Storages.
 
+        The calli is performed with the same conditions used to populate the
+        EntrySet before. If no method to reload the EntrySet exists, an
+        exception is raised.
+        """
         source = self.get_storage(source)
         return source.reload_entryset()
 
@@ -362,11 +330,13 @@ class EntrySets:
         self, source, field_ids, entry_ids=None, entry_positions=None,
         conditions=None
     ):
-        """!TXT! Reload the values for all EntryFields stored in the EntrySet
-        from the bound Storages, limited to, if defined, the Entries specified
-        by ids, position and matching conditions. If an Entry no longer exists
-        in the bound Storage, it will remain in the EntrySet untouched."""
+        """Reload values for EntryFields in EntrySet from bound Storages.
 
+        Reload the values for all EntryFields stored in the EntrySet from the
+        bound Storages, limited to, if defined, the Entries specified by ids,
+        position and matching conditions. If an Entry no longer exists in the
+        bound Storage, it will remain in the EntrySet untouched.
+        """
         source = self.get_storage(source)
         return source.refresh_entryset(
           field_ids, entry_ids, entry_positions, conditions)
@@ -380,8 +350,7 @@ class EntrySets:
         self, source, entry, field_ids=None, parent_entry_id=None,
         entry_ids=None, entry_positions=None, conditions=None
     ):
-        """
-        !TXT! Return True if the entry is a member of the Storage.
+        """Return True if the entry is a member of the Storage.
 
         Test if the an Entry with the specified Fields' values exists in the
         specified source.
@@ -420,7 +389,6 @@ class EntrySets:
           optionally specifies one or more filters to apply to Entries from the
           source.
         """
-
         source = self.get_storage(source)
         return source.is_member(
             entry, field_ids, parent_entry_id, entry_ids, entry_positions,
@@ -434,8 +402,7 @@ class EntrySets:
         other_field_ids=None, other_parent_entry_id=None, other_entry_ids=None,
         other_entry_positions=None, other_conditions=None
     ):
-        """!TXT! Return True if the Storage has no Entries in common with the
-        other Storage."""
+        """Return True if Storage has no Entries in common with the other."""
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
         return source.is_disjoint(
@@ -452,8 +419,7 @@ class EntrySets:
         other_field_ids=None, other_parent_entry_id=None, other_entry_ids=None,
         other_entry_positions=None, other_conditions=None
     ):
-        """!TXT! Return True if all Entries from the Storage is in the other
-        Storage."""
+        """Return True if all Entries from Storage are in the other."""
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
         return source.is_subset(
@@ -470,8 +436,10 @@ class EntrySets:
         other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
         other_entry_positions=[], other_conditions=None
     ):
-        """!TXT! Return True if all Entries from the Storage are in the other
-        Storage, but both Storages are not identical."""
+        """Return True if all Entries from Storage are in the other.
+
+        The Storages may not be identical.
+        """
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
         return source.is_true_subset(
@@ -488,8 +456,7 @@ class EntrySets:
         other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
         other_entry_positions=[], other_conditions=None
     ):
-        """!TXT! Return True if all Entries from the Storage is in the other
-        Storage."""
+        """Return True if all Entries from the Storage are in the other."""
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
         return source.is_superset(
@@ -506,8 +473,10 @@ class EntrySets:
         other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
         other_entry_positions=[], other_conditions=None
     ):
-        """!TXT! Return True if all Entries from the Storage is in the other
-        Storage, but both Storages are not identical."""
+        """Return True if all Entries from the Storage are in the other.
+
+        The Storages may not be identical.
+        """
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
         return source.is_true_superset(
@@ -527,7 +496,7 @@ class EntrySets:
         other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
         other_entry_positions=[], other_conditions=None
     ):
-        """!TXT! Return an EntrySet with Entries common to both sources."""
+        """Return EntrySet with Entries common to both sources."""
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
         return source.intersection(
@@ -544,8 +513,7 @@ class EntrySets:
         other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
         other_entry_positions=[], other_conditions=None
     ):
-        """!TXT! Return an EntrySet with Entries in the source that are not in
-        the other source."""
+        """Return EntrySet with Entries in source that are not in the other."""
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
         return source.difference(
@@ -563,8 +531,7 @@ class EntrySets:
         other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
         other_entry_positions=[], other_conditions=None
     ):
-        """!TXT! Return an EntrySet with Entries in either the source or the
-        other source but not in both."""
+        """Return EntrySet with Entries in one of the sources but not both."""
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
         return source.symmetric_difference(
@@ -581,7 +548,7 @@ class EntrySets:
         other_field_ids=None, other_parent_entry_id=None, other_entry_ids=[],
         other_entry_positions=[], other_conditions=None
     ):
-        """!TXT! Return an EntrySet with Entries from two sources."""
+        """Return EntrySet with Entries from two sources."""
         source = self.get_storage(source)
         other_source = self.get_storage(other_source)
         return source.union(

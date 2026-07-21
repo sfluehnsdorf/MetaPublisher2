@@ -1,34 +1,18 @@
-"""==================================================================
+"""Meta Zope Storage."""
 
-                  M e t a   Z o p e   S t o r a g e
-  -----------------------------------------------------------------
 
-    Copyright (c) 2005, Sebastian Luehnsdorf - Web-Solutions GbR.
-    http://zopemeta.com - http://luehnsdorf.de
-
-    This software is subject to the provisions of the
-    Zope Public License, Version 2.0 (ZPL).
-
-    A copy of the ZPL should accompany this distribution.
-
-    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR
-    IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED
-    TO, THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST
-    INFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
-
-=================================================================="""
-
-from Globals import DTMLFile
+from App.special_dtml import DTMLFile
 from ZPublisher.Converters import field2ustring
 
-from Products.MetaPublisher2.Library import FieldPlugin
+from Products.MetaPublisher2.bases.field.legacyfield import (
+    LegacyFieldPlugin as FieldPlugin)
 
 
 # =============================================================================
 
 
 class MetaZopeUStringField(FieldPlugin):
-    """UnicodeStringField"""
+    """UnicodeStringField."""
 
     pluginName = 'UnicodeStringField'
     pluginAuthor = 'Sebastian Luehnsdorf - Web-Solutions GbR.'
@@ -54,7 +38,7 @@ class MetaZopeUStringField(FieldPlugin):
         'dtml/editMetaZopeUStringField', globals())
 
     def manage_configureField(self, REQUEST=None):
-        """Change Field's configuration parameters"""
+        """Change Field's configuration parameters."""
         self.title = REQUEST.get('title', '')
         self.default = self._testValue(REQUEST.get('default', ''))
         if REQUEST is not None:
@@ -65,22 +49,22 @@ class MetaZopeUStringField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def getFieldInfo(self):
-        """Return information about this Field if available"""
+        """Return information about this Field if available."""
         if self.default:
             return 'Default Value: "%s"' % self.default.replace('<', '&lt;')
 
     def getEntryObject(self, entryId):
-        """Return the entry object"""
+        """Return the entry object."""
         return self.storage_getEntryObject(entryId)
 
     # -------------------------------------------------------------------------
 
     def setDefault(self, entryId):
-        """Set the default value for this Field in the Entry"""
+        """Set the default value for this Field in the Entry."""
         self.setValue(entryId, self.default)
 
     def setData(self, entryId, data):
-        """Set the value inside data for this Field in the Entry"""
+        """Set the value inside data for this Field in the Entry."""
         fieldId = self.getId()
         if data.has_key(fieldId):
             self.setValue(entryId, data[fieldId])
@@ -88,13 +72,13 @@ class MetaZopeUStringField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def _getValue(self, entryId, default):
-        """Retrieve a value from an entry"""
+        """Retrieve a value from an entry."""
         fieldId = self.getId()
         entry = self.getEntryObject(entryId)
         return entry.getProperty(fieldId, default)
 
     def _setValue(self, entryId, value):
-        """Store a value in an entry"""
+        """Store a value in an entry."""
         fieldId = self.getId()
         entry = self.getEntryObject(entryId)
         if entry.hasProperty(fieldId):
@@ -103,8 +87,7 @@ class MetaZopeUStringField(FieldPlugin):
             entry._setProperty(fieldId, value, 'ustring')
 
     def _hasValue(self, entryId):
-        """Return 1 if the Entry has a value stored for this Field, 0
-        otherwise"""
+        """Return 1 if Entry has a value stored for this Field, 0 otherwise."""
         fieldId = self.getId()
         entry = self.getEntryObject(entryId)
         if entry.hasProperty(fieldId):
@@ -112,20 +95,20 @@ class MetaZopeUStringField(FieldPlugin):
         return 0
 
     def _testValue(self, value, options={}):
-        """Test a value for validity"""
+        """Test a value for validity."""
         value = value.replace('\n', ' ')
         return field2ustring(value)
 
     # -------------------------------------------------------------------------
 
     def renderAdd(self):
-        """Return a html code for adding an Entry with this Field"""
+        """Return a html code for adding an Entry with this Field."""
         return (
             u'<input type="text" name="%s:utf8:ustring" value="%s" size="60" '
             u'class="fw" />' % (self.getId(), self.default))
 
     def renderEdit(self, entryId):
-        """Return a html code for editing an Entry with this Field"""
+        """Return a html code for editing an Entry with this Field."""
         value = self.getValue(entryId)
         if value is None:
             value = ''
@@ -134,7 +117,7 @@ class MetaZopeUStringField(FieldPlugin):
             u'class="fw" />' % (self.getId(), value))
 
     def renderView(self, entryId):
-        """Return a html code for viewing an Entry with this Field"""
+        """Return a html code for viewing an Entry with this Field."""
         value = self.getValue(entryId)
         if value is not None:
             return (u'%s' % value).replace('<', '&lt;')
@@ -143,6 +126,7 @@ class MetaZopeUStringField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def manage_afterAdd(self, item, container):
+        """Update old entries."""
         if item is self:
             # update old entries
             for entryId in self.storage_entryIds():
@@ -159,7 +143,7 @@ manage_addMetaZopeUStringFieldForm = DTMLFile(
 def manage_addMetaZopeUStringField(
     self, id, title='', default='', REQUEST=None
 ):
-    """ZMI constructor for MetaZopeUStringField"""
+    """Add new MetaZopeUStringField."""
     instance = MetaZopeUStringField(id)
     instance.title = title
     instance.default = instance._testValue(default)

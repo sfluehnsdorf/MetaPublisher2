@@ -1,32 +1,16 @@
-"""==================================================================
+"""Meta Widgets."""
 
-                       M e t a   W i d g e t s
-  -----------------------------------------------------------------
 
-    Copyright (c) 2005, Sebastian Luehnsdorf - Web-Solutions GbR.
-    http://zopemeta.com - http://luehnsdorf.de
-
-    This software is subject to the provisions of the
-    Zope Public License, Version 2.0 (ZPL).
-
-    A copy of the ZPL should accompany this distribution.
-
-    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR
-    IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED
-    TO, THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST
-    INFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
-
-=================================================================="""
-
-from Globals import DTMLFile
-from Products.MetaPublisher2.Library import WidgetPlugin
+from App.special_dtml import DTMLFile
+from Products.MetaPublisher2.bases.widget.legacywidget import (
+    LegacyWidgetPlugin as WidgetPlugin)
 
 
 # =============================================================================
 
 
 class MetaNumberWidget(WidgetPlugin):
-    """MetaNumberWidget"""
+    """MetaNumberWidget."""
 
     meta_type = 'MetaNumberWidget'
 
@@ -71,13 +55,13 @@ class MetaNumberWidget(WidgetPlugin):
     # -------------------------------------------------------------------------
 
     def getWidgetId(self):
-        """Return Plugin Identifier"""
+        """Return Plugin Identifier."""
         return 'MetaWidgets.' + self.meta_type
 
     # -------------------------------------------------------------------------
 
     def setWidgetData(self, formTypeId, data={}):
-        """Configure Widget according to passed data"""
+        """Configure Widget according to passed data."""
         if data.get('pluginId__', '') == self.getWidgetId():
             self.formTypeId = formTypeId
             self.displayMode = data['displayMode']
@@ -91,7 +75,7 @@ class MetaNumberWidget(WidgetPlugin):
                 self.getWidgetId(), data.get('pluginId__', '')))
 
     def getWidgetData(self, formTypeId):
-        """Return the data of this Widget"""
+        """Return the data of this Widget."""
         return {
             'pluginId__':  'MetaWidgets.' + self.meta_type,
             'displayMode': self.displayMode,
@@ -105,7 +89,7 @@ class MetaNumberWidget(WidgetPlugin):
     # -------------------------------------------------------------------------
 
     def renderWidget(self, elementId, field, entryName=''):
-        """Render widget according to configuration"""
+        """Render widget according to configuration."""
         fieldId = field.getId()
         formTypeId = self.formTypeId
         displayMode = self.displayMode
@@ -236,7 +220,7 @@ manage_MetaNumberWidget_ViewFormlet = DTMLFile(
 
 
 def manage_addMetaNumberWidget(self, id, formTypeId, data={}, REQUEST=None):
-    """ZMI constructor for MetaNumberWidget"""
+    """Add new MetaNumberWidget."""
     instance = MetaNumberWidget(id)
     instance.setWidgetData(formTypeId, data)
     id = self._setObject(id, instance)

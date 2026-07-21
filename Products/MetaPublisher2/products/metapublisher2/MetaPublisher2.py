@@ -1,26 +1,4 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """MetaPublisher 2 Product
+"""MetaPublisher 2 Product.
 
 The MetaPublisher 2 Product is an application made up of a range of sections
 with components including...
@@ -44,17 +22,17 @@ through an extensive API or, if desired through a user generated public
 interface.
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from Products.MetaPublisher2.configuration import Configuration
 from Products.MetaPublisher2.data import Data
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, Compatibility, DTMLFile, false, Folder, InitializeClass,
-    JSONDict, MultiTabs, quote_plus, true, UserInterface, XMLDict)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, false, Folder, InitializeClass, quote_plus,
+    true)
+from Products.MetaPublisher2.library.compatibility import Compatibility
+from Products.MetaPublisher2.library.jsondict import JSONDict
+from Products.MetaPublisher2.library.multitabs import MultiTabs
+from Products.MetaPublisher2.library.userinterface import UserInterface
+from Products.MetaPublisher2.library.xmldict import XMLDict
 from Products.MetaPublisher2.publisher import Publisher
 from Products.MetaPublisher2.service import Service
 from Products.MetaPublisher2.system import System
@@ -66,10 +44,16 @@ except Exception:
     class DEV:
         manage_options = ()
 
-from Products.MetaPublisher2.products import (
-    add_MetaPublisher2Designs, add_MetaPublisher2Frontends,
-    add_MetaPublisher2Languages, add_MetaPublisher2Tools,
-    add_MetaPublisher2Widgets)
+from Products.MetaPublisher2.products.metapublisher2designs\
+    .MetaPublisher2Designs import add_MetaPublisher2Designs
+from Products.MetaPublisher2.products.metapublisher2frontends\
+    .MetaPublisher2Frontends import add_MetaPublisher2Frontends
+from Products.MetaPublisher2.products.metapublisher2languages\
+    .MetaPublisher2Languages import add_MetaPublisher2Languages
+from Products.MetaPublisher2.products.metapublisher2tools\
+    .MetaPublisher2Tools import add_MetaPublisher2Tools
+from Products.MetaPublisher2.products.metapublisher2widgets\
+    .MetaPublisher2Widgets import add_MetaPublisher2Widgets
 
 
 # ============================================================================
@@ -88,7 +72,7 @@ class MetaPublisher2(
     Data, Configuration, Publisher, System, Service, DEV, JSONDict, XMLDict,
     Compatibility, UserInterface, MultiTabs, Folder
 ):
-    """!TXT! MetaPublisher2 Product Class"""
+    """!TXT! MetaPublisher2 Product Class."""
 
     security = ClassSecurityInfo()
 
@@ -126,14 +110,12 @@ class MetaPublisher2(
     # ZMI Events
 
     def manage_afterAdd(self, item, container):
-        """!TXT! Handle creation event"""
-
+        """!TXT! Handle creation event."""
         # initialize profiles
         self.init_profiles()
 
     def __setstate__(self, state):
-        """!TXT! Handle startup event"""
-
+        """!TXT! Handle startup event."""
         Folder.inheritedAttribute('__setstate__')(self, state)
 
         # initialize profiles
@@ -173,15 +155,13 @@ class MetaPublisher2(
     security.declarePublic('get_MetaPublisher2')
 
     def get_MetaPublisher2(self):
-        """!TXT! Return this instance"""
-
+        """!TXT! Return this instance."""
         return self
 
     security.declarePublic('get_MetaPublisher2_url')
 
     def get_MetaPublisher2_url(self):
-        """!TXT! Return this instance's absolute url"""
-
+        """!TXT! Return this instance's absolute url."""
         return self.absolute_url()
 
 
@@ -198,26 +178,21 @@ add_MetaPublisher2_form = DTMLFile('add', globals())
 
 
 def add_MetaPublisher2(self, id, title='', presets=[], REQUEST=None):
-    """!TXT! MetaPublisher2 Constructor"""
-
+    """Add new MetaPublisher2."""
     id = str(id)
     title = str(title)
-
     instance = MetaPublisher2(id)
     instance.title = title
     id = self._setObject(id, instance)
     metapublisher2 = self._getOb(id)
-
     add_MetaPublisher2Designs(metapublisher2, 'designs')
     add_MetaPublisher2Frontends(metapublisher2, 'frontends')
     add_MetaPublisher2Languages(metapublisher2, 'languages')
     add_MetaPublisher2Tools(metapublisher2, 'tools')
     add_MetaPublisher2Widgets(metapublisher2, 'widgets')
-
     if presets:
         raise NotImplementedError(
             "!TXT! Preset initialization not yet implemented!")
-
     if REQUEST is not None:
         try:
             url = self.DestinationURL()
@@ -234,8 +209,7 @@ def add_MetaPublisher2(self, id, title='', presets=[], REQUEST=None):
 # MetaPublisher2 Product Registration
 
 def register_MetaPublisher2(context):
-    """!TXT! MetaPublisher2 Product Registration"""
-
+    """Register MetaPublisher2 Product."""
     context.registerClass(
         MetaPublisher2,
         meta_type='MetaPublisher2',

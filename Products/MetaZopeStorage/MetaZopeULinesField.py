@@ -1,35 +1,18 @@
-"""==================================================================
-
-                  M e t a   Z o p e   S t o r a g e
-  -----------------------------------------------------------------
-
-    Copyright (c) 2005, Sebastian Luehnsdorf - Web-Solutions GbR.
-    http://zopemeta.com - http://luehnsdorf.de
-
-    This software is subject to the provisions of the
-    Zope Public License, Version 2.0 (ZPL).
-
-    A copy of the ZPL should accompany this distribution.
-
-    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR
-    IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED
-    TO, THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST
-    INFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
-
-=================================================================="""
+"""Meta Zope Storage."""
 
 
-from Globals import DTMLFile
+from App.special_dtml import DTMLFile
 from ZPublisher.Converters import field2ulines
 
-from Products.MetaPublisher2.Library import FieldPlugin
+from Products.MetaPublisher2.bases.field.legacyfield import (
+    LegacyFieldPlugin as FieldPlugin)
 
 
 # =============================================================================
 
 
 class MetaZopeULinesField(FieldPlugin):
-    """UnicodeLinesField"""
+    """UnicodeLinesField."""
 
     pluginName = 'UnicodeLinesField'
     pluginAuthor = 'Sebastian Luehnsdorf - Web-Solutions GbR.'
@@ -55,7 +38,7 @@ class MetaZopeULinesField(FieldPlugin):
         'dtml/editMetaZopeULinesField', globals())
 
     def manage_configureField(self, REQUEST=None):
-        """Change Field's configuration parameters"""
+        """Change Field's configuration parameters."""
         self.title = REQUEST.get('title', '')
         self.default = self._testValue(REQUEST.get('default', ''))
 
@@ -67,23 +50,23 @@ class MetaZopeULinesField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def getFieldInfo(self):
-        """Return information about this Field if available"""
+        """Return information about this Field if available."""
         if self.default:
             return 'Default Value: "%s"' % u', '.join(
                 self.default).replace('<', '&lt;')
 
     def getEntryObject(self, entryId):
-        """Return the entry object"""
+        """Return the entry object."""
         return self.storage_getEntryObject(entryId)
 
     # -------------------------------------------------------------------------
 
     def setDefault(self, entryId):
-        """Set the default value for this Field in the Entry"""
+        """Set the default value for this Field in the Entry."""
         self.setValue(entryId, self.default)
 
     def setData(self, entryId, data):
-        """Set the value inside data for this Field in the Entry"""
+        """Set the value inside data for this Field in the Entry."""
         fieldId = self.getId()
         if data.has_key(fieldId):
             self.setValue(entryId, data[fieldId])
@@ -91,13 +74,13 @@ class MetaZopeULinesField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def _getValue(self, entryId, default):
-        """Retrieve a value from an entry"""
+        """Retrieve a value from an entry."""
         fieldId = self.getId()
         entry = self.getEntryObject(entryId)
         return entry.getProperty(fieldId, default)
 
     def _setValue(self, entryId, value):
-        """Store a value in an entry"""
+        """Store a value in an entry."""
         fieldId = self.getId()
         entry = self.getEntryObject(entryId)
         if value == 1:
@@ -108,8 +91,7 @@ class MetaZopeULinesField(FieldPlugin):
             entry._setProperty(fieldId, value, 'ulines')
 
     def _hasValue(self, entryId):
-        """Return 1 if the Entry has a value stored for this Field, 0
-        otherwise"""
+        """Return 1 if Entry has a value stored for this Field, 0 otherwise."""
         fieldId = self.getId()
         entry = self.getEntryObject(entryId)
         if entry.hasProperty(fieldId):
@@ -117,8 +99,8 @@ class MetaZopeULinesField(FieldPlugin):
         return 0
 
     def _testValue(self, value, options={}):
-        """Test a value for validity"""
-        if type(value) != type([]):
+        """Test a value for validity."""
+        if isinstance(value, list):
             value = field2ulines(value)
         if len(value) == 0:
             value = 1
@@ -127,7 +109,7 @@ class MetaZopeULinesField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def renderAdd(self):
-        """Return a html code for adding an Entry with this Field"""
+        """Return a html code for adding an Entry with this Field."""
         value = self.default
         if value is None:
             value = ''
@@ -141,7 +123,7 @@ class MetaZopeULinesField(FieldPlugin):
             u'%s</textarea>' % (self.getId(), value))
 
     def renderEdit(self, entryId):
-        """Return a html code for editing an Entry with this Field"""
+        """Return a html code for editing an Entry with this Field."""
         value = self.getValue(entryId)
         if value is None:
             value = ''
@@ -153,7 +135,7 @@ class MetaZopeULinesField(FieldPlugin):
             u'%s</textarea>' % (self.getId(), value))
 
     def renderView(self, entryId):
-        """Return a html code for viewing an Entry with this Field"""
+        """Return a html code for viewing an Entry with this Field."""
         value = self.getValue(entryId)
         if value is not None:
             result = []
@@ -165,6 +147,7 @@ class MetaZopeULinesField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def manage_afterAdd(self, item, container):
+        """Update old entries."""
         if item is self:
             # update old entries
             for entryId in self.storage_entryIds():
@@ -181,7 +164,7 @@ manage_addMetaZopeULinesFieldForm = DTMLFile(
 def manage_addMetaZopeULinesField(
     self, id, title='', default='', REQUEST=None
 ):
-    """ZMI constructor for MetaZopeULinesField"""
+    """Add new MetaZopeULinesField."""
     instance = MetaZopeULinesField(id)
     instance.title = title
     default = instance._testValue(default)

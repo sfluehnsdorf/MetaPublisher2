@@ -1,44 +1,15 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Plugins Component
+"""MetaPublisher2 - Plugins Component.
 
 Plugin service, providing access to all installed Product classess based on
 the MetaPublisher2's Plugin base class. Retrieval can be limited to one or
 more Plugin interfaces.
-
-$Id: system/plugins/plugins.py 15 2013-05-11 00:18:05Z sfluehnsdorf $
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from Products.MetaPublisher2.interfaces import IPluginBase
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, DTMLFile, false, InitializeClass, permission_manage,
-    Products, true)
+from Products.MetaPublisher2.library.application import permission_manage
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, false, InitializeClass, Products, true)
 
 
 # ============================================================================
@@ -53,7 +24,7 @@ __all__ = [
 # Plugins Component Mix-In Class
 
 class Plugins:
-    """!TXT! Plugins Component Mix-In Class"""
+    """Plugins Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -70,8 +41,7 @@ class Plugins:
     security.declareProtected(permission_manage, 'get_plugin')
 
     def get_plugin(self, plugin_id, interfaces=[]):
-        """!TXT! Return the registry mapping of the specified MetaPublisher2
-        plugin"""
+        """Return registry mapping of the specified MetaPublisher2 plugin."""
         for id, plugin in self.plugin_items(interfaces):
             if id == plugin_id:
                 return plugin
@@ -80,13 +50,13 @@ class Plugins:
     security.declareProtected(permission_manage, 'has_plugins')
 
     def has_plugins(self, interfaces=[]):
-        """!TXT! Return True if any MetaPublisher2 plugins are installed"""
+        """Return True if any MetaPublisher2 plugins are installed."""
         return self.plugin_ids(interfaces) and true or false
 
     security.declareProtected(permission_manage, 'list_plugins')
 
     def list_plugins(self, plugin_type=None):
-        """!TXT! Return a filtered list of plugins for the ZMI form."""
+        """Return a filtered list of plugins for the ZMI form."""
         result = []
         for plugin in (
             not plugin_type and
@@ -104,7 +74,7 @@ class Plugins:
     security.declareProtected(permission_manage, 'list_plugin_types')
 
     def list_plugin_types(self):
-        """!TXT! Return a filtered list of plugins for the ZMI form."""
+        """Return a filtered list of plugins for the ZMI form."""
         result = []
         for plugin in self.plugin_values():
             plugin_type = plugin['plugin_details']['plugin_type']
@@ -115,14 +85,13 @@ class Plugins:
     security.declareProtected(permission_manage, 'plugin_ids')
 
     def plugin_ids(self, interfaces=[]):
-        """!TXT! Return the ids of installed MetaPublisher2 plugins"""
+        """Return the ids of installed plugins."""
         return map(lambda item: item[0], self.plugin_items(interfaces))
 
     security.declareProtected(permission_manage, 'plugin_items')
 
     def plugin_items(self, interfaces=[]):
-        """!TXT! Return tuples of id, registry mapping of installed
-        MetaPublisher2 plugins"""
+        """Return tuples of id, registry mapping of installed plugins."""
         if not interfaces:
             interfaces = [IPluginBase, ]
         if not isinstance(interfaces, list):
@@ -149,8 +118,7 @@ class Plugins:
     security.declareProtected(permission_manage, 'plugin_values')
 
     def plugin_values(self, interfaces=[]):
-        """!TXT! Return the registry mapping of installed MetaPublisher2
-        plugins"""
+        """Return the registry mapping of installed plugins."""
         return map(lambda item: item[1], self.plugin_items(interfaces))
 
 

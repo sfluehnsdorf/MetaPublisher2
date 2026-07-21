@@ -1,43 +1,11 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
+"""MetaPublisher2 - Plugin Base Interface."""
 
-__doc__ = """Plugin Base Interface
-
-!TXT! module info
-
-$Id: interfaces/plugin.py 7 2013-05-08 23:34:00Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from zope.interface import Interface
 from zope.schema import BytesLine, List, Text, TextLine, Tuple, URI
 
 
-# ============================================================================
+# =============================================================================
 # Module Exports
 
 __all__ = [
@@ -45,16 +13,16 @@ __all__ = [
 ]
 
 
-# ============================================================================
+# =============================================================================
 # Plugin Base Interface
 
 class IPluginBase(Interface):
-    """!TXT! Plugin base interface
+    """Plugin base interface.
 
     This interface provides a common base class for all MetaPublisher2 Plugins.
     """
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Plugin Identity
 
     icon = BytesLine(
@@ -67,7 +35,7 @@ class IPluginBase(Interface):
         description=u"!TXT! The object's Zope2 meta type",
     )
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Plugin Description
 
     plugin_type = BytesLine(
@@ -119,63 +87,82 @@ class IPluginBase(Interface):
         title=u"!TXT! Properties",
     )
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Plugin Detail Retrieval
 
     def pluginflag_ids(self):
-        """!TXT! Return the ids of all Plugin flags"""
+        """Return the ids of all Plugin flags."""
 
     def pluginflag_items(self):
-        """!TXT! Return tuples of id, boolean states of all Plugin flags"""
+        """Return tuples of id, boolean states of all Plugin flags."""
 
     def pluginflag_values(self):
-        """!TXT! Return the boolean states of all Plugin flags"""
+        """Return the boolean states of all Plugin flags."""
 
     def get_available_immutable_pluginflags(self):
-        """!TXT! Return list of Plugin flag ids, which are either constants or
-        set by an external source and may not be altered by MetaPublisher3 or
-        its users"""
+        """Return list of available immutable Plugin flag ids.
+
+        Return list of Plugin flag ids, which are either constants or set by an
+        external source and may not be altered by MetaPublisher2 or its users.
+        """
 
     def get_available_mutable_pluginflags(self):
-        """!TXT! Return list of Plugin flag ids, which may be altered by
-        MetaPublisher3 and its users"""
+        """Return list of available mutable Plugin flag ids.
+
+        Return list of Plugin flag ids, which may be altered by MetaPublisher2
+        and its users.
+        """
 
     def get_pluginflag(self, pluginflag_id, failsafe=None):
-        """!TXT! Return the boolean state of the specified Plugin flag if it
-        exists, raises KeyError otherwise"""
+        """Return boolean state of the specified Plugin flag if it exists."""
 
     def get_plugin_specification(self):
-        """!TXT! Return a dictionary describing this Plugin"""
+        """Return a dictionary describing this Plugin."""
 
     def has_pluginflag(self, pluginflag_id):
-        """!TXT! Return True if the Plugin flag exists, False otherwise"""
+        """Return True if the Plugin flag exists, False otherwise."""
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Plugin Detail Mutation
 
     def define_pluginflags(self, pluginflag_ids):
-        """!TXT! Clear all mutable Plugin flags and set the specified Plugin
-        flags, raises ImmutableError if the Plugin flag is not mutable or
-        raises KeyError if the Plugin flag is not undefined"""
+        """Clear all mutable Plugin flags and set the specified Plugin flags.
+
+        Clear all mutable Plugin flags and set the specified Plugin flags,
+        raises ImmutableError if the Plugin flag is not mutable or raises
+        KeyError if the Plugin flag is not undefined.
+        """
 
     def set_pluginflag(self, pluginflag_id):
-        """!TXT! Set the specified Plugin flag if it is mutable, raises
-        ImmutableError if the Plugin flag is not mutable or raises KeyError
-        if the Plugin flag is not undefined"""
+        """Set the specified Plugin flag if it is mutable.
+
+        Set the specified Plugin flag if it is mutable, raises ImmutableError
+        if the Plugin flag is not mutable or raises KeyError if the Plugin flag
+        is not undefined.
+        """
 
     def set_pluginflags(self, pluginflag_ids):
-        """!TXT! Set the specified mutable Plugin flags, raises ImmutableError
-        if a Plugin flag is not mutable or raises KeyError if a Plugin flag is
-        not undefined"""
+        """Set the specified mutable Plugin flags.
+
+        Set the specified mutable Plugin flags, raises ImmutableError if a
+        Plugin flag is not mutable or raises KeyError if a Plugin flag is not
+        undefined.
+        """
 
     def unset_pluginflag(self, pluginflag_id):
-        """!TXT! Set the specified Plugin flag if it is mutable, raises
-        ImmutableError if the Plugin flag is not mutable or raises KeyError if
-        the Plugin flag is not undefined"""
+        """Set the specified Plugin flag if it is mutable.
+
+        Set the specified Plugin flag if it is mutable, raises ImmutableError
+        if the Plugin flag is not mutable or raises KeyError if the Plugin flag
+        is not undefined.
+        """
 
     def unset_pluginflags(self, pluginflag_ids):
-        """!TXT! Unset the specified mutable Plugin flags, raises
-        ImmutableError if a Plugin flag is not mutable or raises KeyError if a
-        Plugin flag is not undefined"""
+        """Unset the specified mutable Plugin flags.
+
+        Unset the specified mutable Plugin flags, raises ImmutableError if a
+        Plugin flag is not mutable or raises KeyError if a Plugin flag is not
+        undefined.
+        """
 
 # !!! interfaces/plugin.py - review api

@@ -1,40 +1,8 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Service Section
-
-!TXT! module info
-Module providing a mix-in class for the MetaPublisher 2's Service section.
-
-$Id: service/service.py 6 2013-05-08 18:45:35Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
+"""MetaPublisher2 - Service Section."""
 
 
-# ============================================================================
-# Module Imports
-
-from Products.MetaPublisher2.library import ClassSecurityInfo, InitializeClass
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, InitializeClass)
 
 from assistant import Assistant
 from community import Community
@@ -59,7 +27,7 @@ __all__ = [
 class Service(
     Assistant, Release, Community, Manual, Help, Reference, Feedback
 ):
-    """Service Section Mix-In Class"""
+    """Service Section Mix-In Class."""
 
     security = ClassSecurityInfo()
 

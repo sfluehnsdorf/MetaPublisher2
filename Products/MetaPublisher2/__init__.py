@@ -1,36 +1,10 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """MetaPublisher2 Product Registry
+"""MetaPublisher2 Product Registry.
 
 Zope2 Product registry, which registers all Product classes, all Product
 images and the online help. The individual Product registrations are
 outsourced to the products directory. For backward compatibility renamed
 modules are mapped to their new names.
-
-$Id: __init__.py 24 2013-05-10 22:46:41Z sfluehnsdorf $
 """
-
-__version__ = '$Revision: 2.3 $'[11:-2]
 
 
 # ============================================================================
@@ -41,7 +15,8 @@ import sys
 import library
 import products
 
-from library import basepath, ImageFile, isdir, join, listdir, sep, splitext
+from library.application import basepath
+from library.common import ImageFile, isdir, join, listdir, sep, splitext
 from products import (
     register_MetaPublisher2, register_MetaPublisher2Designs,
     register_MetaPublisher2Frontends, register_MetaPublisher2Languages,
@@ -53,8 +28,7 @@ from products import (
 
 
 def initialize(context):
-    """Register MetaPublisher2 Product and resource folders"""
-
+    """Register MetaPublisher2 Product and resource folders."""
     # register MetaPublisher2 Product
     register_MetaPublisher2(context)
 
@@ -130,6 +104,7 @@ sys.modules['Products.MetaPublisher2.MetaPublisher2'] = (
 
 
 '''
+TODO: …
 
 PHASE 1 - global
 PHASE 2 - library (remove xmldict & jsondict, skip pluginregistry)

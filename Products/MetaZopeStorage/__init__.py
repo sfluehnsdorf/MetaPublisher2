@@ -1,22 +1,4 @@
-"""==================================================================
-
-    M e t a   Z o p e   S t o r a g e
------------------------------------------------------------------
-
-    Copyright (c) 2005, Sebastian Luehnsdorf - Web-Solutions GbR.
-    http://zopemeta.com - http://luehnsdorf.de
-
-    This software is subject to the provisions of the
-    Zope Public License, Version 2.0 (ZPL).
-
-    A copy of the ZPL should accompany this distribution.
-
-    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR
-    IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED
-    TO, THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST
-    INFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
-
-=================================================================="""
+"""Meta Zope Storage."""
 
 
 from MetaZopeStorage import (
@@ -67,7 +49,7 @@ from MetaZopeUTextField import (
 
 
 def initialize(context):
-    """Initialize MetaZopeStorage"""
+    """Initialize MetaZopeStorage."""
     context.registerClass(
         MetaZopeStorage,
         constructors=(

@@ -1,41 +1,10 @@
-# -*- coding: iso-8859-15 -*-
-# =============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# -----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# -----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# =============================================================================
-
-__doc__ = """Entry Fields Component
-
-!TXT! module info
-
-$Id: data/entries/entryfields.py 15 2013-05-12 18:25:43Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
+"""MetaPublisher2 - Entry Fields Component."""
 
 
-# =============================================================================
-# Module Imports
-
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, InitializeClass, permission_access_entries,
-    permission_change_entries)
+from Products.MetaPublisher2.library.application import (
+    permission_access_entries, permission_change_entries)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, InitializeClass)
 
 
 # =============================================================================
@@ -50,7 +19,7 @@ __all__ = [
 # Entry Fields Component Mix-In Class
 
 class EntryFields:
-    """!TXT! Entry Fields Component Mix-In Class"""
+    """Entry Fields Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -63,7 +32,7 @@ class EntryFields:
         self, source, field_id, default=None, parent_entry_id=None,
         entry_id=None, entry_position=None
     ):
-        """!TXT! Return the specified Entry's Field's value"""
+        """Return the specified Entry's Field's value."""
         source = self.get_storage(source)
         return source.get_entryfield(
             field_id, default, parent_entry_id, entry_id, entry_position)
@@ -78,7 +47,7 @@ class EntryFields:
         self, source, field_id, value, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None
     ):
-        """!TXT! Count the number of Entries, with a specific Field's value"""
+        """Count the number of Entries, with a specific Field's value."""
         source = self.get_storage(source)
         return source.count_entryfields(
             field_id, value, parent_entry_id, entry_ids, entry_positions,
@@ -91,8 +60,11 @@ class EntryFields:
         self, source, field_id, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None
     ):
-        """!TXT! Return a mapping with the number of Entries for each unique
-        value of a specific Field's value"""
+        """Return a mapping of counts of unique values.
+
+        Return a mapping with the number of Entries for each unique value of a
+        specific Field's value.
+        """
         source = self.get_storage(source)
         return source.count_unique_entryfields(
             field_id, parent_entry_id, entry_ids, entry_positions, conditions)
@@ -103,10 +75,12 @@ class EntryFields:
         self, source, field_id, value, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None
     ):
-        """!TXT! Return True if any of the specified Entries have the specified
-        value in the specified Field, limited to the Entries specified and
-        matching conditions if defined."""
+        """Return True if any Entries have the value in the specified Field.
 
+        Return True if any of the specified Entries have the specified value in
+        the specified Field, limited to the Entries specified and matching
+        conditions if defined.
+        """
         source = self.get_storage(source)
         return source.has_any_entryfields(
             field_id, value, parent_entry_id, entry_ids, entry_positions,
@@ -118,9 +92,12 @@ class EntryFields:
         self, source, field_id, value, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None
     ):
-        """!TXT! Return True if all of the specified Entries have the specified
-        value in the specified Field, limited to the Entries specified and
-        matching conditions if defined."""
+        """Return True if all Entries have the value in the specified Field.
+
+        Return True if all of the specified Entries have the specified value in
+        the specified Field, limited to the Entries specified and matching
+        conditions if defined.
+        """
         source = self.get_storage(source)
         return source.has_all_entryfields(
             field_id, value, parent_entry_id, entry_ids, entry_positions,
@@ -129,8 +106,7 @@ class EntryFields:
     security.declareProtected(permission_access_entries, 'has_entryfield')
 
     def has_entryfield(self, source, field_id, entry_id):
-        """!TXT! Return True if the specified EntryField exists and has a value
-        different from None."""
+        """Return True if the specified EntryField exists."""
         source = self.get_storage(source)
         return source.has_entryfield(field_id, entry_id)
 
@@ -141,8 +117,11 @@ class EntryFields:
         self, source, field_id, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None
     ):
-        """!TXT! Return a list of unique values stored in the specified Field,
-        limited to the Entries specified and matching conditions if defined."""
+        """Return a list of unique values stored in the specified Field.
+
+        Return a list of unique values stored in the specified Field, limited
+        to the Entries specified and matching conditions if defined.
+        """
         source = self.get_storage(source)
         return source.get_unique_entryfields(
             field_id, parent_entry_id, entry_ids, entry_positions, conditions)
@@ -156,8 +135,7 @@ class EntryFields:
         self, source, field_id, parent_entry_id=None, entry_id=None,
         entry_position=None
     ):
-        """!TXT! Reset the specified Field of the specified Entry to its
-        default value."""
+        """Reset the specified Field to its default value."""
         source = self.get_storage(source)
         source.reset_entryfield(
             field_id, parent_entry_id, entry_id, entry_position)
@@ -168,8 +146,7 @@ class EntryFields:
         self, source, field_id, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None
     ):
-        """!TXT! Reset the specified Field of the specified Entries, matching
-        conditions if defined, to its default value."""
+        """Reset the Field of the specified Entries to its default value."""
         source = self.get_storage(source)
         source.reset_entryfields(
             field_id, parent_entry_id, entry_ids, entry_positions, conditions)
@@ -180,8 +157,7 @@ class EntryFields:
         self, source, field_id, value, parent_entry_id=None, entry_id=None,
         entry_position=None
     ):
-        """!TXT! Set the value of the specified Field of the specified
-        Entry."""
+        """Set values of specified Field of Entry."""
         source = self.get_storage(source)
         source.set_entryfield(
             field_id, parent_entry_id, entry_id, entry_position)
@@ -192,8 +168,7 @@ class EntryFields:
         self, source, field_id, value, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None
     ):
-        """!TXT! Set the values of the specified Field of the specified
-        Entries, matching conditions if defined."""
+        """Set values of specified Field of Entries, matching conditions."""
         source = self.get_storage(source)
         source.set_entryfields(
             field_id, value, parent_entry_id, entry_ids, entry_positions,

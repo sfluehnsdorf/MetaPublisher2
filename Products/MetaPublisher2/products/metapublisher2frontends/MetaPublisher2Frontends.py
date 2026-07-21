@@ -1,38 +1,8 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
+"""MetaPublisher2Frontends Product."""
 
-__doc__ = """MetaPublisher2Frontends Product
-
-!TXT! module info
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from Products.MetaPublisher2.interfaces import IFrontendPluginBase
-from Products.MetaPublisher2.library import (
+from Products.MetaPublisher2.library.common import (
     ClassSecurityInfo, DTMLFile, Folder, InitializeClass, true, quote_plus)
 
 
@@ -48,7 +18,7 @@ __all__ = [
 # MetaPublisher2Frontends Product Class
 
 class MetaPublisher2Frontends(Folder):
-    """!TXT! MetaPublisher2Frontends Product Class"""
+    """!TXT! MetaPublisher2Frontends Product Class."""
 
     security = ClassSecurityInfo()
 
@@ -70,8 +40,7 @@ class MetaPublisher2Frontends(Folder):
     # ZMI Events
 
     def all_meta_types(self, interfaces=None):
-        """!TXT! Return list of containable object types"""
-
+        """!TXT! Return list of containable object types."""
         interfaces = (
             interfaces and
             list(interfaces) or
@@ -85,15 +54,13 @@ class MetaPublisher2Frontends(Folder):
     security.declarePublic('get_MetaPublisher2Frontends')
 
     def get_MetaPublisher2Frontends(self):
-        """!TXT! Return this instance"""
-
+        """!TXT! Return this instance."""
         return self
 
     security.declarePublic('get_MetaPublisher2Frontends_url')
 
     def get_MetaPublisher2Frontends_url(self):
-        """!TXT! Return this instance's absolute url"""
-
+        """!TXT! Return this instance's absolute url."""
         return self.absolute_url()
 
 
@@ -113,21 +80,17 @@ add_MetaPublisher2Frontends_form = DTMLFile('add', globals())
 def add_MetaPublisher2Frontends(
     self, id, title='Frontends Folder', REQUEST=None
 ):
-    """!TXT! ZMI constructor for MetaPublisher2Frontends"""
-
+    """!TXT! ZMI constructor for MetaPublisher2Frontends."""
     if not container_filter(self.this()):
         raise TypeError(
             "!TXT! Can't add a MetaPublisher2Frontends Folder outside of a "
             "MetaPublisher2")
-
     id = str(id)
     title = str(title)
-
     instance = MetaPublisher2Frontends(id)
     instance.id = id
     instance.title = title
     id = self._setObject(id, instance)
-
     if REQUEST:
         try:
             url = self.DestinationURL()
@@ -144,8 +107,7 @@ def add_MetaPublisher2Frontends(
 # MetaPublisher2 Frontends Content Filter
 
 def container_filter(folder):
-    """!TXT!"""
-
+    """!TXT!."""
     if folder.meta_type == 'MetaPublisher2':
         return true
 
@@ -154,8 +116,7 @@ def container_filter(folder):
 # MetaPublisher2 Frontends Registration
 
 def register_MetaPublisher2Frontends(context):
-    """!TXT!"""
-
+    """Register MetaPublisher2Frontends Product."""
     try:
         context.registerClass(
             MetaPublisher2Frontends,
@@ -168,7 +129,6 @@ def register_MetaPublisher2Frontends(context):
             icon='resources/icon/MetaPublisher2Folder.gif',
             container_filter=container_filter
         )
-
     except Exception:
         context.registerClass(
             MetaPublisher2Frontends,

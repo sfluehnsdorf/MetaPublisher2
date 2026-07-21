@@ -1,38 +1,8 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
+"""MetaPublisher2Widgets Product."""
 
-__doc__ = """MetaPublisher2Widgets Product
-
-!TXT! module info
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from Products.MetaPublisher2.interfaces import IWidgetPluginBase
-from Products.MetaPublisher2.library import (
+from Products.MetaPublisher2.library.common import (
     ClassSecurityInfo, DTMLFile, Folder, InitializeClass, true, quote_plus)
 
 
@@ -48,7 +18,7 @@ __all__ = [
 # MetaPublisher2Widgets Product Class
 
 class MetaPublisher2Widgets(Folder):
-    """!TXT! MetaPublisher2Widgets Product Class"""
+    """MetaPublisher2Widgets Product Class."""
 
     security = ClassSecurityInfo()
 
@@ -70,8 +40,7 @@ class MetaPublisher2Widgets(Folder):
     # ZMI Events
 
     def all_meta_types(self, interfaces=None):
-        """!TXT! Return list of containable object types"""
-
+        """Return list of containable object types."""
         interfaces = (
             interfaces and
             list(interfaces) or
@@ -85,15 +54,13 @@ class MetaPublisher2Widgets(Folder):
     security.declarePublic('get_MetaPublisher2Widgets')
 
     def get_MetaPublisher2Widgets(self):
-        """!TXT! Return this instance"""
-
+        """Return this instance."""
         return self
 
     security.declarePublic('get_MetaPublisher2Widgets_url')
 
     def get_MetaPublisher2Widgets_url(self):
-        """!TXT! Return this instance's absolute url"""
-
+        """Return this instance's absolute url."""
         return self.absolute_url()
 
 
@@ -110,21 +77,17 @@ add_MetaPublisher2Widgets_form = DTMLFile('add', globals())
 
 
 def add_MetaPublisher2Widgets(self, id, title='Widgets Folder', REQUEST=None):
-    """!TXT! ZMI constructor for MetaPublisher2Widgets"""
-
+    """Add new MetaPublisher2Widgets."""
     if not container_filter(self.this()):
         raise TypeError(
             "!TXT! Can't add a MetaPublisher2Widgets Folder outside of a "
             "MetaPublisher2")
-
     id = str(id)
     title = str(title)
-
     instance = MetaPublisher2Widgets(id)
     instance.id = id
     instance.title = title
     id = self._setObject(id, instance)
-
     if REQUEST:
         try:
             url = self.DestinationURL()
@@ -141,8 +104,7 @@ def add_MetaPublisher2Widgets(self, id, title='Widgets Folder', REQUEST=None):
 # MetaPublisher2 Widgets Content Filter
 
 def container_filter(folder):
-    """!TXT!"""
-
+    """Ensure metatype of parent."""
     if folder.meta_type == 'MetaPublisher2':
         return true
 
@@ -151,8 +113,7 @@ def container_filter(folder):
 # MetaPublisher2 Widgets Registration
 
 def register_MetaPublisher2Widgets(context):
-    """!TXT!"""
-
+    """Register MetaPublisher2Widgets Product."""
     try:
         context.registerClass(
             MetaPublisher2Widgets,
@@ -165,7 +126,6 @@ def register_MetaPublisher2Widgets(context):
             icon='resources/icon/MetaPublisher2Folder.gif',
             container_filter=container_filter
         )
-
     except Exception:
         context.registerClass(
             MetaPublisher2Widgets,

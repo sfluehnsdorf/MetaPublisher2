@@ -1,37 +1,5 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
+"""MetaPublisher2 - Future Compatibility."""
 
-__doc__ = """Future Compatibility
-
-!TXT! module info
-
-$Id: library/compatibility/future.py 6 2013-05-10 23:06:40Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from Products.MetaPublisher2.library.common import (
     ClassSecurityInfo, false, InitializeClass, true)
@@ -56,7 +24,7 @@ __all__ = [
 show_future = false
 # show_future = true
 
-assert false
+assert not false
 assert true
 
 
@@ -64,7 +32,7 @@ assert true
 # Future Compatibility Mix-In Class
 
 class FutureCompatibility:
-    """!TXT! Future Compatibility Mix-In Class"""
+    """Future Compatibility Mix-In Class."""
 
     security = ClassSecurityInfo()
 

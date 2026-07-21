@@ -1,37 +1,5 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
+"""MetaPublisher2 - Legacy Widget Plugin Base."""
 
-__doc__ = """Legacy Widget Plugin Base
-
-!TXT! module info
-
-$Id: bases/widget/legacywidget.py 7 2013-05-10 23:38:43Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from Products.MetaPublisher2.bases.plugin.legacyplugin import LegacyPluginBase
 from Products.MetaPublisher2.library.common import (
@@ -52,12 +20,11 @@ __all__ = [
 # Legacy Widget Plugin Base Class
 
 class LegacyWidgetPlugin(LegacyPluginBase, WidgetPluginBase):
-    """!TXT! Legacy Widget Plugin Base Class"""
+    """Legacy Widget Plugin Base Class."""
 
     security = ClassSecurityInfo()
 
     # --------------------------------------------------------------------------
-    # !TXT!
 
     isZMP2WidgetPlugin = 1
 
@@ -75,7 +42,7 @@ class LegacyWidgetPlugin(LegacyPluginBase, WidgetPluginBase):
 
     frontend_type = ComputedAttribute(lambda self: self.formTypeId)
 
-    # ------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
     # Plugin Identity API
 
     getWidgetObject = WidgetPluginBase.get_plugin_instance
@@ -84,35 +51,34 @@ class LegacyWidgetPlugin(LegacyPluginBase, WidgetPluginBase):
 
     getWidgetURL = WidgetPluginBase.get_plugin_url
 
-    # ------------------------------------------------------------------------
-    # !TXT!
+    # -------------------------------------------------------------------------
 
     def get_immutable_pluginflag_ids(self):
-        """!TXT! Return list of Plugin flag ids, which are either constants or
-        set by an external source and may not be altered by MetaPublisher2 or
-        its users"""
+        """Return list of Plugin flag ids.
 
+        Return list of Plugin flag ids, which are either constants or set by an
+        external source and may not be altered by MetaPublisher2 or its users.
+        """
         # !!! bases/widget/legacywidget.py -  get_immutable_pluginflag_ids
         return []
 
     def get_mutable_pluginflag_ids(self):
-        """!TXT! Return list of Plugin flag ids, which may be altered by
-        MetaPublisher2 and its users"""
+        """Return list of Plugin flag ids.
 
+        Return list of Plugin flag ids, which may be altered by MetaPublisher2
+        and its users.
+        """
         # !!! bases/widget/legacywidget.py -  get_mutable_pluginflag_ids
         return []
 
-    # ------------------------------------------------------------------------
-    # !TXT!
+    # -------------------------------------------------------------------------
 
     def setWidgetData(self, data={}):
-        """!TXT! Return a dictionary describing this widget"""
-
+        """Return a dictionary describing this widget."""
         raise NotImplementedError
 
     def getWidgetData(self, form_type_id):
-        """!TXT! Return a dictionary describing this widget"""
-
+        """Return a dictionary describing this widget."""
         raise NotImplementedError
 
 

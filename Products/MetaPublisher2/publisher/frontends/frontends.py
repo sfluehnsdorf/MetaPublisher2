@@ -1,47 +1,20 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Frontends Component
+"""MetaPublisher2 - Frontends Component.
 
 API and ZMI services for managing Frontends. Frontends store the definition of
 the public interface for the MetaPublisher 2. Once they are rendered, they
 provide a public interface to the functions of the MetaPublisher 2, such as
 Entry management. Frontends can be added, edited, deleted, renamed and moved as
 well as retrieved, listed and tested for existence.
-
-$Id: publisher/frontends/frontends.py 21 2013-05-10 23:04:08Z sfluehnsdorf $
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from Products.MetaPublisher2.interfaces import (
     IFrontendPluginBase, IPluginBase, IWidgetPluginBase)
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, DTMLFile, false, InitializeClass, permission_manage,
-    permission_manage_frontends, show_future, true)
+from Products.MetaPublisher2.library.application import (
+    permission_manage, permission_manage_frontends)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, false, InitializeClass, true)
+from Products.MetaPublisher2.library.compatibility import show_future
 
 
 # ============================================================================
@@ -56,7 +29,7 @@ __all__ = [
 # Frontends Component Mix-In Class
 
 class Frontends:
-    """!TXT! Frontends Component Mix-In Class"""
+    """Frontends Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -106,38 +79,31 @@ class Frontends:
     security.declareProtected(permission_manage, 'has_frontendplugins')
 
     def has_frontendplugins(self):
-        """!TXT! Return the specified MetaPublisher2 Frontend plugin"""
-
+        """Return the specified MetaPublisher2 Frontend plugin."""
         return self.has_plugins(IFrontendPluginBase)
 
     security.declareProtected(permission_manage, 'get_frontendplugin')
 
     def get_frontendplugin(self, frontendplugin_id):
-        """!TXT! Return the specified MetaPublisher2 Frontend plugin"""
-
+        """Return the specified MetaPublisher2 Frontend plugin."""
         return self.get_plugin(frontendplugin_id, IFrontendPluginBase)
 
     security.declareProtected(permission_manage, 'frontendplugin_ids')
 
     def frontendplugin_ids(self):
-        """!TXT! Return ids of installed MetaPublisher2 Frontend plugins"""
-
+        """Return ids of installed MetaPublisher2 Frontend plugins."""
         return self.plugin_ids(IFrontendPluginBase)
 
     security.declareProtected(permission_manage, 'frontendplugin_items')
 
     def frontendplugin_items(self):
-        """!TXT! Return tuples of id, value of installed MetaPublisher2
-        Frontend plugins"""
-
+        """Return tuples of id, value of installed Frontend plugins."""
         return self.plugin_items(IFrontendPluginBase)
 
     security.declareProtected(permission_manage, 'frontendplugin_values')
 
     def frontendplugin_values(self):
-        """!TXT! Return tuples of id, value of installed MetaPublisher2
-        Frontend plugins"""
-
+        """Return tuples of id, value of installed Frontend plugins."""
         return self.plugin_values(IFrontendPluginBase)
 
     # ------------------------------------------------------------------------
@@ -146,33 +112,28 @@ class Frontends:
     security.declareProtected(permission_manage, 'get_frontendflags')
 
     def get_frontendflags(self, frontend_path):
-        """!TXT! Return tuples of id, boolean states of all Plugin flags"""
-
+        """Return tuples of id, boolean states of all Plugin flags."""
         frontend = self.get_frontend(self, frontend_path)
         return frontend.get_frontendflags()
 
     security.declareProtected(permission_manage, 'get_frontendflag_ids')
 
     def get_frontendflag_ids(self, frontend_path):
-        """!TXT! Return the ids of all Plugin flags"""
-
+        """Return the ids of all Plugin flags."""
         frontend = self.get_frontend(self, frontend_path)
         return frontend.get_frontendflag_ids()
 
     security.declareProtected(permission_manage, 'get_frontendflag')
 
     def get_frontendflag(self, frontend_path, pluginflag_id):
-        """!TXT! Return the boolean state of the specified Frontend flag if it
-        exists, raises KeyError otherwise"""
-
+        """Return state of the Frontend flag if it exists."""
         frontend = self.get_frontend(self, frontend_path)
         return frontend.get_pluginflag(pluginflag_id)
 
     security.declareProtected(permission_manage, 'has_frontendflag')
 
     def has_frontendflag(self, frontend_path, pluginflag_id):
-        """!TXT! Return True if the Frontend flag exists, False otherwise"""
-
+        """Return True if the Frontend flag exists, False otherwise."""
         frontend = self.get_frontend(self, frontend_path)
         return frontend.has_pluginflag(pluginflag_id)
 
@@ -180,8 +141,7 @@ class Frontends:
     # Frontends Retrieval API
 
     def _traverse_frontend_path(self, path):
-        """!TXT!"""
-
+        """TODO: Docstring for _traverse_frontend_path."""
         path_object = self.frontends
         if path:
             for id in path.split('/'):
@@ -191,15 +151,13 @@ class Frontends:
     security.declareProtected(permission_manage_frontends, 'has_frontends')
 
     def has_frontends(self):
-        """!TXT!"""
-
+        """TODO: Docstring for has_frontends."""
         return self.frontend_paths() and true or false
 
     security.declareProtected(permission_manage_frontends, 'has_frontend')
 
     def has_frontend(self, path):
-        """!TXT!"""
-
+        """TODO: Docstring for has_frontend."""
         try:
             self._traverse_frontend_path(path)
             return true
@@ -210,16 +168,14 @@ class Frontends:
         permission_manage_frontends, 'frontendpath_paths')
 
     def frontendpath_paths(self):
-        """!TXT!"""
-
+        """TODO: Docstring for frontendpath_paths."""
         return map(lambda item: item[0], self.frontendpath_items())
 
     security.declareProtected(
         permission_manage_frontends, 'frontendpath_items')
 
     def frontendpath_items(self):
-        """!TXT!"""
-
+        """TODO: Docstring for frontendpath_items."""
         paths = []
         paths_append = paths.append
         for path, frontend in self.frontend_items():
@@ -234,21 +190,19 @@ class Frontends:
         permission_manage_frontends, 'frontendpath_values')
 
     def frontendpath_values(self):
-        """!TXT!"""
-
+        """TODO: Docstring for frontendpath_values."""
         return map(lambda item: item[1], self.frontendpath_items())
 
     security.declareProtected(permission_manage_frontends, 'frontend_paths')
 
     def frontend_paths(self, path=None, recursive=true):
-        """!TXT! Return the paths of Frontends."""
-
+        """Return the paths of Frontends."""
         return map(lambda item: item[0], self.frontend_items(path, recursive))
 
     security.declareProtected(permission_manage_frontends, 'frontend_items')
 
     def frontend_items(self, path=None, recursive=true):
-        """!TXT!"""
+        """TODO: Docstring for frontend_items."""
 
         def sort_items(x, y):
             return cmp(x[0], y[0])
@@ -270,66 +224,63 @@ class Frontends:
     security.declareProtected(permission_manage_frontends, 'frontend_values')
 
     def frontend_values(self, path=None, recursive=true):
-        """!TXT!"""
-
+        """TODO: Docstring for frontend_values."""
         return map(lambda item: item[1], self.frontend_items(path, recursive))
 
     security.declareProtected(permission_manage_frontends, 'get_frontend')
 
     def get_frontend(self, path):
-        """!TXT!"""
-
+        """TODO: Docstring for get_frontend."""
         return self._traverse_frontend_path(path)
 
     security.declareProtected(permission_manage_frontends, 'get_frontend_path')
 
     def get_frontend_path(self, frontend):
-        """!TXT! get frontend object's path"""
-
+        """Get frontend object's path."""
         # TODO frontends.py - implement get_frontend_path
-
         raise NotImplementedError
 
     security.declareProtected(
         permission_manage_frontends, 'get_frontend_parent')
 
     def get_frontend_parent(self, frontend):
-        """!TXT! Return the specified Frontend's parent object. If object is a
-        string, it will be normalized and the last path element removed."""
+        """Return the specified Frontend's parent object.
 
+        If object is a string, it will be normalized and the last path element
+        removed.
+        """
         # TODO frontends.py - implement get_frontend_parent
-
         raise NotImplementedError
 
     security.declareProtected(
         permission_manage_frontends, 'get_frontend_parent_path')
 
     def get_frontend_parent_path(self, frontend):
-        """!TXT! Return the specified Frontend's parent object. If object is a
-        string, it will be normalized and the last path element removed."""
+        """Return the specified Frontend's parent object.
 
+        If object is a string, it will be normalized and the last path element
+        removed.
+        """
         # TODO frontends.py - implement get_frontend_parent_path
-
         raise NotImplementedError
 
     security.declareProtected(
         permission_manage_frontends, 'get_frontend_parents')
 
     def get_frontend_parents(self, frontend):
-        """!TXT! Return the specified Frontend's parent objects. If object is a
-        string, it will be normalized and the last path element removed."""
+        """Return the specified Frontend's parent objects.
 
+        If object is a string, it will be normalized and the last path element
+        removed.
+        """
         # TODO frontends.py - implement get_frontend_parents
-
         raise NotImplementedError
 
     security.declareProtected(
         permission_manage_frontends, 'get_frontend_rendering_ids')
 
     def get_frontend_rendering_ids(self, path):
-        """!TXT! Return a list of all ids generated by rendering the specified
-        Frontend."""
-
+        """Return a list of all ids generated by rendering the Frontend."""
         frontend = self.get_frontend(path)
         return frontend.get_frontend_rendering_ids()
 
@@ -343,9 +294,7 @@ class Frontends:
     #     properly to frontends_form
 
     def add_frontend_type(self, REQUEST=None):
-        """!TXT! Add a new Frontend in the specified path with specified id and
-        configuration."""
-
+        """Add a new Frontend TTW."""
         path = 'frontends' + REQUEST.get('path', '')
         frontend_type = REQUEST.get('frontend_type', '')
         if frontend_type == 'OFS':
@@ -375,14 +324,13 @@ class Frontends:
         self, path, frontend_path, frontend_type_id, options={}, REQUEST=None,
         **args
     ):
-        """!TXT! Add a new Frontend in the specified path with specified id and
-        configuration."""
+        """Add a new Frontend."""
         raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'delete_frontend')
 
     def delete_frontend(self, path, REQUEST=None):
-        """!TXT!"""
+        """TODO: Docstring for delete_frontend."""
         path, frontend_id = path.rsplit('/', 1)
         base = self.get_frontend_parent(path)
         base.manage_delObjects(frontend_id)
@@ -397,7 +345,7 @@ class Frontends:
     security.declareProtected(permission_manage_frontends, 'delete_frontends')
 
     def delete_frontends(self, paths=[], REQUEST=None):
-        """!TXT!"""
+        """TODO: Docstring for delete_frontends."""
         if not paths:
             raise ValueError('!TXT! No Frontends specified')
         delete_frontend = self.delete_frontend
@@ -414,8 +362,7 @@ class Frontends:
         permission_manage_frontends, 'duplicate_frontend')
 
     def duplicate_frontend(self, path, new_id=None, REQUEST=None):
-        """!TXT!"""
-
+        """TODO: Docstring for duplicate_frontend."""
         path, frontend_id = path.rsplit('/', 1)
         base = self._traverse_frontend_path(path)
         if not new_id:
@@ -439,8 +386,7 @@ class Frontends:
         permission_manage_frontends, 'duplicate_frontends')
 
     def duplicate_frontends(self, paths, new_ids=[], REQUEST=None):
-        """!TXT!"""
-
+        """TODO: Docstring for duplicate_frontends."""
         if not paths:
             raise ValueError('No Frontends specified')
         elif not new_ids:
@@ -467,8 +413,7 @@ class Frontends:
     # TODO frontends.py - implement edit_frontend
 
     def edit_frontend(self, frontend_path, options={}, REQUEST=None, **args):
-        """!TXT! Change the specified Frontend's configuration."""
-
+        """Change the specified Frontend's configuration."""
         raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'move_frontend')
@@ -476,8 +421,7 @@ class Frontends:
     # TODO frontends.py - implement move_frontend
 
     def move_frontend(self, frontend_path, destination_path, REQUEST=None):
-        """!TXT! Move the specified Frontend to a new container."""
-
+        """Move the specified Frontend to a new container."""
         raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'move_frontends')
@@ -485,15 +429,13 @@ class Frontends:
     # TODO frontends.py - implement move_frontends
 
     def move_frontends(self, frontend_paths, destination_path, REQUEST=None):
-        """!TXT! Move the specified Frontends to a new container."""
-
+        """Move the specified Frontends to a new container."""
         raise NotImplementedError
 
     security.declareProtected(permission_manage_frontends, 'rename_frontend')
 
     def rename_frontend(self, path, new_id, REQUEST=None):
-        """!TXT! Rename the specified Frontend."""
-
+        """Rename the specified Frontend."""
         path, frontend_id = path.rsplit('/', 1)
         base = self._traverse_frontend_path(path)
         base.manage_renameObject(frontend_id, new_id)
@@ -509,9 +451,10 @@ class Frontends:
     security.declareProtected(permission_manage_frontends, 'rename_frontends')
 
     def rename_frontends(self, paths, new_ids, REQUEST=None):
-        """!TXT! Rename the specified Frontends. Both id lists must have the
-        same length or ValueError is raised."""
+        """Rename the specified Frontends.
 
+        Both id lists must have the same length or ValueError is raised.
+        """
         if not paths:
             raise ValueError('!TXT! No Frontends specified')
         elif len(paths) != len(new_ids):

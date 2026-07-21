@@ -1,42 +1,10 @@
-# -*- coding: iso-8859-15 -*-
-# =============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# -----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# -----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# =============================================================================
-
-__doc__ = """Entry Order Component
-
-!TXT! module info
-
-$Id: data/entries/entryorder.py 13 2013-05-09 18:15:42Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
+"""MetaPublisher2 - Entry Order Component."""
 
 
-# =============================================================================
-# Module Imports
-
-
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, InitializeClass, permission_access_entries,
-    permission_change_entries)
+from Products.MetaPublisher2.library.application import (
+    permission_access_entries, permission_change_entries)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, InitializeClass)
 
 
 # =============================================================================
@@ -52,7 +20,7 @@ __all__ = [
 # Entry Order Component Mix-In Class
 
 class EntryOrder:
-    """!TXT! Entry Order Component Mix-In Class"""
+    """!TXT! Entry Order Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -64,8 +32,7 @@ class EntryOrder:
     security.declareProtected(permission_access_entries, 'get_entry_position')
 
     def get_entry_position(self, source, entry_id, parent_entry_id=None):
-        """!TXT! Return the position of the specified Entry in the specified
-        source."""
+        """Return the position of Entry in the specified source."""
         source = self.get_storage(source)
         return source.get_entry_position(entry_id, parent_entry_id)
 
@@ -75,10 +42,12 @@ class EntryOrder:
         self, source, parent_entry_id=None, entry_ids=None, conditions=None,
         order_by=None, offset=None, limit=None
     ):
-        """!TXT! Return a list of tuples of id, value, position of the
-        specified Entries in the specified source, ordered by a specific
-        EntryField's value and limited to the Entries specified and matching
-        conditions if defined."""
+        """Return a list of tuples of the Entries with their positions.
+
+        Return a list of tuples of id, value, position of the specified Entries
+        in the specified source, ordered by a specific EntryField's value and
+        limited to the Entries specified and matching conditions if defined.
+        """
         source = self.get_storage(source)
         return source.get_entry_positions(
             parent_entry_id, entry_ids, conditions, order_by, offset, limit)
@@ -92,7 +61,7 @@ class EntryOrder:
         self, source, steps, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None, REQUEST=None
     ):
-        """!TXT! rotate_entries"""
+        """TODO: Docstring for rotate_entries."""
         source = self.get_storage(source)
         entry_ids = source.rotate_entries(
             steps, parent_entry_id, entry_ids, entry_positions, conditions)
@@ -110,7 +79,7 @@ class EntryOrder:
         self, source, order_by, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None, REQUEST=None
     ):
-        """!TXT! order_entries"""
+        """TODO: Docstring for order_entries."""
         source = self.get_storage(source)
         entry_ids = source.order_entries(
             order_by, parent_entry_id, entry_ids, entry_positions, conditions)
@@ -128,7 +97,7 @@ class EntryOrder:
         self, source, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None, REQUEST=None
     ):
-        """!TXT! shuffle_entries"""
+        """TODO: Docstring for shuffle_entries."""
         source = self.get_storage(source)
         entry_ids = source.shuffle_entries(
             parent_entry_id, entry_ids, entry_positions, conditions)
@@ -146,12 +115,10 @@ class EntryOrder:
         self, source, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None, REQUEST=None
     ):
-        """!TXT! reverse_entries"""
-
+        """TODO: Docstring for reverse_entries."""
         source = self.get_storage(source)
         entry_ids = source.reverse_entries(
             parent_entry_id, entry_ids, entry_positions, conditions)
-
         self.redirect(
             REQUEST,
             'entries_form',
@@ -166,12 +133,9 @@ class EntryOrder:
         self, source, position, parent_entry_id=None, entry_id=None,
         entry_position=None, REQUEST=None
     ):
-        """!TXT! Move the specified Entry in the specified source to the
-        specified position."""
-
+        """Move Entry in the specified source to the specified position."""
         source = self.get_storage(source)
         source.move_entry(position, parent_entry_id, entry_id, entry_position)
-
         self.redirect(
             REQUEST,
             'entries_form',
@@ -186,12 +150,9 @@ class EntryOrder:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         REQUEST=None
     ):
-        """!TXT! Move the specified Entry in the specified source to the
-        top."""
-
+        """Move Entry in the specified source to the top."""
         source = self.get_storage(source)
         source.move_entry_to_top(parent_entry_id, entry_id, entry_position)
-
         self.redirect(
             REQUEST,
             'entries_form',
@@ -205,8 +166,7 @@ class EntryOrder:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         REQUEST=None
     ):
-        """!TXT! Move the specified Entry in the specified source up one
-        position."""
+        """Move Entry in the specified source up one position."""
         source = self.get_storage(source)
         source.move_entry_up(parent_entry_id, entry_id, entry_position)
         self.redirect(
@@ -222,8 +182,7 @@ class EntryOrder:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         REQUEST=None
     ):
-        """!TXT! Move the specified Entry in the specified source down one
-        position."""
+        """Move Entry in the specified source down one position."""
         source = self.get_storage(source)
         source.move_entry_down(parent_entry_id, entry_id, entry_position)
         self.redirect(
@@ -241,8 +200,7 @@ class EntryOrder:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         REQUEST=None
     ):
-        """!TXT! Move the specified Entry in the specified source to the
-        bottom."""
+        """Move Entry in the specified source to the bottom."""
         source = self.get_storage(source)
         source.move_entry_to_bottom(parent_entry_id, entry_id, entry_position)
         self.redirect(
@@ -259,7 +217,7 @@ class EntryOrder:
         self, source, position, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None, REQUEST=None
     ):
-        """!TXT! move_entries"""
+        """TODO: Docstring for move_entries."""
         source = self.get_storage(source)
         entry_ids = source.move_entries(
             position, parent_entry_id, entry_ids, entry_positions, conditions)
@@ -278,7 +236,7 @@ class EntryOrder:
         self, source, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None, REQUEST=None
     ):
-        """!TXT! move_entries_to_top"""
+        """TODO: Docstring for move_entries_to_top."""
         source = self.get_storage(source)
         entry_ids = source.move_entries_to_top(
             parent_entry_id, entry_ids, entry_positions, conditions)
@@ -296,7 +254,7 @@ class EntryOrder:
         self, source, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None, REQUEST=None
     ):
-        """!TXT! move_entries_up"""
+        """TODO: Docstring for move_entries_up."""
         source = self.get_storage(source)
         entry_ids = source.move_entries_up(
             parent_entry_id, entry_ids, entry_positions, conditions)
@@ -314,7 +272,7 @@ class EntryOrder:
         self, source, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None, REQUEST=None
     ):
-        """!TXT! move_entries_down"""
+        """TODO: Docstring for move_entries_down."""
         source = self.get_storage(source)
         entry_ids = source.move_entries_down(
             parent_entry_id, entry_ids, entry_positions, conditions)
@@ -333,7 +291,7 @@ class EntryOrder:
         self, source, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None, REQUEST=None
     ):
-        """!TXT! move_entries_to_bottom"""
+        """TODO: Docstring for move_entries_to_bottom."""
         source = self.get_storage(source)
         entry_ids = source.move_entries_to_bottom(
             parent_entry_id, entry_ids, entry_positions, conditions)

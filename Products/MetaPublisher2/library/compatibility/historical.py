@@ -1,49 +1,11 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Historical Compatability
+"""MetaPublisher2 - Historical Compatability.
 
 To ensure to continued operation of deprecated resources, this module provides
 wrappers and handlers for these outdated resources. It also provides an API for
 logging calls to deprecated resources.
-
-$Id: library/compatibility/historical.py 11 2013-05-09 22:54:03Z sfluehnsdorf $
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
 
-
-# ============================================================================
-# Module Imports
-
-from Products.MetaPublisher2.bases.field.legacyfield import (
-    LegacyFieldPlugin as FieldPlugin)
-from Products.MetaPublisher2.bases.frontend.legacyfrontend import (
-    LegacyFrontendPlugin as InterfacePlugin)
-from Products.MetaPublisher2.bases.widget.legacywidget import (
-    LegacyWidgetPlugin as WidgetPlugin)
-from Products.MetaPublisher2.bases.storage.legacystorage import (
-    LegacyStoragePlugin as StoragePlugin)
-from Products.MetaPublisher2.bases.plugin.legacyplugin import all_plugintypes
 from Products.MetaPublisher2.library.application import (
     permission_access_configuration, permission_access_entries,
     permission_change_configuration, permission_change_entries,
@@ -60,29 +22,33 @@ from Products.MetaPublisher2.library.compatibility.deprecation import (
 # Module Exports
 
 __all__ = [
-    'FieldPlugin',
     'HistoricalCompatibility',
-    'InterfacePlugin',
     'InterfacesFolder',
     'OrderedFolder',
-    'StoragePlugin',
-    'WidgetPlugin',
+    'TestError',
+    'false',
     'standard_form_footer',
     'standard_form_header',
-    'TestError',
-    'all_plugintypes',
-    'false',
     'true',
 ]
+
+
+# ============================================================================
+# Legacy Plugin Identifiers
+
+all_plugintypes = [
+    'ZMP2StoragePlugin', 'ZMP2FieldPlugin', 'ZMP2InterfacePlugin',
+    'ZMP2WidgetPlugin']
 
 
 # ============================================================================
 # Legacy Field Value Test Exception
 
 class TestError(Exception):
-    """!TXT! Legacy Field Value Test Error"""
+    """Legacy Field Value Test Error."""
 
     def __init__(self, **args):
+        """Initialize instance."""
         for key in args.keys():
             setattr(self, key, args[key])
 
@@ -110,7 +76,7 @@ standard_form_footer = '''\
 # InterfacesFolder Base Class
 
 class InterfacesFolder(Folder):
-    """InterfacesFolder Base Class"""
+    """InterfacesFolder Base Class."""
 
     meta_type = 'InterfacesFolder'
 
@@ -126,7 +92,7 @@ InitializeClass(InterfacesFolder)
 # Historical Compatibility Mix-In Class
 
 class HistoricalCompatibility:
-    """!TXT! Historical Compatibility Mix-In Class"""
+    """Historical Compatibility Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -136,16 +102,14 @@ class HistoricalCompatibility:
     security.declarePublic('zmp2')
 
     def zmp2(self):
-        """DEPRECATED: !TXT! Return this instance of MetaPublisher2"""
-
+        """Return this instance of MetaPublisher2 (DEPRECATED)."""
         deprecated_method('zmp2')
         return self.get_MetaPublisher2()
 
     security.declarePublic('get_MetaPublisher2_url')
 
     def get_MetaPublisher2_url(self):
-        """DEPRECATED: !TXT! Return this instance's absolute url"""
-
+        """Return this instance's absolute url (DEPRECATED)."""
         deprecated_method('get_MetaPublisher2_url')
         return self.get_MetaPublisher2_url()
 
@@ -155,17 +119,14 @@ class HistoricalCompatibility:
     security.declarePublic('manage_zmp2_css')
 
     def manage_zmp2_css(self, REQUEST=None):
-        """DEPRECATED: !TXT! MetaPublisher2 CSS"""
-
+        """Return MetaPublisher2 CSS (DEPRECATED)."""
         deprecated_form('manage_zmp2_css')
         return self.manage_MetaPublisher2_css(self, REQUEST)
 
     security.declarePublic('sp')
 
     def sp(self, w=1, h=1, **kw):
-        """DEPRECATED: !TXT! Return a tag for a spacer image with specifiable
-        dimensions"""
-
+        """Return tag for spacer image (DEPRECATED)."""
         deprecated_method('sp')
         params = ''
         for key in kw.keys():
@@ -183,8 +144,7 @@ class HistoricalCompatibility:
         permission_access_configuration, 'manage_fieldsBrowserForm')
 
     def manage_fieldsBrowserForm(self, REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return form fields_form (DEPRECATED)."""
         deprecated_form('manage_fieldsBrowserForm')
         return self.fields_form(self, REQUEST)
 
@@ -192,40 +152,35 @@ class HistoricalCompatibility:
         permission_change_configuration, 'manage_fieldsNewForm')
 
     def manage_fieldsNewForm(self, REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return form add_field_form (DEPRECATED)."""
         deprecated_form('manage_fieldsNewForm')
         return self.add_field_form(self, REQUEST)
 
     security.declareProtected(permission_access_configuration, 'getField')
 
     def getField(self, storageId, fieldId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method get_field (DEPRECATED)."""
         deprecated_method('getField')
         return self.get_field(self, storageId, fieldId)
 
     security.declareProtected(permission_access_configuration, 'fieldIds')
 
     def fieldIds(self, storageId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method field_ids (DEPRECATED)."""
         deprecated_method('fieldIds')
         return self.field_ids(storageId)
 
     security.declareProtected(permission_access_configuration, 'fieldItems')
 
     def fieldItems(self, storageId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method field_items (DEPRECATED)."""
         deprecated_method('fieldItems')
         return self.field_items(storageId)
 
     security.declareProtected(permission_access_configuration, 'fieldValues')
 
     def fieldValues(self, storageId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method field_values (DEPRECATED)."""
         deprecated_method('fieldValues')
         return self.field_values(storageId)
 
@@ -233,16 +188,14 @@ class HistoricalCompatibility:
         permission_change_configuration, 'manage_fieldsNew')
 
     def manage_fieldsNew(self, storageId, fieldType, REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return method add_field (DEPRECATED)."""
         deprecated_method('manage_fieldsNew')
         return self.add_field(storageId, fieldType, REQUEST)
 
     security.declareProtected(permission_change_configuration, 'delField')
 
     def delField(self, storageId, fieldId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method delete_field (DEPRECATED)."""
         deprecated_method('delField')
         return self.delete_field(storageId, fieldId)
 
@@ -250,24 +203,21 @@ class HistoricalCompatibility:
         permission_change_configuration, 'manage_fieldsDelete')
 
     def manage_fieldsDelete(self, storageId, ids=[], REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return method delete_fields (DEPRECATED)."""
         deprecated_method('manage_fieldsDelete')
         return self.delete_fields(storageId, ids, REQUEST)
 
     security.declareProtected(permission_change_configuration, 'delFields')
 
     def delFields(self, storageId, fieldIds=[]):
-        """DEPRECATED: !TXT!"""
-
+        """Return method delete_fields (DEPRECATED)."""
         deprecated_method('delFields')
         return self.delete_fields(storageId, fieldIds)
 
     security.declareProtected(permission_change_configuration, 'renameField')
 
     def renameField(self, storageId, fieldId, newId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method rename_field (DEPRECATED)."""
         deprecated_method('renameField')
         return self.rename_field(storageId, fieldId, newId)
 
@@ -275,8 +225,7 @@ class HistoricalCompatibility:
         permission_access_configuration, 'fieldsSortable')
 
     def fieldsSortable(self, storageId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method are_fields_sortable (DEPRECATED)."""
         deprecated_method('fieldsSortable')
         return self.are_fields_sortable(storageId)
 
@@ -284,16 +233,14 @@ class HistoricalCompatibility:
         permission_change_configuration, 'manage_fieldsMoveTop')
 
     def manage_fieldsMoveTop(self, storageId, fieldId, REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return method move_fields_to_top (DEPRECATED)."""
         deprecated_method('manage_fieldMoveTop')
         return self.move_fields_to_top(storageId, fieldId, REQUEST)
 
     security.declareProtected(permission_change_configuration, 'moveFieldTop')
 
     def moveFieldTop(self, storageId, fieldId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method move_fields_to_top (DEPRECATED)."""
         deprecated_method('moveFieldTop')
         return self.move_fields_to_top(storageId, fieldId)
 
@@ -301,16 +248,14 @@ class HistoricalCompatibility:
         permission_change_configuration, 'manage_fieldsMoveUp')
 
     def manage_fieldsMoveUp(self, storageId, fieldId, REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return method move_fields_up (DEPRECATED)."""
         deprecated_method('manage_fieldMoveUp')
         return self.move_fields_up(storageId, fieldId, REQUEST)
 
     security.declareProtected(permission_change_configuration, 'moveFieldUp')
 
     def moveFieldUp(self, storageId, fieldId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method move_fields_up (DEPRECATED)."""
         deprecated_method('moveFieldUp')
         return self.move_fields_up(storageId, fieldId)
 
@@ -318,16 +263,14 @@ class HistoricalCompatibility:
         permission_change_configuration, 'manage_fieldsMoveDown')
 
     def manage_fieldsMoveDown(self, storageId, fieldId, REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return method move_fields_down (DEPRECATED)."""
         deprecated_method('manage_fieldMoveDown')
         return self.move_fields_down(storageId, fieldId, REQUEST)
 
     security.declareProtected(permission_change_configuration, 'moveFieldDown')
 
     def moveFieldDown(self, storageId, fieldId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method move_fields_down (DEPRECATED)."""
         deprecated_method('moveFieldDown')
         return self.move_fields_down(storageId, fieldId)
 
@@ -335,8 +278,7 @@ class HistoricalCompatibility:
         permission_change_configuration, 'manage_fieldsMoveBottom')
 
     def manage_fieldsMoveBottom(self, storageId, fieldId, REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return method move_fields_to_bottom (DEPRECATED)."""
         deprecated_method('manage_fieldMoveBottom')
         return self.move_fields_to_bottom(storageId, fieldId, REQUEST)
 
@@ -344,8 +286,7 @@ class HistoricalCompatibility:
         permission_change_configuration, 'moveFieldBottom')
 
     def moveFieldBottom(self, storageId, fieldId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method move_fields_to_bottom (DEPRECATED)."""
         deprecated_method('moveFieldBottom')
         return self.move_fields_to_bottom(storageId, fieldId)
 
@@ -355,8 +296,7 @@ class HistoricalCompatibility:
     security.declareProtected(permission_access_configuration, 'newEntryId')
 
     def newEntryId(self, storageId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method new_entry_id (DEPRECATED)."""
         deprecated_method('newEntryId')
         return self.new_entry_id(storageId)
 
@@ -367,8 +307,7 @@ class HistoricalCompatibility:
         permission_access_configuration, 'manage_storagesIndexForm')
 
     def manage_storagesIndexForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Indexing Form"""
-
+        """Return from indexing_form (DEPRECATED)."""
         deprecated_form('manage_storagesIndexForm')
         return self.indexing_form(self, REQUEST)
 
@@ -385,8 +324,7 @@ class HistoricalCompatibility:
         permission_change_configuration, 'manage_storagesBrowserForm')
 
     def manage_storagesBrowserForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Storages Form"""
-
+        """Return Storages Form (DEPRECATED)."""
         deprecated_form('manage_storagesBrowserForm')
         return self.storages_form(self, REQUEST)
 
@@ -394,40 +332,35 @@ class HistoricalCompatibility:
         permission_change_configuration, 'manage_storagesNewForm')
 
     def manage_storagesNewForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! New Storage Form"""
-
+        """Return new Storage Form (DEPRECATED)."""
         deprecated_form('manage_storagesNewForm')
         return self.add_storage_form(self, REQUEST)
 
     security.declareProtected(permission_access_configuration, 'getStorage')
 
     def getStorage(self, storageId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method get_storage (DEPRECATED)."""
         deprecated_method('getStorage')
         return self.get_storage(storageId)
 
     security.declareProtected(permission_access_configuration, 'storageIds')
 
     def storageIds(self):
-        """DEPRECATED: !TXT!"""
-
+        """Return method storage_ids (DEPRECATED)."""
         deprecated_method('storageIds')
         return self.storage_ids()
 
     security.declareProtected(permission_access_configuration, 'storageItems')
 
     def storageItems(self):
-        """DEPRECATED: !TXT!"""
-
+        """Return method storage_items (DEPRECATED)."""
         deprecated_method('storageItems')
         return self.storage_items()
 
     security.declareProtected(permission_access_configuration, 'storageValues')
 
     def storageValues(self):
-        """DEPRECATED: !TXT!"""
-
+        """Return method storage_values (DEPRECATED)."""
         deprecated_method('storageValues')
         return self.storage_values()
 
@@ -435,8 +368,7 @@ class HistoricalCompatibility:
         permission_change_configuration, 'manage_storagesNew')
 
     def manage_storagesNew(self, REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return method add_storage (DEPRECATED)."""
         deprecated_method('manage_storagesNew')
         return self.add_storage(REQUEST)
 
@@ -444,8 +376,7 @@ class HistoricalCompatibility:
         permission_change_configuration, 'manage_storagesDelete')
 
     def manage_storagesDelete(self, ids=[], REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return method delete_storages (DEPRECATED)."""
         deprecated_method('manage_storagesDelete')
         return self.delete_storages(ids, REQUEST)
 
@@ -459,8 +390,7 @@ class HistoricalCompatibility:
         permission_access_entries, 'manage_entriesBrowserForm')
 
     def manage_entriesBrowserForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! management form for entries"""
-
+        """Return management form for entries (DEPRECATED)."""
         deprecated_form('manage_entriesBrowserForm')
         return self.entries_form(self, REQUEST)
 
@@ -468,16 +398,14 @@ class HistoricalCompatibility:
         permission_create_entries, 'manage_entriesNewForm')
 
     def manage_entriesNewForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! management form for adding entries"""
-
+        """Return management form for adding entries (DEPRECATED)."""
         deprecated_form('manage_entriesNewForm')
         return self.entries_form(self, REQUEST)
 
     security.declareProtected(permission_create_entries, 'manage_entriesNew')
 
     def manage_entriesNew(self, REQUEST=None):
-        """DEPRECATED: !TXT! add entry to storage"""
-
+        """Add entry to storage (DEPRECATED)."""
         deprecated_method('manage_entriesNew')
         source = REQUEST.get('storage_id', REQUEST.get(
             'storageId', self.get_profile_variable(REQUEST, 'storage_id')))
@@ -494,8 +422,7 @@ class HistoricalCompatibility:
         permission_create_entries, 'manage_entriesNewMore')
 
     def manage_entriesNewMore(self, REQUEST=None):
-        """DEPRECATED: !TXT! add entry to storage"""
-
+        """Add entry to storage (DEPRECATED)."""
         deprecated_method('manage_entriesNewMore')
         source = REQUEST.get('storage_id', REQUEST.get(
             'storageId', self.get_profile_variable(REQUEST, 'storage_id')))
@@ -511,8 +438,7 @@ class HistoricalCompatibility:
     security.declareProtected(permission_change_entries, 'manage_entriesEdit')
 
     def manage_entriesEdit(self, REQUEST=None):
-        """DEPRECATED: !TXT! edit entry in storage"""
-
+        """Edit entry in storage (DEPRECATED)."""
         source = REQUEST.get('storage_id', REQUEST.get(
             'storageId', self.get_profile_variable(REQUEST, 'storage_id')))
         entry_id = REQUEST.get('entry_id', REQUEST['entryId'])
@@ -522,49 +448,42 @@ class HistoricalCompatibility:
         permission_change_entries, 'manage_entriesDelete')
 
     def manage_entriesDelete(self, storageId, ids=[], REQUEST=None):
-        """DEPRECATED: !TXT! delete entries from storage"""
-
+        """Delete entries from storage (DEPRECATED)."""
         deprecated_method('manage_entriesDelete')
         return self.delete_entries(storageId, ids, REQUEST)
 
     security.declareProtected(permission_access_entries, 'entryIds')
 
     def entryIds(self, storageId):
-        """DEPRECATED: !TXT! retrieve list of ids of entries in storage"""
-
+        """Retrieve list of ids of entries in storage (DEPRECATED)."""
         deprecated_method('entryIds')
         return self.entry_ids(storageId)
 
     security.declareProtected(permission_access_entries, 'entryItems')
 
     def entryItems(self, storageId):
-        """DEPRECATED: !TXT! retrieve list of id, value tuples of entries in
-        storage"""
-
+        """Retrieve list of tuples of entries in storage (DEPRECATED)."""
         deprecated_method('entryItems')
         return self.entry_items(storageId)
 
     security.declareProtected(permission_access_entries, 'entryValues')
 
     def entryValues(self, storageId):
-        """DEPRECATED: !TXT! retrieve list of values of entries in storage"""
-
+        """Retrieve list of values of entries in storage (DEPRECATED)."""
         deprecated_method('entryValues')
         return self.entry_values(storageId)
 
     security.declareProtected(permission_access_entries, 'getEntry')
 
     def getEntry(self, storageId, entryId):
-        """DEPRECATED: !TXT! retrieve entry from storage"""
-
+        """Retrieve entry from storage (DEPRECATED)."""
         deprecated_method('getEntry')
         return self.get_entry(self, storageId, entryId)
 
     security.declareProtected(permission_create_entries, 'addEntry')
 
     def addEntry(self, storageId, entryId, entryData={}, **args):
-        """DEPRECATED: !TXT! add entry to storage"""
-
+        """Add entry to storage (DEPRECATED)."""
         deprecated_method('addEntry')
         entryData.update(args)
         return self.add_entry(self, storageId, entryId, entryData)
@@ -572,24 +491,21 @@ class HistoricalCompatibility:
     security.declareProtected(permission_change_entries, 'delEntries')
 
     def delEntries(self, storageId, entryIds=[]):
-        """DEPRECATED: !TXT! delete entries from storage"""
-
+        """Delete entries from storage (DEPRECATED)."""
         deprecated_method('delEntries')
         return self.delete_entries(storageId, entryIds)
 
     security.declareProtected(permission_change_entries, 'delEntry')
 
     def delEntry(self, storageId, entryId):
-        """DEPRECATED: !TXT! delete entry from storage"""
-
+        """Delete entry from storage (DEPRECATED)."""
         deprecated_method('delEntry')
         return self.del_entry(storageId, entryId)
 
     security.declareProtected(permission_change_entries, 'editEntry')
 
     def editEntry(self, storageId, entryId, entryData={}, **args):
-        """DEPRECATED: !TXT! edit entry in storage"""
-
+        """Edit entry in storage (DEPRECATED)."""
         deprecated_method('editEntry')
         entryData.update(args)
         return self.edit_entry(storageId, entryId, entryData)
@@ -597,8 +513,7 @@ class HistoricalCompatibility:
     security.declareProtected(permission_change_entries, 'renameEntry')
 
     def renameEntry(self, entryId, newId):
-        """DEPRECATED: !TXT! rename entry in storage"""
-
+        """Rename entry in storage (DEPRECATED)."""
         deprecated_method('renameEntry')
         return self.rename_entry(entryId, newId)
 
@@ -606,8 +521,7 @@ class HistoricalCompatibility:
         permission_change_entries, 'manage_entriesMoveBottom')
 
     def manage_entriesMoveBottom(self, storageId, entryId, REQUEST=None):
-        """DEPRECATED: !TXT! move entry to bottom"""
-
+        """Move entry to bottom (DEPRECATED)."""
         deprecated_method('manage_entriesMoveBottom')
         return self.move_entry_to_bottom(storageId, entryId, REQUEST)
 
@@ -615,8 +529,7 @@ class HistoricalCompatibility:
         permission_change_entries, 'manage_entriesMoveDown')
 
     def manage_entriesMoveDown(self, storageId, entryId, REQUEST=None):
-        """DEPRECATED: !TXT! move entry down"""
-
+        """Move entry down (DEPRECATED)."""
         deprecated_method('manage_entriesMoveDown')
         return self.move_entry_down(storageId, entryId, REQUEST)
 
@@ -624,8 +537,7 @@ class HistoricalCompatibility:
         permission_change_entries, 'manage_entriesMoveTop')
 
     def manage_entriesMoveTop(self, storageId, entryId, REQUEST=None):
-        """DEPRECATED: !TXT! move entry to top"""
-
+        """Move entry to top (DEPRECATED)."""
         deprecated_method('manage_entriesMoveTop')
         return self.move_entry_to_top(storageId, entryId, REQUEST)
 
@@ -635,8 +547,7 @@ class HistoricalCompatibility:
     def manage_entriesMoveToPosition(
         self, storageId, entryId, position, REQUEST=None
     ):
-        """DEPRECATED: !TXT! move entry to position"""
-
+        """Move entry to position (DEPRECATED)."""
         deprecated_method('manage_entriesMoveToPosition')
         return self.move_entry(storageId, entryId, position, REQUEST)
 
@@ -644,56 +555,49 @@ class HistoricalCompatibility:
         permission_change_entries, 'manage_entriesMoveUp')
 
     def manage_entriesMoveUp(self, storageId, entryId, REQUEST=None):
-        """DEPRECATED: !TXT! move entry up"""
-
+        """Move entry up (DEPRECATED)."""
         deprecated_method('manage_entriesMoveUp')
         return self.move_entry_up(storageId, entryId, REQUEST)
 
     security.declareProtected(permission_change_entries, 'moveEntryBottom')
 
     def moveEntryBottom(self, storageId, entryId):
-        """DEPRECATED: !TXT! move entry to bottom"""
-
+        """Move entry to bottom (DEPRECATED)."""
         deprecated_method('moveEntryBottom')
         return self.move_entry_to_bottom(storageId, entryId)
 
     security.declareProtected(permission_change_entries, 'moveEntryDown')
 
     def moveEntryDown(self, storageId, entryId):
-        """DEPRECATED: !TXT! move entry down"""
-
+        """Move entry down (DEPRECATED)."""
         deprecated_method('moveEntryDown')
         return self.move_entry_down(storageId, entryId)
 
     security.declareProtected(permission_change_entries, 'moveEntryTop')
 
     def moveEntryTop(self, storageId, entryId):
-        """DEPRECATED: !TXT! move entry to top"""
-
+        """Move entry to top (DEPRECATED)."""
         deprecated_method('moveEntryTop')
         return self.move_entry_to_top(storageId, entryId)
 
     security.declareProtected(permission_change_entries, 'moveEntryToPosition')
 
     def moveEntryToPosition(self, storageId, entryId, position):
-        """DEPRECATED: !TXT! move entry to position"""
-
+        """Move entry to position (DEPRECATED)."""
         deprecated_method('moveEntryToPosition')
         return self.move_entry(storageId, entryId, position)
 
     security.declareProtected(permission_change_entries, 'moveEntryUp')
 
     def moveEntryUp(self, storageId, entryId):
-        """DEPRECATED: !TXT! move entry up"""
-
+        """Move entry up (DEPRECATED)."""
         deprecated_method('moveEntryUp')
         return self.move_entry_up(storageId, entryId)
 
     security.declareProtected(permission_access_entries, 'getEntryPosition')
 
     def getEntryPosition(self, storageId, entryId):
-        """DEPRECATED: !TXT! retrieve position of entry"""
-
+        """Retrieve position of entry (DEPRECATED)."""
         deprecated_method('getEntryPosition')
         return self.get_entry_position(storageId, entryId)
 
@@ -708,7 +612,6 @@ class HistoricalCompatibility:
 
     def setEntryField(self, storageId, entryId, fieldId, value):
         """DEPRECTAED: !TXT! Set the value of an Entry's Field."""
-
         deprecated_method('setEntryField')
         self.set_entry_field(storageId, entryId, fieldId, value)
 
@@ -728,8 +631,7 @@ class HistoricalCompatibility:
         permission_access_entries, 'manage_entriesQueriesForm')
 
     def manage_entriesQueriesForm(self, REQUEST=None):
-        """DEPRECTAED: !TXT!"""
-
+        """Return form queries_form (DEPRECATED)."""
         return self.queries_form(self, REQUEST)
 
     # -------------------------------------------------------------------------
@@ -751,8 +653,7 @@ class HistoricalCompatibility:
         permission_manage_designs, 'manage_storagesCacheForm')
 
     def manage_storagesCacheForm(self, REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return method caching_form (DEPRECATED)."""
         deprecated_form('manage_storagesCacheForm')
         return self.caching_form(self, REQUEST)
 
@@ -763,8 +664,7 @@ class HistoricalCompatibility:
         permission_manage_designs, 'manage_interfacesStylesForm')
 
     def manage_interfacesStylesForm(self, REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return method designs_form (DEPRECATED)."""
         deprecated_form('manage_interfacesStylesForm')
         return self.designs_form(self, REQUEST)
 
@@ -775,48 +675,42 @@ class HistoricalCompatibility:
         permission_manage_frontends, 'manage_interfacesDelete')
 
     def manage_interfacesDelete(self, ids=[], REQUEST=None):
-        """DEPRECATED: !TXT! Delete specified Frontends"""
-
+        """Delete specified Frontends (DEPRECATED)."""
         deprecated_method('manage_interfacesDelete')
         return self.del_frontends(ids, REQUEST)
 
     security.declareProtected(permission_manage_frontends, 'interfaceValues')
 
     def interfaceValues(self):
-        """DEPRECATED: !TXT! Return values of Frontends"""
-
+        """Return values of Frontends (DEPRECATED)."""
         deprecated_method('interfaceValues')
         return self.frontend_values()
 
     security.declareProtected(permission_manage_frontends, 'interfaceItems')
 
     def interfaceItems(self):
-        """DEPRECATED: !TXT! Return tuples of id, value of Frontends"""
-
+        """Return tuples of id, value of Frontends (DEPRECATED)."""
         deprecated_method('interfaceItems')
         return self.frontend_items()
 
     security.declareProtected(permission_manage_frontends, 'interfaceIds')
 
     def interfaceIds(self):
-        """DEPRECATED: !TXT! Return ids of Frontends"""
-
+        """Return ids of Frontends (DEPRECATED)."""
         deprecated_method('interfaceIds')
         return self.frontend_paths()
 
     security.declareProtected(permission_manage_frontends, 'getInterface')
 
     def getInterface(self, interfaceId):
-        """DEPRECATED: !TXT! Return the specified Frontend"""
-
+        """Return the specified Frontend (DEPRECATED)."""
         deprecated_method('getInterface')
         return self.get_frontend(interfaceId)
 
     security.declareProtected(permission_manage_frontends, 'getInterfacePaths')
 
     def getInterfacePaths(self):
-        """DEPRECATED: !TXT! Return all Frontend object paths recursively"""
-
+        """Return all Frontend object paths recursively (DEPRECATED)."""
         deprecated_method('getInterfacePaths')
         return self.get_frontend_parents()
 
@@ -824,8 +718,7 @@ class HistoricalCompatibility:
         permission_manage_frontends, 'manage_interfacesBrowserForm')
 
     def manage_interfacesBrowserForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Frontends Form"""
-
+        """Frontends Form (DEPRECATED)."""
         deprecated_form('manage_interfacesStylesForm')
         return self.frontends_form(self, REQUEST)
 
@@ -833,8 +726,7 @@ class HistoricalCompatibility:
         permission_manage_frontends, 'manage_interfacesNewForm')
 
     def manage_interfacesNewForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Add Frontend Form"""
-
+        """Add Frontend Form (DEPRECATED)."""
         deprecated_form('manage_interfacesNewForm')
         return self.add_frontend_form(self, REQUEST)
 
@@ -842,8 +734,7 @@ class HistoricalCompatibility:
         permission_manage_frontends, 'manage_interfacesNew')
 
     def manage_interfacesNew(self, REQUEST=None):
-        """DEPRECATED: !TXT! Call specified Frontend's factory"""
-
+        """Call specified Frontend's factory (DEPRECATED)."""
         deprecated_method('manage_interfacesNew')
         return self.add_frontend_type(REQUEST)
 
@@ -857,8 +748,7 @@ class HistoricalCompatibility:
         permission_publish_frontends, 'manage_interfacesRender')
 
     def manage_interfacesRender(self, ids=[], REQUEST=None):
-        """DEPRECATED: !TXT!"""
-
+        """Return method (DEPRECATED)."""
         deprecated_method('manage_interfacesRender')
         self.render_frontends(ids)
 
@@ -866,8 +756,7 @@ class HistoricalCompatibility:
         permission_publish_frontends, 'manage_interfacesRenderForm')
 
     def manage_interfacesRenderForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Render Frontends Form"""
-
+        """Render Frontends Form (DEPRECATED)."""
         deprecated_form('manage_interfacesRenderForm')
         return self.renderer_form(self, REQUEST)
 
@@ -878,8 +767,7 @@ class HistoricalCompatibility:
         permission_manage_frontends, 'getWidgetsForField')
 
     def getWidgetsForField(self, formTypeId, fieldTypeId):
-        """DEPRECATED: !TXT!"""
-
+        """Return method (DEPRECATED)."""
         deprecated_method('getWidgetsForField')
         return self.get_widgets_for_field(formTypeId, fieldTypeId)
 
@@ -889,8 +777,7 @@ class HistoricalCompatibility:
     security.declareProtected(permission_manage, 'manage_aboutAssistantForm')
 
     def manage_aboutAssistantForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Assistant Form"""
-
+        """Assistant Form (DEPRECATED)."""
         deprecated_form('manage_aboutAssistantForm')
         return self.assistant_form(self, REQUEST)
 
@@ -903,8 +790,7 @@ class HistoricalCompatibility:
     security.declareProtected(permission_zmi, 'manage_aboutFeedbackForm')
 
     def manage_aboutFeedbackForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Feedback Form"""
-
+        """Feedback Form (DEPRECATED)."""
         deprecated_form('manage_aboutFeedbackForm')
         return self.feedback_form(self, REQUEST)
 
@@ -917,8 +803,7 @@ class HistoricalCompatibility:
     security.declareProtected(permission_zmi, 'manage_aboutManualForm')
 
     def manage_aboutManualForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Manual Form"""
-
+        """Manual Form (DEPRECATED)."""
         deprecated_form('manage_aboutManualForm')
         return self.manual_form(self, REQUEST)
 
@@ -931,32 +816,28 @@ class HistoricalCompatibility:
     security.declareProtected(permission_zmi, 'manage_aboutReleaseForm')
 
     def manage_aboutReleaseForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Release Form"""
-
+        """Release Form (DEPRECATED)."""
         deprecated_form('manage_aboutReleaseForm')
         return self.release_form(self, REQUEST)
 
     security.declareProtected(permission_zmi, 'manage_aboutVersion')
 
     def manage_aboutVersion(self):
-        """DEPRECATED: !TXT! Return the contents of the VERSION.txt file"""
-
+        """Return the contents of the VERSION.txt file (DEPRECATED)."""
         deprecated_method('manage_aboutVersion')
         return self.read_release_version_file()
 
     security.declareProtected(permission_zmi, 'manage_aboutReadMe')
 
     def manage_aboutReadMe(self):
-        """DEPRECATED: !TXT! Return the contents of the README.txt file"""
-
+        """Return the contents of the README.txt file (DEPRECATED)."""
         deprecated_method('manage_aboutReadMe')
         return self.read_release_readme_file()
 
     security.declareProtected(permission_zmi, 'manage_aboutLicense')
 
     def manage_aboutLicense(self):
-        """DEPRECATED: !TXT! Return the contents of the LICENSE.txt file"""
-
+        """Return the contents of the LICENSE.txt file (DEPRECATED)."""
         deprecated_method('manage_aboutLicense')
         return self.read_release_license_file()
 
@@ -969,8 +850,7 @@ class HistoricalCompatibility:
     security.declareProtected(permission_manage, 'manage_systemIntegrityForm')
 
     def manage_systemIntegrityForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Integrity Form"""
-
+        """Return form integrity_form (DEPRECATED)."""
         deprecated_form('manage_systemIntegrityForm')
         return self.integrity_form(self, REQUEST)
 
@@ -980,25 +860,21 @@ class HistoricalCompatibility:
     security.declareProtected(permission_manage, 'manage_systemPluginsForm')
 
     def manage_systemPluginsForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Plugins Form"""
-
+        """Return form plugins_form (DEPRECATED)."""
         deprecated_form('manage_systemPluginsForm')
         return self.plugins_form(self, REQUEST)
 
     security.declareProtected(permission_manage, 'pluginIds')
 
     def pluginIds(self, pluginTypes=[]):
-        """DEPRECATED: !TXT! Return ids of installed MetaPublisher2 plugins"""
-
+        """Return ids of plugins (DEPRECATED)."""
         deprecated_method('pluginIds')
         return map(lambda item: item[0], self.pluginItems(pluginTypes))
 
     security.declareProtected(permission_manage, 'pluginItems')
 
     def pluginItems(self, pluginTypes=[]):
-        """DEPRECATED: !TXT! Return tuples of id, value of installed
-        MetaPublisher2 plugins"""
-
+        """Return tuples of id, value of plugins (DEPRECATED)."""
         deprecated_method('pluginItems')
         result = []
         if isinstance(pluginTypes, str):
@@ -1014,17 +890,14 @@ class HistoricalCompatibility:
     security.declareProtected(permission_manage, 'pluginValues')
 
     def pluginValues(self, pluginTypes=[]):
-        """DEPRECATED: !TXT! Return values of installed MetaPublisher2
-        plugins"""
-
+        """Return values of plugins (DEPRECATED)."""
         deprecated_method('pluginValues')
         return map(lambda item: item[1], self.pluginItems(pluginTypes))
 
     security.declareProtected(permission_manage, 'getPlugin')
 
     def getPlugin(self, pluginType):
-        """DEPRECATED: !TXT! Return the specified MetaPublisher2 plugin"""
-
+        """Return the specified plugin (DEPRECATED)."""
         deprecated_method('getPlugin')
         return self.get_plugin(pluginType)
 
@@ -1035,16 +908,14 @@ class HistoricalCompatibility:
         permission_manage_presets, 'manage_presetsBrowserForm')
 
     def manage_presetsBrowserForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Presets Form"""
-
+        """Return form presets_form (DEPRECATED)."""
         deprecated_form('manage_presetsBrowserForm')
         return self.presets_form(self, REQUEST)
 
     security.declareProtected(permission_save_presets, 'manage_presetsNewForm')
 
     def manage_presetsNewForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Add Preset Form"""
-
+        """Return form save_preset_form (DEPRECATED)."""
         deprecated_form('manage_presetsNewForm')
         return self.save_preset_form(self, REQUEST)
 
@@ -1054,8 +925,7 @@ class HistoricalCompatibility:
     security.declareProtected(permission_manage, 'manage_systemProfilesForm')
 
     def manage_systemProfilesForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Profiles Form"""
-
+        """Return form profiles_form (DEPRECATED)."""
         deprecated_form('manage_systemProfilesForm')
         return self.profiles_form(self, REQUEST)
 
@@ -1065,8 +935,7 @@ class HistoricalCompatibility:
     security.declareProtected(permission_manage, 'manage_systemSettingsForm')
 
     def manage_systemSettingsForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Settings Form"""
-
+        """Return form settings_form (DEPRECATED)."""
         deprecated_form('manage_systemSettingsForm')
         return self.settings_form(self, REQUEST)
 
@@ -1076,8 +945,7 @@ class HistoricalCompatibility:
     security.declareProtected(permission_manage, 'manage_systemToolsForm')
 
     def manage_systemToolsForm(self, REQUEST=None):
-        """DEPRECATED: !TXT! Tools Form"""
-
+        """Return form tools_form (DEPRECATED)."""
         deprecated_form('manage_systemToolsForm')
         return self.tools_form(self, REQUEST)
 

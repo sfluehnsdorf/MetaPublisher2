@@ -1,23 +1,4 @@
-# -*- coding: iso-8859-15 -*-
-"""==================================================================
-
-                                             M e t a   W i d g e t s
-    -----------------------------------------------------------------
-
-        Copyright (c) 2005, Sebastian Luehnsdorf - Web-Solutions GbR.
-        http://zopemeta.com - http://luehnsdorf.de
-
-        This software is subject to the provisions of the
-        Zope Public License, Version 2.0 (ZPL).
-
-        A copy of the ZPL should accompany this distribution.
-
-        THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR
-        IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED
-        TO, THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST
-        INFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
-
-=================================================================="""
+"""Meta Widgets."""
 
 
 from DateTime import Timezones

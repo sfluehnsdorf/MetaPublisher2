@@ -1,33 +1,9 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Application Plugin Registry
+"""MetaPublisher2 - Application Plugin Registry.
 
 The plugin registry automatises Zope Product registration for a range of
 plugins and handles auomatic registration for related pluginbases supporting
 this feature.
 """
-
-__version__ = '$Revision: 2.3 $'[11:-2]
 
 
 # ============================================================================
@@ -43,16 +19,16 @@ __all__ = [
 # PluginRegistry Class
 
 class PluginRegistry:
-    """!TXT! PluginRegistry Class"""
+    """PluginRegistry Class."""
 
     def __init__(self, context, prefix):
-        """!TXT!"""
+        """Initialize instance."""
         self.context = context
         self.prefix = prefix
         self.pluginbases = []
 
     def register_plugin(self, pluginclass):
-        """!TXT!"""
+        """Register a plugin."""
         context = None  # TODO: how to get context after Zope init
         context.register(
             pluginclass,
@@ -63,12 +39,12 @@ class PluginRegistry:
         self.pluginbases.append(pluginclass.plugin_subtype)
 
     def register_plugins(self, pluginclasses):
-        """!TXT!"""
+        """Register plugins."""
         for pluginclass in pluginclasses:
             self.register_plugin(pluginclass)
 
     def autoregister_plugins(self):
-        """!TXT!"""
+        """Automatically register plugins."""
         for pluginbase, baseclasses, modifiers in (
             self._get_plugin_autoregistries()
         ):
@@ -85,10 +61,8 @@ class PluginRegistry:
                 container_filter=pluginbase.container_filter,
             )
 
-    # !!! pluginregistry.py - repeat until no more autoregistries can be
-    # matched...
     def _get_plugin_autoregistries(self):
-        """!TXT!"""
+        """Repeat until no more autoregistries can be matched."""
         result = []
         registered_pluginbases = self.pluginbases
         for pluginbase in self._get_pluginbases():
@@ -104,11 +78,9 @@ class PluginRegistry:
                         break
         return result
 
-    # !!! pluginregistry.py - return pluginbase classes (currently not
-    # implemented)
     def _get_pluginbases(self):
-        """!TXT!"""
-        result = []
+        """Return pluginbase classes."""
+        result = []  # TODO
         return result
 
 

@@ -1,38 +1,8 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================)
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================)
+"""MetaPublisher2Languages Product."""
 
-__doc__ = """MetaPublisher2Languages Product
-
-!TXT! module info
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================)
-# Module Imports
 
 from Products.MetaPublisher2.interfaces import ILanguagePluginBase
-from Products.MetaPublisher2.library import (
+from Products.MetaPublisher2.library.common import (
     ClassSecurityInfo, DTMLFile, Folder, InitializeClass, true, quote_plus)
 
 
@@ -48,7 +18,7 @@ __all__ = [
 # MetaPublisher2Languages Product Class
 
 class MetaPublisher2Languages(Folder):
-    """!TXT! MetaPublisher2Languages Product Class"""
+    """Add new MetaPublisher2Languages."""
 
     security = ClassSecurityInfo()
 
@@ -70,8 +40,7 @@ class MetaPublisher2Languages(Folder):
     # ZMI Events
 
     def all_meta_types(self, interfaces=None):
-        """!TXT! Return list of containable object types"""
-
+        """!TXT! Return list of containable object types."""
         interfaces = (
             interfaces and
             list(interfaces) or
@@ -85,15 +54,13 @@ class MetaPublisher2Languages(Folder):
     security.declarePublic('get_MetaPublisher2Languages')
 
     def get_MetaPublisher2Languages(self):
-        """!TXT! Return this instance"""
-
+        """!TXT! Return this instance."""
         return self
 
     security.declarePublic('get_MetaPublisher2Languages_url')
 
     def get_MetaPublisher2Languages_url(self):
-        """!TXT! Return this instance's absolute url"""
-
+        """!TXT! Return this instance's absolute url."""
         return self.absolute_url()
 
 
@@ -112,21 +79,17 @@ add_MetaPublisher2Languages_form = DTMLFile('add', globals())
 def add_MetaPublisher2Languages(
     self, id, title='Languages Folder', REQUEST=None
 ):
-    """!TXT! ZMI constructor for MetaPublisher2Languages"""
-
+    """!TXT! ZMI constructor for MetaPublisher2Languages."""
     if not container_filter(self.this()):
         raise TypeError(
             "!TXT! Can't add a MetaPublisher2Languages Folder outside of a "
             "MetaPublisher2")
-
     id = str(id)
     title = str(title)
-
     instance = MetaPublisher2Languages(id)
     instance.id = id
     instance.title = title
     id = self._setObject(id, instance)
-
     if REQUEST:
         try:
             url = self.DestinationURL()
@@ -143,8 +106,7 @@ def add_MetaPublisher2Languages(
 # MetaPublisher2 Languages Content Filter
 
 def container_filter(folder):
-    """!TXT!"""
-
+    """Ensure metatype of parent."""
     if folder.meta_type == 'MetaPublisher2':
         return true
 
@@ -153,8 +115,7 @@ def container_filter(folder):
 # MetaPublisher2 Languages Registration
 
 def register_MetaPublisher2Languages(context):
-    """!TXT!"""
-
+    """Register MetaPublisher2Languages Product."""
     try:
         context.registerClass(
             MetaPublisher2Languages,
@@ -167,7 +128,6 @@ def register_MetaPublisher2Languages(context):
             icon='resources/icon/MetaPublisher2Folder.gif',
             container_filter=container_filter
         )
-
     except Exception:
         context.registerClass(
             MetaPublisher2Languages,

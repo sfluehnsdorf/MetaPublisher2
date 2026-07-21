@@ -1,36 +1,9 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Application Permissions
+"""MetaPublisher2 - Application Permissions.
 
 MetaPublisher2 specific permission's names are defined here, ensuring
 consistency in the naming of permission.
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from AccessControl.Permissions import view_management_screens
 from AccessControl.SecurityInfo import ACCESS_NONE, ACCESS_PRIVATE
@@ -76,8 +49,7 @@ permission_manage = 'MetaPublisher2 - Manage Instance'
 # Configurable Permissions
 
 def configure_permission(setting, permission):
-    """!TXT! Return parameter for access control based on setting"""
-
+    """!TXT! Return parameter for access control based on setting."""
     if settings[setting + '_security'] == 'protected':
         return permission
     elif settings[setting + '_security'] == 'private':

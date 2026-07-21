@@ -1,40 +1,11 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
+"""MetaPublisher2 - Legacy Field Plugin Base."""
 
-__doc__ = """Legacy Field Plugin Base
-
-!TXT! module info
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 import sys
 from Products.MetaPublisher2.bases.plugin.legacyplugin import LegacyPluginBase
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, DTMLFile, InitializeClass, TestError)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, InitializeClass)
+from Products.MetaPublisher2.library.compatibility import TestError
 
 from field import FieldPluginBase
 
@@ -51,7 +22,7 @@ __all__ = [
 # Legacy Field Plugin Base Class
 
 class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
-    """!TXT! Legacy Field Base Class"""
+    """Legacy Field Base Class."""
 
     security = ClassSecurityInfo()
 
@@ -72,17 +43,20 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
     # -------------------------------------------------------------------------
 
     def get_immutable_pluginflag_ids(self):
-        """!TXT! Return list of Plugin flag ids, which are either constants or
-        set by an external source and may not be altered by MetaPublisher2 or
-        its users"""
+        """Return list of Plugin flag ids.
 
+        Return list of Plugin flag ids, which are either constants or set by an
+        external source and may not be altered by MetaPublisher2 or its users.
+        """
         # !!! bases/field/legacyfield.py - get_immutable_pluginflag_ids
         return []
 
     def get_mutable_pluginflag_ids(self):
-        """!TXT! Return list of Plugin flag ids, which may be altered by
-        MetaPublisher2 and its users"""
+        """Return list of Plugin flag ids.
 
+        Return list of Plugin flag ids, which may be altered by MetaPublisher2
+        and its users.
+        """
         # !!! bases/field/legacyfield.py - get_mutable_pluginflag_ids
         return []
 
@@ -90,13 +64,11 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
     # Field Specification
 
     def getFieldInfo(self):
-        """!TXT! Return information about this Field if available"""
-
+        """Return information about this Field if available."""
         raise NotImplementedError
 
     def get_plugin_infos(self):
-        """!TXT! Return information about this Field if available"""
-
+        """Return information about this Field if available."""
         return self.getFieldInfo()
 
     # -------------------------------------------------------------------------
@@ -105,8 +77,7 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
     manage_configureFieldForm = DTMLFile('fieldplugin_edit', globals())
 
     def manage_configureField(self, REQUEST=None):
-        """!TXT! Change Field's configuration parameters"""
-
+        """Change Field's configuration parameters."""
         self.title = REQUEST.get('title', '')
 
         self.redirect(
@@ -117,51 +88,42 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
         )
 
     def renderAdd(self):
-        """!TXT! Return a html code for adding an Entry with this Field"""
-
+        """Return a html code for adding an Entry with this Field."""
         raise NotImplementedError
 
     def renderEdit(self, entry_id):
-        """!TXT! Return a html code for editing an Entry with this Field"""
-
+        """Return a html code for editing an Entry with this Field."""
         raise NotImplementedError
 
     def renderView(self, entry_id):
-        """!TXT! Return a html code for viewing an Entry with this Field"""
-
+        """Return a html code for viewing an Entry with this Field."""
         raise NotImplementedError
 
     # -------------------------------------------------------------------------
     # Field Retrieval API
 
     def _getValue(self, entryId, default):
-        """!TXT! Retrieve a value from an entry"""
-
+        """Retrieve a value from an entry."""
         raise NotImplementedError
 
     def getValue(self, entryId, default=None):
-        """!TXT! Wapper for retrieving a value from an entry"""
-
+        """Wapper for retrieving a value from an entry."""
         return self._getValue(entryId, default)
 
     def _hasValue(self, entry_id):
-        """!TXT! Return 1 if the Entry has a value stored for this Field, 0
-        otherwise"""
-
+        """Return 1 if the Entry has a value stored in this Field, 0 if not."""
         raise NotImplementedError
 
     def hasValue(self, entry_id):
-        """!TXT! Wrapper for testing existence of a value in an Entry"""
-
+        """Test existence of a value in an Entry."""
         return self._hasValue(entry_id)
 
     def _testValue(self, value, options={}):
-        """!TXT! Test a value for validity"""
-
+        """Test a value for validity."""
         raise NotImplementedError
 
     def testValue(self, value, **options):
-        """!TXT! Wrapper for testing a value's validity"""
+        """Wrapper for testing a value's validity."""
         try:
             return self._testValue(value, options)
         except Exception:
@@ -171,22 +133,19 @@ class LegacyFieldPlugin(LegacyPluginBase, FieldPluginBase):
     # Field Mutation API
 
     def _setValue(self, entry_id, value):
-        """!TXT! Store a value in an entry"""
-
+        """Store a value in an entry."""
         raise NotImplementedError
 
     def setData(self, entry_id, data):
-        """!TXT! Set the value inside data for this Field in the Entry"""
-
+        """Set the value inside data for this Field in the Entry."""
         raise NotImplementedError
 
     def setDefault(self, entry_id):
-        """!TXT! Set the default value for this Field in the Entry"""
-
+        """Set the default value for this Field in the Entry."""
         raise NotImplementedError
 
     def setValue(self, entry_id, value):
-        """!TXT! Wapper for storing a value in an entry"""
+        """Wapper for storing a value in an entry."""
         result = self.testValue(value)
         self._setValue(entry_id, result)
 

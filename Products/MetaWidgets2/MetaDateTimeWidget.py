@@ -1,39 +1,23 @@
-# -*- coding: iso-8859-15 -*-
-"""==================================================================
+"""Meta Widgets."""
 
-                                             M e t a   W i d g e t s
-    -----------------------------------------------------------------
-
-        Copyright (c) 2005, Sebastian Luehnsdorf - Web-Solutions GbR.
-        http://zopemeta.com - http://luehnsdorf.de
-
-        This software is subject to the provisions of the
-        Zope Public License, Version 2.0 (ZPL).
-
-        A copy of the ZPL should accompany this distribution.
-
-        THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR
-        IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED
-        TO, THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST
-        INFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
-
-=================================================================="""
 
 from math import ceil
 from types import TupleType, StringType
 
 from DateTime import DateTime
-from Globals import DTMLFile
-from Products.MetaPublisher2.Library import WidgetPlugin
+from App.special_dtml import DTMLFile
+from Products.MetaPublisher2.bases.widget.legacywidget import (
+    LegacyWidgetPlugin as WidgetPlugin)
 
-from dt_definitions import formats, languageData, languages
+from Products.MetaWidgets2.dt_definitions import (
+    formats, languageData, languages)
 
 
 # =============================================================================
 
 
 def MetaDateTimeWidget_getLanguages(self):
-    """Return list of languages"""
+    """Return list of languages."""
     return languages
 
 
@@ -41,7 +25,7 @@ def MetaDateTimeWidget_getLanguages(self):
 
 
 def MetaDateTimeWidget_getLanguage(self, languageId=None):
-    """Return names dictionary of language"""
+    """Return names dictionary of language."""
     if languageId not in MetaDateTimeWidget_getLanguages(self):
         try:
             languageId = self.language
@@ -53,7 +37,7 @@ def MetaDateTimeWidget_getLanguage(self, languageId=None):
 # -----------------------------------------------------------------------------
 
 def __parseFormat(self, format, dt=None, languageId=None):
-    """Parse format into a human readable display"""
+    """Parse format into a human readable display."""
     if isinstance(dt, StringType):
         dt = DateTime(dt)
     if dt is None:
@@ -112,7 +96,7 @@ def __parseFormat(self, format, dt=None, languageId=None):
 
 
 def MetaDateTimeWidget_getFormats(self, dt=None, languageId=None):
-    """Return list of tuples for select tag"""
+    """Return list of tuples for select tag."""
     if isinstance(dt, StringType):
         dt = DateTime(dt)
     if dt is None:
@@ -154,7 +138,7 @@ def MetaDateTimeWidget_getFormats(self, dt=None, languageId=None):
 
 
 class MetaDateTimeWidget(WidgetPlugin):
-    """MetaDateTimeWidget"""
+    """MetaDateTimeWidget."""
 
     meta_type = 'MetaDateTimeWidget'
 
@@ -205,13 +189,13 @@ class MetaDateTimeWidget(WidgetPlugin):
     # -------------------------------------------------------------------------
 
     def getWidgetId(self):
-        """Return Plugin Identifier"""
+        """Return Plugin Identifier."""
         return 'MetaWidgets.' + self.meta_type
 
     # -------------------------------------------------------------------------
 
     def setWidgetData(self, formTypeId, data={}):
-        """Configure Widget according to passed data"""
+        """Configure Widget according to passed data."""
         if data.get('pluginId__', '') == self.getWidgetId():
             self.formTypeId = formTypeId
             self.displayMode = data['displayMode']
@@ -226,7 +210,7 @@ class MetaDateTimeWidget(WidgetPlugin):
                     self.getWidgetId(), data.get('pluginId__', '')))
 
     def getWidgetData(self, formTypeId):
-        """Return the data of this Widget"""
+        """Return the data of this Widget."""
         return {
             'pluginId__':  'MetaWidgets.' + self.meta_type,
             'displayMode': self.displayMode,
@@ -240,7 +224,7 @@ class MetaDateTimeWidget(WidgetPlugin):
     # -------------------------------------------------------------------------
 
     def renderWidget(self, elementId, field, entryName=''):
-        """Render widget according to configuration"""
+        """Render widget according to configuration."""
         fieldId = field.getId()
         formTypeId = self.formTypeId
         displayMode = self.displayMode
@@ -265,7 +249,7 @@ class MetaDateTimeWidget(WidgetPlugin):
             return options
 
         def dtmlParseFormat(self, dt, format, languageId=None):
-            """Parse format into a DTML renderable display"""
+            """Parse format into a DTML renderable display."""
             if languageId not in MetaDateTimeWidget_getLanguages(self):
                 try:
                     languageId = self.language
@@ -518,7 +502,7 @@ manage_MetaDateTimeWidget_ViewFormlet = DTMLFile(
 
 
 def manage_addMetaDateTimeWidget(self, id, formTypeId, data={}, REQUEST=None):
-    """ZMI constructor for MetaDateTimeWidget"""
+    """Add new MetaDateTimeWidget."""
     instance = MetaDateTimeWidget(id)
     instance.setWidgetData(formTypeId, data)
     id = self._setObject(id, instance)

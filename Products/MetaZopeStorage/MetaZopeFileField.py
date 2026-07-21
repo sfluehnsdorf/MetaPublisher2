@@ -1,28 +1,12 @@
-"""==================================================================
+"""Meta Zope Storage."""
 
-                  M e t a   Z o p e   S t o r a g e
-  -----------------------------------------------------------------
-
-    Copyright (c) 2005, Sebastian Luehnsdorf - Web-Solutions GbR.
-    http://zopemeta.com - http://luehnsdorf.de
-
-    This software is subject to the provisions of the
-    Zope Public License, Version 2.0 (ZPL).
-
-    A copy of the ZPL should accompany this distribution.
-
-    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR
-    IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED
-    TO, THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST
-    INFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
-
-=================================================================="""
 
 from string import letters, digits
 
-from Globals import DTMLFile
+from App.special_dtml import DTMLFile
 
-from Products.MetaPublisher2.Library import FieldPlugin
+from Products.MetaPublisher2.bases.field.legacyfield import (
+    LegacyFieldPlugin as FieldPlugin)
 
 
 # =============================================================================
@@ -35,7 +19,7 @@ _validIdChars = letters + digits + '_-.'
 
 
 class MetaZopeFileField(FieldPlugin):
-    """FileField"""
+    """FileField."""
 
     pluginName = 'FileField'
     pluginAuthor = 'Sebastian Luehnsdorf - Web-Solutions GbR.'
@@ -53,7 +37,7 @@ class MetaZopeFileField(FieldPlugin):
         'dtml/editMetaZopeFileField', globals())
 
     def manage_configureField(self, REQUEST=None):
-        """Change Field's configuration parameters"""
+        """Change Field's configuration parameters."""
         self.title = REQUEST.get('title', '')
 
         if REQUEST is not None:
@@ -64,21 +48,21 @@ class MetaZopeFileField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def getFieldInfo(self):
-        """Return information about this Field if available"""
+        """Return information about this Field if available."""
         pass
 
     def getEntryObject(self, entryId):
-        """Return the entry object"""
+        """Return the entry object."""
         return self.storage_getEntryObject(entryId)
 
     # -------------------------------------------------------------------------
 
     def setDefault(self, entryId):
-        """Set the default value for this Field in the Entry"""
+        """Set the default value for this Field in the Entry."""
         pass
 
     def setData(self, entryId, data):
-        """Set the value inside data for this Field in the Entry"""
+        """Set the value inside data for this Field in the Entry."""
         fieldId = self.getId()
         if data.get(fieldId + '_del', None):
             entry = self.getEntryObject(entryId)
@@ -92,7 +76,7 @@ class MetaZopeFileField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def _getValue(self, entryId, default):
-        """Retrieve a value from an entry"""
+        """Retrieve a value from an entry."""
         fieldId = self.getId()
         entry = self.getEntryObject(entryId)
         if fieldId in entry.objectIds():
@@ -100,14 +84,14 @@ class MetaZopeFileField(FieldPlugin):
             return folder._getOb(folder.filename)
 
     def _setValue(self, entryId, value):
-        """Store a value in an entry"""
+        """Store a value in an entry."""
         if value == '':
             return
 
         fieldId = self.getId()
         entry = self.getEntryObject(entryId)
 
-        if type([]) == type(value):
+        if isinstance(value, list):
             data = value[0]
             filename = value[1]
             if filename != '':
@@ -144,8 +128,7 @@ class MetaZopeFileField(FieldPlugin):
                 folder.manage_addFile(filename, value)
 
     def _hasValue(self, entryId):
-        """Return 1 if the Entry has a value stored for this Field, 0
-        otherwise"""
+        """Return 1 if Entry has a value stored for this Field, 0 otherwise."""
         entry = self.getEntryObject(entryId)
         fieldId = self.getId()
         if fieldId in entry.objectIds():
@@ -153,13 +136,13 @@ class MetaZopeFileField(FieldPlugin):
         return 0
 
     def _testValue(self, value, options={}):
-        """Test a value for validity"""
+        """Test a value for validity."""
         return value
 
     # -------------------------------------------------------------------------
 
     def _normalizeId(self, id):
-        """!TXT!"""
+        """!TXT!."""
         result = ''
         for i in range(len(id)):
             if id[i] in _validIdChars and (i > 0 or id[i] != '_'):
@@ -169,11 +152,11 @@ class MetaZopeFileField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def renderAdd(self):
-        """Return a html code for adding an Entry with this Field"""
+        """Return a html code for adding an Entry with this Field."""
         return '<input type="file" name="%s" size="40">' % self.getId()
 
     def renderEdit(self, entryId):
-        """Return a html code for editing an Entry with this Field"""
+        """Return a html code for editing an Entry with this Field."""
         result = '<input type="file" name="%s" size="40"><br>' % self.getId()
         if self.hasValue(entryId):
             file = self.getValue(entryId)
@@ -194,7 +177,7 @@ class MetaZopeFileField(FieldPlugin):
         return result
 
     def renderView(self, entryId):
-        """Return a html code for viewing an Entry with this Field"""
+        """Return a html code for viewing an Entry with this Field."""
         if self.hasValue(entryId):
             file = self.getValue(entryId)
             return (
@@ -211,7 +194,7 @@ manage_addMetaZopeFileFieldForm = DTMLFile(
 
 
 def manage_addMetaZopeFileField(self, id, title='', default='', REQUEST=None):
-    """ZMI constructor for MetaZopeFileField"""
+    """Add new MetaZopeFileField."""
     instance = MetaZopeFileField(id)
     instance.title = title
     id = self._setObject(id, instance)

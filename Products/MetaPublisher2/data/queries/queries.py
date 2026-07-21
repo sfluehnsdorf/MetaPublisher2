@@ -1,39 +1,11 @@
-# -*- coding: iso-8859-15 -*-
-# =============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# -----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# -----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# =============================================================================
-
-__doc__ = """Queries Component
-
-!TXT! module info
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
+"""MetaPublisher2 - Queries Component."""
 
 
-# =============================================================================
-# Module Imports
-
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, DTMLFile, InitializeClass, permission_access_entries,
-    show_future)
+from Products.MetaPublisher2.library.application import (
+    permission_access_entries)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, InitializeClass)
+from Products.MetaPublisher2.library.compatibility import show_future
 
 
 # =============================================================================
@@ -48,7 +20,7 @@ __all__ = [
 # Queries Component Mix-In Class
 
 class Queries:
-    """!TXT! Queries Component Mix-In Class"""
+    """Queries Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -67,7 +39,7 @@ class Queries:
     security.declareProtected(permission_access_entries, 'parse_query')
 
     def parse_query(self):
-        """!TXT!"""
+        """TODO: Docstring for parse_query."""
         request = self.REQUEST
         input = request.form['input'].replace('  ', ' ').strip()
         self.set_profile_variable(
@@ -89,8 +61,7 @@ class Queries:
     security.declareProtected(permission_access_entries, 'query_help')
 
     def query_help(self, topic=None):
-        """!TXT!"""
-
+        """TODO: Docstring for query_help."""
         if topic:
             topic = topic.strip()
             return self._format_query_lines(
@@ -118,10 +89,8 @@ class Queries:
     security.declareProtected(permission_access_entries, 'query_history_clear')
 
     def query_history_clear(self):
-        """!TXT!"""
-
+        """TODO: Docstring for query_history_clear."""
         self.set_profile_variable(self.REQUEST, 'queries_history', [])
-
         return self._format_query_lines(
             self._format_query_bright(u'!TXT! Command history cleared.'),
         )
@@ -129,10 +98,8 @@ class Queries:
     security.declareProtected(permission_access_entries, 'query_history')
 
     def query_history(self):
-        """!TXT!"""
-
+        """TODO: Docstring for query_history."""
         history = self.get_profile_variable(self.REQUEST, 'queries_history')
-
         if history:
             counter = 1
             lines = []
@@ -154,8 +121,7 @@ class Queries:
     security.declareProtected(permission_access_entries, 'query_history')
 
     def query_clear(self):
-        """!TXT!"""
-
+        """TODO: Docstring for query_clear."""
         return ''
 
     # -------------------------------------------------------------------------
@@ -164,18 +130,23 @@ class Queries:
     # !!! change this crap (maybe this could be part of settings.conf)
 
     def _format_query_lines(self, *lines):
+        """TODO: Docstring for _format_query_lines."""
         return u'<br>'.join(lines)
 
     def _format_query_bright(self, text):
+        """TODO: Docstring for _format_query_bright."""
         return u'<span class="terminal_bright">%s</span>' % text
 
     def _format_query_normal(self, text):
+        """TODO: Docstring for _format_query_normal."""
         return u'<span class="terminal_normal">%s</span>' % text
 
     def _format_query_dim(self, text):
+        """TODO: Docstring for _format_query_dim."""
         return u'<span class="terminal_dim">%s</span>' % text
 
     def _format_query_error(self, text):
+        """TODO: Docstring for _format_query_error."""
         return u'<span class="terminal_error">%s</span>' % text
 
     # -------------------------------------------------------------------------
@@ -184,8 +155,7 @@ class Queries:
     security.declareProtected(permission_access_entries, 'query_interpreter')
 
     def query_interpreter(self, input):
-        """!TXT!"""
-
+        """TODO: Docstring for query_interpreter."""
         return self._format_query_lines(
             self._format_query_bright(u'Queries'),
             self._format_query_error(

@@ -1,42 +1,14 @@
-# -*- coding: iso-8859-15 -*-
-# =============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# -----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# -----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# =============================================================================
+"""MetaPublisher2 - Field Plugin Base."""
 
-__doc__ = """Field Plugin Base
-
-!TXT! module info
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# =============================================================================
-# Module Imports
 
 from Products.MetaPublisher2.bases.plugin import PluginBase
 from Products.MetaPublisher2.interfaces import IFieldPluginBase
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, DTMLFile, InitializeClass, OrderedFolder, TestError,
-    false, implements, permission_access_configuration,
-    permission_change_configuration)
+from Products.MetaPublisher2.library.application import (
+    permission_access_configuration, permission_change_configuration)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, InitializeClass, OrderedFolder, false,
+    implements)
+from Products.MetaPublisher2.library.compatibility.historical import TestError
 
 
 # =============================================================================
@@ -51,7 +23,7 @@ __all__ = [
 # Field Plugin Base Class
 
 class FieldPluginBase(PluginBase, OrderedFolder):
-    """!TXT! Field Plugin Base Class"""
+    """Field Plugin Base Class."""
 
     security = ClassSecurityInfo()
 
@@ -83,8 +55,7 @@ class FieldPluginBase(PluginBase, OrderedFolder):
         permission_access_configuration, 'get_plugin_specification')
 
     def get_plugin_specification(self):
-        """Return a dictionary describing this Field"""
-
+        """Return a dictionary describing this Field."""
         options = PluginBase.get_plugin_specification(self)
         options.update({
             'field_type': self.field_type,
@@ -129,44 +100,44 @@ class FieldPluginBase(PluginBase, OrderedFolder):
     #     is_field_defaultable, is_field_requirable
 
     def is_field_requirable(self):
-        """!TXT!"""
+        """TODO: Docstring for is_field_requirable."""
         return self.requirable
 
     def is_field_required(self):
-        """!TXT!"""
+        """TODO: Docstring for is_field_required."""
         return self.required
 
     # -------------------------------------------------------------------------
     # !TXT!
 
     def setDefault(self, entryId):
-        """!TXT! Set the default value for this Field in the Entry"""
+        """Set the default value for this Field in the Entry."""
         raise NotImplementedError
 
     def setData(self, entryId, data):
-        """!TXT! Set the value inside data for this Field in the Entry"""
+        """Set the value inside data for this Field in the Entry."""
         raise NotImplementedError
 
     # -------------------------------------------------------------------------
     # !TXT!
 
     def _getValue(self, entryId, default):
-        """!TXT! Retrieve a value from an entry"""
+        """Retrieve a value from an entry."""
         raise NotImplementedError
 
     def getValue(self, entryId, default=None):
-        """!TXT! Wrapper for retrieving a value from an entry"""
+        """Retrieve a value from an entry."""
         return self._getValue(entryId, default)
 
     # -------------------------------------------------------------------------
     # !TXT!
 
     def _setValue(self, entryId, value):
-        """!TXT! Store a value in an entry"""
+        """Store a value in an entry."""
         raise NotImplementedError
 
     def setValue(self, entryId, value):
-        """!TXT! Wrapper for storing a value in an entry"""
+        """Store a value in an entry."""
         result = self.testValue(value)
         self._setValue(entryId, result)
 
@@ -174,23 +145,22 @@ class FieldPluginBase(PluginBase, OrderedFolder):
     # !TXT!
 
     def _hasValue(self, entryId):
-        """!TXT! Return 1 if the Entry has a value stored for this Field, 0
-        otherwise"""
+        """Return 1 if Entry has a value stored for this Field, 0 if not."""
         raise NotImplementedError
 
     def hasValue(self, entryId):
-        """!TXT! Wrapper for testing existence of a value in an Entry"""
+        """Test existence of a value in an Entry."""
         return self._hasValue(entryId)
 
     # -------------------------------------------------------------------------
     # !TXT!
 
     def _testValue(self, value, options={}):
-        """!TXT! Test a value for validity"""
+        """Test a value for validity."""
         raise NotImplementedError
 
     def testValue(self, value, **options):
-        """!TXT! Wrapper for testing a value's validity"""
+        """Test a value for validity."""
         try:
             return self._testValue(value, options)
         except Exception as exception:
@@ -203,19 +173,19 @@ class FieldPluginBase(PluginBase, OrderedFolder):
     render_modes = {}
 
     def render_field(self, mode_id, entry_id=None):
-        """!TXT! default render method (for management forms)"""
+        """Render method (for management forms)."""
         raise NotImplementedError
 
     def renderAdd(self):
-        """!TXT! Return a html code for adding an Entry with this Field"""
+        """Return a html code for adding an Entry with this Field."""
         raise NotImplementedError
 
     def renderEdit(self, entryId):
-        """!TXT! Return a html code for editing an Entry with this Field"""
+        """Return a html code for editing an Entry with this Field."""
         raise NotImplementedError
 
     def renderView(self, entryId):
-        """!TXT! Return a html code for viewing an Entry with this Field"""
+        """Return a html code for viewing an Entry with this Field."""
         raise NotImplementedError
 
 

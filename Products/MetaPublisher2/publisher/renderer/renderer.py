@@ -1,47 +1,20 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Renderer Component
+"""MetaPublisher2 - Renderer Component.
 
 API and ZMI services for rendering Frontends. A previously defined Frontend
 must be rendered for it to be publically viewable. A Frontend only stores the
 definition of the final public interface as such is not publically viewable.
 Users can choose the destination for the public interface, relative to the
-MetaPublisher 2 instance.
-
-$Id: publisher/renderer/renderer.py 13 2013-05-10 23:03:58Z sfluehnsdorf $
+MetaPublisher2 instance.
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from Products.MetaPublisher2.interfaces import IFrontendPluginBase
-from Products.MetaPublisher2.library import (
+from Products.MetaPublisher2.library.application import (
+    RenderError, permission_publish_frontends)
+from Products.MetaPublisher2.library.common import (
     ClassSecurityInfo, DTMLFile, false, InitializeClass,
-    manage_addPythonScript, permission_publish_frontends, RenderError,
-    show_future, true)
+    manage_addPythonScript, true)
+from Products.MetaPublisher2.library.compatibility import show_future
 
 
 # ============================================================================
@@ -56,7 +29,7 @@ __all__ = [
 # Renderer Component Mix-In Class
 
 class Renderer:
-    """!TXT! Renderer Component Mix-In Class"""
+    """Renderer Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -77,9 +50,10 @@ class Renderer:
         permission_publish_frontends, 'is_frontend_modified')
 
     def is_frontend_modified(self, frontend_path):
-        """!TXT! Return True if the specified Frontend has been changed since
-        last rendering, False if not and None if Frontend is unrendered."""
+        """Return True if Frontend was changed since last rendering.
 
+        Return False if not and None if Frontend is unrendered.
+        """
         frontend = self.get_frontend(frontend_path)
         if hasattr(frontend, 'is_frontend_modified'):
             return frontend.is_frontend_modified()
@@ -89,9 +63,7 @@ class Renderer:
         permission_publish_frontends, 'is_frontend_renderable')
 
     def is_frontend_renderable(self, frontend_path):
-        """!TXT! Return True if the specified Frontend can be rendered, False
-        otherwise."""
-
+        """Return True if the specified Frontend can be rendered."""
         frontend = self.get_frontend(frontend_path)
         if hasattr(frontend, 'is_frontend_renderable'):
             return frontend.is_frontend_renderable()
@@ -101,8 +73,7 @@ class Renderer:
         permission_publish_frontends, 'get_rendering_errors')
 
     def get_rendering_errors(self, frontend_path):
-        """!TXT! Return a list of errors of the specified Frontend."""
-
+        """Return a list of errors of the specified Frontend."""
         frontend = self.get_frontend(frontend_path)
         if hasattr(frontend, 'get_rendering_errors'):
             return frontend.get_rendering_errors()
@@ -119,8 +90,7 @@ class Renderer:
         arbitrary_destination_path=None, create_folder=false,
         create_folder_id=None, overwrite='fail', REQUEST=None
     ):
-        """!TXT! Render Interface objects"""
-
+        """Render Interface objects."""
         rendered_frontends = []
 
         # determine ids

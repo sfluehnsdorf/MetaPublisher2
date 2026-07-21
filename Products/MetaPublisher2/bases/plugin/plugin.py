@@ -1,45 +1,18 @@
-# -*- coding: iso-8859-15 -*-
-# =============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# =============================================================================
-
-__doc__ = """Plugin Base
+"""MetaPublisher2 - Plugin Base.
 
 The Plugin base class defines basic identity attributes and a generic API for
 describing the Plugin's specififc capabilities, called the plugin details. All
 plugin types for the MetaPublisher2 must be based on this class.
-
-$Id: bases/plugin/plugin.py 14 2013-05-08 19:47:13Z sfluehnsdorf $
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# =============================================================================
-# Module Imports
 
 from zope.interface import implements
 
 from Products.MetaPublisher2.interfaces import IPluginBase
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, ImmutableError, InitializeClass, PropertyManager, false)
+from Products.MetaPublisher2.library.application import (
+    ImmutableError)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, InitializeClass, PropertyManager, false)
 
 
 # ==============================================================================
@@ -54,7 +27,7 @@ __all__ = [
 # Plugin Base Class
 
 class PluginBase(PropertyManager):
-    """!TXT! Plugin Base Class"""
+    """Plugin Base Class."""
 
     security = ClassSecurityInfo()
 
@@ -123,16 +96,15 @@ class PluginBase(PropertyManager):
     # Plugin Flag Retrieval
 
     def get_immutable_pluginflag_ids(self):
-        """!TXT! Return list of Plugin flag ids, which are either constants or
-        set by an external source and may not be altered by MetaPublisher2 or
-        its users"""
+        """Return list of Plugin flag ids.
 
+        Return list of Plugin flag ids, which are either constants or set by an
+        external source and may not be altered by MetaPublisher2 or its users.
+        """
         raise NotImplementedError
 
     def get_immutable_pluginflags(self):
-        """!TXT! Return tuples of id, boolean states of all immutable plugin
-        flags"""
-
+        """Return tuples of id, boolean states of immutable plugin flags."""
         result = []
         result_append = result.append
         pluginflag_ids = self.plugin_flags
@@ -142,15 +114,15 @@ class PluginBase(PropertyManager):
         return result
 
     def get_mutable_pluginflag_ids(self):
-        """!TXT! Return list of Plugin flag ids, which may be altered by
-        MetaPublisher2 and its users"""
+        """Return list of Plugin flag ids.
 
+        Return list of Plugin flag ids, which may be altered by MetaPublisher2
+        and its users.
+        """
         raise NotImplementedError
 
     def get_mutable_pluginflags(self):
-        """!TXT! Return tuples of id, boolean states of all mutable plugin
-        flags"""
-
+        """Return tuples of id, boolean states of all mutable plugin flags."""
         result = []
         result_append = result.append
         pluginflag_ids = self.plugin_flags
@@ -160,8 +132,11 @@ class PluginBase(PropertyManager):
         return result
 
     def get_pluginflag(self, pluginflag_id, failsafe=false):
-        """!TXT! Return the boolean state of the specified Plugin flag if it
-        exists, raises KeyError otherwise"""
+        """Return the boolean state of the specified Plugin flag if it exists.
+
+        Return the boolean state of the specified Plugin flag if it exists,
+        raises KeyError otherwise.
+        """
         if pluginflag_id in self.get_pluginflag_ids():
             return pluginflag_id in self.plugin_flags
         elif failsafe:
@@ -170,28 +145,31 @@ class PluginBase(PropertyManager):
             raise KeyError(pluginflag_id)
 
     def get_pluginflags(self):
-        """!TXT! Return tuples of id, boolean states of all Plugin flags"""
+        """Return tuples of id, boolean states of all Plugin flags."""
         return map(
             lambda id: (id, self.get_pluginflag(id)),
             self.get_pluginflag_ids())
 
     def get_pluginflag_ids(self):
-        """!TXT! Return the ids of all Plugin flags"""
+        """Return the ids of all Plugin flags."""
         return (
             self.get_immutable_pluginflag_ids() +
             self.get_mutable_pluginflag_ids())
 
     def has_pluginflag(self, pluginflag_id):
-        """!TXT! Return True if the Plugin flag exists, False otherwise"""
+        """Return True if the Plugin flag exists, False otherwise."""
         return pluginflag_id in self.get_pluginflag_ids()
 
     # -------------------------------------------------------------------------
     # Plugin Flag Mutation
 
     def define_pluginflags(self, pluginflag_ids=[]):
-        """!TXT! Replaces all mutable Plugin flags with the specified flags,
-        raises ImmutableError if the Plugin detail is not mutable or raises
-        KeyError if the Plugin detail is undefined"""
+        """Replace all mutable Plugin flags with the specified flags.
+
+        Replaces all mutable Plugin flags with the specified flags, raises
+        ImmutableError if the Plugin detail is not mutable or raises KeyError
+        if the Plugin detail is undefined.
+        """
         immutable_pluginflags = self.get_immutable_pluginflag_ids()
         mutable_pluginflags = self.get_mutable_pluginflag_ids()
         result = immutable_pluginflags
@@ -208,10 +186,12 @@ class PluginBase(PropertyManager):
         self.plugin_flags = result
 
     def set_pluginflag(self, pluginflag_id):
-        """!TXT! Set the specified Plugin flag if it is mutable, raises
-        ImmutableError if the Plugin flag is not mutable or raises KeyError if
-        the Plugin flag is not undefined"""
+        """Set the specified Plugin flag if it is mutable.
 
+        Set the specified Plugin flag if it is mutable, raises ImmutableError
+        if the Plugin flag is not mutable or raises KeyError if the Plugin
+        flag is not undefined.
+        """
         if pluginflag_id in self.get_immutable_pluginflags():
             raise ImmutableError(pluginflag_id)
 
@@ -227,10 +207,12 @@ class PluginBase(PropertyManager):
             raise KeyError(pluginflag_id)
 
     def set_pluginflags(self, pluginflag_ids):
-        """!TXT! Set the specified mutable Plugin flags, raises ImmutableError
-        if a Plugin flag is not mutable or raises KeyError if a Plugin flag is
-        not undefined"""
+        """Set the specified mutable Plugin flags.
 
+        Set the specified mutable Plugin flags, raises ImmutableError if a
+        Plugin flag is not mutable or raises KeyError if a Plugin flag is not
+        undefined.
+        """
         immutable_pluginflags = self.get_immutable_pluginflags()
         mutable_pluginflags = self.get_mutable_pluginflags()
         result = self.plugin_flags
@@ -248,10 +230,12 @@ class PluginBase(PropertyManager):
         self.plugin_flags = result
 
     def unset_pluginflag(self, pluginflag_id):
-        """!TXT! Set the specified Plugin flag if it is mutable, raises
-        ImmutableError if the Plugin flag is not mutable or raises KeyError if
-        the Plugin flag is not undefined"""
+        """Set the specified Plugin flag if it is mutable.
 
+        Set the specified Plugin flag if it is mutable, raises ImmutableError
+        if the Plugin flag is not mutable or raises KeyError if the Plugin
+        flag is not undefined.
+        """
         if pluginflag_id in self.get_immutable_pluginflags():
             raise ImmutableError(pluginflag_id)
 
@@ -267,10 +251,12 @@ class PluginBase(PropertyManager):
             raise KeyError(pluginflag_id)
 
     def unset_pluginflags(self, pluginflag_ids):
-        """!TXT! Unset the specified mutable Plugin flags, raises
-        ImmutableError if a Plugin flag is not mutable or raises KeyError if a
-        Plugin flag is not undefined"""
+        """Unset the specified mutable Plugin flags.
 
+        Unset the specified mutable Plugin flags, raises ImmutableError if a
+        Plugin flag is not mutable or raises KeyError if a Plugin flag is not
+        undefined.
+        """
         immutable_pluginflags = self.get_immutable_pluginflags()
         mutable_pluginflags = self.get_mutable_pluginflags()
         result = self.plugin_flags
@@ -291,7 +277,7 @@ class PluginBase(PropertyManager):
     # Plugin Specification API
 
     def get_plugin_specification(self):
-        """!TXT! Return a dictionary describing this Plugin"""
+        """Return a dictionary describing this Plugin."""
         result = {
             'plugin_type': self.plugin_type,
             'plugin_name': self.plugin_name,
@@ -309,7 +295,7 @@ class PluginBase(PropertyManager):
         return result
 
     def get_plugin_infos(self):
-        """!TXT! Return a string describing the Plugin's configuration"""
+        """Return a string describing the Plugin's configuration."""
         items = self.get_plugin_specification()
         items.sort()
         return ', '.join(map(lambda item: '%s: %s' % item, items))
@@ -318,15 +304,15 @@ class PluginBase(PropertyManager):
     # Plugin Identity API
 
     def get_plugin_instance(self):
-        """!TXT! Return this instance"""
+        """Return this instance."""
         return self
 
     def get_plugin_id(self):
-        """!TXT! Return this instance's id"""
+        """Return this instance's id."""
         return self.getId()
 
     def get_plugin_url(self):
-        """!TXT! Return this instance's absolute url"""
+        """Return this instance's absolute url."""
         return self.absolute_url()
 
 

@@ -1,35 +1,5 @@
-# -*- coding: iso-8859-15 -*-
-# =============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# =============================================================================
+"""MetaPublisher2 Formlets."""
 
-__doc__ = """MetaPublisher2 Formlets
-
-!TXT! module info
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# =============================================================================
-# Module Imports
 
 from Products.MetaPublisher2.library.application import permission_zmi
 from Products.MetaPublisher2.library.common import (
@@ -49,7 +19,7 @@ __all__ = [
 # MetaPublisher2 Formlets Mix-In Class
 
 class Formlets:
-    """!TXT! MetaPublisher2 Formlets Mix-In Class"""
+    """MetaPublisher2 Formlets Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -79,6 +49,7 @@ class Formlets:
     datatable_formlet = DTMLFile('formlet_datatable', globals())
 
     def get_datatable_value(self, row, column):
+        """Return row's columns's value."""
         marker = []
         try:
             result = row.get(column, marker)
@@ -92,17 +63,14 @@ class Formlets:
             return callable(result) and str(result()) or str(result)
 
     def format_datatable_field(self, row, column):
-        """!TXT! Display a row's columns's value."""
-
+        """Display a row's columns's value."""
         get_value = self.get_datatable_value
-
         return column.get('template', '%s') % tuple(map(
             lambda value: get_value(row, value),
             column.get('values', [column['value']])))
 
     def process_datatable_options(self, form_id, columns, rows, request):
-        """!TXT! Process options for data table formlet"""
-
+        """Process options for data table formlet."""
         form = request.form
         cookies = request.cookies
         correct_form = (

@@ -1,37 +1,5 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
+"""MetaPublisher2 - Legacy Frontend Plugin Base."""
 
-__doc__ = """Legacy Frontend Plugin Base
-
-!TXT! module info
-
-$Id: bases/frontend/legacyfrontend.py 3 2013-05-08 19:49:29Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 import Products
 from Products.MetaPublisher2.bases.plugin.legacyplugin import LegacyPluginBase
@@ -53,7 +21,7 @@ __all__ = [
 # Legacy Frontend Plugin Base Class
 
 class LegacyFrontendPlugin(LegacyPluginBase, FrontendPluginBase):
-    """Legacy Frontend Plugin Base Class"""
+    """Legacy Frontend Plugin Base Class."""
 
     security = ClassSecurityInfo()
 
@@ -77,17 +45,21 @@ class LegacyFrontendPlugin(LegacyPluginBase, FrontendPluginBase):
     # !TXT!
 
     def get_immutable_pluginflag_ids(self):
-        """Return list of Plugin flag ids, which are either constants or set by
-        an external source and may not be altered by MetaPublisher2 or its
-        users"""
+        """Return list of Plugin flag ids.
 
+        Return list of Plugin flag ids, which are either constants or set by
+        an external source and may not be altered by MetaPublisher2 or its
+        users.
+        """
         # !!! bases/frontend/legacyfrontend.py -  get_immutable_pluginflag_ids
         return []
 
     def get_mutable_pluginflag_ids(self):
-        """Return list of Plugin flag ids, which may be altered by
-        MetaPublisher2 and its users"""
+        """Return list of Plugin flag ids.
 
+        Return list of Plugin flag ids, which may be altered by MetaPublisher2
+        and its users.
+        """
         # !!! bases/frontend/legacyfrontend.py -  get_immutable_pluginflag_ids
         return []
 
@@ -95,7 +67,7 @@ class LegacyFrontendPlugin(LegacyPluginBase, FrontendPluginBase):
     # !TXT!
 
     def all_meta_types(self, interfaces=None):
-
+        """TODO: Docstring for all_meta_types."""
         result = FrontendPluginBase.all_meta_types(interfaces)
         for product in Products.meta_types:
             if (
@@ -109,21 +81,18 @@ class LegacyFrontendPlugin(LegacyPluginBase, FrontendPluginBase):
     # !TXT!
 
     def renderingIds(self):
-        """Return list ids for objects created on rendering"""
-
+        """Return list ids for objects created on rendering."""
         raise NotImplementedError
 
     def rendering_ids(self):
-        """Return list ids for objects created on rendering"""
-
+        """Return list ids for objects created on rendering."""
         self.renderingIds()
 
     # ------------------------------------------------------------------------
     # !TXT!
 
     def renderInterface(self, destination, **options):
-        """Render the Interface"""
-
+        """Render the Interface."""
         raise NotImplementedError
 
 

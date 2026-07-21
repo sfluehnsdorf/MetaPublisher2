@@ -1,40 +1,11 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Common Library
+"""MetaPublisher - Common Library.
 
 Central repository for Python and Zope resources, including imports, constants
 and API's. By providing these resources in a central location, it is easy to
 adapt calls to these resources to the various implementations of the Zope
 server and the Python programming language.
-
-$Id: library/common/common.py 8 2013-05-08 23:10:26Z sfluehnsdorf $
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from collections import Mapping
 from os import listdir
@@ -44,9 +15,12 @@ from urllib import quote_plus
 import Products
 from AccessControl.Role import RoleManager
 from AccessControl.SecurityInfo import ClassSecurityInfo
+from AccessControl.class_init import InitializeClass
 from Acquisition import Implicit
+from App.ImageFile import ImageFile
+from App.special_dtml import DTMLFile
 from ComputedAttribute import ComputedAttribute
-from Globals import DTMLFile, ImageFile, InitializeClass
+from DocumentTemplate.DT_Var import url_quote
 from OFS.Folder import Folder
 from OFS.ObjectManager import BeforeDeleteException
 from OFS.PropertyManager import PropertyManager
@@ -65,17 +39,15 @@ try:
 except Exception:
 
     class Counter(dict):
-        """!TXT! Simplified Counter class"""
+        """Simplified Counter class."""
 
         def __init__(self, iterable=None):
             """Create a new, empty Counter object."""
-
             super(Counter, self).__init__()
             self.update(iterable)
 
         def update(self, iterable=None, **kwds):
-            """!TXT! Update data and add counts instead of replacing them."""
-
+            """Update data and add counts instead of replacing them."""
             if iterable is not None:
                 if isinstance(iterable, Mapping):
                     if self:
@@ -126,6 +98,7 @@ __all__ = [
     'split_paths',
     'splitext',
     'true',
+    'url_quote',
     'uuid4',
 ]
 
@@ -134,8 +107,7 @@ __all__ = [
 # Path Splitter
 
 def split_paths(path):
-    """!TXT! Split a path into all its parts"""
-
+    """Split a path into all its parts."""
     return normpath(path).split(sep)
 
 
@@ -156,12 +128,10 @@ except Exception:
 try:
     from uuid import uuid4
 except Exception:
-
     from random import randrange
 
     def uuid4():
-        """!TXT! generate uuid4"""
-
+        """Generate a (fake) UUID4."""
         return (
             '%x%x%x%x%x%x%x%x-%x%x%x%x-%x%x%x%x-%x%x%x%x-'
             '%x%x%x%x%x%x%x%x%x%x%x%x' % map(

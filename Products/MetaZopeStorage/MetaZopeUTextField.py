@@ -1,35 +1,18 @@
-"""==================================================================
-
-                  M e t a   Z o p e   S t o r a g e
-  -----------------------------------------------------------------
-
-    Copyright (c) 2005, Sebastian Luehnsdorf - Web-Solutions GbR.
-    http://zopemeta.com - http://luehnsdorf.de
-
-    This software is subject to the provisions of the
-    Zope Public License, Version 2.0 (ZPL).
-
-    A copy of the ZPL should accompany this distribution.
-
-    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR
-    IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED
-    TO, THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST
-    INFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
-
-=================================================================="""
+"""Meta Zope Storage."""
 
 
-from Globals import DTMLFile
+from App.special_dtml import DTMLFile
 from ZPublisher.Converters import field2utext
 
-from Products.MetaPublisher2.Library import FieldPlugin
+from Products.MetaPublisher2.bases.field.legacyfield import (
+    LegacyFieldPlugin as FieldPlugin)
 
 
 # =============================================================================
 
 
 class MetaZopeUTextField(FieldPlugin):
-    """UnicodeTextField"""
+    """UnicodeTextField."""
 
     pluginName = 'UnicodeTextField'
     pluginAuthor = 'Sebastian Luehnsdorf - Web-Solutions GbR.'
@@ -55,11 +38,9 @@ class MetaZopeUTextField(FieldPlugin):
         'dtml/editMetaZopeUTextField', globals())
 
     def manage_configureField(self, REQUEST=None):
-        """Change Field's configuration parameters"""
-
+        """Change Field's configuration parameters."""
         self.title = REQUEST.get('title', '')
         self.default = self._testValue(REQUEST.get('default', ''))
-
         if REQUEST is not None:
             REQUEST.RESPONSE.redirect(
                 self.zmp2URL() + '/manage_fieldsBrowserForm?storageId=' +
@@ -68,22 +49,22 @@ class MetaZopeUTextField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def getFieldInfo(self):
-        """Return information about this Field if available"""
+        """Return information about this Field if available."""
         if self.default:
             return 'Default Value: "%s"' % self.default.replace('<', '&lt;')
 
     def getEntryObject(self, entryId):
-        """Return the entry object"""
+        """Return the entry object."""
         return self.storage_getEntryObject(entryId)
 
     # -------------------------------------------------------------------------
 
     def setDefault(self, entryId):
-        """Set the default value for this Field in the Entry"""
+        """Set the default value for this Field in the Entry."""
         self.setValue(entryId, self.default)
 
     def setData(self, entryId, data):
-        """Set the value inside data for this Field in the Entry"""
+        """Set the value inside data for this Field in the Entry."""
         fieldId = self.getId()
         if data.has_key(fieldId):
             self.setValue(entryId, data[fieldId])
@@ -91,13 +72,13 @@ class MetaZopeUTextField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def _getValue(self, entryId, default):
-        """Retrieve a value from an entry"""
+        """Retrieve a value from an entry."""
         fieldId = self.getId()
         entry = self.getEntryObject(entryId)
         return entry.getProperty(fieldId, default)
 
     def _setValue(self, entryId, value):
-        """Store a value in an entry"""
+        """Store a value in an entry."""
         fieldId = self.getId()
         entry = self.getEntryObject(entryId)
         if entry.hasProperty(fieldId):
@@ -106,8 +87,7 @@ class MetaZopeUTextField(FieldPlugin):
             entry._setProperty(fieldId, value, 'utext')
 
     def _hasValue(self, entryId):
-        """Return 1 if the Entry has a value stored for this Field, 0
-        otherwise"""
+        """Return 1 if Entry has a value stored for this Field, 0 otherwise."""
         fieldId = self.getId()
         entry = self.getEntryObject(entryId)
         if entry.hasProperty(fieldId):
@@ -115,19 +95,19 @@ class MetaZopeUTextField(FieldPlugin):
         return 0
 
     def _testValue(self, value, options={}):
-        """Test a value for validity"""
+        """Test a value for validity."""
         return field2utext(value)
 
     # -------------------------------------------------------------------------
 
     def renderAdd(self):
-        """Return a html code for adding an Entry with this Field"""
+        """Return a html code for adding an Entry with this Field."""
         return (
             u'<textarea name="%s:utf8:utext" cols="60" rows="5" class="fw">'
             u'%s</textarea>' % (self.getId(), self.default))
 
     def renderEdit(self, entryId):
-        """Return a html code for editing an Entry with this Field"""
+        """Return a html code for editing an Entry with this Field."""
         value = self.getValue(entryId)
         return (
             u'<textarea name="%s:utf8:utext" cols="60" rows="5" class="fw" />'
@@ -135,7 +115,7 @@ class MetaZopeUTextField(FieldPlugin):
                 self.getId(), value and value.replace('&', '&amp;') or ''))
 
     def renderView(self, entryId):
-        """Return a html code for viewing an Entry with this Field"""
+        """Return a html code for viewing an Entry with this Field."""
         value = self.getValue(entryId)
         if value is not None:
             return (u'%s' % value).replace('&', '&amp;').replace(
@@ -145,6 +125,7 @@ class MetaZopeUTextField(FieldPlugin):
     # -------------------------------------------------------------------------
 
     def manage_afterAdd(self, item, container):
+        """Update old entries."""
         if item is self:
             # update old entries
             for entryId in self.storage_entryIds():
@@ -159,7 +140,7 @@ manage_addMetaZopeUTextFieldForm = DTMLFile(
 
 
 def manage_addMetaZopeUTextField(self, id, title='', default='', REQUEST=None):
-    """ZMI constructor for MetaZopeUTextField"""
+    """Add new MetaZopeUTextField."""
     instance = MetaZopeUTextField(id)
     instance.title = title
     instance.default = instance._testValue(default)

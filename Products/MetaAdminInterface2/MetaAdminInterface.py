@@ -1,34 +1,19 @@
-"""==================================================================
-
-               M e t a   A d m i n   I n t e r f a c e
-  -----------------------------------------------------------------
-
-    Copyright (c) 2005, Sebastian Luehnsdorf - Web-Solutions GbR.
-    http://zopemeta.com - http://luehnsdorf.de
-
-    This software is subject to the provisions of the
-    Zope Public License, Version 2.0 (ZPL).
-
-    A copy of the ZPL should accompany this distribution.
-
-    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR
-    IMPLIED WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED
-    TO, THE IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST
-    INFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE.
-
-=================================================================="""
+"""MetaAdminInterface."""
 
 
-from Globals import DTMLFile
-from Products.MetaPublisher2.Library import (
-    InterfacePlugin, standard_form_header, standard_form_footer)
+from App.special_dtml import DTMLFile
+
+from Products.MetaPublisher2.bases.frontend.legacyfrontend import (
+    LegacyFrontendPlugin as InterfacePlugin)
+from Products.MetaPublisher2.library.compatibility import (
+    standard_form_header, standard_form_footer)
 from Products.PythonScripts.PythonScript import manage_addPythonScript
 
 
 # =============================================================================
 
 class MetaAdminInterface(InterfacePlugin):
-    """MetaAdminInterface Base Class"""
+    """MetaAdminInterface Base Class."""
 
     meta_type = 'MetaAdminInterface'
 
@@ -166,8 +151,7 @@ class MetaAdminInterface(InterfacePlugin):
     # -------------------------------------------------------------------------
 
     def configure(self, data):
-        """Configure the Interface"""
-
+        """Configure the Interface."""
         self.title = data.get('title', self.title)
 
         self.storageId = data.get('storageId', self.storageId)
@@ -232,17 +216,17 @@ class MetaAdminInterface(InterfacePlugin):
     # -------------------------------------------------------------------------
 
     def getStorageIds(self):
-        """Return ids of all Storages"""
+        """Return ids of all Storages."""
         return self.storageIds()
 
     def getInterfacePath(self):
-        """Return the path of the Interface"""
+        """Return the path of the Interface."""
         return self.absolute_url()[len(self.zmp2URL()) + 1:]
 
     # -------------------------------------------------------------------------
 
     def renderingIds(self):
-        """Return list ids for objects created on rendering"""
+        """Return list ids for objects created on rendering."""
         idPrefix = self.idPrefix
         if self.createFolder:
             idPrefix = self.createFolderId + '/' + idPrefix
@@ -258,7 +242,7 @@ class MetaAdminInterface(InterfacePlugin):
         ]
 
     def renderInterface(self, destination, **options):
-        """Render the Interface"""
+        """Render the Interface."""
         data = {
 
             'storageId': self.storageId,
@@ -748,7 +732,7 @@ class MetaAdminInterface(InterfacePlugin):
     # -------------------------------------------------------------------------
 
     def getDefaultWidget(self, formTypeId, fieldId, field):
-        """Return the list of defined widgets"""
+        """Return the list of defined widgets."""
         if fieldId in self[formTypeId].objectIds():
             return self[formTypeId][fieldId].getWidgetData(formTypeId)
         else:
@@ -762,7 +746,7 @@ class MetaAdminInterface(InterfacePlugin):
     # -------------------------------------------------------------------------
 
     def getWidget(self, formTypeId, widgetId, fieldId):
-        """Return the specified widget"""
+        """Return the specified widget."""
         field = self.getField(self.storageId, fieldId)
         for id, widget in (
             self.getWidgetsForField(formTypeId, field.fieldTypeId)
@@ -774,7 +758,7 @@ class MetaAdminInterface(InterfacePlugin):
     # -------------------------------------------------------------------------
 
     def getWidgetDataList(self, formTypeId, data):
-        """Return list of widget data for Interface wizard"""
+        """Return list of widget data for Interface wizard."""
         result = []
         tempDict = {}
         for key in data.keys():
@@ -811,7 +795,7 @@ class MetaAdminInterface(InterfacePlugin):
         'dtml/editMetaAdminInterface', globals())
 
     def manage_editInterface(self, REQUEST=None):
-        """Change the storage this Interface is associated with"""
+        """Change the storage this Interface is associated with."""
         self.configure(REQUEST.form)
 
         # List Interface Widgets
@@ -876,7 +860,7 @@ manage_addMetaAdminInterfaceForm = DTMLFile(
 
 
 def manage_addMetaAdminInterface(self, id, title='', REQUEST=None):
-    """ZMI constructor for MetaAdminInterface"""
+    """ZMI constructor for MetaAdminInterface."""
     instance = MetaAdminInterface(id)
     instance.title = title
     instance.storageId = REQUEST.get('storageId', '')

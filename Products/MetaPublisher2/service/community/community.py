@@ -1,42 +1,15 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Community Component
+"""MetaPublisher2 - Community Component.
 
 Simple service providing access to the Web based community service. The ZMI
 forms simply include the community service's web pages on the MetaPublisher
 website at http://metapublisher.org.
-
-$Id: service/community/community.py 7 2013-05-09 00:18:34Z sfluehnsdorf $
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
 
-
-# ============================================================================
-# Module Imports
-
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, DTMLFile, InitializeClass, permission_zmi, show_future)
+from Products.MetaPublisher2.library.application import permission_zmi
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, InitializeClass)
+from Products.MetaPublisher2.library.compatibility import show_future
 
 
 # ============================================================================
@@ -51,7 +24,7 @@ __all__ = [
 # Community Component Mix-In Class
 
 class Community:
-    """!TXT! Community Component Mix-In Class"""
+    """Community Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -75,8 +48,7 @@ class Community:
     security.declareProtected(permission_zmi, 'get_community_url')
 
     def get_community_url(self):
-        """!TXT! Return the URL for the online community service"""
-
+        """Return the URL for the online community service."""
         return self.get_setting('service_community_url')
 
 

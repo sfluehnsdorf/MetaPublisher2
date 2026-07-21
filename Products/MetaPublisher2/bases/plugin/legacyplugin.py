@@ -1,26 +1,4 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Legacy Plugin Base
+"""Legacy Plugin Base.
 
 NOTE: This class is provided for backward compatibility and should not be of
 interest to you!
@@ -28,15 +6,8 @@ interest to you!
 It defines a plugin identifier and maps old style plugin detail attributes. It
 must preceed the plugin type base class in inheritance order to function
 properly.
-
-$Id: bases/plugin/legacyplugin.py 8 2013-05-08 19:47:57Z sfluehnsdorf $
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from Products.MetaPublisher2.library.common import (
     ClassSecurityInfo, ComputedAttribute, InitializeClass)
@@ -62,7 +33,7 @@ all_plugintypes = [
 # Legacy Plugin Base Class
 
 class LegacyPluginBase:
-    """!TXT! Legacy Plugin Base Class"""
+    """Legacy Plugin Base Class."""
 
     security = ClassSecurityInfo()
 

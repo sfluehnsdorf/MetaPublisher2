@@ -1,40 +1,10 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Settings Component
-
-!TXT! module info
-
-$Id: system/settings/settings.py 7 2013-05-11 00:50:43Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
+"""MetaPublisher2."""
 
 
-# ============================================================================
-# Module Imports
-
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage, settings)
+from Products.MetaPublisher2.library.application import (
+    permission_manage, settings)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, InitializeClass)
 
 
 # ============================================================================
@@ -49,7 +19,7 @@ __all__ = [
 # Settings Component Mix-In Class
 
 class Settings:
-    """!TXT! Settings Component Mix-In Class"""
+    """Settings Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -66,13 +36,11 @@ class Settings:
     security.declareProtected(permission_manage, 'list_settings')
 
     def list_settings(self):
-        """!TXT! List all settings"""
-
+        """List all settings."""
         result = []
         for key, value in settings.items():
             result.append({'key': key, 'value': value})
         return result
-
         result = settings.items()
         result.sort()
         return settings.items()
@@ -80,8 +48,7 @@ class Settings:
     security.declareProtected(permission_manage, 'get_setting')
 
     def get_setting(self, key):
-        """!TXT! Return the value for the specified setting"""
-
+        """Return the value for the specified setting."""
         return settings[key]
 
 

@@ -1,45 +1,18 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Profiles Component
+"""MetaPublisher2 - Profiles Component.
 
 User profiles are settings that are stored transparently and persistently.
 This service removes the need to pass settings through the REQUEST and ensures
 that these settings are available any time, even after logout or server
 restart. Each profile is stored on a per-user level, identified by user name
 and the physical path to the user's UserFolder object.
-
-$Id: system/profiles/profiles.py 14 2013-05-09 17:21:24Z sfluehnsdorf $
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
 
-
-# ============================================================================
-# Module Imports
-
-from Products.MetaPublisher2.library import (
+from Products.MetaPublisher2.library.application import (
+    permission_manage, permission_zmi)
+from Products.MetaPublisher2.library.common import (
     ClassSecurityInfo, eval_valuestring, false, DTMLFile, identify_type,
-    InitializeClass, permission_manage, permission_zmi, true)
+    InitializeClass, true)
 
 
 # ============================================================================
@@ -54,7 +27,7 @@ __all__ = [
 # Profiles Component Mix-In Class
 
 class Profiles:
-    """!TXT! Profiles Component Mix-In Class"""
+    """Profiles Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -62,6 +35,7 @@ class Profiles:
     # Profile Module Initialisation
 
     def init_profiles(self):
+        """Initialize profiles."""
         self.__profiles = {}
 
     # ------------------------------------------------------------------------
@@ -75,24 +49,20 @@ class Profiles:
     # Profile Retrieval API
 
     def _get_profile_id(self, user):
-        """!TXT! Return the Profile id based on the user object."""
-
+        """Return the Profile id based on the user object."""
         return '%s/%s' % (
             '/'.join(user.aq_parent.getPhysicalPath()), user.getUserName())
 
     security.declareProtected(permission_manage, 'get_profile_variable')
 
     def get_profile_variable(self, request, key, default=None):
-        """!TXT! Return the value of the specified variable from the user's
-        profile."""
-
+        """Return value of specified variable from user's profile."""
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
         return settings.get(key, default)
 
     def list_profile_variables(self, request):
-        """!TXT! Return a list of the profile's settings."""
-
+        """Return a list of the profile's settings."""
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
         result = []
@@ -109,7 +79,7 @@ class Profiles:
     security.declareProtected(permission_manage, 'delete_own_profile')
 
     def save_profile_changes(self, REQUEST):
-        """!TXT! Save changes to the user's profile."""
+        """Save changes to the user's profile."""
         profile_id = self._get_profile_id(REQUEST.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
 
@@ -136,7 +106,7 @@ class Profiles:
     security.declareProtected(permission_manage, 'delete_own_profile')
 
     def delete_own_profile(self, REQUEST):
-        """!TXT! Delete the user's Profile."""
+        """Delete the user's Profile."""
         profile_id = self._get_profile_id(REQUEST.AUTHENTICATED_USER)
         profiles = self.__profiles
         profiles[profile_id] = {}
@@ -151,10 +121,8 @@ class Profiles:
     security.declareProtected(permission_manage, 'delete_unused_profiles')
 
     def delete_unused_profiles(self, REQUEST=None):
-        """!TXT! Delete all Profiles for whose Users object no longer exist."""
-
+        """Delete all Profiles for whose Users object no longer exist."""
         profiles = self.__profiles
-
         counter = 0
         for key in self.__profiles.keys():
             try:
@@ -185,9 +153,7 @@ class Profiles:
     security.declareProtected(permission_manage, 'set_profile_variable')
 
     def set_profile_variable(self, request, key, value):
-        """!TXT! Set the value of the specified variable in the User's
-        profile."""
-
+        """Set value of specified variable in User's profile."""
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})
         if key in settings:
@@ -203,9 +169,7 @@ class Profiles:
     security.declareProtected(permission_zmi, 'update_profile')
 
     def update_profile(self, request, variables):
-        """!TXT! Set the value of the specified variable in the User's
-        profile."""
-
+        """Set values of specified variables in User's profile."""
         form = request.form
         profile_id = self._get_profile_id(request.AUTHENTICATED_USER)
         settings = self.__profiles.get(profile_id, {})

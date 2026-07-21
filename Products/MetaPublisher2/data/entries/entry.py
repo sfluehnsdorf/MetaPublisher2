@@ -1,41 +1,11 @@
-# -*- coding: iso-8859-15 -*-
-# =============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# =============================================================================
-
-__doc__ = """Entry Component
-
-!TXT! module info
-
-$Id: data/entries/entry.py 13 2013-05-09 18:13:56Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
+"""MetaPublisher2 - Entry Component."""
 
 
-# =============================================================================
-# Module Imports
-
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, InitializeClass, permission_access_entries,
-    permission_change_entries, permission_create_entries, false, true)
+from Products.MetaPublisher2.library.application import (
+    permission_access_entries, permission_change_entries,
+    permission_create_entries)
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, InitializeClass, false, true)
 
 
 # =============================================================================
@@ -50,7 +20,7 @@ __all__ = [
 # Entry Component Mix-In Class
 
 class Entry:
-    """Entry Component Mix-In Class"""
+    """Entry Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -63,45 +33,43 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         field_ids=None, failsafe=false, bound=true
     ):
-        """
-        !TXT! Retrieve a single Entry
+        """Retrieve a single Entry.
 
         Return the specified EntryFields of the Entry specified by either id or
         position from the specified source. Unless failsafe is True, raises
         KeyError if the specified Entry does not exist.
 
         source
-          the id of a Storage, a Storage or an EntrySet to retrieve the Entry
-          from.
+            the id of a Storage, a Storage or an EntrySet to retrieve the
+            Entry from.
 
         parent_entry_id
-          the parent Entry that the specified Entry is searched in. If no
-          parent Entry is specified, the root Entry is used.
+            the parent Entry that the specified Entry is searched in. If no
+            parent Entry is specified, the root Entry is used.
 
         entry_id
-          the unique id identifying the Entry. If specified, entry_position
-          must be None or a ValueError exception will be raised.
+            the unique id identifying the Entry. If specified, entry_position
+            must be None or a ValueError exception will be raised.
 
         entry_position
-          the position identifying the Entry. If specified, entry_id must be
-          None or a ValueError exception will be raised.
+            the position identifying the Entry. If specified, entry_id must be
+            None or a ValueError exception will be raised.
 
         field_ids
-          the ids of the Fields, that will be returned. A 2-tuple identifies
-          the Field with the first item and specifies an alias for it with the
-          second item. Instead of a Field id an expression may be defined with
-          an alias. If undefined or 'primary' string will return all primary
-          Fields. If '*' string will return all Fields.
+            the ids of the Fields, that will be returned. A 2-tuple identifies
+            the Field with the first item and specifies an alias for it with
+            the second item. Instead of a Field id an expression may be defined
+            with an alias. If undefined or 'primary' string will return all
+            primary Fields. If '*' string will return all Fields.
 
         failsafe
-          Flag, that if True causes no KeyError exception to be raised, should
-          the specified Entry not exist.
+            Flag, that if True causes no KeyError exception to be raised,
+            should the specified Entry not exist.
 
         bound
-          Flag, that if True will bind the Entry to its source, causing all
-          changes to its values to be stored in the source as well.
+            Flag, that if True will bind the Entry to its source, causing all
+            changes to its values to be stored in the source as well.
         """
-
         source = self.get_storage(source)
         return source.get_entry(
             parent_entry_id, entry_id, field_ids, failsafe, bound)
@@ -116,9 +84,12 @@ class Entry:
         entry_positions=None, conditions=None, order_by=None, offset=None,
         limit=None, bound=None
     ):
-        """!TXT! Return the ids of Entries of the specified source, ordered by
+        """Return the ids of Entries of the specified source.
+
+        !TXT! Return the ids of Entries of the specified source, ordered by
         a specific EntryField's value and limited to the Entries specified by
-        ids or positions and matching conditions if defined."""
+        ids or positions and matching conditions if defined.
+        """
         source = self.get_storage(source)
         return source.entry_ids(
             parent_entry_id, entry_ids, entry_positions, conditions, order_by,
@@ -131,11 +102,14 @@ class Entry:
         entry_positions=None, conditions=None, field_ids=None, order_by=None,
         offset=None, limit=None, bound=None
     ):
-        """!TXT! Return a list of tuples of id, Entry of the Entries of the
-        specified source, ordered by a specific EntryField's value and limited
-        to the Entries specified by ids or positions and matching conditions if
+        """Return a list of tuples of id, Entry of the Entries of the source.
+
+        Return a list of tuples of id, Entry of the Entries of the specified
+        source, ordered by a specific EntryField's value and limited to the
+        Entries specified by ids or positions and matching conditions if
         defined. If the Fields to return are undefined, all primary Fields will
-        be returned."""
+        be returned.
+        """
         source = self.get_storage(source)
         return source.entry_items(
             parent_entry_id, entry_ids, entry_positions, conditions, field_ids,
@@ -148,10 +122,13 @@ class Entry:
         entry_positions=None, conditions=None, field_ids=None, order_by=None,
         offset=None, limit=None, bound=None
     ):
-        """!TXT! Return a list of Entries of the specified source, ordered by a
-        specific EntryField's value and limited to the Entries specified by ids
-        or positions and matching conditions if defined. If the Fields to
-        return are undefined, all primary Fields will be returned."""
+        """Return a list of Entries.
+
+        Return a list of Entries of the specified source, ordered by a specific
+        EntryField's value and limited to the Entries specified by ids or
+        positions and matching conditions if defined. If the Fields to return
+        are undefined, all primary Fields will be returned.
+        """
         source = self.get_storage(source)
         return source.entry_values(
             parent_entry_id, entry_ids, entry_positions, conditions, field_ids,
@@ -166,9 +143,12 @@ class Entry:
         self, source, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None
     ):
-        """!TXT! Return the number of Entries of the specified source, limited
-        to the Entries specified by ids or positions and filtered by conditions
-        if defined."""
+        """Return the number of Entries.
+
+        Return the number of Entries of the specified source, limited to the
+        Entries specified by ids or positions and filtered by conditions if
+        defined.
+        """
         source = self.get_storage(source)
         return source.count_entries(
             parent_entry_id, entry_ids, entry_positions, conditions)
@@ -182,9 +162,12 @@ class Entry:
         self, source, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None
     ):
-        """!TXT! Return True if all Entries exist in the specified source,
-        limited to the Entries specified by ids or positions and matching
-        conditions if specified, False otherwise."""
+        """Return True if all Entries exist in the specified source.
+
+        Return True if all Entries exist in the specified source, limited to
+        the Entries specified by ids or positions and matching conditions if
+        specified, False otherwise.
+        """
         source = self.get_storage(source)
         return source.has_all_entries(
             parent_entry_id, entry_ids, entry_positions, conditions)
@@ -195,9 +178,12 @@ class Entry:
         self, source, parent_entry_id=None, entry_ids=None,
         entry_positions=None, conditions=None
     ):
-        """!TXT! Return True if any Entries exist in the specified source,
-        limited to the Entries specified by ids or positions and matching
-        conditions if defined, False otherwise."""
+        """Return True if any Entries exist in the specified source.
+
+        Return True if any Entries exist in the specified source, limited to
+        the Entries specified by ids or positions and matching conditions if
+        defined, False otherwise.
+        """
         source = self.get_storage(source)
         return source.has_any_entries(
             parent_entry_id, entry_ids, entry_positions, conditions)
@@ -208,8 +194,11 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None,
         entry_position=None
     ):
-        """!TXT! Return True if the Entry specified by id or position exists in
-        the specified source, False otherwise."""
+        """Return True if the Entry specified by id or position exists.
+
+        Return True if the Entry specified by id or position exists in the
+        specified source, False otherwise.
+        """
         source = self.get_storage(source)
         return source.has_entry(parent_entry_id, entry_id, entry_position)
 
@@ -222,11 +211,14 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         data={}, REQUEST=None, **args
     ):
-        """!TXT! Add a new Entry to the specified source with the specified id
-        and/or position and the specified data. If no id is specified and the
-        source expects an id, it will be automatically generated. If no
-        position is specified and the source, the Entry will be added to the
-        default position."""
+        """Add a new Entry.
+
+        Add a new Entry to the specified source with the specified id and/or
+        position and the specified data. If no id is specified and the source
+        expects an id, it will be automatically generated. If no position is
+        specified and the source, the Entry will be added to the default
+        position.
+        """
         data.update(args)
         if REQUEST:
             data.update(REQUEST.form)
@@ -251,8 +243,7 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         data={}, REQUEST=None, **args
     ):
-        """!TXT! Convenience method to add a new Entry and redirect to the add
-        form."""
+        """Add a new Entry and redirect to the add form."""
         data.update(args)
         if REQUEST:
             data.update(REQUEST.form)
@@ -276,8 +267,7 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, data={},
         REQUEST=None, **args
     ):
-        """!TXT! Convenience method to add a new Entry to the beginning of the
-        source."""
+        """Add a new Entry to the beginning of the source."""
         data.update(args)
         if REQUEST:
             data.update(REQUEST.form)
@@ -299,8 +289,7 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, data={},
         REQUEST=None, **args
     ):
-        """!TXT! Convenience method to add a new Entry to the end of the
-        source."""
+        """Add a new Entry to the end of the source."""
         data.update(args)
         if REQUEST:
             data.update(REQUEST.form)
@@ -322,8 +311,7 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, data={},
         REQUEST=None, **args
     ):
-        """!TXT! Convenience method to add a new Entry at a random position in
-        the source."""
+        """Add a new Entry at a random position in the source."""
         data.update(args)
         if REQUEST:
             data.update(REQUEST.form)
@@ -345,7 +333,7 @@ class Entry:
     security.declareProtected(permission_create_entries, 'add_entries')
 
     def add_entries(self, source, entries, parent_entry_id=None, REQUEST=None):
-        """!TXT! add_entries"""
+        """TODO: Docstring for add_entries."""
         source = self.get_storage(source)
         entry_ids, entry_positions = source.add_entries(
             parent_entry_id, entries)
@@ -365,7 +353,7 @@ class Entry:
     def add_entries_to_top(
         self, source, entries, parent_entry_id=None, REQUEST=None
     ):
-        """!TXT! add_entries_to_top"""
+        """TODO: Docstring for add_entries_to_top."""
         source = self.get_storage(source)
         entry_ids, entry_positions = source.add_entries_to_top(
             parent_entry_id, entries)
@@ -381,7 +369,7 @@ class Entry:
     def add_entries_to_bottom(
         self, source, entries, parent_entry_id=None, REQUEST=None
     ):
-        """!TXT! add_entries_to_bottom"""
+        """TODO: Docstring for add_entries_to_bottom."""
         source = self.get_storage(source)
         entry_ids, entry_positions = source.add_entries_to_bottom(
             parent_entry_id, entries)
@@ -397,7 +385,7 @@ class Entry:
     def add_entries_somewhere(
         self, source, entries, parent_entry_id=None, REQUEST=None
     ):
-        """!TXT! add_entries_to_bottom"""
+        """TODO: Docstring for add_entries_to_bottom."""
         source = self.get_storage(source)
         entry_ids, entry_positions = source.add_entries_somewhere(
             parent_entry_id, entries)
@@ -413,9 +401,11 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         new_id=None, REQUEST=None
     ):
-        """!TXT! Duplicate the Entry, specified by id or position, in the
-        specified storage, automatically generating a new id if not
-        specified"""
+        """Duplicate the Entry.
+
+        Duplicate the Entry, specified by id or position, in the specified
+        storage, automatically generating a new id if not specified.
+        """
         source = self.get_storage(source)
         new_id, new_position = source.duplicate_entry(
             parent_entry_id, entry_id, entry_position, new_id)
@@ -440,10 +430,13 @@ class Entry:
         self, source, parent_entry_id=None, entry_ids=[], entry_positions=[],
         conditions=None, new_ids=None, REQUEST=None
     ):
-        """!TXT! Duplicate the Entries, specified by ids or positions, in the
-        specified storage, matching conditions if defined, automatically
-        generating new ids if not specified. If the new ids are specfied, both
-        id lists must have the same length or ValueError is raised."""
+        """Duplicate the Entries.
+
+        Duplicate the Entries, specified by ids or positions, in the specified
+        storage, matching conditions if defined, automatically generating new
+        ids if not specified. If the new ids are specfied, both id lists must
+        have the same length or ValueError is raised.
+        """
         source = self.get_storage(source)
         new_ids, new_positions = source.duplicate_entries(
             parent_entry_id, entry_ids, entry_positions, conditions, new_ids)
@@ -461,7 +454,7 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         data={}, REQUEST=None, **args
     ):
-        """!TXT! Add or edit an Entry of the specified Storage"""
+        """Add or edit an Entry of the specified Storage."""
         data.update(args)
         if REQUEST:
             data.update(REQUEST.form)
@@ -489,8 +482,11 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         data={}, REQUEST=None, **args
     ):
-        """!TXT! Edit an Entry of the specified source with the specified id
-        and/or position and the specified data."""
+        """Edit an Entry of the specified source.
+
+        Edit an Entry of the specified source with the specified id and/or
+        position and the specified data.
+        """
         data.update(args)
         if REQUEST:
             data.update(REQUEST.form)
@@ -516,8 +512,7 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         data={}, REQUEST=None, **args
     ):
-        """!TXT! Edit an Entry of the specified Storage and redirect to the add
-        form."""
+        """Edit Entry of specified Storage and redirect to the add form."""
         data.update(args)
         if REQUEST:
             data.update(REQUEST.form)
@@ -541,9 +536,12 @@ class Entry:
         self, source, parent_entry_id=None, entry_ids=[], entry_positions=[],
         conditions=None, data={}, REQUEST=None, **args
     ):
-        """!TXT! Edit Entries of the specified Storage with the specified data,
+        """Edit Entries of the specified Storage with the specified data.
+
+        Edit Entries of the specified Storage with the specified data,
         identified by the specified ids and/or positions, matching conditions
-        if defined"""
+        if defined.
+        """
         data.update(args)
         if REQUEST:
             data.update(REQUEST.form)
@@ -567,8 +565,11 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         new_id=None, REQUEST=None
     ):
-        """!TXT! Rename the specified Entry of the specified Storage,
-        automatically generating a new id if not specified."""
+        """Rename the specified Entry of the specified Storage.
+
+        Rename the specified Entry of the specified Storage, automatically
+        generating a new id if not specified.
+        """
         source = self.get_storage(source)
         new_id = source.rename_entry(
             parent_entry_id, entry_id, entry_position, new_id)
@@ -590,10 +591,12 @@ class Entry:
         self, source, parent_entry_id=None, entry_ids=[], entry_positions=[],
         conditions=None, new_ids=None, REQUEST=None
     ):
-        """!TXT! Rename the specified Entries of the specified Storage,
-        automatically generating new ids if not specified, matching conditions
-        if defined. If the new ids are specified, both id lists must have the
-        same length."""
+        """Rename the specified Entries of the specified Storage.
+
+        Rename the specified Entries of the specified Storage, automatically
+        generating new ids if not specified, matching conditions if defined. If
+        the new ids are specified, both id lists must have the same length.
+        """
         source = self.get_storage(source)
         entry_ids, new_ids = source.rename_entries(
             parent_entry_id, entry_ids, entry_positions, conditions, new_ids)
@@ -611,8 +614,11 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         field_ids=None, REQUEST=None
     ):
-        """!TXT! Reset either all or only the specified Fields of the specified
-        Entry to default values."""
+        """Reset either all or only specified Fields of specified Entry.
+
+        Reset either all or only the specified Fields of the specified Entry to
+        default values.
+        """
         source = self.get_storage(source)
         entry_id, entry_position = source.reset_entry(
             parent_entry_id, entry_id, entry_position, field_ids)
@@ -638,8 +644,11 @@ class Entry:
         self, source, parent_entry_id=None, entry_ids=[], entry_positions=[],
         conditions=None, field_ids=None, REQUEST=None
     ):
-        """!TXT! Reset either all or only the specified Fields of the specified
-        Entries, matching conditions if defined, to default values."""
+        """Reset either all or only specified Fields of the specified Entries.
+
+        Reset either all or only the specified Fields of the specified Entries,
+        matching conditions if defined, to default values.
+        """
         source = self.get_storage(source)
         entry_ids, entry_positions = source.reset_entries(
             parent_entry_id, entry_ids, entry_positions, conditions, field_ids)
@@ -658,7 +667,7 @@ class Entry:
     security.declareProtected(permission_change_entries, 'clear_entries')
 
     def clear_entries(self, source, REQUEST=None):
-        """!TXT! Delete all Entries in the specified source."""
+        """Delete all Entries in the specified source."""
         source = self.get_storage(source)
         entry_ids, entry_positions = self.clear_entries()
         self.redirect(
@@ -675,9 +684,11 @@ class Entry:
         self, source, parent_entry_id=None, entry_id=None, entry_position=None,
         failsafe=false, REQUEST=None
     ):
-        """!TXT! Delete an Entry from the specified Storage. Either an Entry's
-        id or position must be specified. Unless failsafe is True, raises
-        KeyError if the specified Entry does not exist."""
+        """Delete an Entry from the specified Storage.
+
+        Either an Entry's id or position must be specified. Unless failsafe is
+        True, raises KeyError if the specified Entry does not exist.
+        """
         source = self.get_storage(source)
         entry_id, entry_position = source.delete_entry(
             parent_entry_id, entry_id, entry_position, failsafe)
@@ -700,10 +711,13 @@ class Entry:
         self, source, parent_entry_id=None, entry_ids=[], entry_positions=[],
         conditions=None, failsafe=false, REQUEST=None
     ):
-        """!TXT! Delete the Entries, matching conditions if defined, from the
-        specified Storage. Either Entries' ids or positions must be specified.
-        Unless failsafe is True, raises KeyError if any of the specified
-        Entries does not exist."""
+        """Delete the Entries from the Storage.
+
+        Delete the Entries, matching conditions if defined, from the specified
+        Storage. Either Entries' ids or positions must be specified. Unless
+        failsafe is True, raises KeyError if any of the specified Entries does
+        not exist.
+        """
         source = self.get_storage(source)
         entry_ids, entry_positions = source.delete_entries(
             parent_entry_id, entry_ids, entry_positions, conditions, failsafe)
@@ -722,8 +736,7 @@ class Entry:
     def pop_first_entry(
         self, source, parent_entry_id=None, conditions=None, REQUEST=None
     ):
-        """!TXT! Convenience method to delete and return the Entry at the
-        beginning of the source."""
+        """Delete and return the Entry at the beginning of the source."""
         source = self.get_storage(source)
         entry_id, entry_position, entry = source.pop_first_entry(
             parent_entry_id, conditions)
@@ -748,8 +761,7 @@ class Entry:
     def pop_last_entry(
         self, source, parent_entry_id=None, conditions=None, REQUEST=None
     ):
-        """!TXT! Convenience method to delete and return the Entry at the end
-        of the source."""
+        """Delete and return the Entry at the end of the source."""
         source = self.get_storage(source)
         entry_id, entry_position, entry = source.pop_last_entry(
             parent_entry_id, conditions)
@@ -774,8 +786,7 @@ class Entry:
     def pop_random_entry(
         self, source, parent_entry_id=None, conditions=None, REQUEST=None
     ):
-        """!TXT! Convenience method to delete and return the Entry at a random
-        position in the source."""
+        """Delete and return the Entry at a random position in the source."""
         source = self.get_storage(source)
         entry_id, entry_position, entry = source.pop_random_entry(
             parent_entry_id, conditions)

@@ -1,37 +1,5 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
+"""MetaPublisher - Logging Service."""
 
-__doc__ = """!TXT! Logging Service
-
-!TXT! module info
-
-$Id: library/common/log.py 4 2013-05-08 20:15:04Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Exports
 
 __all__ = [
     'log',
@@ -47,8 +15,7 @@ try:
     logger = getLogger('MetaPublisher2')
 
     def log(message):
-        """!TXT! MetaPublisher2 log writer method"""
-
+        """Log a message."""
         logger.info(message)
 
 except Exception:
@@ -56,6 +23,5 @@ except Exception:
     from zLOG import LOG, INFO
 
     def log(message):
-        """!TXT! MetaPublisher2 log writer method"""
-
+        """Log a message."""
         LOG('MetaPublisher2', INFO, message)

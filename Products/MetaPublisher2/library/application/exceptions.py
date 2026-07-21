@@ -1,26 +1,4 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2002-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """Application Exceptions
+"""MetaPublisher2 - Application Exceptions.
 
 Custom Exception resources, including an ExceptionBase that can be initialized
 with arbitrary attributes. Custom Exceptions include:
@@ -31,15 +9,8 @@ with arbitrary attributes. Custom Exceptions include:
 - UnsupportedError for accessed features which are not supported
 - ImmutableError for values which may not be altered
 - UnreadableError for values which may not be queried
-
-$Id: library/application/exceptions.py 5 2013-05-08 20:03:10Z sfluehnsdorf $
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
-
-
-# ==============================================================================
-# Module Exports
 
 __all__ = [
     'AmbiguityError',
@@ -57,7 +28,7 @@ __all__ = [
 # Exception Base Class
 
 class ExceptionBase(Exception):
-    """!TXT! Exception Base Class
+    """Exception Base Class.
 
     Exception base class that can be initialized with arbitrary attributes.
     """
@@ -76,7 +47,7 @@ class ExceptionBase(Exception):
 # Ambiguity Error Exception
 
 class AmbiguityError(ExceptionBase):
-    """!TXT! Ambiguity Error Exception
+    """Ambiguity Error Exception.
 
     Ambiguity errors are caused when available parameters are insufficient for
     decision making.
@@ -89,7 +60,7 @@ class AmbiguityError(ExceptionBase):
 # Configuration Error Exception
 
 class ConfigurationError(ExceptionBase):
-    """!TXT! Configuration Error Exception
+    """Configuration Error Exception.
 
     Configuration errors are caused by parser errors of the settings.conf file
     or by invalid values of settings.
@@ -102,7 +73,7 @@ class ConfigurationError(ExceptionBase):
 # Connection Error Exception
 
 class ConnectionError(ExceptionBase):
-    """!TXT! Connection Error Exception
+    """Connection Error Exception.
 
     Connection errors are caused by unavailable remote data sources, i.e. when
     an SQL database is not connected.
@@ -115,7 +86,7 @@ class ConnectionError(ExceptionBase):
 # Constraint Error Exception
 
 class ConstraintError(ExceptionBase):
-    """!TXT! Constraint Error Exception
+    """Constraint Error Exception.
 
     Constraint errors are caused when quotas are exceeded, i.e. when a value is
     outside of predefined limit of a Field or the maximum number of Entries a
@@ -129,7 +100,7 @@ class ConstraintError(ExceptionBase):
 # Immutable Error Exception
 
 class ImmutableError(ExceptionBase):
-    """!TXT! Immutable Error Exception
+    """Immutable Error Exception.
 
     Immutable errors are caused by actions on immutable data, such as modifying
     Entries of a read-only Storage.
@@ -142,7 +113,7 @@ class ImmutableError(ExceptionBase):
 # Unreadable Error Exception
 
 class UnreadableError(ExceptionBase):
-    """!TXT! Unreadable Error Exception
+    """Unreadable Error Exception.
 
     Unreadable errors are caused by actions on unreadable data, such as
     retrieving Entries from a write-only Storage.
@@ -155,7 +126,7 @@ class UnreadableError(ExceptionBase):
 # Unsupported Error Exception
 
 class UnsupportedError(ExceptionBase):
-    """!TXT! Unsupported Error Exception
+    """Unsupported Error Exception.
 
     Unsupported errors are caused by action which are not provided by a
     particular plugin, such as ordering Entries of an unordered Storage.
@@ -168,7 +139,7 @@ class UnsupportedError(ExceptionBase):
 # Render Error Exception
 
 class RenderError(ExceptionBase):
-    """!TXT! Render Error Exception
+    """Render Error Exception.
 
     Render errors are raised when Frontend rendering fails for whatever reason.
     """

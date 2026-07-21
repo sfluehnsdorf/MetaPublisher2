@@ -1,26 +1,4 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                               M u l t i  T a b s
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2009-2012, Sebastian Lühnsdorf - Web-Solutions
-# For more information see the README.txt file or visit www.zope.biz
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
-
-__doc__ = """MultiTabs
+"""MultiTabs.
 
 Mix-in service allowing for grouped, structured Zope management tabs in
 multiple levels. This service is backward compatible to Zope's regular
@@ -63,18 +41,12 @@ Just like the regular management tabs, unavailable and restricted actions are
 purged. If only one child exists with the same action as its parent, the list
 will automatically collapse. If a parent's action is an empty string, it will
 be filled with the first child's action.
-
-$Id: multitabs/multitabs.py 19 2013-05-09 01:13:56Z sfluehnsdorf $
 """
 
-__version__ = '$Revision: 1.3 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from AccessControl import ClassSecurityInfo
-from Globals import DTMLFile, InitializeClass
+from AccessControl.class_init import InitializeClass
+from App.special_dtml import DTMLFile
 
 try:
     from zExceptions import Unauthorized
@@ -110,7 +82,7 @@ except Exception:
 # MultiTabs Mix-In Class
 
 class MultiTabs:
-    """!TXT! MultiTabs Mix-In Class
+    """MultiTabs Mix-In Class.
 
     This class overwrites the standard Zope management tabs with tabs that
     provide multiple levels for complex applications.
@@ -125,38 +97,32 @@ class MultiTabs:
     manage_tabs = DTMLFile('multitabs', globals())
 
     # ------------------------------------------------------------------------
-    # !TXT MultiTabs Manage Workspace Method
+    # MultiTabs Manage Workspace Method
 
     security.declarePublic('manage_workspace')
 
     def manage_workspace(self, REQUEST):
-        """!TXT! Dispatch to first interface in manage_options"""
-
+        """Dispatch to first interface in manage_options."""
         options = self.filtered_manage_options(REQUEST)
-
         try:
             action = options[0][0]['action']
             if action == 'manage_workspace':
                 raise TypeError
         except (IndexError, KeyError):
             raise Unauthorized('You are not authorized to view this object.')
-
         if action.find('/'):
             raise Redirect("%s/%s" % (REQUEST['URL1'], action))
-
         return getattr(self, action)(self, REQUEST)
 
     # ------------------------------------------------------------------------
-    # !TXT MultiTabs Manage Workspace Method
+    # MultiTabs Manage Workspace Method
 
     def _get_manage_options_map(self, REQUEST):
-        """!TXT!"""
-
+        """TODO: Docstring for _get_manage_options_map."""
         try:
             options = tuple(self.manage_options)
         except Exception:
             options = tuple(self.manage_options())
-
         management_view_path = REQUEST.get(
             'management_view_path',
             REQUEST.get('URL', '').split('/')[-1].split('?')[0]
@@ -168,15 +134,12 @@ class MultiTabs:
             management_view = []
 
         # remap and filter options
-
         mapped_options = {}
         todo = {}
-
         index = 0
         for option in options:
             todo[str(index)] = option
             index = index + 1
-
         while todo.keys():
             id = todo.keys()[0]
             option = todo[id]
@@ -198,10 +161,8 @@ class MultiTabs:
             mapped_options[id] = option
 
         # find active option
-
         keys = mapped_options.keys()
         keys.sort()
-
         active_id = None
         for key in keys:
             option = mapped_options[key]
@@ -211,7 +172,6 @@ class MultiTabs:
                 option.get('label', '') == management_view
             ):
                 active_id = key
-
         if not active_id:
             for key in keys:
                 option = mapped_options[key]
@@ -222,32 +182,25 @@ class MultiTabs:
         return mapped_options, active_id
 
     # ------------------------------------------------------------------------
-    # !TXT MultiTabs Manage Workspace Method
+    # MultiTabs Manage Workspace Method
 
     security.declarePublic('_get_manage_options_map')
 
     def get_active_manage_option(self, REQUEST=None):
-        """!TXT! Return the active management tab"""
-
-        # initialize
-
+        """Return the active management tab."""
         if REQUEST is None:
             REQUEST = self.REQUEST
-
         mapped_options, active_id = self._get_manage_options_map(REQUEST)
-
         return mapped_options[active_id]
 
     # ------------------------------------------------------------------------
-    # !TXT MultiTabs Manage Workspace Method
+    # MultiTabs Manage Workspace Method
 
     security.declarePublic('filtered_manage_options')
 
     def filtered_manage_options(self, REQUEST=None):
-        """!TXT! Return the list of available management tabs"""
-
+        """Return the list of available management tabs."""
         # initialize
-
         if REQUEST is None:
             REQUEST = self.REQUEST
 
@@ -257,7 +210,6 @@ class MultiTabs:
         keys.sort()
 
         # set parent actions
-
         for key in keys:
             parent_key = '_'.join(key.split('_')[: -1])
             if (
@@ -268,7 +220,6 @@ class MultiTabs:
                     mapped_options[key]['action'])
 
         # remove empty management trees
-
         for key in keys:
             if (
                 not (mapped_options[key].get('action', '')) and
@@ -277,7 +228,6 @@ class MultiTabs:
                 del mapped_options[key]
 
         # format and return result
-
         result = []
         active_id_parts = active_id.split('_')
         keys = mapped_options.keys()

@@ -1,37 +1,5 @@
-# -*- coding: iso-8859-15 -*-
-# ============================================================================
-#
-#                                 X M L  D i c t
-#
-# ----------------------------------------------------------------------------
-# Copyright (c) 2011-2013, Sebastian Lühnsdorf - Web-Solutions and others
-# For more information see the README.txt file or visit www.metapulisher.org
-# ----------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ============================================================================
+"""XMLDict."""
 
-__doc__ = """XMLDict
-
-!TXT! module info
-
-$Id: xmldict/xmldict.py 5 2012-02-17 15:45:00Z sfluehnsdorf $
-"""
-
-__version__ = '$Revision: 1.2 $'[11:-2]
-
-
-# ============================================================================
-# Module Imports
 
 from types import (
     BooleanType, ComplexType, DictType, FloatType, IntType, ListType, LongType,
@@ -65,10 +33,10 @@ except Exception:
 # XMLDict Mix-In Class
 
 class XMLDict:
-    """!TXT!"""
+    """XMLDict Mix-In Class."""
 
     def encode_XMLDict(self, mapping):
-        """!TXT!"""
+        """Encode a mapping to XMLDict."""
 
         def encode(key, value):
             element = Element(key)
@@ -120,7 +88,7 @@ class XMLDict:
         return tostring(root)
 
     def decode_XMLDict(self, xml):
-        """!TXT!"""
+        """Decode an XMLDict to mapping."""
 
         def decode(element):
             value = None

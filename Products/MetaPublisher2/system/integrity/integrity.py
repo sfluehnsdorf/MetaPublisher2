@@ -1,42 +1,13 @@
-# -*- coding: iso-8859-15 -*-
-# ==============================================================================
-#
-#                         M e t a  P u b l i s h e r  2
-#
-# ------------------------------------------------------------------------------
-# Copyright (c) 2002-2011, Sebastian Lühnsdorf - Web-Solutions and contributors
-# For more information see the README.txt file or visit www.metapulisher.org
-# ------------------------------------------------------------------------------
-#
-# This software is subject to the provisions of the Zope Public License,
-# Version 2.1 (ZPL).
-#
-# A copy of the ZPL should accompany this distribution.
-#
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
-# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
-# FOR A PARTICULAR PURPOSE
-#
-# ==============================================================================
+"""MetaPublisher2 - Integrity Component.
 
-__doc__ = """Integrity Component
-
-!TXT! module info
 Reporting service, which tests the integrity of the MetaPublisher 2 components
 and reports inconsistencies in the configuration.
-
-$Id: system/integrity/integrity.py 7 2013-05-08 23:45:10Z sfluehnsdorf $
 """
 
-__version__ = '$Revision: 2.3 $'[11:-2]
 
-
-# ============================================================================
-# Module Imports
-
-from Products.MetaPublisher2.library import (
-    ClassSecurityInfo, DTMLFile, InitializeClass, permission_manage)
+from Products.MetaPublisher2.library.application import permission_manage
+from Products.MetaPublisher2.library.common import (
+    ClassSecurityInfo, DTMLFile, InitializeClass)
 
 
 # ============================================================================
@@ -51,7 +22,7 @@ __all__ = [
 # Integrity Component Mix-In Class
 
 class Integrity:
-    """!TXT! Integrity Component Mix-In Class"""
+    """Integrity Component Mix-In Class."""
 
     security = ClassSecurityInfo()
 
@@ -68,8 +39,7 @@ class Integrity:
     security.declareProtected(permission_manage, 'test_integrity')
 
     def test_integrity(self, REQUEST):
-        """!TXT! Perform integrity tests with specified options."""
-
+        """Perform integrity tests with specified options."""
         result = []
 
         # entries
@@ -106,48 +76,35 @@ class Integrity:
     # Integrity Subsystem Test API
 
     def _test_designs_integrity(self):
-        """!TXT! Perform integrity tests on all Designs."""
-
-        # TODO integrity.py - _test_designs_integrity - implement designs
+        """Perform integrity tests on all Designs."""
+        # TODO: integrity.py - _test_designs_integrity - implement designs
         # integrity tests
-
         return []
 
     def _test_entries_integrity(self, storage_id):
-        """!TXT! Perform integrity tests on all Entries in the specified
-        Storage."""
-
-        # !!! integrity.py - implement entries integrity tests
-
+        """Perform integrity tests on all Entries in the specified Storage."""
+        # TODO: integrity.py - implement entries integrity tests
         return []
 
     def _test_fields_integrity(self, storage_id):
-        """!TXT! Perform integrity tests on all Fields in the specified
-        Storage."""
-
-        # !!! integrity.py - implement fields integrity tests
-
+        """Perform integrity tests on all Fields in the specified Storage."""
+        # TODO: integrity.py - implement fields integrity tests
         return []
 
     def _test_frontends_integrity(self):
-        """!TXT! Perform integrity tests on all Frontends."""
-
-        # TODO integrity.py - _test_frontends_integrity - implement frontends
+        """Perform integrity tests on all Frontends."""
+        # TODO: integrity.py - _test_frontends_integrity - implement frontends
         # integrity tests
-
         return []
 
     def _test_indexing_integrity(self):
-        """!TXT! Perform integrity tests on all Indexes."""
-
-        # TODO integrity.py - _test_indexing_integrity - implement indexing
+        """Perform integrity tests on all Indexes."""
+        # TODO: integrity.py - _test_indexing_integrity - implement indexing
         # integrity tests
-
         return []
 
     def _test_plugins_integrity(self):
-        """!TXT! Perform integrity tests on all Plugins."""
-
+        """Perform integrity tests on all Plugins."""
         result = []
         if not self.has_storageplugins():
             result.append(('info', 'Plugins', 'No Storage Plugins installed.'))
@@ -167,33 +124,25 @@ class Integrity:
         return result
 
     def _test_presets_integrity(self):
-        """!TXT! Perform integrity tests on all Presets."""
-
-        # TODO integrity.py - _test_presets_integrity - implement presets
+        """Perform integrity tests on all Presets."""
+        # TODO: integrity.py - _test_presets_integrity - implement presets
         # integrity tests
-
         return []
 
     def _test_profiles_integrity(self):
-        """!TXT! Perform integrity tests on all Profiles."""
-
-        # !!! integrity.py - implement profiles integrity tests
-
+        """Perform integrity tests on all Profiles."""
+        # TODO: integrity.py - implement profiles integrity tests
         return []
 
     def _test_storages_integrity(self):
-        """!TXT! Perform integrity tests on all Storages."""
-
-        # !!! integrity.py - implement storages integrity tests
-
+        """Perform integrity tests on all Storages."""
+        # TODO: integrity.py - implement storages integrity tests
         return []
 
     def _test_widgets_integrity(self):
-        """!TXT! Perform integrity tests on all Widgets."""
-
-        # TODO integrity.py - _test_widgets_integrity - implement widgets
+        """Perform integrity tests on all Widgets."""
+        # TODO: integrity.py - _test_widgets_integrity - implement widgets
         # integrity tests
-
         return []
 
 
